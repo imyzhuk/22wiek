@@ -1,7 +1,8 @@
 import React from 'react';
-import { CircleButton, SearchBar } from '@/components';
+import { CircleButton } from '@/components';
 import { promos } from '@/data/promo';
 import './Header.css';
+import { SearchBar } from './SearchBar';
 
 type HeaderProps = {};
 

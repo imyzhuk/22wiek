@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './ReviewSection.module.css';
-import { ArrowButton, ReviewCard } from '@/components';
+import { ArrowButton } from '@/components';
 import YoutubeIcon from '../../../public/youtube.png';
 import Image from 'next/image';
 import { reviews } from '@/data/reviews';
+import { ReviewCard } from './ReviewCard';
 
 type ReviewSectionProps = {};
 

@@ -1,0 +1,54 @@
+.networks {
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px var(--default-shadow-color);
+  margin: 0 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--social-icon-bg-color);
+  transition: all 0.2s ease-out;
+}
+.link:hover {
+  box-shadow: none;
+}
+
+.vk {
+  color: #0077ff;
+}
+.vk:hover {
+  background-color: var(--vk-active-bg-color);
+  color: var(--social-icon-active-color);
+}
+.facebook {
+  color: #0866ff;
+}
+.facebook:hover {
+  background-color: var(--fb-active-bg-color);
+  color: var(--social-icon-active-color);
+}
+
+.instagram:hover {
+  background-image: var(--instagram-active-bg-color);
+}
+.instagram:hover path {
+  fill: var(--social-icon-active-color);
+}
+
+.youtube {
+  color: #ff0000;
+}
+.youtube:hover {
+  background-color: var(--youtube-active-bg-color);
+  color: var(--social-icon-active-color);
+}
+
+.dzen:hover {
+  background-color: #1a1a1a;
+}

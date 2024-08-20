@@ -1,0 +1,31 @@
+.footer {
+  background-color: var(--footer-background);
+  padding-bottom: 32px;
+}
+
+.footerWrapper {
+  max-width: 1090px;
+  margin: 0 auto;
+}
+
+.info {
+  max-width: 904px;
+  margin: 0 auto;
+  padding-top: 24px;
+  text-align: center;
+  color: var(--legal-information-block-color);
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.infoParagraph:first-child {
+  padding: 0 0 10px 0;
+}
+
+.paymentWays {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0 8px;
+  gap: 16px;
+}

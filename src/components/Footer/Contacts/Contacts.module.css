@@ -1,0 +1,51 @@
+.container {
+  margin: 32px 0 20px 0;
+  border-top: 1px solid var(--contacts-block-border-color);
+  border-bottom: 1px solid var(--contacts-block-border-color);
+  padding: 12px 0;
+}
+
+.contacts {
+  margin: 0 auto;
+  max-width: 950px;
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.contact {
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 2px;
+}
+
+.link {
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover * {
+    color: var(--contact-block-item-color-hover);
+  }
+}
+
+.viber svg {
+  color: #7c53a6;
+}
+
+.telegram svg {
+  color: #229ed9;
+}
+
+.email svg {
+  color: #1a1a1a;
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './BannersSection.module.css';
 import { largeBanners } from '@/data/banners';
-import { ArrowButton, BottomBanners } from '@/components';
+import { ArrowButton } from '@/components';
 import Image from 'next/image';
+import { BottomBanners } from './BottomBanners';
 
 type BannersSectionProps = {};
 

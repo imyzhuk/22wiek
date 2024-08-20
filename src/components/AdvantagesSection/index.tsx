@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './AdvantagesSection.module.css';
-import { AdvantageCard } from '@/components';
 import { advantages } from '@/data/advantages';
+import { AdvantageCard } from './AdvantageCard';
 
 type AdvantagesSectionProps = {};
 
