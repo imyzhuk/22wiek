@@ -1,0 +1,25 @@
+.header {
+  margin-bottom: 32px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  color: #1a1a1a;
+}
+
+.titleLink {
+  color: #07c;
+  font-size: 15px;
+  line-height: 22px;
+}

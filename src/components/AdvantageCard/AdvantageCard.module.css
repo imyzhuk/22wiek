@@ -1,0 +1,54 @@
+.card {
+  position: relative;
+  max-width: 208px;
+  border: 1px solid #e6e8eb;
+  border-radius: 10px;
+  min-height: 276px;
+  max-height: 308px;
+  padding: 20px 19px;
+  color: #1a1a1a;
+  background-size: 101%;
+  background-position-y: 100%;
+  background-position-x: 100%;
+  background-repeat: no-repeat;
+}
+
+.blue:hover {
+  border-color: #07c;
+  color: #07c;
+}
+.pink:hover {
+  border-color: #e52e6b;
+  color: #e52e6b;
+}
+.yellow:hover {
+  border-color: #faaa32;
+  color: #faaa32;
+}
+.green:hover {
+  border-color: #099951;
+  color: #099951;
+}
+.purple:hover {
+  border-color: #7b3eb8;
+  color: #7b3eb8;
+}
+
+.link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.desc {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}

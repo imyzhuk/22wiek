@@ -1,0 +1,22 @@
+.section {
+  margin: 0 auto 80px auto;
+  max-width: 1090px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.cards {
+  height: 308px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}

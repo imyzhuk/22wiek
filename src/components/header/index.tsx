@@ -1,11 +1,11 @@
 import React from 'react';
 import { CircleButton, SearchBar } from '@/components';
 import { promos } from '@/data/promo';
-import './header.css';
+import './Header.css';
 
 type HeaderProps = {};
 
-const Header: React.FC<HeaderProps> = () => {
+export const Header: React.FC<HeaderProps> = () => {
   return (
     <header className="header">
       <div className="rowWrapper">
@@ -390,7 +390,7 @@ const Header: React.FC<HeaderProps> = () => {
                 </a>
               </li>
               {promos.map((promo) => (
-                <li className="promoItem">
+                <li className="promoItem" key={promo.name}>
                   <a href={promo.url}>{promo.name}</a>
                 </li>
               ))}
@@ -401,5 +401,3 @@ const Header: React.FC<HeaderProps> = () => {
     </header>
   );
 };
-
-export default Header;

@@ -1,0 +1,36 @@
+.button {
+  position: absolute;
+  padding: 7px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-200);
+  color: var(--button-disabled-color);
+  background-color: var(--white);
+  pointer-events: none;
+  cursor: default;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.active {
+  color: var(--pink-500);
+  background-color: var(--white);
+  border: 1px solid var(--pink-500);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .active:hover {
+    background-color: var(--pink-300);
+    color: var(--pink-500);
+  }
+}
+
+.left {
+  left: -72px;
+}
+.right {
+  right: -72px;
+}

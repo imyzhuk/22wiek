@@ -1,0 +1,30 @@
+.section {
+  margin: 80px auto;
+  max-width: 1090px;
+}
+
+.header {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.youtubeIcon {
+  margin-right: 7px;
+}
+
+.body {
+  position: relative;
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}

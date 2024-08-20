@@ -1,0 +1,26 @@
+.chip {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1a1a1a;
+  cursor: pointer;
+  border: 1px solid transparent;
+  max-height: 32px;
+  padding: 5px 11px;
+  max-width: 100%;
+  border-color: #e6e8eb;
+  transition: all 0.2s;
+  border-radius: 24px;
+  margin-right: 4px;
+}
+
+.chip:hover {
+  border-color: #07c;
+  color: #07c;
+}
+
+.chipActive {
+  background: #ebf4fb;
+  color: #07c;
+  border: 1px solid transparent;
+}

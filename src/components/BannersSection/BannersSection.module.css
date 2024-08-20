@@ -1,0 +1,35 @@
+.section {
+  margin: 0 auto 60px auto;
+  max-width: 1090px;
+}
+
+.bannersContainer {
+  width: 100%;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.banners {
+  display: flex;
+  overflow: hidden;
+}
+
+.bullets {
+  margin-top: 8px;
+  display: flex;
+  height: 8px;
+  justify-content: center;
+  gap: 8px;
+}
+
+.bullet {
+  width: 8px;
+  height: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #e6e7eb;
+}
+
+.activeBullet {
+  background-color: #e52e6b;
+}

@@ -1,0 +1,13 @@
+.section {
+  margin: 0 auto 80px auto;
+  max-width: 1090px;
+}
+
+.body {
+  position: relative;
+}
+
+.products {
+  display: flex;
+  width: 100%;
+}
