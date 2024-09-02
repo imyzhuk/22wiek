@@ -1,0 +1,56 @@
+.wrapper {
+  margin-bottom: 14px;
+}
+
+.checkbox {
+  padding-left: 3px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox:hover {
+  color: var(--blue-500);
+}
+
+.input {
+  width: 0;
+  height: 0;
+}
+
+.text {
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.square {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #dcdde0;
+  border-radius: 3px;
+  margin-right: 8px;
+  color: #dcdde0;
+}
+
+.checkbox:hover .square {
+  border-color: var(--blue-500);
+}
+.checkmark,
+.checkboxLine {
+  margin-right: 8px;
+  color: var(--blue-500);
+  display: none;
+}
+
+.input:checked + .square {
+  display: none;
+}
+.checkbox:not(:hover) .input:checked ~ .checkmark {
+  display: block;
+}
+.checkbox:hover .input:checked ~ .checkboxLine {
+  display: block;
+}

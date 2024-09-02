@@ -8,7 +8,11 @@ type PromoSectionProps = {};
 export const PromoSection: React.FC<PromoSectionProps> = () => {
   return (
     <section className={styles.section}>
-      <SectionHeader title="Все акции" link="/special_offers/promo.html" linkText="Смотреть все">
+      <SectionHeader
+        title="Все акции"
+        link="/special_offers/promo"
+        linkText="Смотреть все"
+      >
         <Chips options={options} />
       </SectionHeader>
       <div className={styles.body}>
@@ -25,6 +29,7 @@ export const PromoSection: React.FC<PromoSectionProps> = () => {
               type={promoCard.type}
               discount={promoCard.discount}
               discountType={promoCard.discountType}
+              hasLikeButton
             />
           ))}
         </ul>

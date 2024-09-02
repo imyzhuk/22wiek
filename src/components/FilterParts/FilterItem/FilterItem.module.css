@@ -1,0 +1,15 @@
+.wrapper {
+  padding-bottom: 20px;
+}
+
+.hasBottomBorder {
+  border-bottom: 1px solid #e6e8eb;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}

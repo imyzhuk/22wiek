@@ -14,8 +14,13 @@ export const BannersSection: React.FC<BannersSectionProps> = () => {
         <ul className={styles.banners}>
           {largeBanners.map((banner) => (
             <li className={styles.banner} key={banner.id}>
-              <a href="/special_offers/promo.html">
-                <Image src={banner.link} width={1090} height={360} alt={banner.altText} />
+              <a href="/special_offers/promo">
+                <Image
+                  src={banner.link}
+                  width={1090}
+                  height={360}
+                  alt={banner.altText}
+                />
               </a>
             </li>
           ))}

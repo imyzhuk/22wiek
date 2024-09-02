@@ -12,3 +12,8 @@ export { AdvantagesSection } from './AdvantagesSection';
 export { ArrowButton } from './ArrowButton';
 export { ReviewSection } from './ReviewSection';
 export { Footer } from './Footer';
+export { PromoDropdown } from './PromoDropdown';
+export { CategoriesFilter } from './CategoriesFilter';
+export { ScrollContainer } from './ScrollContainer';
+export { ProducersFilter } from './ProducersFilter';
+export * from './FilterParts';

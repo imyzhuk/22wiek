@@ -23,21 +23,22 @@ export const Footer: React.FC<FooterProps> = () => {
         <Networks />
         <div className={styles.info}>
           <p className={styles.infoParagraph}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo assumenda, repellat sint
-            delectus quos ipsum odit impedit dicta tenetur explicabo totam sunt, corrupti voluptate
-            veritatis blanditiis non quod ab saepe.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+            assumenda, repellat sint delectus quos ipsum odit impedit dicta
+            tenetur explicabo totam sunt, corrupti voluptate veritatis
+            blanditiis non quod ab saepe.
           </p>
           <p className={styles.infoParagraph}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo assumenda, repellat sint
-            veritatis blanditiis non quod ab saepe.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+            assumenda, repellat sint veritatis blanditiis non quod ab saepe.
           </p>
           <p className={styles.infoParagraph}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo assumenda, repellat sint
-            veritatis blanditiis non quod ab saepe.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+            assumenda, repellat sint veritatis blanditiis non quod ab saepe.
           </p>
           <p className={styles.infoParagraph}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo assumenda, repellat sint
-            veritatis blanditiis non quod ab saepe.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+            assumenda, repellat sint veritatis blanditiis non quod ab saepe.
           </p>
         </div>
         <ul className={styles.paymentWays}>

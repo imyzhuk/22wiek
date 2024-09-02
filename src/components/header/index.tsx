@@ -71,7 +71,10 @@ export const Header: React.FC<HeaderProps> = () => {
                 rel="noopener noreferrer"
                 className="communicationItemBox"
               >
-                <div className="communicationIcon communicationIconViber" role="presentation">
+                <div
+                  className="communicationIcon communicationIconViber"
+                  role="presentation"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -112,7 +115,10 @@ export const Header: React.FC<HeaderProps> = () => {
             </li>
             <li className="communicationItem">
               <div className="communicationItemBox textCursor__ecphd">
-                <div className="communicationIcon communicationIconA1" role="presentation">
+                <div
+                  className="communicationIcon communicationIconA1"
+                  role="presentation"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -156,7 +162,10 @@ export const Header: React.FC<HeaderProps> = () => {
               </div>
             </li>
             <li className="communicationItem">
-              <button type="button" className="communicationItemMoreButton moreButton">
+              <button
+                type="button"
+                className="communicationItemMoreButton moreButton"
+              >
                 Еще
               </button>
             </li>
@@ -357,13 +366,41 @@ export const Header: React.FC<HeaderProps> = () => {
                 gradientTransform="translate(199.99 -7.97808) scale(200.897 83.6857)"
               >
                 <stop stopColor="#FF9534"></stop>
-                <stop offset="0.182" stopColor="#FF9135" stopOpacity="0.818"></stop>
-                <stop offset="0.3452" stopColor="#FF8739" stopOpacity="0.6548"></stop>
-                <stop offset="0.421875" stopColor="#FF7E3C" stopOpacity="0.578125"></stop>
-                <stop offset="0.5014" stopColor="#FF743F" stopOpacity="0.4986"></stop>
-                <stop offset="0.6531" stopColor="#FF5A48" stopOpacity="0.3469"></stop>
-                <stop offset="0.8016" stopColor="#F2364F" stopOpacity="0.1984"></stop>
-                <stop offset="0.9458" stopColor="#F2105B" stopOpacity="0.0542"></stop>
+                <stop
+                  offset="0.182"
+                  stopColor="#FF9135"
+                  stopOpacity="0.818"
+                ></stop>
+                <stop
+                  offset="0.3452"
+                  stopColor="#FF8739"
+                  stopOpacity="0.6548"
+                ></stop>
+                <stop
+                  offset="0.421875"
+                  stopColor="#FF7E3C"
+                  stopOpacity="0.578125"
+                ></stop>
+                <stop
+                  offset="0.5014"
+                  stopColor="#FF743F"
+                  stopOpacity="0.4986"
+                ></stop>
+                <stop
+                  offset="0.6531"
+                  stopColor="#FF5A48"
+                  stopOpacity="0.3469"
+                ></stop>
+                <stop
+                  offset="0.8016"
+                  stopColor="#F2364F"
+                  stopOpacity="0.1984"
+                ></stop>
+                <stop
+                  offset="0.9458"
+                  stopColor="#F2105B"
+                  stopOpacity="0.0542"
+                ></stop>
                 <stop offset="1" stopColor="#F20061" stopOpacity="0"></stop>
               </radialGradient>
             </defs>
@@ -371,7 +408,7 @@ export const Header: React.FC<HeaderProps> = () => {
           <div className="thirdRow">
             <ul className="promoList">
               <li className="promoItem fixedPromoItem">
-                <a href="/special_offers/promo.html">
+                <a href="/special_offers/promo">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
@@ -391,7 +428,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 </a>
               </li>
               {promos.map((promo) => (
-                <li className="promoItem" key={promo.name}>
+                <li className="promoItem" key={promo.url}>
                   <a href={promo.url}>{promo.name}</a>
                 </li>
               ))}

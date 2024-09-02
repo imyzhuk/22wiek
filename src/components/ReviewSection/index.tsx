@@ -12,7 +12,12 @@ export const ReviewSection: React.FC<ReviewSectionProps> = () => {
   return (
     <section className={styles.section}>
       <header className={styles.header}>
-        <Image src={YoutubeIcon} alt="Обзоры" className={styles.youtubeIcon} width={22} />
+        <Image
+          src={YoutubeIcon}
+          alt="Обзоры"
+          className={styles.youtubeIcon}
+          width={22}
+        />
         <h5 className={styles.title}>Обзоры</h5>
       </header>
       <div className={styles.body}>

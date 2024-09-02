@@ -28,6 +28,7 @@ export const PopularSection: React.FC<PopularSectionProps> = () => {
             type={popularProduct.type}
             discount={popularProduct.discount}
             discountType={popularProduct.discountType}
+            hasLikeButton
           />
         ))}
       </ul>

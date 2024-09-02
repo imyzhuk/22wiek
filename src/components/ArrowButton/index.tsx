@@ -9,7 +9,11 @@ type ArrowButtonProps = {
 
 // Before put ArrowButton component in a parent component
 // you must point that the parent element has position: relative;
-export const ArrowButton: React.FC<ArrowButtonProps> = ({ direction, isActive, onClick }) => {
+export const ArrowButton: React.FC<ArrowButtonProps> = ({
+  direction,
+  isActive,
+  onClick,
+}) => {
   return (
     <button
       className={`${styles.button} ${isActive ? styles.active : ''} ${direction == 'left' ? styles.left : styles.right} `}

@@ -44,7 +44,7 @@ export const SitemapBlock: React.FC<SitemapBlockProps> = () => {
         <a className={styles.link} href="/special_offers/sales.html">
           Уцененные товары
         </a>
-        <a className={styles.link} href="/special_offers/promo.html">
+        <a className={styles.link} href="/special_offers/promo">
           Все акции
         </a>
         <a className={styles.link} href="/special_offers/bonus.html">

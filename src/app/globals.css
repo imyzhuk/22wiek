@@ -1,4 +1,8 @@
 * {
+  font-family: 'Arial', sans-serif;
+}
+
+* {
   padding: 0;
   margin: 0;
   outline: 0;
@@ -7,8 +11,7 @@
   box-sizing: border-box;
 }
 
-ul,
-ol {
+li {
   list-style: none;
 }
 
@@ -67,7 +70,13 @@ button {
       rgba(255, 149, 52, 0.9) 0%,
       rgba(242, 0, 97, 0.18) 100%
     ),
-    linear-gradient(89.75deg, #b300b3 50.07%, #d4009a 65.11%, #f2007a 78.99%, #f06 102.42%);
+    linear-gradient(
+      89.75deg,
+      #b300b3 50.07%,
+      #d4009a 65.11%,
+      #f2007a 78.99%,
+      #f06 102.42%
+    );
   --new-gradient-linear: linear-gradient(
     89.59deg,
     #909 -4.29%,
@@ -75,10 +84,14 @@ button {
     #d9006d 54.6%,
     #f20061 102.3%
   );
-  --shadow-drop-2dp-soft: 0px 1px 1px rgba(41, 44, 51, 0.04), 0px 2px 4px rgba(41, 44, 51, 0.08);
-  --shadow-drop-2dp-hard: 0px 1px 1px rgba(41, 44, 51, 0.04), 0px 2px 8px rgba(41, 44, 51, 0.12);
-  --shadow-drop-4dp-soft: 0px 2px 2px rgba(41, 44, 51, 0.04), 0px 4px 12px rgba(41, 44, 51, 0.12);
-  --shadow-drop-4dp-hard: 0px 2px 8px rgba(41, 44, 51, 0.04), 0px 8px 16px rgba(41, 44, 51, 0.12);
+  --shadow-drop-2dp-soft: 0px 1px 1px rgba(41, 44, 51, 0.04),
+    0px 2px 4px rgba(41, 44, 51, 0.08);
+  --shadow-drop-2dp-hard: 0px 1px 1px rgba(41, 44, 51, 0.04),
+    0px 2px 8px rgba(41, 44, 51, 0.12);
+  --shadow-drop-4dp-soft: 0px 2px 2px rgba(41, 44, 51, 0.04),
+    0px 4px 12px rgba(41, 44, 51, 0.12);
+  --shadow-drop-4dp-hard: 0px 2px 8px rgba(41, 44, 51, 0.04),
+    0px 8px 16px rgba(41, 44, 51, 0.12);
   --regular: 400;
   --bold: 700;
   --strikethrough: line-through;

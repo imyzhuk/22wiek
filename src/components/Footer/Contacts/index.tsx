@@ -28,19 +28,31 @@ export const Contacts: React.FC<ContactsProps> = () => {
         </li>
         <li className={`${styles.contact} ${styles.link} ${styles.viber}`}>
           <ViberIcon />
-          <a href="https://www.viber.com/21vek.by" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.viber.com/21vek.by"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Viber
           </a>
         </li>
         <li className={`${styles.contact} ${styles.link} ${styles.telegram}`}>
           <TelegramIcon />
-          <a href="http://t.me/e21vekbot" target="_blank" rel="noopener noreferrer">
+          <a
+            href="http://t.me/e21vekbot"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Telegram
           </a>
         </li>
         <li className={`${styles.contact} ${styles.link} ${styles.email}`}>
           <EmailIcon />
-          <a href="mailto:21@21vek.by" target="_blank" rel="noopener noreferrer">
+          <a
+            href="mailto:21@21vek.by"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Почта
           </a>
         </li>

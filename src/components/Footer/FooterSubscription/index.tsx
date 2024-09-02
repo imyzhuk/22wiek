@@ -9,12 +9,17 @@ export const FooterSubscription: React.FC<FooterSubscriptionProps> = () => {
     <div className={styles.subscription}>
       <MailboxIcon />
       <span className={styles.text}>
-        Подпишитесь и <span className={styles.bold}>получайте больше скидок</span>
+        Подпишитесь и{' '}
+        <span className={styles.bold}>получайте больше скидок</span>
         &nbsp;на весь ассортимент наших товаров!
       </span>
       <form className={styles.form}>
         <div className={styles.inputWrapper}>
-          <input type="text" className={styles.input} placeholder="Введите почту" />
+          <input
+            type="text"
+            className={styles.input}
+            placeholder="Введите почту"
+          />
         </div>
         <button className={styles.button}>
           <SendLetterIcon />

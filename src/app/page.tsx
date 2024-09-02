@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+import styles from './HomePage.module.css';
 import {
   AdvantagesSection,
   BannersSection,
@@ -8,7 +7,7 @@ import {
   ReviewSection,
 } from '@/components';
 
-export default function Home() {
+function HomePage() {
   return (
     <main className={styles.main}>
       <BannersSection />
@@ -19,3 +18,5 @@ export default function Home() {
     </main>
   );
 }
+
+export default HomePage;

@@ -6,7 +6,10 @@ type CircleButtonProps = {
   onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-export const CircleButton: React.FC<CircleButtonProps> = ({ children, onClick }) => {
+export const CircleButton: React.FC<CircleButtonProps> = ({
+  children,
+  onClick,
+}) => {
   return (
     <button className={styles.btn} onClick={onClick}>
       {children}

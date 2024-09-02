@@ -8,7 +8,10 @@ type ChipButtonProps = {
 
 export const ChipButton: React.FC<ChipButtonProps> = ({ value, name }) => {
   return (
-    <li className={`${styles.chip} ${true ? styles.chipActive : ''}`} key={value}>
+    <li
+      className={`${styles.chip} ${true ? styles.chipActive : ''}`}
+      key={value}
+    >
       {name}
     </li>
   );
