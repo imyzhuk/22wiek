@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styles from './PromoDropdown.module.css';
 import CheckmarkIcon from '../../../public/checkmark.svg';
-import { FilterDropdown } from '..';
+import { FilterDropdown, FilterDropdownRadioButton } from '..';
 
 type PromoDropdownProps = {};
 
@@ -22,28 +22,19 @@ export const PromoDropdown: React.FC<PromoDropdownProps> = () => {
   return (
     <div className={styles.wrapper}>
       <FilterDropdown
-        buttonContant={`Сначала ${activeOption.toLowerCase()}`}
+        buttonContent={`Сначала ${activeOption.toLowerCase()}`}
         activeButtonClassname={styles.buttonActive}
         buttonClassname={styles.button}
         canCloseIfClickInsideMenu
       >
         <div className={styles.options} role="listbox">
           {options.map((option) => (
-            <label
-              onClick={() => handleOptionClick(option)}
+            <FilterDropdownRadioButton
+              label={option}
               key={option}
-              className={`${styles.option} ${option == activeOption ? styles.optionActive : ''}`}
-              role="option"
-              aria-selected={option === activeOption}
-            >
-              {option}
-              <input
-                className={styles.input}
-                type="radio"
-                checked={option === activeOption}
-              />
-              {option == activeOption && <CheckmarkIcon />}
-            </label>
+              onClick={() => handleOptionClick(option)}
+              isActive={option === activeOption}
+            />
           ))}
         </div>
       </FilterDropdown>

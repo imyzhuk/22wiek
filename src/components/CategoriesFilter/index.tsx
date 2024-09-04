@@ -19,7 +19,7 @@ export const CategoriesFilter: React.FC<CategoriesFilterProps> = () => {
     <FilterItem title="Категория товаров">
       <div className={styles.wrapper}>
         <FilterDropdown
-          buttonContant={ButtonContant}
+          buttonContent={ButtonContant}
           buttonClassname={styles.button}
           activeButtonClassname={styles.buttonActive}
         >

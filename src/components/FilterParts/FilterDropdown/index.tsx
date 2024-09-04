@@ -7,20 +7,29 @@ type FilterDropdownProps = {
   activeButtonClassname?: string;
   buttonClassname?: string;
   children: React.ReactNode;
-  buttonContant: React.ReactNode;
+  buttonContent?: React.ReactNode;
   canCloseIfClickInsideMenu?: boolean;
+  triggerElement?: React.ReactNode;
 };
 
 export const FilterDropdown: React.FC<FilterDropdownProps> = ({
   canCloseIfClickInsideMenu,
   children,
-  buttonContant,
+  buttonContent,
   activeButtonClassname,
   buttonClassname,
+  triggerElement,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const closeDropdown = useCallback((event: MouseEvent) => {
+    if (
+      event.target instanceof Element &&
+      event.target.closest(`.${styles.trigger}`)
+    ) {
+      return;
+    }
+
     if (
       canCloseIfClickInsideMenu ||
       !(event.target instanceof Element) ||
@@ -43,18 +52,34 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
       }),
     [],
   );
+  const openDropdown = () => {
+    setIsDropdownOpen((prev) => {
+      if (!prev) {
+        document.addEventListener('click', closeDropdown);
+        return !prev;
+      }
+      return prev;
+    });
+  };
 
   return (
-    <div className={styles.wrapper}>
-      <button
-        type="button"
-        onClick={toggleDropdown}
-        className={`${buttonClassname} ${isDropdownOpen ? activeButtonClassname : ''}`}
-        aria-expanded={isDropdownOpen}
-      >
-        {buttonContant}
-      </button>
-      {isDropdownOpen && children}
-    </div>
+    <>
+      {triggerElement && (
+        <div onClick={openDropdown} className={styles.trigger}>
+          {triggerElement}
+        </div>
+      )}
+      {buttonContent && (
+        <button
+          type="button"
+          onClick={toggleDropdown}
+          className={`${buttonClassname} ${isDropdownOpen ? activeButtonClassname : ''}`}
+          aria-expanded={isDropdownOpen}
+        >
+          {buttonContent}
+        </button>
+      )}
+      <div className={styles.wrapper}>{isDropdownOpen && children}</div>
+    </>
   );
 };

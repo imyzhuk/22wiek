@@ -2,6 +2,10 @@
   font-family: 'Arial', sans-serif;
 }
 
+body:has(.overlay) {
+  overflow-y: hidden;
+}
+
 * {
   padding: 0;
   margin: 0;

@@ -4,3 +4,4 @@ export { FilterCheckboxGroup } from './FilterCheckboxGroup';
 export { FilterItem } from './FilterItem';
 export { RangeFilter } from './RangeFilter';
 export { FilterDropdown } from './FilterDropdown';
+export { FilterDropdownRadioButton } from './FilterDropdownRadioButton';

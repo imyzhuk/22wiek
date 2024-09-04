@@ -3,6 +3,7 @@ import { CircleButton } from '@/components';
 import { promos } from '@/data/promo';
 import './Header.css';
 import { SearchBar } from './SearchBar';
+import { LocalityButton } from './LocalityButton';
 
 type HeaderProps = {};
 
@@ -11,23 +12,7 @@ export const Header: React.FC<HeaderProps> = () => {
     <header className="header">
       <div className="rowWrapper">
         <div className="firstRow">
-          <button type="button" className="localityButton">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="10"
-              height="14"
-              viewBox="0 0 10 14"
-              fill="none"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M10 5L10 5.00001C10 5.28878 9.97552 5.57184 9.92852 5.84721C9.31782 9.54574 5 13 5 13C5 13 0.68203 9.54563 0.0714481 5.84702C0.02447 5.57171 0 5.28871 0 5.00001V5C0 2.23858 2.23858 0 5 0C7.76142 0 10 2.23858 10 5ZM5 7C6.10457 7 7 6.10457 7 5C7 3.89543 6.10457 3 5 3C3.89543 3 3 3.89543 3 5C3 6.10457 3.89543 7 5 7Z"
-                fill="currentColor"
-              ></path>
-            </svg>
-            <span>г. Минск</span>
-          </button>
+          <LocalityButton />
           <ul className="firstRowMenu">
             <li className="firstRowMenuItem">
               <a

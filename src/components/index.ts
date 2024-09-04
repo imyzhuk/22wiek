@@ -16,4 +16,6 @@ export { PromoDropdown } from './PromoDropdown';
 export { CategoriesFilter } from './CategoriesFilter';
 export { ScrollContainer } from './ScrollContainer';
 export { ProducersFilter } from './ProducersFilter';
+export { Modal } from './Modal';
+export { Input } from './Input';
 export * from './FilterParts';

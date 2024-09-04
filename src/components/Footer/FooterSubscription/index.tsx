@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './FooterSubscription.module.css';
 import MailboxIcon from '../../../../public/mailbox.svg';
 import SendLetterIcon from '../../../../public/sendLetter.svg';
+import { Input } from '@/components';
 type FooterSubscriptionProps = {};
 
 export const FooterSubscription: React.FC<FooterSubscriptionProps> = () => {
@@ -14,13 +15,7 @@ export const FooterSubscription: React.FC<FooterSubscriptionProps> = () => {
         &nbsp;на весь ассортимент наших товаров!
       </span>
       <form className={styles.form}>
-        <div className={styles.inputWrapper}>
-          <input
-            type="text"
-            className={styles.input}
-            placeholder="Введите почту"
-          />
-        </div>
+        <Input placeholder="Введите почту" />
         <button className={styles.button}>
           <SendLetterIcon />
         </button>

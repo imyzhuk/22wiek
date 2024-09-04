@@ -73,7 +73,7 @@ export const ProducersFilter: React.FC<ProducersFilterProps> = () => {
     <FilterItem title="Производители">
       <FilterCheckboxGroup name="producers" options={options.slice(0, 10)} />
       <FilterDropdown
-        buttonContant="Посмотреть все"
+        buttonContent="Посмотреть все"
         activeButtonClassname={styles.buttonActive}
         buttonClassname={styles.button}
       >
