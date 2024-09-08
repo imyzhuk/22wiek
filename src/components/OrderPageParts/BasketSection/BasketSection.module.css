@@ -1,0 +1,229 @@
+.section {
+  display: flex;
+  align-items: flex-start;
+  min-width: 1090px;
+}
+
+.productsContainer {
+  min-width: 706px;
+}
+
+.rightColumn {
+  position: sticky;
+  top: 32px;
+  margin-left: 48px;
+}
+
+.firstRow {
+  height: 24px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deleteAllButton {
+  color: var(--pink-500);
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.deleteAllButton:hover {
+  color: var(--pink-600);
+}
+
+.product {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.checkboxWrapper {
+  margin: 35px 10px 0 4px;
+}
+
+.info {
+  width: 100%;
+}
+
+.topBlock {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.imgContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 88px;
+  height: 88px;
+  margin-right: 12px;
+}
+
+.titleWrapper {
+  width: 282px;
+  margin-right: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #1a1a1a;
+  font-size: 16px;
+  line-height: 22px;
+  transition: 0.1s;
+}
+
+.code {
+  padding-top: 4px;
+  color: #a0a1a3;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.counter {
+  width: 107px;
+  display: flex;
+  justify-content: center;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 32px;
+  overflow: hidden;
+}
+
+.counterButton {
+  padding: 3px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-300);
+  cursor: pointer;
+}
+
+.counterButton:disabled {
+  color: var(--button-disabled-color);
+  cursor: default;
+}
+
+.counterInput {
+  width: 100%;
+  height: 32px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.priceBlock {
+  flex-grow: 1;
+  text-align: right;
+}
+
+.oldPrice {
+  color: #a0a1a3;
+  top: 2px;
+  text-decoration: line-through;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: #1a1a1a;
+}
+
+.discount {
+  position: relative;
+  bottom: 2px;
+  color: #e52e6b;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.priceDecimalPart {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.bottomBlock {
+  border-bottom: 1px solid #e6e8eb;
+  margin: 4px 0 0 100px;
+}
+
+.details {
+  border: 1px solid #ebedf0;
+  border-radius: 4px;
+}
+
+.detail {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  margin: 0 20px;
+  font-size: 14px;
+  line-height: 20px;
+  border-bottom: 1px solid #e6e8eb;
+}
+
+.detail:last-child {
+  border-bottom: none;
+}
+
+.detailName {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.detailPart {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  white-space: nowrap;
+  margin-right: 12px;
+}
+
+.presentLink {
+  display: flex;
+  align-items: center;
+  color: #07c;
+}
+
+.presentLink:hover {
+  color: #d62761;
+}
+
+.presentIcon {
+  margin-right: 4px;
+}
+
+.deliveryIcon {
+  margin-right: 4px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 0 16px;
+}
+.productButton {
+  margin-left: 18px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--black-500);
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.productButton:hover {
+  color: var(--pink-500);
+}

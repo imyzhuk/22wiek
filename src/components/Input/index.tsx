@@ -9,7 +9,7 @@ export type InputProps = Omit<
   'onChange'
 > & {
   onChange: (value: string) => void;
-  onClear: () => void;
+  onClear?: () => void;
   label?: string;
   hasError?: boolean;
 };

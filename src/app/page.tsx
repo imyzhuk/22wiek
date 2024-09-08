@@ -2,6 +2,7 @@ import styles from './HomePage.module.css';
 import {
   AdvantagesSection,
   BannersSection,
+  Footer,
   PopularSection,
   PromoSection,
   ReviewSection,
@@ -9,13 +10,16 @@ import {
 
 function HomePage() {
   return (
-    <main className={styles.main}>
-      <BannersSection />
-      <PromoSection />
-      <AdvantagesSection />
-      <PopularSection />
-      <ReviewSection />
-    </main>
+    <>
+      <main className={styles.main}>
+        <BannersSection />
+        <PromoSection />
+        <AdvantagesSection />
+        <PopularSection />
+        <ReviewSection />
+      </main>
+      <Footer />
+    </>
   );
 }
 

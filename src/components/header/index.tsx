@@ -4,6 +4,9 @@ import { promos } from '@/data/promo';
 import './Header.css';
 import { SearchBar } from './SearchBar';
 import { LocalityButton } from './LocalityButton';
+import BasketIcon from '@Images/basketIcon.svg';
+import AccountIcon from '@Images/accountIcon.svg';
+import LikeIcon from '@Images/heartIcon.svg';
 
 type HeaderProps = {};
 
@@ -268,61 +271,29 @@ export const Header: React.FC<HeaderProps> = () => {
           </div>
           <SearchBar />
           <div className="circleButtonContainer">
-            <CircleButton>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="#1a1a1a"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M6.54 7.67c-.46.55-.74 1.3-.74 2.02 0 .34.15.8.53 1.4.36.57.9 1.2 1.54 1.89.8.84 1.7 1.68 2.6 2.53.49.45.98.9 1.45 1.37l1.46-1.37c.9-.85 1.8-1.69 2.6-2.53.64-.68 1.17-1.32 1.54-1.9.37-.6.53-1.05.53-1.39 0-.73-.28-1.47-.74-2.02a2.21 2.21 0 0 0-1.7-.87c-1.49 0-2.2.7-3.12 1.61a.8.8 0 0 1-1.13 0C10.44 7.5 9.73 6.8 8.23 6.8c-.64 0-1.24.32-1.7.87ZM5.3 6.64A3.81 3.81 0 0 1 8.23 5.2a5.1 5.1 0 0 1 3.7 1.53 5.09 5.09 0 0 1 3.69-1.53c1.2 0 2.22.6 2.92 1.44.7.83 1.1 1.94 1.1 3.05 0 .78-.33 1.54-.77 2.24a14.5 14.5 0 0 1-1.73 2.15c-.82.86-1.8 1.78-2.74 2.66-.57.54-1.13 1.06-1.63 1.55a1.2 1.2 0 0 1-1.7 0l-1.62-1.55c-.95-.88-1.93-1.8-2.75-2.66a14.5 14.5 0 0 1-1.73-2.15A4.32 4.32 0 0 1 4.2 9.7c0-1.11.41-2.22 1.1-3.05Z"></path>
-              </svg>
-            </CircleButton>
+            <a href="/aside">
+              <CircleButton>
+                <LikeIcon />
+              </CircleButton>
+            </a>
           </div>
           <div className="circleButtonContainer">
             <CircleButton>
               <span className="accountWrapper">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M16.2 3.25C17.1665 3.25 17.95 4.0335 17.95 5V17C17.95 17.9665 17.1665 18.75 16.2 18.75H8.8C7.8335 18.75 7.05 17.9665 7.05 17V15H8.55V17C8.55 17.1381 8.66193 17.25 8.8 17.25H16.2C16.3381 17.25 16.45 17.1381 16.45 17V5C16.45 4.86193 16.3381 4.75 16.2 4.75H8.8C8.66193 4.75 8.55 4.86193 8.55 5V6.99998H7.05V5C7.05 4.0335 7.8335 3.25 8.8 3.25H16.2Z"
-                  ></path>
-                  <path
-                    fill="currentColor"
-                    d="M9.96967 9.03031C9.67678 8.73742 9.67677 8.26255 9.96967 7.96966C10.2626 7.67676 10.7374 7.67676 11.0303 7.96965L13.5303 10.4696C13.671 10.6103 13.75 10.801 13.75 10.9999C13.75 11.1989 13.671 11.3896 13.5303 11.5303L11.0303 14.0303C10.7374 14.3232 10.2626 14.3232 9.96967 14.0303C9.67678 13.7374 9.67677 13.2625 9.96967 12.9697L11.1894 11.7499H5C4.58579 11.7499 4.25 11.4142 4.25 10.9999C4.25 10.5857 4.58579 10.2499 5 10.2499H11.1893L9.96967 9.03031Z"
-                  ></path>
-                </svg>
+                <AccountIcon />
                 <span className="accountText">Аккаунт</span>
               </span>
             </CircleButton>
           </div>
           <div className="circleButtonContainer">
-            <CircleButton>
-              <span className="orderWrapper">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="orderIcon"
-                  width="17"
-                  height="16"
-                  viewBox="0 0 17 16"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M12.0539 9.47368C12.6658 9.47368 13.2042 9.13921 13.4816 8.63342L16.1492 3.33895C16.4511 2.80053 16.0595 2.13158 15.4395 2.13158H4.43447L3.66763 0.5H1.31579C0.865241 0.5 0.5 0.865241 0.5 1.31579C0.5 1.76634 0.865242 2.13158 1.31579 2.13158H2.63158L5.56842 8.32342L4.36842 10.0921C3.77289 11.1853 4.35211 12.1316 5.59211 12.1316H13.75C14.2006 12.1316 14.5658 11.7663 14.5658 11.3158C14.5658 10.8652 14.2005 10.5 13.75 10.5H6L6.79211 9.47368H12.0539ZM5.20947 3.76316H14.0526L12.0539 7.84211H7.14289L5.20947 3.76316ZM8.75 14.5724C8.75 15.3608 8.11083 16 7.32237 16C6.53391 16 5.89474 15.3608 5.89474 14.5724C5.89474 13.7839 6.53391 13.1447 7.32237 13.1447C8.11083 13.1447 8.75 13.7839 8.75 14.5724ZM12.2171 16C13.0056 16 13.6447 15.3608 13.6447 14.5724C13.6447 13.7839 13.0056 13.1447 12.2171 13.1447C11.4287 13.1447 10.7895 13.7839 10.7895 14.5724C10.7895 15.3608 11.4287 16 12.2171 16Z"
-                  ></path>
-                </svg>
-                <span>Корзина</span>
-              </span>
-            </CircleButton>
+            <a href="/order">
+              <CircleButton>
+                <span className="orderWrapper">
+                  <BasketIcon className="orderIcon" />
+                  <span>Корзина</span>
+                </span>
+              </CircleButton>
+            </a>
           </div>
         </div>
       </div>

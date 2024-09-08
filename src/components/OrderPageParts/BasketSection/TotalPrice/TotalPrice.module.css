@@ -1,0 +1,96 @@
+.wrapper {
+  width: 336px;
+  padding: 32px;
+  background: #fff;
+  z-index: 2;
+  box-shadow:
+    0 4px 16px rgba(6, 10, 13, 0.06),
+    0 1px 4px rgba(6, 10, 13, 0.08);
+  border-radius: 12px;
+}
+
+.priceWrapper {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ebedf0;
+  font-size: 20px;
+  line-height: 28px;
+  color: #1a1a1a;
+}
+
+.totalPriceDecimalPart {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.secondRow {
+  margin-top: 4px;
+}
+.thirdRow {
+  margin-top: 8px;
+  color: #e52e6b;
+}
+
+.finishedPrice {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.deliveryStatus {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.discount {
+  font-size: 16px;
+  line-height: 22px;
+  color: #e52e6b;
+  font-weight: 700;
+}
+
+.priceDecimalPart {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.discountLine {
+  font-weight: 400;
+}
+
+.button {
+  width: 100%;
+  margin-top: 20px;
+  color: var(--white);
+  background-color: var(--pink-500);
+  border: 1px solid var(--pink-500);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+}
+
+.description {
+  font-size: 12px;
+  line-height: 18px;
+  color: #a0a1a3;
+  margin-top: 16px;
+  display: flex;
+}
+
+.asterisk {
+  margin-right: 2px;
+}

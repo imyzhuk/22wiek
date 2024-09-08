@@ -1,0 +1,20 @@
+.container {
+  margin-top: 16px;
+  color: #7b3eb8;
+  background: rgba(123, 62, 184, 0.08);
+  border-radius: 4px;
+  padding: 12px 16px 12px 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.heading {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 12px;
+  line-height: 18px;
+}

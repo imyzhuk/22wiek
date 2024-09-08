@@ -2,6 +2,7 @@ import {
   CategoriesFilter,
   FilterItem,
   FilterRadioGroup,
+  Footer,
   ProducersFilter,
   PromoDropdown,
   RangeFilter,
@@ -23,27 +24,30 @@ type PromoPageProps = {};
 
 function PromoPage() {
   return (
-    <div className={styles.wrapper}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Все акции</h1>
-        <PromoDropdown />
-        <ul className={styles.products}></ul>
-        <button className={styles.moreButton}>Показать еще</button>
-      </main>
-      <aside>
-        <CategoriesFilter />
-        <FilterItem title="Скидка" hasBottomBorder>
-          <FilterRadioGroup name="discount" options={discounts} />
-        </FilterItem>
-        <FilterItem title="Цена" hasBottomBorder>
-          <RangeFilter
-            fromValuePlaceholder="0.24"
-            untilValuePlaceholder={addSpacesToPrice('37500.00')}
-          />
-        </FilterItem>
-        <ProducersFilter />
-      </aside>
-    </div>
+    <>
+      <div className={styles.wrapper}>
+        <main className={styles.main}>
+          <h1 className={styles.title}>Все акции</h1>
+          <PromoDropdown />
+          <ul className={styles.products}></ul>
+          <button className={styles.moreButton}>Показать еще</button>
+        </main>
+        <aside>
+          <CategoriesFilter />
+          <FilterItem title="Скидка" hasBottomBorder>
+            <FilterRadioGroup name="discount" options={discounts} />
+          </FilterItem>
+          <FilterItem title="Цена" hasBottomBorder>
+            <RangeFilter
+              fromValuePlaceholder="0.24"
+              untilValuePlaceholder={addSpacesToPrice('37500.00')}
+            />
+          </FilterItem>
+          <ProducersFilter />
+        </aside>
+      </div>
+      <Footer />
+    </>
   );
 }
 
