@@ -6,6 +6,14 @@ body:has(.overlay) {
   overflow-y: hidden;
 }
 
+body {
+  font:
+    normal 1em / 1.33 Tahoma,
+    Liberation Sans,
+    FreeSans,
+    sans-serif;
+}
+
 * {
   padding: 0;
   margin: 0;

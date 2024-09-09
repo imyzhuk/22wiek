@@ -1,0 +1,152 @@
+.card {
+  width: calc(100% / 2 - 16px);
+  padding-top: 36px;
+}
+
+.card:nth-child(3n - 1) {
+  padding-right: 32px;
+  width: calc(100% / 2 + 16px);
+}
+
+.discountLabel {
+  background-position: -61px -96px;
+  position: absolute;
+  background-image: url('../../../../public/labels.png');
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  right: -12px;
+  top: -12px;
+}
+.presentLabel {
+  background-position: -118px -96px;
+  position: absolute;
+  background-image: url('../../../../public/labels.png');
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  right: -12px;
+  top: -12px;
+}
+
+.superpriceLabel {
+  background-position: -89px -96px;
+  position: absolute;
+  background-image: url('../../../../public/labels.png');
+  background-repeat: no-repeat;
+  width: 28px;
+  height: 28px;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-end;
+  right: -12px;
+  top: -12px;
+}
+
+.imgLink {
+  float: left;
+  text-align: center;
+  position: relative;
+  width: 150px;
+  min-height: 60px;
+  margin: 0 12px 18px 3px;
+  cursor: pointer;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.image {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.info {
+  margin-left: 41%;
+}
+
+.title {
+  color: #2c74a9;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.code {
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: #999;
+  white-space: nowrap;
+}
+
+.ratingWrapper {
+  display: block;
+  margin-bottom: 12px;
+  width: 100px;
+  height: 18px;
+  background-repeat: repeat-x;
+  background-position: 0 0;
+  background-image: url('../../../../public/rating.png');
+}
+
+.rating {
+  display: block;
+  height: 18px;
+  background-position: 0 -20px;
+  background-repeat: repeat-x;
+  background-image: url('../../../../public/rating.png');
+}
+
+.priceWrapper {
+  display: flex;
+  align-items: flex-end;
+  font-size: 18px;
+  line-height: 1;
+  white-space: nowrap;
+  margin-bottom: 12px;
+}
+
+.currency {
+  font-size: 75%;
+  margin-left: 0.3em;
+}
+
+.basketButton {
+  display: block;
+  margin-bottom: 12px;
+  width: 130px;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  height: 31px;
+  background: #ea1653;
+  font-family: Tahoma, Geneva, sans-serif;
+  color: #fff;
+}
+
+.removeButton {
+  display: block;
+  font-size: 11px;
+  padding-left: 0;
+  height: 18px;
+  line-height: 18px;
+  color: #0072bc;
+  border-bottom: 1px dotted rgba(0, 114, 188, 0.5);
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  color: #bc1242;
+  border-color: #bc1242;
+}

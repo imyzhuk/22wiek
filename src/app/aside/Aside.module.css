@@ -1,0 +1,19 @@
+.main {
+  min-width: 985px;
+  max-width: 1140px;
+  padding: 10px 2.2% 0 2.2%;
+  margin: 0 auto 80px auto;
+}
+
+.wrapper {
+  margin-right: 252px;
+}
+
+.title {
+  padding: 18px 0 4px;
+  font-size: 30px;
+}
+
+.emptyContent {
+  font-size: 12px;
+}
