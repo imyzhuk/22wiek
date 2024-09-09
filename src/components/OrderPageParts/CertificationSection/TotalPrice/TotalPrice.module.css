@@ -1,0 +1,58 @@
+.wrapper {
+  width: 336px;
+  padding: 32px;
+  background: #fff;
+  z-index: 2;
+  box-shadow:
+    0 4px 16px rgba(6, 10, 13, 0.06),
+    0 1px 4px rgba(6, 10, 13, 0.08);
+  border-radius: 12px;
+}
+
+.price {
+  text-align: center;
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.decimalPart {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.title {
+  margin-top: 4px;
+  color: #1a1a1a;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.button {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 22px;
+  font-weight: 700;
+  border-radius: 4px;
+  color: var(--white);
+  background-color: var(--pink-500);
+  border: 1px solid var(--pink-500);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+}
+
+.description {
+  font-size: 12px;
+  line-height: 18px;
+  color: #a0a1a3;
+  display: flex;
+}
+
+.icon {
+  margin-right: 5px;
+}

@@ -1,0 +1,38 @@
+.counter {
+  width: 107px;
+  display: flex;
+  justify-content: center;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 32px;
+  overflow: hidden;
+}
+
+.button {
+  padding: 3px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-300);
+  cursor: pointer;
+}
+
+.button:disabled {
+  color: var(--button-disabled-color);
+  cursor: default;
+}
+
+.input {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

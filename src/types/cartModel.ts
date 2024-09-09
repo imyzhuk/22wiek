@@ -37,3 +37,29 @@ export type CartProduct = {
   services: never[];
   servicesTotal: number;
 };
+
+export type Certificate = {
+  type: string;
+  count: number;
+  code: number;
+  name: string;
+  producer: {
+    id: string;
+    name: string;
+  };
+  brand: string;
+  image: string;
+  url: string;
+  categories: {
+    id: number;
+    name: string;
+  }[];
+  prices: {
+    price: number;
+  };
+  display: number;
+  totals: {
+    net: number;
+    gross: number;
+  };
+};

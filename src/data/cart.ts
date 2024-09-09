@@ -1,4 +1,4 @@
-import { CartProduct, CartService } from '@/types/cartModel';
+import { CartProduct, CartService, Certificate } from '@/types/cartModel';
 
 export const cartProducts: CartProduct[] = [
   {
@@ -301,3 +301,78 @@ export const services: Record<string, CartService[]> = {
     },
   ],
 };
+
+export const eCertificates: Certificate[] = [
+  {
+    type: 'e-certificate',
+    count: 1,
+    code: 5990307,
+    name: '\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u044b\u0439 \u043f\u043e\u0434\u0430\u0440\u043e\u0447\u043d\u044b\u0439 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442 21vek+ \u043d\u0430 100 \u0440\u0443\u0431\u043b\u0435\u0439',
+    producer: {
+      id: '21vek',
+      name: '21vek+',
+    },
+    brand: '21vek+',
+    image:
+      'https://cdn21vek.by/img/galleries/5990/307/preview/100_21vek_02_64a3cc703e437.jpeg',
+    url: '/electronic_gift_certificates/100_21vek_02.html',
+    categories: [
+      {
+        id: 12714,
+        name: '\u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b',
+      },
+      {
+        id: 12719,
+        name: '\u041f\u043e\u0434\u0430\u0440\u043e\u0447\u043d\u044b\u0435 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b 21vek',
+      },
+      {
+        id: 12769,
+        name: '\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u044b\u0435 \u043f\u043e\u0434\u0430\u0440\u043e\u0447\u043d\u044b\u0435 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b 21vek',
+      },
+    ],
+    prices: {
+      price: 100,
+    },
+    display: 1,
+    totals: {
+      net: 100,
+      gross: 100,
+    },
+  },
+  {
+    type: 'e-certificate',
+    count: 1,
+    code: 5990308,
+    name: '\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u044b\u0439 \u043f\u043e\u0434\u0430\u0440\u043e\u0447\u043d\u044b\u0439 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442 21vek+ \u043d\u0430 200 \u0440\u0443\u0431\u043b\u0435\u0439',
+    producer: {
+      id: '21vek',
+      name: '21vek+',
+    },
+    brand: '21vek+',
+    image:
+      'https://cdn21vek.by/img/galleries/5990/308/preview/200_21vek_01_64a3cc7dde664.jpeg',
+    url: '/electronic_gift_certificates/200_21vek_01.html',
+    categories: [
+      {
+        id: 12714,
+        name: '\u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b',
+      },
+      {
+        id: 12719,
+        name: '\u041f\u043e\u0434\u0430\u0440\u043e\u0447\u043d\u044b\u0435 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b 21vek',
+      },
+      {
+        id: 12769,
+        name: '\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u044b\u0435 \u043f\u043e\u0434\u0430\u0440\u043e\u0447\u043d\u044b\u0435 \u0441\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u044b 21vek',
+      },
+    ],
+    prices: {
+      price: 200,
+    },
+    display: 1,
+    totals: {
+      net: 200,
+      gross: 200,
+    },
+  },
+];

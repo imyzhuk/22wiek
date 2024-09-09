@@ -4,10 +4,15 @@ import { useQueryParams } from '@/hooks';
 
 type TabsProps = {
   productsCount: number;
+  certificatesCount: number;
   tabName: 'basket' | 'certifications';
 };
 
-export const Tabs: React.FC<TabsProps> = ({ productsCount, tabName }) => {
+export const Tabs: React.FC<TabsProps> = ({
+  productsCount,
+  tabName,
+  certificatesCount,
+}) => {
   const { setQuery } = useQueryParams();
 
   const onBasketTabClick = () => {
@@ -36,7 +41,9 @@ export const Tabs: React.FC<TabsProps> = ({ productsCount, tabName }) => {
       >
         <span className={styles.tabBody}>
           <span className={styles.tabTitle}>Сертификаты</span>
-          <span className={styles.tabCounter}></span>
+          {certificatesCount && (
+            <span className={styles.tabCounter}>{certificatesCount}</span>
+          )}
         </span>
       </button>
     </div>
