@@ -33,7 +33,7 @@ export const cartProducts: CartProduct[] = [
     present: {
       code: 29833,
       offer: '\u041f\u043e\u043b\u043a\u0430',
-      link: 'https://www.21vek.by/storage_systems/mini_gmc.html',
+      link: '/storage_systems/mini_gmc.html',
     },
     discountType: 'discount',
     discount: 70,

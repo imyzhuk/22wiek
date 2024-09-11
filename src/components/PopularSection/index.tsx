@@ -11,7 +11,7 @@ export const PopularSection: React.FC<PopularSectionProps> = () => {
     <section className={styles.section}>
       <SectionHeader
         title="Популярные"
-        link="https://www.21vek.by/special_offers/recommend.html"
+        link="/special_offers/recommend.html"
         linkText="Смотреть все"
       >
         <Chips options={options} />

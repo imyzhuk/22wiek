@@ -14,13 +14,13 @@ export const Category: React.FC<CategoryProps> = ({ name, subCategories }) => {
   return (
     <ul className={styles.container}>
       <li>
-        <a href="#!" className={styles.titleLink}>
+        <a href="/not-found" className={styles.titleLink}>
           {name}
         </a>
       </li>
       {subCategories.slice(0, shownCategoriesCount).map((category) => (
         <li key={category.id}>
-          <a href="#!" className={styles.link}>
+          <a href="/not-found" className={styles.link}>
             {category.name}
           </a>
         </li>

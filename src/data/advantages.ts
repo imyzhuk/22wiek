@@ -9,7 +9,7 @@ export const advantages: AdvantageType[] = [
   {
     id: 0,
     title: 'Более 100 пунктов самовывоза',
-    link: 'https://www.21vek.by/self_delivery/',
+    link: '/self_delivery/',
     desc: 'Получите заказ в кратчайшие сроки',
     color: 'blue',
     bgImg: 'pickupPointsBg.png',
@@ -18,7 +18,7 @@ export const advantages: AdvantageType[] = [
   {
     id: 1,
     title: 'Доставка в любую точку Беларуси',
-    link: 'https://www.21vek.by/services/delivery.html',
+    link: '/services/delivery.html',
     desc: 'Заказывайте товары прямо к себе домой',
     color: 'pink',
     bgImg: 'deliveryBg.png',
@@ -27,7 +27,7 @@ export const advantages: AdvantageType[] = [
   {
     id: 2,
     title: 'Оплата частями',
-    link: 'https://www.21vek.by/special_offers/partly_pay.html',
+    link: '/special_offers/partly_pay.html',
     desc: 'Покупайте больше сейчас – платите частями',
     color: 'yellow',
     bgImg: 'installmentPaymentBg.png',
@@ -36,7 +36,7 @@ export const advantages: AdvantageType[] = [
   {
     id: 3,
     title: 'Бонусная программа',
-    link: 'https://www.21vek.by/special_offers/bonus.html',
+    link: '/special_offers/bonus.html',
     desc: 'Накапливайте бонусные баллы и оплачивайте ими покупки',
     color: 'green',
     bgImg: 'bonusProgramBg.png',
@@ -45,7 +45,7 @@ export const advantages: AdvantageType[] = [
   {
     id: 4,
     title: 'Подарочные сертификаты',
-    link: 'https://www.21vek.by/special_offers/gift_certificate.html',
+    link: '/special_offers/gift_certificate.html',
     desc: 'Подарите сертификаты вашим близким',
     color: 'purple',
     bgImg: 'giftCertificatesBg.png',

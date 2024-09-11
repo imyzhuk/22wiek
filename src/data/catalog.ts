@@ -5,48 +5,48 @@ export const selections: {
     {
       id: 1,
       name: 'Уцененные строительные инструменты',
-      link: '#!',
+      link: '/not-found',
       image:
         'https://cdn21vek.by/img/galleries/labels-21vek-catalog/d91bd82d353edd27aefd3e138716b7e1b2775d31.png',
     },
     {
       id: 2,
       name: 'Угловые шлифовальные машины',
-      link: '#!',
+      link: '/not-found',
       image: 'https://cdn21vek.by/img/labels-21vek-catalog/grinders.png',
     },
     {
       id: 3,
       name: 'Шуруповерты аккумуляторные',
-      link: '#!',
+      link: '/not-found',
       image:
         'https://cdn21vek.by/img/galleries/labels-21vek-catalog/83559fd80c8cfd6a06b7a7a56221753fe2d23e52.png',
     },
     {
       id: 4,
       name: 'Пилы торцовочные',
-      link: '#!',
+      link: '/not-found',
       image:
         'https://cdn21vek.by/img/galleries/labels-21vek-catalog/14ecd576e05e87bf14d931f60c8aad26783ca3ac.png',
     },
     {
       id: 5,
       name: 'Пильные диски',
-      link: '#!',
+      link: '/not-found',
       image:
         'https://cdn21vek.by/img/labels-21vek-catalog/cutting-saw-blades.png',
     },
     {
       id: 6,
       name: 'Дисковые пилы',
-      link: '#!',
+      link: '/not-found',
       image:
         'https://cdn21vek.by/img/labels-21vek-catalog/circular-saws-10220.png',
     },
     {
       id: 7,
       name: 'Шлифмашины',
-      link: '#!',
+      link: '/not-found',
       image: 'https://cdn21vek.by/img/labels-21vek-catalog/prof-grinders.png',
     },
   ],

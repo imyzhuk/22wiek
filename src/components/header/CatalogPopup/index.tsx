@@ -28,7 +28,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                     onMouseOver={() => setActiveCategoryIndex(idx)}
                   >
                     <a
-                      href="#!"
+                      href="/not-found"
                       className={`${styles.category} ${activeCategoryIndex === idx ? styles.activeCategory : ''}`}
                     >
                       <span className={styles.icon}>
@@ -51,7 +51,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                   </a>
                 </li>
                 <li>
-                  <a className={styles.category} href="#!">
+                  <a className={styles.category} href="/not-found">
                     <span className={`${styles.icon} ${styles.secondIcon}`}>
                       <PartlyPayIcon />
                     </span>
@@ -59,7 +59,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                   </a>
                 </li>
                 <li>
-                  <a className={styles.category} href="#!">
+                  <a className={styles.category} href="/not-found">
                     <span className={styles.icon}>
                       <ProcentIcon />
                     </span>

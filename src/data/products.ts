@@ -9,8 +9,7 @@ export const popularProducts: ProductCardType[] = [
     oldPrice: '8,15 р.',
     title:
       'Рабочая тетрадь Аверсэв Английский язык. 6 класс. Часть 1. 2022 (Юхнель Н. и др.)',
-    productLink:
-      'https://www.21vek.by/educational_literature/612022_aversev.html',
+    productLink: '/educational_literature/612022_aversev.html',
     type: 'Рабочая тетрадь',
     discount: 39,
   },
@@ -21,7 +20,7 @@ export const popularProducts: ProductCardType[] = [
       'https://cdn21vek.by/img/galleries/6472/963/preview/45_aversev_6135d0d81569d.jpeg',
     title:
       'Учебное пособие Аверсэв Умней-ка. 4-5 лет. Знакомство с природой (Петрикевич А.А.)',
-    productLink: 'https://www.21vek.by/educational_literature/45_aversev.html',
+    productLink: '/educational_literature/45_aversev.html',
     type: 'Учебное пособие',
     discountType: 'Суперцена',
   },
@@ -33,8 +32,7 @@ export const popularProducts: ProductCardType[] = [
     oldPrice: '8,15 р.',
     title:
       'Рабочая тетрадь Аверсэв Английский язык. 6 класс. Часть 1. 2022 (Юхнель Н. и др.)',
-    productLink:
-      'https://www.21vek.by/educational_literature/612022_aversev.html',
+    productLink: '/educational_literature/612022_aversev.html',
     type: 'Рабочая тетрадь',
     discount: 39,
   },
@@ -45,7 +43,7 @@ export const popularProducts: ProductCardType[] = [
       'https://cdn21vek.by/img/galleries/6472/963/preview/45_aversev_6135d0d81569d.jpeg',
     title:
       'Учебное пособие Аверсэв Умней-ка. 4-5 лет. Знакомство с природой (Петрикевич А.А.)',
-    productLink: 'https://www.21vek.by/educational_literature/45_aversev.html',
+    productLink: '/educational_literature/45_aversev.html',
     type: 'Учебное пособие',
     discountType: 'Суперцена',
   },
@@ -57,8 +55,7 @@ export const popularProducts: ProductCardType[] = [
     oldPrice: '8,15 р.',
     title:
       'Рабочая тетрадь Аверсэв Английский язык. 6 класс. Часть 1. 2022 (Юхнель Н. и др.)',
-    productLink:
-      'https://www.21vek.by/educational_literature/612022_aversev.html',
+    productLink: '/educational_literature/612022_aversev.html',
     type: 'Рабочая тетрадь',
     discount: 39,
   },
@@ -70,8 +67,7 @@ export const popularProducts: ProductCardType[] = [
     oldPrice: '8,15 р.',
     title:
       'Рабочая тетрадь Аверсэв Английский язык. 6 класс. Часть 1. 2022 (Юхнель Н. и др.)',
-    productLink:
-      'https://www.21vek.by/educational_literature/612022_aversev.html',
+    productLink: '/educational_literature/612022_aversev.html',
     type: 'Рабочая тетрадь',
     discount: 39,
   },
@@ -82,7 +78,7 @@ export const popularProducts: ProductCardType[] = [
       'https://cdn21vek.by/img/galleries/6472/963/preview/45_aversev_6135d0d81569d.jpeg',
     title:
       'Учебное пособие Аверсэв Умней-ка. 4-5 лет. Знакомство с природой (Петрикевич А.А.)',
-    productLink: 'https://www.21vek.by/educational_literature/45_aversev.html',
+    productLink: '/educational_literature/45_aversev.html',
     type: 'Учебное пособие',
     discountType: 'Суперцена',
   },
@@ -94,8 +90,7 @@ export const popularProducts: ProductCardType[] = [
     oldPrice: '8,15 р.',
     title:
       'Рабочая тетрадь Аверсэв Английский язык. 6 класс. Часть 1. 2022 (Юхнель Н. и др.)',
-    productLink:
-      'https://www.21vek.by/educational_literature/612022_aversev.html',
+    productLink: '/educational_literature/612022_aversev.html',
     type: 'Рабочая тетрадь',
     discount: 39,
   },
@@ -106,7 +101,7 @@ export const popularProducts: ProductCardType[] = [
       'https://cdn21vek.by/img/galleries/6472/963/preview/45_aversev_6135d0d81569d.jpeg',
     title:
       'Учебное пособие Аверсэв Умней-ка. 4-5 лет. Знакомство с природой (Петрикевич А.А.)',
-    productLink: 'https://www.21vek.by/educational_literature/45_aversev.html',
+    productLink: '/educational_literature/45_aversev.html',
     type: 'Учебное пособие',
     discountType: 'Суперцена',
   },
@@ -118,8 +113,7 @@ export const popularProducts: ProductCardType[] = [
     oldPrice: '8,15 р.',
     title:
       'Рабочая тетрадь Аверсэв Английский язык. 6 класс. Часть 1. 2022 (Юхнель Н. и др.)',
-    productLink:
-      'https://www.21vek.by/educational_literature/612022_aversev.html',
+    productLink: '/educational_literature/612022_aversev.html',
     type: 'Рабочая тетрадь',
     discount: 39,
   },
