@@ -1,0 +1,38 @@
+.link {
+  border: 1px solid #e6e8eb;
+  border-radius: 8px;
+  display: flex;
+  width: 242px;
+  height: 50px;
+  align-items: center;
+  margin-top: 8px;
+  justify-content: flex-start;
+  transition: 0.2s ease;
+}
+
+.link:hover {
+  border: 1px solid #fff;
+  background-color: #fff;
+  box-shadow:
+    0 2px 2px rgba(41, 44, 51, 0.04),
+    0 4px 12px rgba(41, 44, 51, 0.12);
+  color: #e52e6b;
+}
+
+.imageWrapper {
+  position: relative;
+  min-width: 32px;
+  min-height: 32px;
+  margin: 0 10px 0 12px;
+}
+
+.name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+  max-width: 166px;
+  font-size: 13px;
+  line-height: 18px;
+}

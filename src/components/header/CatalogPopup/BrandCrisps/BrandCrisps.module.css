@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  margin-top: 16px;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  padding: 4px 16px;
+  color: #a0a1a3;
+  text-transform: uppercase;
+  border: 1px solid #e6e8eb;
+  border-radius: 80px;
+  margin-right: 4px;
+  font-size: 10px;
+  line-height: 24px;
+}
+
+.link:hover {
+  background-color: #fdeef3;
+  color: #d62761;
+  border: 1px solid transparent;
+}

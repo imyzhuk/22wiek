@@ -1,0 +1,42 @@
+.container {
+  margin: 24px 0;
+  display: block;
+  width: 244px;
+}
+
+.titleLink {
+  display: block;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.titleLink:hover {
+  color: #d62761;
+}
+
+.link {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+}
+
+.link:hover {
+  color: #d62761;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  color: #07c;
+  margin-top: 8px;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.arrowIcon {
+  pointer-events: none;
+}

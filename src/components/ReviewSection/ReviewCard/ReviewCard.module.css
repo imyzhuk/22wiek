@@ -25,7 +25,7 @@
 .playIcon {
   left: 8px;
   top: 99px;
-  z-index: 2;
+  z-index: 1;
   width: 34px;
   height: 34px;
   color: #fff;

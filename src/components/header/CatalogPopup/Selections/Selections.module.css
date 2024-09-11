@@ -1,0 +1,11 @@
+.selectionsContainer {
+  margin-top: 24px;
+}
+
+.heading {
+  text-transform: uppercase;
+  color: #a0a1a3;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  line-height: 24px;
+}
