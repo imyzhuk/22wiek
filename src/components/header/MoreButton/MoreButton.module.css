@@ -1,0 +1,69 @@
+.button {
+  position: relative;
+  padding-right: 17px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: block;
+  transition: 0.2s ease;
+}
+.button::before {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  cursor: pointer;
+}
+
+.unactiveButton::before {
+  transform: translateY(-2px);
+  border: 4px solid transparent;
+  border-top: 5px solid #1a1a1a;
+  transition: border-top-color 0.2s ease;
+}
+
+.unactiveButton:hover {
+  color: #d62761;
+}
+.unactiveButton:hover::before {
+  border-top-color: #d62761;
+}
+
+.activeButton {
+  color: #a0a1a3;
+}
+
+.activeButton::before {
+  border: 4px solid transparent;
+  border-bottom: 5px solid var(--header-dropdown-title-active-color);
+  transition: none;
+  transform: translateY(-7px);
+}
+
+.list {
+  transform: translateX(-50%);
+  position: absolute;
+  min-width: 224px;
+  padding: 12px 0;
+  border-radius: 6px;
+  background: var(--header-list-bg-color);
+  box-shadow:
+    0 2px 2px rgba(41, 44, 51, 0.04),
+    0 4px 12px rgba(41, 44, 51, 0.12);
+  z-index: 6;
+}
+
+.item {
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  color: var(--header-list-item-color);
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.link {
+  display: block;
+  color: var(--header-list-item-color);
+  padding: 5px 16px;
+}

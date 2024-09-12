@@ -3,6 +3,7 @@
   font-size: 14px;
   line-height: 20px;
   margin-bottom: 40px;
+  position: relative;
 }
 
 .firstLine {
@@ -35,17 +36,15 @@
   display: flex;
   align-items: center;
   margin-bottom: 2px;
+  border-right: 1px solid #dcdde0;
 }
 
 .firstRowMenuItem {
   margin-right: 12px;
 }
-.firstRowMenuItem:hover * {
+.firstRowMenuItem:hover .firstRowMenuLink,
+.firstRowMenuItem:hover .firstRowMenuIcon {
   color: #d62761;
-}
-
-.firstRowMenuItem:hover .moreButton::before {
-  border-top-color: #d62761;
 }
 
 .firstRowMenuLink {
@@ -88,19 +87,7 @@
 .communications {
   display: flex;
   align-items: center;
-  position: relative;
   padding: 0 16px 0 12px;
-}
-
-.communications:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  display: block;
-  height: 16px;
-  margin-top: -8px;
-  border-left: 1px solid #dcdde0;
 }
 
 .communicationItem:first-child {
@@ -110,13 +97,9 @@
 .communicationItem {
   display: flex;
   align-items: center;
-  position: relative;
   margin-left: 12px;
   width: 100%;
-  text-decoration: none;
-  border: 0;
   white-space: nowrap;
-  box-sizing: border-box;
   height: 30px;
   transition: 0.2s ease;
 }
@@ -422,4 +405,66 @@
 
 .promoIcon {
   margin-right: 6px;
+}
+
+.moreButtonList {
+  top: 41px;
+  transform: translateX(-50%);
+  position: absolute;
+  min-width: 224px;
+  padding: 12px 0;
+  border-radius: 6px;
+  background: var(--header-list-bg-color);
+  box-shadow:
+    0 2px 2px rgba(41, 44, 51, 0.04),
+    0 4px 12px rgba(41, 44, 51, 0.12);
+  z-index: 6;
+}
+
+.moreButtonItem {
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  color: var(--header-list-item-color);
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.moreButtonItemLast {
+  margin-top: 7px;
+  border-top: 1px solid var(--communication-list-border-color);
+  padding-top: 9px;
+}
+
+.moreButtonLink,
+.moreButtonLine {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 4px 16px;
+}
+
+.moreButtonLink {
+  cursor: pointer;
+}
+
+.moreButtonLink:hover {
+  color: var(--header-list-item-color-hover);
+  background: var(--header-list-item-bg-color-hover);
+}
+
+.moreButtonLink:hover .moreButtonIcon {
+  color: var(--header-list-item-color-hover);
+}
+
+.moreButtonLinkLast {
+  padding-left: 45px;
+}
+
+.moreButtonIcon {
+  margin-right: 4px;
+}
+
+.telegramIcon {
+  color: var(--icon-telegram-bg-color);
 }
