@@ -13,11 +13,12 @@ export const useOutsideClick = <T extends HTMLElement>(
   };
 
   useEffect(() => {
+    if (!isActive) return;
     document.addEventListener('click', handleClick);
     return () => {
       document.removeEventListener('click', handleClick);
     };
-  });
+  }, [isActive]);
 
   return { ref, isActive, setIsActive };
 };
