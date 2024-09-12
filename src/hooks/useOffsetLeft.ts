@@ -11,8 +11,6 @@ export const useOffsetLeft = <T extends HTMLElement>(): [
     const element = ref.current;
     if (element) {
       setOffsetLeft(element.offsetLeft);
-      console.log(element);
-      console.log(element.offsetLeft);
     }
   }, []);
 
