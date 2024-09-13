@@ -40,7 +40,13 @@
   transform: translateY(-7px);
 }
 
+.wrapper {
+  position: relative;
+}
+
 .list {
+  top: 25px;
+  left: calc(50%);
   transform: translateX(-50%);
   position: absolute;
   min-width: 224px;

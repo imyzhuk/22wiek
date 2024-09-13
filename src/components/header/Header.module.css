@@ -6,14 +6,14 @@
   position: relative;
 }
 
-.firstLine {
-  border-bottom: 1px solid #e6e8eb;
-}
-
 .headerWrapper {
   position: relative;
   z-index: 5;
   background-color: #f7f8fa;
+}
+
+.firstLine {
+  border-bottom: 1px solid #e6e8eb;
 }
 
 .rowWrapper {
@@ -182,137 +182,6 @@
   margin-right: 12px;
 }
 
-.catalogIcon {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 25px;
-  height: 25px;
-  background: #e52e6b;
-  margin-right: 6px;
-  border-radius: 50%;
-  overflow: hidden;
-  transition: inherit;
-}
-
-.square {
-  height: 50%;
-  width: 50%;
-  position: relative;
-}
-
-.square > div {
-  width: 4px;
-  height: 4px;
-  position: absolute;
-  background: var(--icon-catalog-squares-bg);
-  transition: 0.2s ease;
-}
-
-.oneSquarePart {
-  bottom: 0.5px;
-  right: 0.5px;
-}
-
-.twoSquarePart {
-  bottom: 0.5px;
-  left: 0.5px;
-}
-
-.threeSquarePart {
-  top: 0.5px;
-  right: 0.5px;
-}
-
-.fourSquarePart {
-  top: 0.5px;
-  left: 0.5px;
-}
-
-.catalogIconAnimated .oneSquarePart {
-  animation: one 17s infinite;
-}
-
-.catalogIconAnimated .twoSquarePart {
-  animation: two 17s infinite;
-}
-
-.catalogIconAnimated .threeSquarePart {
-  animation: three 17s infinite;
-}
-
-.catalogIconAnimated .fourSquarePart {
-  animation: four 17s infinite;
-}
-
-@keyframes one {
-  0% {
-    opacity: 0.2;
-  }
-
-  2% {
-    opacity: unset;
-  }
-
-  to {
-    opacity: unset;
-  }
-}
-
-@keyframes two {
-  0% {
-    opacity: 0.2;
-  }
-
-  2% {
-    opacity: 0.2;
-  }
-
-  4% {
-    opacity: unset;
-  }
-
-  to {
-    opacity: unset;
-  }
-}
-
-@keyframes four {
-  0% {
-    opacity: 0.2;
-  }
-
-  4% {
-    opacity: 0.2;
-  }
-
-  6% {
-    opacity: unset;
-  }
-
-  to {
-    opacity: unset;
-  }
-}
-
-@keyframes three {
-  0% {
-    opacity: 0.2;
-  }
-
-  6% {
-    opacity: 0.2;
-  }
-
-  8% {
-    opacity: unset;
-  }
-
-  to {
-    opacity: unset;
-  }
-}
-
 .catalogText {
   margin-right: 4px;
 }
@@ -384,20 +253,6 @@
 
 .promoIcon {
   margin-right: 6px;
-}
-
-.moreButtonList {
-  top: 41px;
-  transform: translateX(-50%);
-  position: absolute;
-  min-width: 224px;
-  padding: 12px 0;
-  border-radius: 6px;
-  background: var(--header-list-bg-color);
-  box-shadow:
-    0 2px 2px rgba(41, 44, 51, 0.04),
-    0 4px 12px rgba(41, 44, 51, 0.12);
-  z-index: 6;
 }
 
 .moreButtonItem {

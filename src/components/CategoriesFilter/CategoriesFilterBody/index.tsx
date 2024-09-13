@@ -75,20 +75,3 @@ export const CategoriesFilterBody: React.FC<CategoriesFilterBodyProps> = ({
     </div>
   );
 };
-
-/*
-const flatItems = React.useMemo(() => {
-    return items?.flatMap(({ subCategories, ...item }) => [
-      item,
-      ...subCategories,
-    ]);
-  }, [items]);
-
-  const filteredItems = React.useMemo(
-    () =>
-      flatItems.filter(({ name }) =>
-        name.toLowerCase().includes(searchValue.toLowerCase()),
-      ),
-    [items, searchValue],
-  );
-  */
