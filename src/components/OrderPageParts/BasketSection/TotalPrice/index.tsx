@@ -28,18 +28,18 @@ export const TotalPrice: React.FC<TotalPriceProps> = () => {
       <div className={styles.priceWrapper}>
         <span>Итого</span>
         <div>
-          {intTotalPricePart},
+          {intFinishedPricePart},
           <span className={styles.priceDecimalPart}>
-            {decimalTotalPricePart} р.
+            {decimalFinishedPricePart} р.
           </span>
         </div>
       </div>
       <div className={`${styles.row}`}>
         <span>Товары − {mockData.count} шт.</span>
         <div className={styles.finishedPrice}>
-          {intFinishedPricePart},
+          {intTotalPricePart},
           <span className={styles.priceDecimalPart}>
-            {decimalFinishedPricePart} р.
+            {decimalTotalPricePart} р.
           </span>
         </div>
       </div>
