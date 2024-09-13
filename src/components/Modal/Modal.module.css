@@ -29,6 +29,20 @@
   display: flex;
 }
 
+.backButton {
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--gray-400);
+}
+
+.backButton:hover {
+  color: var(--gray-600);
+}
+
 .closeButton {
   cursor: pointer;
   margin: 0 0 0 auto;

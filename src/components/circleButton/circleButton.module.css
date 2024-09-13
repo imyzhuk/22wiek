@@ -18,3 +18,18 @@
   color: #1a1a1a;
   box-shadow: 0 2px 4px rgb(23 35 38 / 5%);
 }
+
+.btnActive {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  padding: 8px;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+  cursor: pointer;
+  border-radius: 40px;
+  white-space: nowrap;
+  transition: 0.2s ease;
+  background: var(--header-button-bg-color-active);
+  color: var(--header-button-text-color-active);
+}

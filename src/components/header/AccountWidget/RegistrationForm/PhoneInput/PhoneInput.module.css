@@ -1,0 +1,90 @@
+.codesWrapper {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.codesList {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  z-index: 1;
+  padding: 12px 0;
+  box-shadow:
+    0 2px 8px rgba(41, 44, 51, 0.04),
+    0 8px 16px rgba(41, 44, 51, 0.12);
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 8px 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.codeItem {
+  padding: 5px 16px 5px 11px;
+}
+
+.codeItemActive {
+  opacity: 0.6;
+}
+
+.codeItem:hover {
+  background: var(--gray-200);
+}
+
+.radioLabel {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-right: 28px;
+}
+
+.radioLabel input {
+  width: 0;
+  height: 0;
+}
+
+.checkmarkIcon {
+  position: absolute;
+  right: 0;
+}
+
+.countryCodeBtn {
+  cursor: pointer;
+  height: 40px;
+  padding-right: 20px;
+  margin-right: 12px;
+  position: relative;
+}
+
+.countryCodeBtn::before {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  cursor: pointer;
+}
+
+.countryCodeBtnUnactive::before {
+  transform: translateY(-4px);
+  border: 4px solid transparent;
+  border-top: 5px solid #1a1a1a;
+  transition: border-top-color 0.2s ease;
+}
+
+.countryCodeBtnUnactive:hover::before {
+  border-top-color: var(--blue-500);
+}
+
+.countryCodeBtnActive::before {
+  border: 4px solid transparent;
+  border-bottom: 5px solid var(--header-dropdown-title-active-color);
+  transition: none;
+  transform: translateY(-9px);
+}
+.countryCodeBtnActive:hover::before {
+  border-bottom-color: var(--blue-500);
+}

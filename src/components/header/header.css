@@ -318,26 +318,6 @@
   margin-right: 4px;
 }
 
-.accountWrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-right: 24px;
-}
-
-.accountWrapper::before {
-  content: ' ';
-  position: absolute;
-  top: 45%;
-  right: 6px;
-  border: 4px solid transparent;
-  border-top: 5px solid;
-}
-
-.accountText {
-  margin-left: 2px;
-}
-
 .orderWrapper {
   display: flex;
   align-items: center;

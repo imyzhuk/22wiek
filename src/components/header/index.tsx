@@ -7,7 +7,6 @@ import './Header.css';
 import { SearchBar } from './SearchBar';
 import { LocalityButton } from './LocalityButton';
 import BasketIcon from '@Images/basketIcon.svg';
-import AccountIcon from '@Images/accountIcon.svg';
 import LikeIcon from '@Images/heartIcon.svg';
 import { CatalogPopup } from './CatalogPopup';
 import { useOffsetLeft, useOutsideClick } from '@/hooks';
@@ -19,6 +18,7 @@ import TelegramIcon from '@Images/telegram.svg';
 import MessageIcon from '@Images/message.svg';
 import EnvelopeIcon from '@Images/envelopeIcon.svg';
 import PhoneIcon from '@Images/phoneIcon.svg';
+import { AccountWidget } from './AccountWidget';
 
 type HeaderProps = {};
 
@@ -304,14 +304,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 </CircleButton>
               </a>
             </div>
-            <div className="circleButtonContainer">
-              <CircleButton>
-                <span className="accountWrapper">
-                  <AccountIcon />
-                  <span className="accountText">Аккаунт</span>
-                </span>
-              </CircleButton>
-            </div>
+            <AccountWidget />
             <div className="circleButtonContainer">
               <a href="/order">
                 <CircleButton>
