@@ -19,18 +19,19 @@ export const PromoSection: React.FC<PromoSectionProps> = () => {
         <ArrowButton direction="left" isActive={false} />
         <ul className={styles.products}>
           {promoProducts.map((promoCard) => (
-            <ProductCard
-              id={promoCard.id}
-              key={promoCard.id}
-              currentPrice={promoCard.currentPrice}
-              productImg={promoCard.productImg}
-              productLink={promoCard.productLink}
-              title={promoCard.title}
-              type={promoCard.type}
-              discount={promoCard.discount}
-              discountType={promoCard.discountType}
-              hasLikeButton
-            />
+            <div key={promoCard.id} className={styles.product}>
+              <ProductCard
+                id={promoCard.id}
+                currentPrice={promoCard.currentPrice}
+                productImg={promoCard.productImg}
+                productLink={promoCard.productLink}
+                title={promoCard.title}
+                type={promoCard.type}
+                discount={promoCard.discount}
+                discountType={promoCard.discountType}
+                hasLikeButton
+              />
+            </div>
           ))}
         </ul>
         <ArrowButton direction="right" isActive />

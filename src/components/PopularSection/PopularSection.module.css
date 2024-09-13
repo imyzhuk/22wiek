@@ -7,26 +7,40 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 100%;
-  row-gap: 65px;
+  position: relative;
 }
 
-.products > li::after {
+.product {
+  padding-top: 18px;
+  margin-bottom: 65px;
+}
+
+.product:not(:nth-child(5n)) {
+  padding-right: 16px;
+  border-right: 1px solid #e6e8eb;
+}
+
+.product:not(:nth-child(5n + 1)) {
+  padding-left: 16px;
+}
+
+.product:nth-child(5n + 1)::after {
   content: '';
   position: absolute;
-  left: 0;
-  bottom: -32px;
-  width: calc(100% + 1px);
+  display: block;
+  width: calc(100% - 37px);
   height: 1px;
+  transform: translateY(32px);
   background-color: #e6e8eb;
 }
 
-.products > li:nth-last-child(-n + 5)::after {
+.product.noBottomBorder::after {
   display: none;
 }
 
 .moreButton {
   display: block;
-  margin: 40px auto 18px auto;
+  margin: -25px auto 18px auto;
   width: 417px;
   font-weight: 700;
   color: var(--blue-500);
