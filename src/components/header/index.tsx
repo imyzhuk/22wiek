@@ -230,7 +230,7 @@ export const Header: React.FC<HeaderProps> = () => {
           <div className={styles.thirdRow}>
             <ul className={styles.promoList}>
               <li className={`${styles.promoItem} ${styles.fixedPromoItem}`}>
-                <a href="/special_offers/promo}">
+                <a href="/special_offers/promo">
                   <PromoIcon className={styles.promoIcon} />
                   Все акции
                 </a>
