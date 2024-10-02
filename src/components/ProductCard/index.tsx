@@ -37,10 +37,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </span>
         </a>
         <div className={styles.info}>
-          {discount && <div className={styles.discount}>-{discount}%</div>}
+          {Boolean(discount) && (
+            <div className={styles.discount}>-{discount}%</div>
+          )}
           <div className={styles.pricesWrapper}>
             <p className={styles.currentPrice}>{currentPrice}</p>
-            <p className={styles.oldPrice}>{oldPrice}</p>
+            {Boolean(oldPrice) && <p className={styles.oldPrice}>{oldPrice}</p>}
           </div>
           {discountType && (
             <div className={styles.discountType}>{discountType}</div>

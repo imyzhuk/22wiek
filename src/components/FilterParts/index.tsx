@@ -5,3 +5,5 @@ export { FilterItem } from './FilterItem';
 export { RangeFilter } from './RangeFilter';
 export { FilterDropdown } from './FilterDropdown';
 export { FilterDropdownRadioButton } from './FilterDropdownRadioButton';
+export { FixedRangeFilter } from './FixedRangeFilter';
+export { FilterResetButton } from './FilterResetButton';

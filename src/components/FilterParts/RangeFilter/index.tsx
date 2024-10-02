@@ -6,11 +6,13 @@ import styles from './RangeFilter.module.css';
 type RangeFilterProps = {
   fromValuePlaceholder?: string;
   untilValuePlaceholder?: string;
+  unit?: string;
 };
 
 export const RangeFilter: React.FC<RangeFilterProps> = ({
   fromValuePlaceholder,
   untilValuePlaceholder,
+  unit,
 }) => {
   const handleFromChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
@@ -29,7 +31,7 @@ export const RangeFilter: React.FC<RangeFilterProps> = ({
   return (
     <div className={styles.inputs}>
       <label className={styles.label}>
-        <span className={styles.labelText}>От, р.</span>
+        <span className={styles.labelText}>От {unit && `, ${unit}`}</span>
         <input
           type="number"
           placeholder={fromValuePlaceholder || ''}
@@ -39,7 +41,7 @@ export const RangeFilter: React.FC<RangeFilterProps> = ({
       </label>
 
       <label className={styles.label}>
-        <span className={styles.labelText}>До, р.</span>
+        <span className={styles.labelText}>До {unit && `, ${unit}`}</span>
         <input
           type="number"
           placeholder={untilValuePlaceholder || ''}

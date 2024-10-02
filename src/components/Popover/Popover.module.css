@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  display: inline;
+}
+
+.infoIcon {
+  cursor: pointer;
+}
+
+.popover {
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  right: 130%;
+  background-color: #fff;
+  padding: 0 0 32px 32px;
+  width: 520px;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: var(--shadow-drop-4dp-hard);
+}
+
+.crossIcon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: var(--gray-400);
+  cursor: pointer;
+}
+
+.title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  position: -webkit-sticky;
+  padding-top: 32px;
+  margin-bottom: 12px;
+  padding-right: 56px;
+
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.body {
+  overflow: hidden;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  padding-right: 32px;
+}

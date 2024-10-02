@@ -12,6 +12,7 @@
   transition: all 0.2s;
   border-radius: 24px;
   margin-right: 4px;
+  white-space: nowrap;
 }
 
 .chip:hover {

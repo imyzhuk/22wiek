@@ -1,0 +1,27 @@
+.wrapper {
+  position: sticky;
+  bottom: 0;
+  padding: 16px 0;
+  background-color: white;
+}
+
+.button {
+  width: 100%;
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+  height: 40px;
+  color: var(--pink-500);
+  background-color: var(--white);
+  border: 1px solid var(--pink-500);
+  padding: 0 24px;
+  border-radius: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  overflow: hidden;
+}

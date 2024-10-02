@@ -62,11 +62,14 @@ function PromoPage() {
           </FilterItem>
           <FilterItem title="Цена" hasBottomBorder>
             <RangeFilter
+              unit="р."
               fromValuePlaceholder="0.24"
               untilValuePlaceholder={addSpacesToPrice('37500.00')}
             />
           </FilterItem>
-          <ProducersFilter />
+          <FilterItem title="Производители">
+            <ProducersFilter />
+          </FilterItem>
         </aside>
       </div>
       <Footer />

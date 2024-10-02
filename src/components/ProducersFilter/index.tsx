@@ -70,7 +70,7 @@ export const ProducersFilter: React.FC<ProducersFilterProps> = () => {
     setSearchValue(e.target.value);
   };
   return (
-    <FilterItem title="Производители">
+    <>
       <FilterCheckboxGroup name="producers" options={options.slice(0, 10)} />
       <FilterDropdown
         buttonContent="Посмотреть все"
@@ -111,6 +111,6 @@ export const ProducersFilter: React.FC<ProducersFilterProps> = () => {
           </ScrollContainer>
         </div>
       </FilterDropdown>
-    </FilterItem>
+    </>
   );
 };

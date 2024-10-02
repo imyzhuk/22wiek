@@ -18,4 +18,8 @@ export { ScrollContainer } from './ScrollContainer';
 export { ProducersFilter } from './ProducersFilter';
 export { Modal } from './Modal';
 export { Input } from './Input';
+export { SortFilter } from './SortFilter';
+export { Breadcrumps } from './Breadcrumps';
+export { Pagination } from './Pagination';
+export { Popover } from './Popover';
 export * from './FilterParts';
