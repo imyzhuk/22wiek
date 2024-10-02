@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ProductCard.module.css';
 import { ProductCardType } from '@/types/productCardModel';
 import { ProductCardButton } from '@/components';
-import LikeIcon from '../../../public/like.svg';
+import { LikeButton } from './LikeButton';
 
 type ProductCardProps = ProductCardType & {
   hasLikeButton?: boolean;
@@ -22,16 +22,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <li className={styles.product}>
-      {hasLikeButton && (
-        <button className={styles.likeButton}>
-          <LikeIcon />
-        </button>
-      )}
+      {hasLikeButton && <LikeButton />}
       <div className={styles.wrapper}>
-        <a
-          href="/educational_literature/45_aversev.html"
-          className={styles.imgLink}
-        >
+        <a href={productLink} className={styles.imgLink}>
           <span className={styles.imgContainer}>
             <img className={styles.img} src={productImg} alt={type} />
           </span>
