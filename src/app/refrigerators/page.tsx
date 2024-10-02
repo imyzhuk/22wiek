@@ -418,7 +418,7 @@ function RefrigeratorsPage() {
                 />
               }
             >
-              <FilterCheckboxGroup name="discount" options={typeOptions} />
+              <FilterCheckboxGroup name="type" options={typeOptions} />
             </FilterItem>
             <FilterItem
               title="Конструкция"
@@ -465,7 +465,7 @@ function RefrigeratorsPage() {
               }
             >
               <FilterCheckboxGroup
-                name="discount"
+                name="construction"
                 options={constructionOptions}
               />
             </FilterItem>
