@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Pagination.module.css';
 import MiniRightArrow from '@Images/miniRightArrow.svg';
+import Link from 'next/link';
 
 type PaginationProps = {
   pagesCount: number;
@@ -23,12 +24,12 @@ export const Pagination: React.FC<PaginationProps> = ({
         </li>
         {[...Array(pagesCount)].map((_, index) => (
           <li key={index} className={styles.item}>
-            <a
+            <Link
               href=""
               className={`${styles.link} ${currentPage === index + 1 ? styles.linkActive : ''}`}
             >
               {index + 1}
-            </a>
+            </Link>
           </li>
         ))}
         <li className={styles.item}>

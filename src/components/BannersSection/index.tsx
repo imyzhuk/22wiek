@@ -4,6 +4,7 @@ import { largeBanners } from '@/data/banners';
 import { ArrowButton } from '@/components';
 import Image from 'next/image';
 import { BottomBanners } from './BottomBanners';
+import Link from 'next/link';
 
 type BannersSectionProps = {};
 
@@ -14,14 +15,14 @@ export const BannersSection: React.FC<BannersSectionProps> = () => {
         <ul className={styles.banners}>
           {largeBanners.map((banner) => (
             <li className={styles.banner} key={banner.id}>
-              <a href="/special_offers/promo">
+              <Link href="/special_offers/promo">
                 <Image
                   src={banner.link}
                   width={1090}
                   height={360}
                   alt={banner.altText}
                 />
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

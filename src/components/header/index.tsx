@@ -26,6 +26,7 @@ import ViberIcon from '@Images/viber.svg';
 import LineGradient from '@Images/lineGradient.svg';
 import PromoIcon from '@Images/promoIcon.svg';
 import ClockIcon from '@Images/clockIcon.svg';
+import Link from 'next/link';
 
 type HeaderProps = {};
 
@@ -44,38 +45,38 @@ export const Header: React.FC<HeaderProps> = () => {
               <LocalityButton />
               <ul className={styles.firstRowMenu}>
                 <li className={styles.firstRowMenuItem}>
-                  <a
+                  <Link
                     href="/special_offers/partly_pay.html"
                     className={`${styles.firstRowMenuLink} ${styles.firstRowMenuPayLink}`}
                   >
                     <PartlyPayIcon className={styles.firstRowMenuIcon} />
                     <span>Оплата частями</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className={styles.firstRowMenuItem}>
-                  <a
+                  <Link
                     href="/special_offers/bonus.html"
                     className={styles.firstRowMenuLink}
                   >
                     Бонусная программа
-                  </a>
+                  </Link>
                 </li>
                 <li className={styles.firstRowMenuItem}>
                   <MoreItemsDropdown>
                     <li className={styles.moreButtonItem}>
-                      <a className={styles.moreButtonLink} href="/not-found">
+                      <Link className={styles.moreButtonLink} href="/not-found">
                         Оплата
-                      </a>
+                      </Link>
                     </li>
                     <li className={styles.moreButtonItem}>
-                      <a className={styles.moreButtonLink} href="/not-found">
+                      <Link className={styles.moreButtonLink} href="/not-found">
                         Доставка
-                      </a>
+                      </Link>
                     </li>
                     <li className={styles.moreButtonItem}>
-                      <a className={styles.moreButtonLink} href="/not-found">
+                      <Link className={styles.moreButtonLink} href="/not-found">
                         Самовывоз
-                      </a>
+                      </Link>
                     </li>
                   </MoreItemsDropdown>
                 </li>
@@ -157,12 +158,12 @@ export const Header: React.FC<HeaderProps> = () => {
                     <li
                       className={`${styles.moreButtonItem} ${styles.moreButtonItemLast}`}
                     >
-                      <a
+                      <Link
                         className={`${styles.moreButtonLink} ${styles.moreButtonLinkLast}`}
-                        href="/services/contacts.html"
+                        href="/services/contacts"
                       >
                         <span>Контакты</span>
-                      </a>
+                      </Link>
                     </li>
                   </MoreItemsDropdown>
                 </li>
@@ -186,13 +187,13 @@ export const Header: React.FC<HeaderProps> = () => {
         <div className={styles.secondLine}>
           <div className={styles.rowWrapper}>
             <div className={styles.secondRow}>
-              <a
+              <Link
                 className={styles.logoLink}
                 href="/"
                 title="На главную страницу"
               >
                 <Logo />
-              </a>
+              </Link>
               <div className={styles.catalogContainer}>
                 <CircleButton
                   onClick={() => setIsCatalogActive((prev) => !prev)}
@@ -203,22 +204,22 @@ export const Header: React.FC<HeaderProps> = () => {
               </div>
               <SearchBar />
               <div className={styles.circleButtonContainer}>
-                <a href="/aside">
+                <Link href="/aside">
                   <CircleButton>
                     <LikeIcon />
                   </CircleButton>
-                </a>
+                </Link>
               </div>
               <AccountWidget />
               <div className={styles.circleButtonContainer}>
-                <a href="/order">
+                <Link href="/order">
                   <CircleButton>
                     <span className={styles.orderWrapper}>
                       <BasketIcon className={styles.orderIcon} />
                       <span>Корзина</span>
                     </span>
                   </CircleButton>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -230,14 +231,14 @@ export const Header: React.FC<HeaderProps> = () => {
           <div className={styles.thirdRow}>
             <ul className={styles.promoList}>
               <li className={`${styles.promoItem} ${styles.fixedPromoItem}`}>
-                <a href="/special_offers/promo">
+                <Link href="/special_offers/promo">
                   <PromoIcon className={styles.promoIcon} />
                   Все акции
-                </a>
+                </Link>
               </li>
               {promos.map((promo) => (
                 <li className={styles.promoItem} key={promo.url}>
-                  <a href={promo.url}>{promo.name}</a>
+                  <Link href={promo.url}>{promo.name}</Link>
                 </li>
               ))}
             </ul>

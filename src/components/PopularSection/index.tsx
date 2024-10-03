@@ -3,6 +3,7 @@ import styles from './PopularSection.module.css';
 import { Chips, ProductCard, SectionHeader } from '@/components';
 import { options } from '@/data/popular';
 import { popularProducts } from '@/data/products';
+import Link from 'next/link';
 
 type PopularSectionProps = {};
 
@@ -41,9 +42,9 @@ export const PopularSection: React.FC<PopularSectionProps> = () => {
         ))}
       </ul>
       <button className={styles.moreButton}>Показать еще</button>
-      <a href="/special_offers/recommend.html" className={styles.allButton}>
+      <Link href="/special_offers/recommend" className={styles.allButton}>
         Смотреть все
-      </a>
+      </Link>
     </section>
   );
 };

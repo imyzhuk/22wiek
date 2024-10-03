@@ -10,6 +10,7 @@ import PartlyPayIcon from '@Images/partlyPayIcon.svg';
 import ProcentIcon from '@Images/procentIcon.svg';
 import { Chips } from '@/components';
 import { BrandCrisps } from './BrandCrisps';
+import Link from 'next/link';
 
 type CatalogPopupProps = {};
 
@@ -27,7 +28,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                     key={category.id}
                     onMouseOver={() => setActiveCategoryIndex(idx)}
                   >
-                    <a
+                    <Link
                       href="/not-found"
                       className={`${styles.category} ${activeCategoryIndex === idx ? styles.activeCategory : ''}`}
                     >
@@ -37,36 +38,39 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                       <span className={styles.categoryName}>
                         {category.name}
                       </span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
               <ul className={styles.linksContainer}>
                 <li>
-                  <a className={styles.category} href="/special_offers/promo">
+                  <Link
+                    className={styles.category}
+                    href="/special_offers/promo"
+                  >
                     <span className={`${styles.icon} ${styles.firstIcon}`}>
                       <AllPromoIcon />
                     </span>
                     <span className={styles.categoryName}>Все акции</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className={styles.category} href="/not-found">
+                  <Link className={styles.category} href="/not-found">
                     <span className={`${styles.icon} ${styles.secondIcon}`}>
                       <PartlyPayIcon />
                     </span>
                     <span className={styles.categoryName}>Оплата частями</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className={styles.category} href="/not-found">
+                  <Link className={styles.category} href="/not-found">
                     <span className={styles.icon}>
                       <ProcentIcon />
                     </span>
                     <span className={styles.categoryName}>
                       Уцененные товары
                     </span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

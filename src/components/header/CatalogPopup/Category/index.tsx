@@ -3,6 +3,7 @@ import styles from './Category.module.css';
 import { Categories } from '@/types/category';
 import ArrowUpIcon from '@Images/arrowUpIcon.svg';
 import ArrowDownIcon from '@Images/arrowDownIcon.svg';
+import Link from 'next/link';
 
 type CategoryProps = {
   name: string;
@@ -14,15 +15,15 @@ export const Category: React.FC<CategoryProps> = ({ name, subCategories }) => {
   return (
     <ul className={styles.container}>
       <li>
-        <a href="/not-found" className={styles.titleLink}>
+        <Link href="/not-found" className={styles.titleLink}>
           {name}
-        </a>
+        </Link>
       </li>
       {subCategories.slice(0, shownCategoriesCount).map((category) => (
         <li key={category.id}>
-          <a href="/not-found" className={styles.link}>
+          <Link href="/not-found" className={styles.link}>
             {category.name}
-          </a>
+          </Link>
         </li>
       ))}
       {subCategories.length > 7 && (

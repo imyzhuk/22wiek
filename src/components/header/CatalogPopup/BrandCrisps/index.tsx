@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './BrandCrisps.module.css';
+import Link from 'next/link';
 
 type BrandCrispsProps = {
   items?: {
@@ -16,9 +17,9 @@ export const BrandCrisps: React.FC<BrandCrispsProps> = ({ items }) => {
     <ul className={styles.list}>
       {items.map((item) => (
         <li key={item.id}>
-          <a href={item.link} className={styles.link}>
+          <Link href={item.link} className={styles.link}>
             {item.name}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>

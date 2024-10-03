@@ -12,6 +12,7 @@ import ViewIcon from '@Images/viewIcon.svg';
 import { usePathname } from 'next/navigation';
 import { useOutsideClick } from '@/hooks';
 import { AuthModal } from './AuthModal';
+import Link from 'next/link';
 
 type AccountWidgetProps = {};
 
@@ -44,7 +45,7 @@ export const AccountWidget: React.FC<AccountWidgetProps> = () => {
           </button>
           <ul className={styles.list}>
             <li className={styles.item}>
-              <a
+              <Link
                 className={`${styles.link} ${pathname === '/order' ? styles.linkActive : ''}`}
                 href="/order"
               >
@@ -53,10 +54,10 @@ export const AccountWidget: React.FC<AccountWidgetProps> = () => {
                 </span>
                 <span className={styles.label}>Корзина</span>
                 <span className={`${styles.count} ${styles.pink}`}>2</span>
-              </a>
+              </Link>
             </li>
             <li className={styles.item}>
-              <a
+              <Link
                 className={`${styles.link} ${pathname === '/aside' ? styles.linkActive : ''}`}
                 href="/aside"
               >
@@ -65,10 +66,10 @@ export const AccountWidget: React.FC<AccountWidgetProps> = () => {
                 </span>
                 <span className={styles.label}>Избранные товары</span>
                 <span className={styles.count}>2</span>
-              </a>
+              </Link>
             </li>
             <li className={styles.item}>
-              <a
+              <Link
                 className={`${styles.link} ${pathname === '/compare' ? styles.linkActive : ''}`}
                 href="/compare"
               >
@@ -76,10 +77,10 @@ export const AccountWidget: React.FC<AccountWidgetProps> = () => {
                   <CompareIcon />
                 </span>
                 <span className={styles.label}>Списки сравнения</span>
-              </a>
+              </Link>
             </li>
             <li className={styles.item}>
-              <a
+              <Link
                 className={`${styles.link} ${pathname === '/viewed' ? styles.linkActive : ''}`}
                 href="/viewed"
               >
@@ -87,7 +88,7 @@ export const AccountWidget: React.FC<AccountWidgetProps> = () => {
                   <ViewIcon />
                 </span>
                 <span className={styles.label}>Просмотренные</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

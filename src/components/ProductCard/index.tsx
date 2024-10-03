@@ -3,6 +3,7 @@ import styles from './ProductCard.module.css';
 import { ProductCardType } from '@/types/productCardModel';
 import { ProductCardButton } from '@/components';
 import { LikeButton } from './LikeButton';
+import Link from 'next/link';
 
 type ProductCardProps = ProductCardType & {
   hasLikeButton?: boolean;
@@ -24,11 +25,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <li className={styles.product}>
       {hasLikeButton && <LikeButton />}
       <div className={styles.wrapper}>
-        <a href={productLink} className={styles.imgLink}>
+        <Link href={productLink} className={styles.imgLink}>
           <span className={styles.imgContainer}>
             <img className={styles.img} src={productImg} alt={type} />
           </span>
-        </a>
+        </Link>
         <div className={styles.info}>
           {Boolean(discount) && (
             <div className={styles.discount}>-{discount}%</div>
@@ -41,9 +42,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <div className={styles.discountType}>{discountType}</div>
           )}
         </div>
-        <a href={productLink} className={styles.description}>
+        <Link href={productLink} className={styles.description}>
           {title}
-        </a>
+        </Link>
         <div className={styles.productStatus}>
           <svg
             className={styles.productStatusIcon}

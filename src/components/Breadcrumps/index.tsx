@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Breadcrumps.module.css';
 import MiniRightArrow from '@Images/miniRightArrow.svg';
+import Link from 'next/link';
 
 type BreadcrumpsProps = {
   items: {
@@ -16,9 +17,9 @@ export const Breadcrumps: React.FC<BreadcrumpsProps> = ({ items }) => {
         {items.map(({ name, link }, index) => (
           <li key={link} className={styles.item}>
             {index !== 0 && <MiniRightArrow />}
-            <a href={link} className={styles.link}>
+            <Link href={link} className={styles.link}>
               {name}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

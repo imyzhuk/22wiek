@@ -19,6 +19,7 @@ import styles from './RefrigeratorsPage.module.css';
 import { addSpacesToPrice } from '@/utils/addSpacesToPrice';
 import { Option } from '@/types/optionsModel';
 import { refrigerators } from '@/data/products';
+import Link from 'next/link';
 
 const chipOptions: Option[] = [
   { name: 'Все', value: '/refrigerators/' },
@@ -324,9 +325,9 @@ function RefrigeratorsPage() {
         />
         <div className={styles.titleWrapper}>
           <h1 className={styles.title}>Холодильники</h1>
-          <a href="/info/howto/42" className={styles.titleLink}>
+          <Link href="/info/howto/42" className={styles.titleLink}>
             Как выбрать холодильник
-          </a>
+          </Link>
         </div>
         <div className={styles.chips}>
           <Chips options={chipOptions} />

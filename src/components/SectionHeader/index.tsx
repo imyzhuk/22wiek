@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import styles from './SectionHeader.module.css';
+import Link from 'next/link';
 
 type SectionHeaderProps = {
   children: ReactNode;
@@ -18,9 +19,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     <header className={styles.header}>
       <div className={styles.titleContainer}>
         <h5 className={styles.title}>{title}</h5>
-        <a href={link} className={styles.titleLink}>
+        <Link href={link} className={styles.titleLink}>
           {linkText}
-        </a>
+        </Link>
       </div>
       {children}
     </header>

@@ -69,9 +69,9 @@ export const BasketSection: React.FC<BasketSectionProps> = ({ products }) => {
                     </Link>
                   </div>
                   <div className={styles.titleWrapper}>
-                    <a href={product.url} className={styles.title}>
+                    <Link href={product.url} className={styles.title}>
                       {product.name}
-                    </a>
+                    </Link>
                     <span className={styles.code}>
                       код товара {addDotsToNumber(product.code)}
                     </span>
@@ -114,13 +114,13 @@ export const BasketSection: React.FC<BasketSectionProps> = ({ products }) => {
                     {product.present && (
                       <li className={styles.detail}>
                         <span className={styles.detailName}>Подарок:</span>
-                        <a
+                        <Link
                           href={product.present.link}
                           className={styles.presentLink}
                         >
                           <GiftIcon className={styles.presentIcon} />
                           {product.present.offer}
-                        </a>
+                        </Link>
                       </li>
                     )}
                     <li className={styles.detail}>
