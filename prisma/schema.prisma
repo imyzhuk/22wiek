@@ -1,0 +1,277 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum UserRole {
+  User
+  Admin
+}
+
+enum OrderStatus {
+  Pending
+  Succeeded
+  Cancelled
+}
+
+enum DiscountType {
+  Discount
+  Superprice
+  Sale
+}
+
+enum AdditionalLinkType {
+  File
+  Link
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  email     String?  @unique
+  phone     String?  @unique
+  password  String?
+  role      UserRole @default(User)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  location     Location       @relation(fields: [id], references: [id])
+  locationId   Int
+  reviews      Review[]
+  cartItem     CartItem[]
+  FavoriteItem FavoriteItem[]
+  ViewedItem   ViewedItem[]
+  WaitedItem   WaitedItem[]
+}
+
+model Location {
+  id       Int    @id @default(autoincrement())
+  type     String
+  name     String
+  district String
+  region   String
+  alias    String
+
+  users User[]
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+  link String
+
+  products      Product[]
+  parent        Category?  @relation("Subcategories", fields: [parentId], references: [id])
+  subcategories Category[] @relation("Subcategories")
+  parentId      Int?
+}
+
+model Product {
+  id            Int            @id @default(autoincrement())
+  name          String
+  link          String
+  preview       String
+  discountTypes DiscountType[]
+  isInStock     Boolean
+  model         String
+  price         Decimal
+  oldPrice      Decimal        @default(0)
+  discount      Int
+  rating        Decimal
+  reviewsCount  Int
+  createdAt     DateTime       @default(now())
+
+  producer           Producer?           @relation(fields: [producerId], references: [id])
+  reviews            Review[]
+  images             Image[]
+  additionalServices AdditionalService[]
+  producerId         Int
+  categories         Category[]
+  cartItems          CartItem[]
+  favoriteItems      FavoriteItem[]
+  viewedItems        ViewedItem[]
+  waitedItems        WaitedItem[]
+  refrigerator       Refrigerator?
+}
+
+model Producer {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  products Product[]
+}
+
+model Review {
+  id            Int      @id @default(autoincrement())
+  advantages    String?
+  disadvantages String?
+  summary       String
+  rating        Decimal  @default(0.0)
+  createdAt     DateTime @default(now())
+  comment       String?
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model Image {
+  id        Int     @id @default(autoincrement())
+  isMain    Boolean
+  url       String
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+}
+
+model AdditionalServiceCategory {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  additionalServices AdditionalService[]
+}
+
+model AdditionalService {
+  id            Int                       @id @default(autoincrement())
+  name          String
+  description   String
+  link          String?
+  price         Decimal
+  priceCurrency String
+  products      Product[]
+  category      AdditionalServiceCategory @relation(fields: [categoryId], references: [id])
+  categoryId    Int
+}
+
+model Refrigerator {
+  id              Int              @id @default(autoincrement())
+  description     String
+  originCountry   String
+  producerInfo    String
+  supplierInfo    String?
+  importerInfo    String?
+  additionalLinks AdditionalLink[]
+  product         Product          @relation(fields: [productId], references: [id])
+  productId       Int              @unique
+
+  type                 String
+  construction         String
+  cameras              String[]
+  freezerLocation      String
+  freezerSectionsCount Int
+  color                String
+  noFrostSystem        Boolean
+  energyClass          String
+  compressorsCount     Int
+  noiseLevel           Int
+  retrodesign          Boolean
+  camerasCount         Int
+  totalVolume          Int
+  refrigeratorVolume   Int
+  freezerVolume        Int
+  multifunctionalArea  Boolean
+  dispenser            Boolean
+  minibar              Boolean
+  hingesLocation       String
+  lighting             Boolean
+
+  annualElectricityConsumption Int
+  inverterTechnology           Boolean
+  climateClass                 String
+  autonomousColdStorage        Int
+  energySavingMode             Boolean
+
+  controlType                   String
+  controlUnitLocation           String
+  independentTemperatureControl Boolean
+  vacationMode                  Boolean
+  childLock                     Boolean
+
+  freshnessZone           Boolean
+  shelvesCount            Int
+  shelfMaterial           String
+  doorBalconiesCount      Int
+  doorBalconiesMaterial   String
+  superCooling            Boolean
+  forcedAirCirculation    Boolean
+  builtinOzonizer         Boolean
+  antibacterialProtection Boolean
+  included                String
+
+  freezingPower Decimal
+
+  height Decimal
+  width  Decimal
+  depth  Decimal
+  weight Decimal
+}
+
+model AdditionalLink {
+  id            Int                @id @default(autoincrement())
+  name          String
+  link          String
+  type          AdditionalLinkType
+  refrigerators Refrigerator[]
+}
+
+model CartItem {
+  id Int @id @default(autoincrement())
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FavoriteItem {
+  id Int @id @default(autoincrement())
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ViewedItem {
+  id Int @id @default(autoincrement())
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model WaitedItem {
+  id Int @id @default(autoincrement())
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
