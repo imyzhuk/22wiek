@@ -24,6 +24,7 @@ async function up() {
       password: 'password',
       phone: '+375291234567',
       role: 'User',
+      image: '/anonym.svg',
       locationId: location.id,
     },
   });
@@ -64,7 +65,7 @@ async function up() {
   const product = await prisma.product.create({
     data: {
       name: 'Холодильник с морозильником',
-      link: '/refrigerators/4208000_atlant',
+      link: '/refrigerators/1',
       preview:
         'https://cdn21vek.by/img/galleries/58/129/preview/atlant_4208000_65bc97b9ca11d.jpeg',
       discountTypes: ['Sale'],
@@ -73,8 +74,9 @@ async function up() {
       price: 794.7,
       oldPrice: 883.0,
       discount: 10,
-      rating: 4.6,
+      rating: 4,
       reviewsCount: 1,
+      fourStarsCommentsCount: 1,
       categories: {
         connect: [
           { id: category.id },
@@ -140,14 +142,14 @@ async function up() {
         ],
       },
       refrigerator: refrigerator,
-    },
-  });
-
-  const review = await prisma.review.create({
-    data: {
-      userId: user.id,
-      productId: product.id,
-      ...initialReview,
+      reviews: {
+        create: [
+          {
+            userId: user.id,
+            ...initialReview
+          }
+        ]
+      }
     },
   });
 }

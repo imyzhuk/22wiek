@@ -37,6 +37,7 @@ model User {
   phone     String?  @unique
   password  String?
   role      UserRole @default(User)
+  image     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -72,19 +73,24 @@ model Category {
 }
 
 model Product {
-  id            Int            @id @default(autoincrement())
-  name          String
-  link          String
-  preview       String
-  discountTypes DiscountType[]
-  isInStock     Boolean
-  model         String
-  price         Decimal
-  oldPrice      Decimal        @default(0)
-  discount      Int
-  rating        Decimal
-  reviewsCount  Int
-  createdAt     DateTime       @default(now())
+  id                      Int            @id @default(autoincrement())
+  name                    String
+  link                    String
+  preview                 String
+  discountTypes           DiscountType[]
+  isInStock               Boolean
+  model                   String
+  price                   Decimal
+  oldPrice                Decimal        @default(0)
+  discount                Int
+  rating                  Decimal
+  reviewsCount            Int            @default(0)
+  oneStarCommentsCount    Int            @default(0)
+  twoStarsCommentsCount   Int            @default(0)
+  threeStarsCommentsCount Int            @default(0)
+  fourStarsCommentsCount  Int            @default(0)
+  fiveStarsCommentsCount  Int            @default(0)
+  createdAt               DateTime       @default(now())
 
   producer           Producer?           @relation(fields: [producerId], references: [id])
   reviews            Review[]
@@ -111,7 +117,7 @@ model Review {
   advantages    String?
   disadvantages String?
   summary       String
-  rating        Decimal  @default(0.0)
+  rating        Int      @default(0)
   createdAt     DateTime @default(now())
   comment       String?
 
@@ -151,6 +157,7 @@ model AdditionalService {
 
 model Refrigerator {
   id              Int              @id @default(autoincrement())
+  guarantee       String
   description     String
   originCountry   String
   producerInfo    String
