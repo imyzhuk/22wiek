@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './AdditionalInfo.module.css';
 import { AdditionalLink } from '@prisma/client';
-import FileIcon from '@Images/fileIcon.svg';
+import FileIcon from '@icons/fileIcon.svg';
 
 type AdditionalInfoProps = {
   items: AdditionalLink[];

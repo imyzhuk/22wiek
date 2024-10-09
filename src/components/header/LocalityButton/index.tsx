@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './LocalityButton.module.css';
-import LocalityIcon from '@Images/localityIcon.svg';
+import LocalityIcon from '@icons/localityIcon.svg';
 import { locations as initialLocations } from '@/data/locations';
 import { Location } from '@/types/locationModel';
 import { LocalityModal } from './LocalityModal';

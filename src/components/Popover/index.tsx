@@ -3,8 +3,8 @@
 import React from 'react';
 import styles from './Popover.module.css';
 import { useOutsideClick } from '@/hooks';
-import InfoIcon from '@Images/infoIcon.svg';
-import CrossExitTransparent from '@Images/crossExitTransparent.svg';
+import InfoIcon from '@icons/infoIcon.svg';
+import CrossExitTransparent from '@icons/crossExitTransparent.svg';
 import { ScrollContainer } from '@/components';
 
 type PopoverProps = {

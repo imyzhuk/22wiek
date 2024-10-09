@@ -4,9 +4,9 @@ import React from 'react';
 import styles from './FixedRangeFilter.module.css';
 import { useOutsideClick } from '@/hooks';
 import { ScrollContainer } from '@/components';
-import CheckmarkIcon from '@Images/checkmark.svg';
-import ArrowUpIcon from '@Images/arrowUpIcon.svg';
-import ArrowDownIcon from '@Images/arrowDownIcon.svg';
+import CheckmarkIcon from '@icons/checkmark.svg';
+import ArrowUpIcon from '@icons/arrowUpIcon.svg';
+import ArrowDownIcon from '@icons/arrowDownIcon.svg';
 
 type FixedRangeFilterProps = {
   options: number[];

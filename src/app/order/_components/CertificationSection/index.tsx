@@ -5,10 +5,10 @@ import { Certificate } from '@/types/cartModel';
 import { TotalPrice } from './TotalPrice';
 import Link from 'next/link';
 import { transformNumToPrice } from '@/utils/transformNumToPrice';
-import BinIcon from '@Images/binIcon.svg';
-import HeartIcon from '@Images/heartIcon.svg';
+import BinIcon from '@icons/binIcon.svg';
+import HeartIcon from '@icons/heartIcon.svg';
 import { Counter } from './Counter';
-import ColorGiftIcon from '@Images/colorGiftIcon.svg';
+import ColorGiftIcon from '@icons/colorGiftIcon.svg';
 
 type CertificationSectionProps = {
   certificates: Certificate[];

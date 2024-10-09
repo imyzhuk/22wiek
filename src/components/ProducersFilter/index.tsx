@@ -8,8 +8,8 @@ import {
   FilterDropdown,
   ScrollContainer,
 } from '@/components';
-import SearchIcon from '@Images/searchIcon.svg';
-import CrossExitIcon from '@Images/crossExitTransparent.svg';
+import SearchIcon from '@icons/searchIcon.svg';
+import CrossExitIcon from '@icons/crossExitTransparent.svg';
 
 const options = [
   { name: 'A1', value: 'a1' },

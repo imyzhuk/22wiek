@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import styles from './FilterCheckbox.module.css';
-import CheckmarkIcon from '@Images/smallCheckmark.svg';
-import CheckboxLineIcon from '@Images/checkboxLine.svg';
+import CheckmarkIcon from '@icons/smallCheckmark.svg';
+import CheckboxLineIcon from '@icons/checkboxLine.svg';
 
 type FilterCheckboxProps = {
   name: string;

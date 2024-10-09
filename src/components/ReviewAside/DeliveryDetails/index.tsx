@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './DeliveryDetails.module.css';
 import Link from 'next/link';
-import ArrowUpIcon from '@Images/arrowUpIcon.svg';
+import ArrowUpIcon from '@icons/arrowUpIcon.svg';
 
 type DeliveryDetailsProps = {};
 

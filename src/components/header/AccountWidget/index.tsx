@@ -3,12 +3,12 @@
 import React, { useState } from 'react';
 import styles from './AccountWidget.module.css';
 import { CircleButton } from '@/components';
-import AccountIcon from '@Images/accountIcon.svg';
-import AnonymImg from '@Images/anonym.svg';
-import BasketIcon from '@Images/basketIcon.svg';
-import HeartIcon from '@Images/heartIcon.svg';
-import CompareIcon from '@Images/compareIcon.svg';
-import ViewIcon from '@Images/viewIcon.svg';
+import AccountIcon from '@icons/accountIcon.svg';
+import AnonymImg from '@images/anonym.svg';
+import BasketIcon from '@icons/basketIcon.svg';
+import HeartIcon from '@icons/heartIcon.svg';
+import CompareIcon from '@icons/compareIcon.svg';
+import ViewIcon from '@icons/viewIcon.svg';
 import { usePathname } from 'next/navigation';
 import { useOutsideClick } from '@/hooks';
 import { AuthModal } from './AuthModal';

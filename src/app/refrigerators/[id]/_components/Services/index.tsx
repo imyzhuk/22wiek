@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Services.module.css';
 import { Decimal } from '@prisma/client/runtime/library';
-import MoreIcon from '@Images/moreIcon.svg';
-import AttentionIcon from '@Images/attentionIcon.svg';
+import MoreIcon from '@icons/moreIcon.svg';
+import AttentionIcon from '@icons/attentionIcon.svg';
 
 type ServicesProps = {
   items: {

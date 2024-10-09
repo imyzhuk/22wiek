@@ -2,7 +2,7 @@
 
 import React, { forwardRef } from 'react';
 import styles from './Input.module.css';
-import CrossExitIcon from '@Images/crossExitIcon.svg';
+import CrossExitIcon from '@icons/crossExitIcon.svg';
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,

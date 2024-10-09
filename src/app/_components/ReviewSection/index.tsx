@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ReviewSection.module.css';
 import { ArrowButton } from '@/components';
-import YoutubeIcon from '@Images/youtube.png';
+import YoutubeIcon from '@images/youtube.png';
 import Image from 'next/image';
 import { reviews } from '@/data/reviews';
 import { ReviewCard } from './ReviewCard';

@@ -10,10 +10,10 @@ import {
   ScrollContainer,
 } from '@/components';
 import Image from 'next/image';
-import LocationImg from '@Images/location.png';
+import LocationImg from '@images/location.png';
 import { locations as initialLocations } from '@/data/locations';
 import { Location } from '@/types/locationModel';
-import ErrorInfoIcon from '@Images/errorInfo.svg';
+import ErrorInfoIcon from '@icons/errorInfo.svg';
 import { useFocus } from '@/hooks';
 
 type LocalityModalProps = {

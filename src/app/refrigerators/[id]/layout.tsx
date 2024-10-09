@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './RefrigeratorLayout.module.css';
 import { Breadcrumps } from '@/components';
-import { prisma } from '@Prisma/prisma-client';
+import { prisma } from '@prisma/prisma-client';
 import { redirect } from 'next/navigation';
 
 type RefrigeratorLayoutProps = {

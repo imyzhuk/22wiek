@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Rating.module.css';
-import StarIcon from '@Images/starIcon.svg';
+import StarIcon from '@icons/starIcon.svg';
 
 const starsArray = Array.from({ length: 5 });
 type RatingProps = {

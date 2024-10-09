@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './RatingBar.module.css';
-import StarIcon from '@Images/starIcon.svg';
+import StarIcon from '@icons/starIcon.svg';
 
 type RatingBarProps = {
   starsCount: number;

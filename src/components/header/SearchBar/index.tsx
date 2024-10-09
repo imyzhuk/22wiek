@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SearchBar.module.css';
-import SearchIcon from '@Images/searchIcon.svg';
+import SearchIcon from '@icons/searchIcon.svg';
 
 type SearchBarProps = {};
 

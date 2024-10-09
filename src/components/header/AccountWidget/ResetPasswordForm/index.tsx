@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from './ResetPasswordForm.module.css';
 import { Input } from '@/components';
-import ErrorInfoIcon from '@Images/errorInfo.svg';
-import EyeCrossedIcon from '@Images/eyeCrossedIcon.svg';
-import EyeIcon from '@Images/eyeIcon.svg';
+import ErrorInfoIcon from '@icons/errorInfo.svg';
+import EyeCrossedIcon from '@icons/eyeCrossedIcon.svg';
+import EyeIcon from '@icons/eyeIcon.svg';
 
 type ResetPasswordFormProps = {};
 

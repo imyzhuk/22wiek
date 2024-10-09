@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Bonuses.module.css';
-import WalletIcon from '@Images/walletIcon.svg';
+import WalletIcon from '@icons/walletIcon.svg';
 import { transformNumToPrice } from '@/utils/transformNumToPrice';
 
 type BonusesProps = {

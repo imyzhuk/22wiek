@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './EmptySection.module.css';
-import NoCertsIcon from '@Images/noCertsIcon.svg';
+import NoCertsIcon from '@icons/noCertsIcon.svg';
 import Link from 'next/link';
 
 type EmptySectionProps = {};

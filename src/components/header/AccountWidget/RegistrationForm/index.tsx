@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './RegistrationForm.module.css';
 import { Input } from '@/components';
-import ErrorInfoIcon from '@Images/errorInfo.svg';
+import ErrorInfoIcon from '@icons/errorInfo.svg';
 import { PhoneInput } from './PhoneInput';
 import { isStringMatched } from '@/utils/isStringMatched';
 

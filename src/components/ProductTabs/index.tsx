@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ProductTabs.module.css';
 import { Tabs } from '@/components';
-import AlarmIcon from '@Images/alarmIcon.svg';
+import AlarmIcon from '@icons/alarmIcon.svg';
 
 type ProductTabsProps = {
   tabs: {

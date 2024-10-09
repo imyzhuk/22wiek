@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ReviewAside.module.css';
-import StarIcon from '@Images/starIcon.svg';
+import StarIcon from '@icons/starIcon.svg';
 import { CartButton } from './CartButton';
 import { FavoriteButton } from './FavoriteButton';
 import { DeliveryDetails } from './DeliveryDetails';

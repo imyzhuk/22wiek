@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TotalPrice.module.css';
 import { transformNumToPrice } from '@/utils/transformNumToPrice';
-import EnvelopeIcon from '@Images/envelopeIcon.svg';
+import EnvelopeIcon from '@icons/envelopeIcon.svg';
 
 type TotalPriceProps = {
   totalPrice: number;

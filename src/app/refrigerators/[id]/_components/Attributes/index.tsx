@@ -5,8 +5,8 @@ import styles from './Attributes.module.css';
 import { Popover } from '@/components';
 import { Attribute } from '..';
 import { Refrigerator } from '@prisma/client';
-import ArrowDownIcon from '@Images/arrowDownIcon.svg';
-import ArrowUpIcon from '@Images/arrowUpIcon.svg';
+import ArrowDownIcon from '@icons/arrowDownIcon.svg';
+import ArrowUpIcon from '@icons/arrowUpIcon.svg';
 
 type AttributesProps = Omit<
   Refrigerator,

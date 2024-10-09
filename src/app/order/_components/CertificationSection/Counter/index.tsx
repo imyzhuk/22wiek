@@ -1,6 +1,6 @@
 import React from 'react';
-import MinusIcon from '@Images/minusIcon.svg';
-import PlusIcon from '@Images/plusIcon.svg';
+import MinusIcon from '@icons/minusIcon.svg';
+import PlusIcon from '@icons/plusIcon.svg';
 import styles from './Counter.module.css';
 
 type CounterProps = {

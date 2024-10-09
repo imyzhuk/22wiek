@@ -5,8 +5,8 @@ import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import NextImage from 'next/image';
 import { Image } from '@prisma/client';
 import { Navigation, Thumbs } from 'swiper/modules';
-import ArrowUpIcon from '@Images/arrowUpIcon.svg';
-import ArrowDownIcon from '@Images/arrowDownIcon.svg';
+import ArrowUpIcon from '@icons/arrowUpIcon.svg';
+import ArrowDownIcon from '@icons/arrowDownIcon.svg';
 
 type ProductCardGalleryProps = {
   images: Image[];

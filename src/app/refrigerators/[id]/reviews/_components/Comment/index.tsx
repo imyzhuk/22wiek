@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Comment.module.css';
-import ArrowDownIcon from '@Images/arrowDownIcon.svg';
-import ArrowUpIcon from '@Images/arrowUpIcon.svg';
+import ArrowDownIcon from '@icons/arrowDownIcon.svg';
+import ArrowUpIcon from '@icons/arrowUpIcon.svg';
 import { Rating } from '../Rating';
 
 type CommentProps = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './EmptySection.module.css';
-import CrossedBasket from '@Images/crossedBasket.svg';
+import CrossedBasket from '@icons/crossedBasket.svg';
 
 type EmptySectionProps = {};
 

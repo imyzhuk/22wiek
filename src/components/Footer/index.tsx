@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Footer.module.css';
-import BelcartIcon from '@Images/belcart.svg';
-import MastercardIcon from '@Images/mastercard.svg';
-import VisaIcon from '@Images/visa.svg';
-import ERIPIcon from '@Images/erip.svg';
-import WebpayIcon from '@Images/webpay.png';
+import BelcartIcon from '@icons/belcart.svg';
+import MastercardIcon from '@icons/mastercard.svg';
+import VisaIcon from '@icons/visa.svg';
+import ERIPIcon from '@icons/erip.svg';
+import WebpayIcon from '@images/webpay.png';
 import { FooterSubscription } from './FooterSubscription';
 import { SitemapBlock } from './SitemapBlock';
 import { Contacts } from './Contacts';

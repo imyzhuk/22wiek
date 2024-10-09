@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './PhoneInput.module.css';
 import { Input } from '@/components';
-import BelarusianFlagIcon from '@Images/belarusianFlagIcon.svg';
-import RussianFlagIcon from '@Images/russianFlagIcon.svg';
-import CheckmarkIcon from '@Images/checkmark.svg';
+import BelarusianFlagIcon from '@icons/belarusianFlagIcon.svg';
+import RussianFlagIcon from '@icons/russianFlagIcon.svg';
+import CheckmarkIcon from '@icons/checkmark.svg';
 import { useOutsideClick } from '@/hooks';
 import { useMask } from '@react-input/mask';
 

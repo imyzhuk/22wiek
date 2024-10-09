@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Services.module.css';
 import { FilterCheckbox } from '@/components';
-import MoreIcon from '@Images/moreIcon.svg';
+import MoreIcon from '@icons/moreIcon.svg';
 import { transformNumToPrice } from '@/utils/transformNumToPrice';
 import { CartService } from '@/types/cartModel';
 

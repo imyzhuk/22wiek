@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './RefrigeratorReviewsPage.module.css';
-import { prisma } from '@Prisma/prisma-client';
+import { prisma } from '@prisma/prisma-client';
 import { redirect } from 'next/navigation';
 import { ProductTabs, ReviewAside } from '@/components';
 import { Review, Summary } from './_components';

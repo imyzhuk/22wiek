@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './FilterDropdownRadioButton.module.css';
-import CheckmarkIcon from '@Images/checkmark.svg';
+import CheckmarkIcon from '@icons/checkmark.svg';
 
 type FilterDropdownRadioButtonProps = {
   onClick: () => void;

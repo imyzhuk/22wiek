@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './FooterSubscription.module.css';
-import MailboxIcon from '@Images/mailbox.svg';
-import SendLetterIcon from '@Images/sendLetter.svg';
+import MailboxIcon from '@icons/mailbox.svg';
+import SendLetterIcon from '@icons/sendLetter.svg';
 import { Input } from '@/components';
 type FooterSubscriptionProps = {};
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Category.module.css';
 import { Categories } from '@/types/category';
-import ArrowUpIcon from '@Images/arrowUpIcon.svg';
-import ArrowDownIcon from '@Images/arrowDownIcon.svg';
+import ArrowUpIcon from '@icons/arrowUpIcon.svg';
+import ArrowDownIcon from '@icons/arrowDownIcon.svg';
 import Link from 'next/link';
 
 type CategoryProps = {

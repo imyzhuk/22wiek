@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './Review.module.css';
-import CommentArrow from '@Images/commentArrow.svg';
+import CommentArrow from '@icons/commentArrow.svg';
 import { Comment } from '..';
 
 type ReviewProps = {
@@ -50,7 +50,7 @@ export const Review: React.FC<ReviewProps> = ({
           <CommentArrow className={styles.arrow} />
           <Comment
             comment={comment}
-            user={{ name: 'Сотрудник 21vek.by', image: '/21vekAvatar.svg' }}
+            user={{ name: 'Сотрудник 21vek.by', image: '/images/21vekAvatar.svg' }}
           />
         </div>
       )}

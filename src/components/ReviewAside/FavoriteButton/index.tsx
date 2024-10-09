@@ -2,8 +2,8 @@
 
 import React from 'react';
 import styles from './FavoriteButton.module.css';
-import HeartIcon from '@Images/heartIcon.svg';
-import FullHeartIcon from '@Images/fullHeartIcon.svg';
+import HeartIcon from '@icons/heartIcon.svg';
+import FullHeartIcon from '@icons/fullHeartIcon.svg';
 
 type FavoriteButtonProps = {
   isThereProduct: boolean;

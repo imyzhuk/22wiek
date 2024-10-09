@@ -24,7 +24,7 @@ async function up() {
       password: 'password',
       phone: '+375291234567',
       role: 'User',
-      image: '/anonym.svg',
+      image: '/images/anonym.svg',
       locationId: location.id,
     },
   });

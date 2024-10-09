@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Adgames.module.css';
 import Image from 'next/image';
-import GiftImage from '@Images/gift.png';
+import GiftImage from '@images/gift.png';
 type AdgamesProps = {};
 
 export const Adgames: React.FC<AdgamesProps> = () => {

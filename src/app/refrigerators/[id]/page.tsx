@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './RefrigeratorPage.module.css';
-import { prisma } from '@Prisma/prisma-client';
+import { prisma } from '@prisma/prisma-client';
 import { ProductTabs } from '@/components';
 import {
   AdditionalInfo,

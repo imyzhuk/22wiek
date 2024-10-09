@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Pagination.module.css';
-import MiniRightArrow from '@Images/miniRightArrow.svg';
+import MiniRightArrow from '@icons/miniRightArrow.svg';
 import Link from 'next/link';
 
 type PaginationProps = {

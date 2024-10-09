@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Modal.module.css';
-import CrossExitIcon from '@Images/crossExitTransparent.svg';
-import BackArrowIcon from '@Images/backArrowIcon.svg';
+import CrossExitIcon from '@icons/crossExitTransparent.svg';
+import BackArrowIcon from '@icons/backArrowIcon.svg';
 
 type ModalProps = {
   children: React.ReactNode;

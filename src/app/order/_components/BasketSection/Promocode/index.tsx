@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Promocode.module.css';
 import { Input } from '@/components';
-import RightArrow from '@Images/rightArrow.svg';
+import RightArrow from '@icons/rightArrow.svg';
 
 type PromocodeProps = {};
 
