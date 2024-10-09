@@ -1,0 +1,21 @@
+.rating {
+  position: relative;
+  height: 20px;
+}
+
+.fullStars {
+  position: absolute;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.star {
+  fill: #e6e8eb;
+  height: 15px;
+  width: 15px;
+}
+
+.full {
+  fill: #faaa32;
+}

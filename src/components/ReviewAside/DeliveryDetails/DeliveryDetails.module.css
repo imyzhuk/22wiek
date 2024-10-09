@@ -1,0 +1,78 @@
+.container {
+  margin-top: 32px;
+}
+
+.headline {
+  display: flex;
+  gap: 6px;
+}
+
+.title {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--black-500);
+}
+
+.titleButton {
+  color: var(--blue-500);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.deliveryList {
+  margin-top: 4px;
+}
+
+.deliveryItem {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+.deliveryItem:not(:first-child) {
+  border-top: 1px solid #e6e8eb;
+}
+
+.description {
+  flex-grow: 1;
+}
+
+.itemTitle {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 700;
+}
+
+.green {
+  color: #099951;
+}
+
+.itemBody {
+  font-size: 13px;
+  line-height: 18px;
+  color: #a0a1a3;
+}
+
+.price {
+  color: #099951;
+  padding: 4px 8px;
+  background-color: #f7f8fa;
+  border-radius: 6px;
+  margin: 0 6px 0 12px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.itemLink {
+  height: 24px;
+}
+
+.arrow {
+  transform: rotate(90deg);
+}
+
+.arrow:hover {
+  color: var(--blue-500);
+}

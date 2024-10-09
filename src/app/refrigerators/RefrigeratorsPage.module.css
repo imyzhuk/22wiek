@@ -117,3 +117,8 @@
 .pagination {
   margin-bottom: 20px;
 }
+
+.popover {
+  top: -20px;
+  right: 130%;
+}

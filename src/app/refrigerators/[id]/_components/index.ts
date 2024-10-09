@@ -1,0 +1,9 @@
+export { Services } from './Services';
+export { TopBlock } from './TopBlock';
+export { AdditionalInfo } from './AdditionalInfo';
+export { Description } from './Description';
+export { Attributes } from './Attributes';
+export { Attribute } from './Attribute';
+export { TopAttribute } from './TopAttribute';
+export { ProductCardGallery } from './ProductCardGallery';
+export { Labels } from './Labels';

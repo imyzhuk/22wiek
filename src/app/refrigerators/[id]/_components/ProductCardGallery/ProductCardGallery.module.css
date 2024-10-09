@@ -1,0 +1,56 @@
+.content {
+  display: flex;
+}
+
+.miniatures {
+  width: 56px;
+  height: 328px;
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper {
+  height: 100%;
+  width: 100%;
+}
+
+.chosenSlide {
+  opacity: 0.3;
+}
+
+.miniature {
+  cursor: pointer;
+  width: 56px;
+  height: 56px;
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-300);
+  background-color: #fff;
+  cursor: pointer;
+}
+.arrowUp {
+  top: 0;
+}
+
+.arrowDown {
+  bottom: 0;
+}
+
+.previews {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 340px;
+  height: 340px;
+  cursor: pointer;
+}

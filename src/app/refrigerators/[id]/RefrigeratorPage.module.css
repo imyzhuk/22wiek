@@ -1,0 +1,40 @@
+.title {
+  margin-bottom: 20px;
+  margin-top: 16px;
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 400;
+}
+
+.additions {
+  display: flex;
+  margin-top: 26px;
+  padding-bottom: 80px;
+}
+
+.leftColumn {
+  flex-shrink: 0;
+  width: 730px;
+}
+
+.producerInfo {
+  color: #a0a1a3;
+  word-break: break-word;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.disclaimer {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #a0a1a3;
+}
+
+.disclaimerButton {
+  color: var(--blue-500);
+}
+
+.disclaimerButton:hover {
+  color: var(--blue-800);
+}

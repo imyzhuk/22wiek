@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  width: 722px;
+  height: 136px;
+  margin-bottom: 24px;
+}
+
+.ratingSummary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 164px;
+}
+
+.rating {
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
+}
+
+.reviewCountText {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.ratingStatistics {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  margin-left: 40px;
+}
+
+.addReviewButton {
+  margin-top: 12px;
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  font-weight: 700;
+  color: var(--white);
+  background-color: var(--blue-500);
+  height: 40px;
+  padding: 0 24px;
+  border-radius: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+}

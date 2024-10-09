@@ -1,6 +1,9 @@
 * {
   font-family: 'Arial', sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body:has(.overlay) {
   overflow-y: hidden;
@@ -47,6 +50,7 @@ button {
   --gray-200: #ebedf0;
   --gray-100: #f7f8fa;
   --white: #fff;
+  --blue-800: #0061a6;
   --blue-700: #0068b2;
   --blue-600: #006ebd;
   --blue-400: #d6e9f7;

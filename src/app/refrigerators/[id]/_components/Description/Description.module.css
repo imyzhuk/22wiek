@@ -1,0 +1,17 @@
+.container {
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.text:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+.container a {
+  color: var(--blue-500);
+}
+
+.container a:hover {
+  color: var(--blue-800);
+}

@@ -215,6 +215,14 @@ export const refrigeratorImages: Prisma.ImageCreateManyProductInput[] = [
   },
   {
     isMain: false,
+    url: 'https://cdn21vek.by/img/galleries/58/129/atlant_4208000_65bc97c131902.jpeg',
+  },
+  {
+    isMain: false,
+    url: 'https://cdn21vek.by/img/galleries/58/129/atlant_4208000_65bc97f1c1251.jpeg',
+  },
+  {
+    isMain: false,
     url: 'https://cdn21vek.by/img/galleries/58/129/atlant_4208000_65bc97df5f0c3.jpeg',
   },
   {

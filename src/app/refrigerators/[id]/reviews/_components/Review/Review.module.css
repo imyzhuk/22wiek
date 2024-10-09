@@ -1,0 +1,8 @@
+.moderatorWrapper {
+  display: flex;
+  margin-left: 4px;
+}
+
+.arrow {
+  color: #c8c9cc;
+}

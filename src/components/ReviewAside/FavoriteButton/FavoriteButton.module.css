@@ -1,0 +1,26 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  min-width: 48px;
+  color: var(--black-500);
+  background-color: var(--white);
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.liked {
+  color: var(--pink-500);
+}
+
+.liked:hover {
+  background-color: var(--pink-300);
+  border: 1px solid var(--pink-500);
+}
+
+.unliked:hover {
+  background-color: var(--gray-100);
+  color: var(--gray-600);
+}

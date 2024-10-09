@@ -10,20 +10,22 @@ import { ScrollContainer } from '@/components';
 type PopoverProps = {
   title: string;
   body: React.ReactNode;
+  popoverButtonClassName?: string;
+  popoverClassName?: string;
 };
 
-export const Popover: React.FC<PopoverProps> = ({ title, body }) => {
+export const Popover: React.FC<PopoverProps> = ({ title, body, popoverButtonClassName, popoverClassName }) => {
   const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false);
   return (
     <div className={styles.container}>
       <span
         onClick={() => setIsActive((prev) => !prev)}
-        className={styles.infoIcon}
+        className={`${styles.infoIcon} ${popoverButtonClassName}`}
       >
         <InfoIcon />
       </span>
       {isActive && (
-        <div ref={ref} className={styles.popover}>
+        <div ref={ref} className={`${styles.popover} ${popoverClassName}`}>
           <span
             onClick={() => {
               setIsActive((prev) => !prev);

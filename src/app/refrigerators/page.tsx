@@ -318,9 +318,9 @@ function RefrigeratorsPage() {
       <div className={styles.wrapper}>
         <Breadcrumps
           items={[
-            { name: 'Главная', link: '/' },
-            { name: 'Бытовая техника', link: '/kitchen' },
-            { name: 'Крупная техника для кухни', link: '/large_tech' },
+            { id: 0, name: 'Главная', link: '/' },
+            { id: 1, name: 'Бытовая техника', link: '/kitchen' },
+            { id: 2, name: 'Крупная техника для кухни', link: '/large_tech' },
           ]}
         />
         <div className={styles.titleWrapper}>
@@ -389,6 +389,7 @@ function RefrigeratorsPage() {
               hasBottomBorder
               popover={
                 <Popover
+                  popoverClassName={styles.popover}
                   title="Тип"
                   body={
                     <>
@@ -426,6 +427,7 @@ function RefrigeratorsPage() {
               hasBottomBorder
               popover={
                 <Popover
+                  popoverClassName={styles.popover}
                   title="Конструкция"
                   body={
                     <>

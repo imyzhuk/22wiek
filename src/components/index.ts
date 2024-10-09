@@ -22,4 +22,7 @@ export { SortFilter } from './SortFilter';
 export { Breadcrumps } from './Breadcrumps';
 export { Pagination } from './Pagination';
 export { Popover } from './Popover';
+export { Tabs } from './Tabs';
+export { ProductTabs } from './ProductTabs';
+export {ReviewAside} from "./ReviewAside"
 export * from './FilterParts';

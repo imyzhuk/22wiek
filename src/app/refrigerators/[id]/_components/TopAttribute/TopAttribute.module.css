@@ -1,0 +1,14 @@
+.attribute {
+  margin-bottom: 12px;
+}
+
+.title {
+  color: #a0a1a3;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.value {
+  font-size: 15px;
+  line-height: 22px;
+}

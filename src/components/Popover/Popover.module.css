@@ -10,8 +10,6 @@
 .popover {
   position: absolute;
   z-index: 1;
-  top: -20px;
-  right: 130%;
   background-color: #fff;
   padding: 0 0 32px 32px;
   width: 520px;

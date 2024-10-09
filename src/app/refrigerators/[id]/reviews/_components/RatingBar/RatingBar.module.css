@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.starsCount {
+  margin-right: 4px;
+}
+
+.bar {
+  background: #ebedf0;
+  width: 440px;
+  margin: 0 12px 0 8px;
+}
+
+.currentValuePart,
+.bar {
+  border-radius: 4px;
+  height: 8px;
+  max-width: 100%;
+}
+
+.currentValuePart {
+  background: #faaa32;
+  width: 0;
+}
+
+.valueCount {
+  min-width: 32px;
+}
+
+.star {
+  height: 15px;
+  width: 15px;
+  fill: #faaa32;
+}

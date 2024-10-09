@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.labels {
+  margin-top: 33px;
+}
+
+.centerBlock {
+  margin-left: 20px;
+  width: 298px;
+}
+
+.reviewAside {
+  margin-bottom: 32px;
+}
+
+.attributeLink {
+  color: var(--blue-500);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.attributeLink:hover {
+  color: var(--blue-800);
+}
