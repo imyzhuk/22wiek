@@ -13,7 +13,7 @@ const Order: React.FC<OrderProps> = () => {
 
   let tabName = searchParams.get('tab') as 'certifications' | undefined;
   return (
-    <main className={styles.main}>
+    <div className={styles.container}>
       <Tabs
         productsCount={cartProducts.length}
         certificatesCount={eCertificates.length}
@@ -24,7 +24,7 @@ const Order: React.FC<OrderProps> = () => {
       ) : (
         <BasketSection products={cartProducts} />
       )}
-    </main>
+    </div>
   );
 };
 

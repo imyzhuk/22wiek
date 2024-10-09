@@ -1,8 +1,6 @@
-.main {
-  min-width: 985px;
-  max-width: 1140px;
-  padding: 10px 2.2% 0 2.2%;
-  margin: 0 auto 80px auto;
+.container {
+  margin-top: 50px;
+  margin-bottom: 80px;
 }
 
 .wrapper {

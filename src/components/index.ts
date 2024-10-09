@@ -18,4 +18,5 @@ export { Popover } from './Popover';
 export { Tabs } from './Tabs';
 export { ProductTabs } from './ProductTabs';
 export { ReviewAside } from './ReviewAside';
+export { Main } from './Main';
 export * from './FilterParts';

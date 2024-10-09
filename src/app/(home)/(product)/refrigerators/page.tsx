@@ -314,179 +314,175 @@ function RefrigeratorsPage() {
   const pagesCount = Math.ceil(mockAllProductsCount / productsOnPage);
   const isPaginationShown = pagesCount > 1;
   return (
-    <>
-      <div className={styles.wrapper}>
-        <Breadcrumps
-          items={[
-            { id: 0, name: 'Главная', link: '/' },
-            { id: 1, name: 'Бытовая техника', link: '/kitchen' },
-            { id: 2, name: 'Крупная техника для кухни', link: '/large_tech' },
-          ]}
-        />
-        <div className={styles.titleWrapper}>
-          <h1 className={styles.title}>Холодильники</h1>
-          <Link href="/info/howto/42" className={styles.titleLink}>
-            Как выбрать холодильник
-          </Link>
-        </div>
-        <div className={styles.chips}>
-          <Chips options={chipOptions} />
-        </div>
-        <div className={styles.contentContainer}>
-          <main className={styles.main}>
-            <ul className={styles.products}>
-              {refrigerators.map((refrigerator, idx) => (
-                <div
-                  key={refrigerator.code}
-                  className={`${styles.product} ${idx === IndexOfElementWithputBottomBorder ? styles.noBottomBorder : ''}`}
-                >
-                  <ProductCard
-                    id={refrigerator.code}
-                    currentPrice={refrigerator.price}
-                    oldPrice={refrigerator.oldPrice ?? undefined}
-                    productImg={refrigerator.picture}
-                    productLink={refrigerator.url}
-                    title={`${refrigerator.name} ${refrigerator.producerName} ${refrigerator.model}`}
-                    type={`${refrigerator.name} ${refrigerator.producerName} ${refrigerator.model}`}
-                    discount={refrigerator.promoDiscount}
-                    discountType={discountValues[refrigerator.discountTypes[0]]}
-                    hasLikeButton
-                  />
-                </div>
-              ))}
-            </ul>
-            <button className={styles.moreButton}>Следующая страница</button>
-            {isPaginationShown && (
-              <Pagination
-                className={styles.pagination}
-                pagesCount={pagesCount}
-                currentPage={currentPageNumber}
-              />
-            )}
-          </main>
-          <aside>
-            <FilterItem title="Сортировка" hasBottomBorder>
-              <SortFilter options={sortOptions} />
-            </FilterItem>
-            <FilterItem title="Цена" hasBottomBorder>
-              <RangeFilter
-                unit="р."
-                fromValuePlaceholder={addSpacesToPrice('420.00')}
-                untilValuePlaceholder={addSpacesToPrice('10760.00')}
-              />
-            </FilterItem>
-            <FilterItem title="Срок доставки" hasBottomBorder>
-              <FilterRadioGroup name="delivery" options={deliveryOptions} />
-            </FilterItem>
-            <FilterItem title="Производитель" hasBottomBorder>
-              <ProducersFilter />
-            </FilterItem>
-            <FilterItem title="Спецпредложения" hasBottomBorder>
-              <FilterCheckboxGroup name="discount" options={discountTypes} />
-            </FilterItem>
-            <FilterItem
-              title="Тип"
-              hasBottomBorder
-              popover={
-                <Popover
-                  popoverClassName={styles.popover}
-                  title="Тип"
-                  body={
-                    <>
-                      <p>
-                        <strong>Холодильник без морозильника</strong>{' '}
-                        представляет собой одну холодильную камеру, где
-                        поддерживается температура для хранения продуктов в
-                        диапазоне примерно от +2 до +14°С. Такие модели чаще
-                        всего используется для дачи или в комбинации с
-                        отдельными морозильниками.
-                      </p>
-                      <p>
-                        <strong>Холодильник с морозильником</strong> —
-                        универсальный, наиболее привычный и распространенный
-                        тип, который включает в себя камеру для хранения
-                        продуктов при низкой плюсовой температуре, так и камеру
-                        для заморозки продуктов и хранения их в замороженном
-                        виде (при температуре до -24°С).
-                      </p>
-                      <p>
-                        <strong>Винный кулер</strong> — это устройство, которое
-                        охлаждает бутылку до нужной температуры для подачи её к
-                        столу, а также поддерживает необходимую температуру
-                        напитка после открытия бутылки.
-                      </p>
-                    </>
-                  }
-                />
-              }
-            >
-              <FilterCheckboxGroup name="type" options={typeOptions} />
-            </FilterItem>
-            <FilterItem
-              title="Конструкция"
-              hasBottomBorder
-              popover={
-                <Popover
-                  popoverClassName={styles.popover}
-                  title="Конструкция"
-                  body={
-                    <>
-                      <p>
-                        <strong>Однодверный холодильник</strong> – самая простая
-                        конструкция холодильника с одной дверью. Но не очень
-                        практичная в случае с комбинированными моделями, так как
-                        морозильная камера отделена от холодильника обычно лишь
-                        пластиковой дверцей. И при открывании двери в
-                        морозильнике может повышаться температура, что приводит
-                        к необходимости чаще его размораживать.
-                      </p>
-                      <p>
-                        В <strong>двухдверном варианте</strong> конструкции
-                        холодильная и морозильная камеры располагаются
-                        независимо друг от друга.
-                      </p>
-                      <p>
-                        <strong>Side-by-side</strong> – конструкция холодильника
-                        с распашными дверьми, при этом может быть двух- или
-                        четырехдверной. Варианты расположения камер с такой
-                        конструкцией: холодильное и морозильные отделения сбоку
-                        друг от друга или морозильная камера внизу. Такие
-                        холодильники отличаются большой вместимостью,
-                        практичностью, стильным внешним видом, но они достаточно
-                        габаритны и занимают много пространства на кухне.
-                      </p>
-                      <p>
-                        Конструкция типа <strong>French door</strong> или
-                        «французская дверь» представляет собой верхнюю
-                        холодильную камеру с распашными дверьми, а морозильное
-                        отделение – в виде выдвижных ящиков, число которых
-                        варьируется от одного до 4.
-                      </p>
-                    </>
-                  }
-                />
-              }
-            >
-              <FilterCheckboxGroup
-                name="construction"
-                options={constructionOptions}
-              />
-            </FilterItem>
-            <FilterItem title="Высота" hasBottomBorder>
-              <RangeFilter unit="см" />
-            </FilterItem>
-            <FilterItem
-              title="Количество отделений морозильной камеры"
-              hasBottomBorder
-            >
-              <FixedRangeFilter options={[1, 2, 3, 4, 5, 6, 7, 8]} />
-            </FilterItem>
-            <FilterResetButton />
-          </aside>
-        </div>
+    <div className={styles.wrapper}>
+      <Breadcrumps
+        items={[
+          { id: 0, name: 'Главная', link: '/' },
+          { id: 1, name: 'Бытовая техника', link: '/kitchen' },
+          { id: 2, name: 'Крупная техника для кухни', link: '/large_tech' },
+        ]}
+      />
+      <div className={styles.titleWrapper}>
+        <h1 className={styles.title}>Холодильники</h1>
+        <Link href="/info/howto/42" className={styles.titleLink}>
+          Как выбрать холодильник
+        </Link>
       </div>
-      <Footer />
-    </>
+      <div className={styles.chips}>
+        <Chips options={chipOptions} />
+      </div>
+      <div className={styles.contentContainer}>
+        <main className={styles.main}>
+          <ul className={styles.products}>
+            {refrigerators.map((refrigerator, idx) => (
+              <div
+                key={refrigerator.code}
+                className={`${styles.product} ${idx === IndexOfElementWithputBottomBorder ? styles.noBottomBorder : ''}`}
+              >
+                <ProductCard
+                  id={refrigerator.code}
+                  currentPrice={refrigerator.price}
+                  oldPrice={refrigerator.oldPrice ?? undefined}
+                  productImg={refrigerator.picture}
+                  productLink={refrigerator.url}
+                  title={`${refrigerator.name} ${refrigerator.producerName} ${refrigerator.model}`}
+                  type={`${refrigerator.name} ${refrigerator.producerName} ${refrigerator.model}`}
+                  discount={refrigerator.promoDiscount}
+                  discountType={discountValues[refrigerator.discountTypes[0]]}
+                  hasLikeButton
+                />
+              </div>
+            ))}
+          </ul>
+          <button className={styles.moreButton}>Следующая страница</button>
+          {isPaginationShown && (
+            <Pagination
+              className={styles.pagination}
+              pagesCount={pagesCount}
+              currentPage={currentPageNumber}
+            />
+          )}
+        </main>
+        <aside>
+          <FilterItem title="Сортировка" hasBottomBorder>
+            <SortFilter options={sortOptions} />
+          </FilterItem>
+          <FilterItem title="Цена" hasBottomBorder>
+            <RangeFilter
+              unit="р."
+              fromValuePlaceholder={addSpacesToPrice('420.00')}
+              untilValuePlaceholder={addSpacesToPrice('10760.00')}
+            />
+          </FilterItem>
+          <FilterItem title="Срок доставки" hasBottomBorder>
+            <FilterRadioGroup name="delivery" options={deliveryOptions} />
+          </FilterItem>
+          <FilterItem title="Производитель" hasBottomBorder>
+            <ProducersFilter />
+          </FilterItem>
+          <FilterItem title="Спецпредложения" hasBottomBorder>
+            <FilterCheckboxGroup name="discount" options={discountTypes} />
+          </FilterItem>
+          <FilterItem
+            title="Тип"
+            hasBottomBorder
+            popover={
+              <Popover
+                popoverClassName={styles.popover}
+                title="Тип"
+                body={
+                  <>
+                    <p>
+                      <strong>Холодильник без морозильника</strong> представляет
+                      собой одну холодильную камеру, где поддерживается
+                      температура для хранения продуктов в диапазоне примерно от
+                      +2 до +14°С. Такие модели чаще всего используется для дачи
+                      или в комбинации с отдельными морозильниками.
+                    </p>
+                    <p>
+                      <strong>Холодильник с морозильником</strong> —
+                      универсальный, наиболее привычный и распространенный тип,
+                      который включает в себя камеру для хранения продуктов при
+                      низкой плюсовой температуре, так и камеру для заморозки
+                      продуктов и хранения их в замороженном виде (при
+                      температуре до -24°С).
+                    </p>
+                    <p>
+                      <strong>Винный кулер</strong> — это устройство, которое
+                      охлаждает бутылку до нужной температуры для подачи её к
+                      столу, а также поддерживает необходимую температуру
+                      напитка после открытия бутылки.
+                    </p>
+                  </>
+                }
+              />
+            }
+          >
+            <FilterCheckboxGroup name="type" options={typeOptions} />
+          </FilterItem>
+          <FilterItem
+            title="Конструкция"
+            hasBottomBorder
+            popover={
+              <Popover
+                popoverClassName={styles.popover}
+                title="Конструкция"
+                body={
+                  <>
+                    <p>
+                      <strong>Однодверный холодильник</strong> – самая простая
+                      конструкция холодильника с одной дверью. Но не очень
+                      практичная в случае с комбинированными моделями, так как
+                      морозильная камера отделена от холодильника обычно лишь
+                      пластиковой дверцей. И при открывании двери в морозильнике
+                      может повышаться температура, что приводит к необходимости
+                      чаще его размораживать.
+                    </p>
+                    <p>
+                      В <strong>двухдверном варианте</strong> конструкции
+                      холодильная и морозильная камеры располагаются независимо
+                      друг от друга.
+                    </p>
+                    <p>
+                      <strong>Side-by-side</strong> – конструкция холодильника с
+                      распашными дверьми, при этом может быть двух- или
+                      четырехдверной. Варианты расположения камер с такой
+                      конструкцией: холодильное и морозильные отделения сбоку
+                      друг от друга или морозильная камера внизу. Такие
+                      холодильники отличаются большой вместимостью,
+                      практичностью, стильным внешним видом, но они достаточно
+                      габаритны и занимают много пространства на кухне.
+                    </p>
+                    <p>
+                      Конструкция типа <strong>French door</strong> или
+                      «французская дверь» представляет собой верхнюю холодильную
+                      камеру с распашными дверьми, а морозильное отделение – в
+                      виде выдвижных ящиков, число которых варьируется от одного
+                      до 4.
+                    </p>
+                  </>
+                }
+              />
+            }
+          >
+            <FilterCheckboxGroup
+              name="construction"
+              options={constructionOptions}
+            />
+          </FilterItem>
+          <FilterItem title="Высота" hasBottomBorder>
+            <RangeFilter unit="см" />
+          </FilterItem>
+          <FilterItem
+            title="Количество отделений морозильной камеры"
+            hasBottomBorder
+          >
+            <FixedRangeFilter options={[1, 2, 3, 4, 5, 6, 7, 8]} />
+          </FilterItem>
+          <FilterResetButton />
+        </aside>
+      </div>
+    </div>
   );
 }
 

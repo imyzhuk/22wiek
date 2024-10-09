@@ -50,7 +50,10 @@ export const Review: React.FC<ReviewProps> = ({
           <CommentArrow className={styles.arrow} />
           <Comment
             comment={comment}
-            user={{ name: 'Сотрудник 21vek.by', image: '/images/21vekAvatar.svg' }}
+            user={{
+              name: 'Сотрудник 21vek.by',
+              image: '/images/21vekAvatar.svg',
+            }}
           />
         </div>
       )}
