@@ -1,3 +1,5 @@
+import React from 'react';
+import styles from './PromoPage.module.css';
 import {
   CategoriesFilter,
   FilterItem,
@@ -5,11 +7,9 @@ import {
   Footer,
   ProducersFilter,
   ProductCard,
-  PromoDropdown,
   RangeFilter,
 } from '@/components';
-import React from 'react';
-import styles from './PromoPage.module.css';
+import { PromoDropdown } from './_components';
 import { addSpacesToPrice } from '@/utils/addSpacesToPrice';
 import { promoProducts } from '@/data/promo';
 

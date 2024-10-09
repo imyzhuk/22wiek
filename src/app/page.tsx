@@ -1,12 +1,12 @@
+import { Footer } from '@/components';
 import styles from './HomePage.module.css';
 import {
   AdvantagesSection,
   BannersSection,
-  Footer,
   PopularSection,
   PromoSection,
   ReviewSection,
-} from '@/components';
+} from './_components';
 
 function HomePage() {
   return (

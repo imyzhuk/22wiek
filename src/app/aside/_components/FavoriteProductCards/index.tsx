@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import styles from './FavoriteProductCards.module.css';
 import { FavoriteProduct } from '@/types/favoriteProductModel';
-import { FavoriteProductCard } from '../FavoriteProductCard';
+import { FavoriteProductCard } from '..';
 
 type FavoriteProductCardsProps = {
   products: FavoriteProduct[];

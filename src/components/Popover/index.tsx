@@ -14,7 +14,12 @@ type PopoverProps = {
   popoverClassName?: string;
 };
 
-export const Popover: React.FC<PopoverProps> = ({ title, body, popoverButtonClassName, popoverClassName }) => {
+export const Popover: React.FC<PopoverProps> = ({
+  title,
+  body,
+  popoverButtonClassName,
+  popoverClassName,
+}) => {
   const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false);
   return (
     <div className={styles.container}>

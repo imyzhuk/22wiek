@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './PromoSection.module.css';
 import { options, promoProducts } from '@/data/promo';
-import { ArrowButton, Chips, ProductCard, SectionHeader } from '@/components';
+import { ArrowButton, Chips, ProductCard } from '@/components';
+import { SectionHeader } from '..';
 
 type PromoSectionProps = {};
 

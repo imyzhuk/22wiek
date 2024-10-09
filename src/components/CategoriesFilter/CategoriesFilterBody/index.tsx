@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import styles from './CategoriesFilterBody.module.css';
-import SearchIcon from '../../../../public/searchIcon.svg';
-import CrossExitIcon from '../../../../public/crossExitIcon.svg';
+import SearchIcon from '@Images/searchIcon.svg';
+import CrossExitIcon from '@Images/crossExitIcon.svg';
 import { Categories } from '@/types/category';
 import { useQueryParams } from '@/hooks';
 import { FilterCheckbox, ScrollContainer } from '@/components';

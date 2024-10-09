@@ -1,9 +1,9 @@
 import { AdvantageType } from '@/types/advantagesModel';
-import pickupPointsPic from '../../public/pickupPoints.png';
-import deliveryPic from '../../public/delivery.png';
-import installmentPaymentPic from '../../public/installmentPayment.png';
-import bonusProgramPic from '../../public/bonusProgram.png';
-import giftCertificatesPic from '../../public/giftCertificates.png';
+import pickupPointsPic from '@Images/pickupPoints.png';
+import deliveryPic from '@Images/delivery.png';
+import installmentPaymentPic from '@Images/installmentPayment.png';
+import bonusProgramPic from '@Images/bonusProgram.png';
+import giftCertificatesPic from '@Images/giftCertificates.png';
 
 export const advantages: AdvantageType[] = [
   {

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CategoriesFilter.module.css';
 import { FilterDropdown, FilterItem } from '@/components';
-import BurgerMenuIcon from '../../../public/burgerMenu.svg';
+import BurgerMenuIcon from '@Images/burgerMenu.svg';
 import { CategoriesFilterBody } from './CategoriesFilterBody';
 import { categories } from '@/data/category';
 

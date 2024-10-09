@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './PopularSection.module.css';
-import { Chips, ProductCard, SectionHeader } from '@/components';
+import { Chips, ProductCard } from '@/components';
+import { SectionHeader } from '..';
 import { options } from '@/data/popular';
 import { popularProducts } from '@/data/products';
 import Link from 'next/link';

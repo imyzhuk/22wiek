@@ -1,18 +1,11 @@
 export { Header } from './Header';
 export { CircleButton } from './CircleButton';
-export { BannersSection } from './BannersSection';
-export { PromoSection } from './PromoSection';
 export { ProductCard } from './ProductCard';
 export { ProductCardButton } from './ProductCardButton';
 export { ChipButton } from './ChipButton';
 export { Chips } from './Chips';
-export { SectionHeader } from './SectionHeader';
-export { PopularSection } from './PopularSection';
-export { AdvantagesSection } from './AdvantagesSection';
 export { ArrowButton } from './ArrowButton';
-export { ReviewSection } from './ReviewSection';
 export { Footer } from './Footer';
-export { PromoDropdown } from './PromoDropdown';
 export { CategoriesFilter } from './CategoriesFilter';
 export { ScrollContainer } from './ScrollContainer';
 export { ProducersFilter } from './ProducersFilter';
@@ -24,5 +17,5 @@ export { Pagination } from './Pagination';
 export { Popover } from './Popover';
 export { Tabs } from './Tabs';
 export { ProductTabs } from './ProductTabs';
-export {ReviewAside} from "./ReviewAside"
+export { ReviewAside } from './ReviewAside';
 export * from './FilterParts';

@@ -16,7 +16,7 @@ export const ReviewAside: React.FC<ReviewAsideProps> = ({
   reviewsCount,
   averageRating,
   price,
-  className
+  className,
 }) => {
   let { format } = new Intl.NumberFormat('ru', {
     minimumFractionDigits: 2,

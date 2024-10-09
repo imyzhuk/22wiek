@@ -6,11 +6,10 @@ import {
   FilterCheckbox,
   FilterCheckboxGroup,
   FilterDropdown,
-  FilterItem,
   ScrollContainer,
 } from '@/components';
-import SearchIcon from '../../../public/searchIcon.svg';
-import CrossExitIcon from '../../../public/crossExitTransparent.svg';
+import SearchIcon from '@Images/searchIcon.svg';
+import CrossExitIcon from '@Images/crossExitTransparent.svg';
 
 const options = [
   { name: 'A1', value: 'a1' },

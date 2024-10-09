@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './Contacts.module.css';
-import A1Icon from '../../../../public/a1.svg';
-import LifeMobileIcon from '../../../../public/life.svg';
-import HomePhoneIcon from '../../../../public/home.svg';
-import ViberIcon from '../../../../public/viber.svg';
-import TelegramIcon from '../../../../public/telegram.svg';
-import EmailIcon from '../../../../public/email.svg';
-import MessageIcon from '../../../../public/message.svg';
+import A1Icon from '@Images/a1.svg';
+import LifeMobileIcon from '@Images/life.svg';
+import HomePhoneIcon from '@Images/home.svg';
+import ViberIcon from '@Images/viber.svg';
+import TelegramIcon from '@Images/telegram.svg';
+import EmailIcon from '@Images/email.svg';
+import MessageIcon from '@Images/message.svg';
 
 type ContactsProps = {};
 

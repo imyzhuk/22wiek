@@ -2,11 +2,7 @@
 
 import React from 'react';
 import styles from './Order.module.css';
-import {
-  BasketSection,
-  CertificationSection,
-  Tabs,
-} from '@/components/OrderPageParts';
+import { BasketSection, CertificationSection, Tabs } from './_components';
 import { cartProducts, eCertificates } from '@/data/cart';
 import { useSearchParams } from 'next/navigation';
 

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import styles from './Aside.module.css';
 import { favoriteProducts } from '@/data/favoriteProducts';
-import { FavoriteProductCards } from '@/components/AsidePageParts';
+import { FavoriteProductCards } from './_components';
 import { Footer } from '@/components';
 
 function Aside() {

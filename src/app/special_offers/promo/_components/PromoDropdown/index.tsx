@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './PromoDropdown.module.css';
-import CheckmarkIcon from '../../../public/checkmark.svg';
-import { FilterDropdown, FilterDropdownRadioButton } from '..';
+import { FilterDropdown, FilterDropdownRadioButton } from '@/components';
 
 type PromoDropdownProps = {};
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Networks.module.css';
-import VKIcon from '../../../../public/vk.svg';
-import FacebookIcon from '../../../../public/facebook.svg';
-import InstagramIcon from '../../../../public/instagram.svg';
-import YoutubeIcon from '../../../../public/youtube.svg';
-import DzenIcon from '../../../../public/dzen.svg';
+import VKIcon from '@Images/vk.svg';
+import FacebookIcon from '@Images/facebook.svg';
+import InstagramIcon from '@Images/instagram.svg';
+import YoutubeIcon from '@Images/youtube.svg';
+import DzenIcon from '@Images/dzen.svg';
 
 type NetworksProps = {};
 

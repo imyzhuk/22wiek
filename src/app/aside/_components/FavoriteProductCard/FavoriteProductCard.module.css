@@ -11,7 +11,7 @@
 .discountLabel {
   background-position: -61px -96px;
   position: absolute;
-  background-image: url('../../../../public/labels.png');
+  background-image: url('../../../../../public/labels.png');
   background-repeat: no-repeat;
   width: 28px;
   height: 28px;
@@ -24,7 +24,7 @@
 .presentLabel {
   background-position: -118px -96px;
   position: absolute;
-  background-image: url('../../../../public/labels.png');
+  background-image: url('../../../../../public/labels.png');
   background-repeat: no-repeat;
   width: 28px;
   height: 28px;
@@ -38,7 +38,7 @@
 .superpriceLabel {
   background-position: -89px -96px;
   position: absolute;
-  background-image: url('../../../../public/labels.png');
+  background-image: url('../../../../../public/labels.png');
   background-repeat: no-repeat;
   width: 28px;
   height: 28px;
@@ -97,7 +97,7 @@
   height: 18px;
   background-repeat: repeat-x;
   background-position: 0 0;
-  background-image: url('../../../../public/rating.png');
+  background-image: url('../../../../../public/rating.png');
 }
 
 .rating {
@@ -105,7 +105,7 @@
   height: 18px;
   background-position: 0 -20px;
   background-repeat: repeat-x;
-  background-image: url('../../../../public/rating.png');
+  background-image: url('../../../../../public/rating.png');
 }
 
 .priceWrapper {
