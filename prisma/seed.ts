@@ -1,10 +1,10 @@
-import { PrismaClient } from '@prisma/client';
 import {
   additionalServicesCategoriesNames,
   locations,
   initialReview,
   refrigerator,
   refrigeratorImages,
+  banners,
 } from './constants';
 import { prisma } from './prisma-client';
 
@@ -32,14 +32,14 @@ async function up() {
   const category = await prisma.category.create({
     data: {
       name: 'Бытовая техника',
-      link: "/kitchen",
+      link: '/kitchen',
     },
   });
 
   const subcategory = await prisma.category.create({
     data: {
       name: 'Крупная техника для кухни',
-      link: "/large_tech",
+      link: '/large_tech',
       parentId: category.id,
     },
   });
@@ -47,7 +47,7 @@ async function up() {
   const subSubcategory = await prisma.category.create({
     data: {
       name: 'Холодильники',
-      link: "/refrigerators",
+      link: '/refrigerators',
       parentId: subcategory.id,
     },
   });
@@ -146,11 +146,15 @@ async function up() {
         create: [
           {
             userId: user.id,
-            ...initialReview
-          }
-        ]
-      }
+            ...initialReview,
+          },
+        ],
+      },
     },
+  });
+
+  await prisma.banner.createMany({
+    data: banners,
   });
 }
 
@@ -166,6 +170,7 @@ async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "FavoriteItem" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "ViewedItem" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "WaitedItem" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Banner" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {

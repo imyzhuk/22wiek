@@ -1,16 +1,18 @@
 'use client';
 import React from 'react';
 import styles from './BannerCarousel.module.css';
-import { largeBanners } from '@/data/banners';
 import { ArrowButton } from '@/components';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Banner } from '@prisma/client';
 
-type BannerCarouselProps = {};
+type BannerCarouselProps = {
+  banners: Banner[]
+};
 
-export const BannerCarousel: React.FC<BannerCarouselProps> = () => {
+export const BannerCarousel: React.FC<BannerCarouselProps> = ({banners}) => {
   return (
     <div className={styles.bannersContainer}>
       <Swiper
@@ -31,21 +33,21 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = () => {
           delay: 6000,
         }}
       >
-        {largeBanners.map((banner) => (
+        {banners.map((banner) => (
           <SwiperSlide className={styles.banner} key={banner.id}>
-            <Link href="/special_offers/promo">
+            <Link href={banner.link}>
               <Image
-                src={banner.link}
+                src={banner.image}
                 width={1090}
                 height={360}
-                alt={banner.altText}
+                alt={banner.title}
               />
             </Link>
           </SwiperSlide>
         ))}
       </Swiper>
       <div className={styles.bullets}>
-        {largeBanners.map((el, idx) => (
+        {banners.map((el, idx) => (
           <span key={idx} className={styles.bullet}></span>
         ))}
       </div>

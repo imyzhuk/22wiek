@@ -196,7 +196,7 @@ export const refrigerator: Prisma.RefrigeratorCreateNestedOneWithoutProductInput
           },
           {
             name: 'Другая продукция бренда ATLANT',
-            link: 'https://www.21vek.by/info/brands/atlant',
+            link: '/info/brands/atlant',
             type: 'Link',
           },
         ],
@@ -229,4 +229,117 @@ export const refrigeratorImages: Prisma.ImageCreateManyProductInput[] = [
     isMain: false,
     url: 'https://cdn21vek.by/img/galleries/58/129/atlant_4208000_65bc97c9b6e99.jpeg',
   },
+];
+
+const largeBanners: Prisma.BannerCreateManyInput[] = [
+  {
+    image: '/images/superdiscounts.jpg',
+    link: '/special_offers/superdiscounts',
+    title: 'Распрода 10%',
+    size: 'Large',
+  },
+  {
+    image: '/images/couch.jpg',
+    link: '/special_offers/couches',
+    title: 'Мягкая мебель',
+    size: 'Large',
+  },
+  {
+    image: '/images/adgameBanner.jpg',
+    link: '/company/news/8944',
+    title: 'РИ 5',
+    size: 'Large',
+  },
+  {
+    image: '/images/KVI.jpg',
+    link: '/special_offers/sale_goods',
+    title: 'KVI 5 неделя ',
+    size: 'Large',
+  },
+  {
+    image: '/images/wow_sale.jpg',
+    link: '/special_offers/wow_sale',
+    title: 'Щедрые цены ',
+    size: 'Large',
+  },
+  {
+    image: '/images/tv_lg.jpg',
+    link: '/tv/55ur78009ll_lg',
+    title: 'Телевизор LG',
+    size: 'Large',
+  },
+  {
+    image: '/images/mothersday.jpg',
+    link: '/special_offers/mothersday',
+    title: 'День матери ',
+    size: 'Large',
+  },
+  {
+    image: '/images/installment21.jpg',
+    link: '/special_offers/installment21',
+    title: 'Дольки ',
+    size: 'Large',
+  },
+  {
+    image: '/images/construction_mixtures.jpg',
+    link: '/special_offers/construction_mixtures',
+    title: 'Строй. смеси',
+    size: 'Large',
+  },
+  {
+    image: '/images/mattresses.jpg',
+    link: '/mattresses/?order%5Bpopularity%5D=desc&filter%5Bdiscount_type%5D%5B0%5D=present&filter%5Bsa%5D=&filter%5B122428%5D%5B0%5D=1134268',
+    title: 'Матрасы ',
+    size: 'Large',
+  },
+];
+
+const bottomBanners: Prisma.BannerCreateManyInput[] = [
+  {
+    image: '/images/kitfort.png',
+    link: '/special_offers/kitfort',
+    title: 'Kitfort',
+    description: 'фабрика новинок',
+    size: 'Small',
+  },
+  {
+    image: '/images/xiaomi.png',
+    link: '/special_offers/xiaomi21',
+    title: 'Xiaomi',
+    description: 'топ продаж',
+    size: 'Small',
+  },
+  {
+    image: '/images/lg.png',
+    link: '/special_offers/promo?discountTypes=superprice%2Cdiscount&producers=3',
+    title: 'LG',
+    description: 'лучшие предложения',
+    size: 'Small',
+  },
+  {
+    image: '/images/belgoods.png',
+    link: '/special_offers/belgoods',
+    title: 'Кредит «На родныя тавары» ',
+    description: 'ставка 4%',
+    size: 'Small',
+  },
+  {
+    image: '/images/mio_tesoro.jpg',
+    link: '/special_offers/promo?categories=7314&producers=12563',
+    title: 'Mio Tesoro ',
+    description: 'домашний текстиль',
+    size: 'Small',
+  },
+  {
+    image: '/images/calmer.jpg',
+    link: '/special_offers/promo?producers=57245',
+    title: 'Calmer ',
+    description: 'массажеры',
+    size: 'Small',
+  },
+];
+
+export const banners: Prisma.BannerCreateManyInput[] = [
+  ...largeBanners,
+  ...bottomBanners,
 ];
