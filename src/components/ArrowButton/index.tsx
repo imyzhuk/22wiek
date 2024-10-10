@@ -5,6 +5,7 @@ type ArrowButtonProps = {
   direction: 'left' | 'right';
   isActive: boolean;
   onClick?: any;
+  className?: string;
 };
 
 // Before put ArrowButton component in a parent component
@@ -13,10 +14,11 @@ export const ArrowButton: React.FC<ArrowButtonProps> = ({
   direction,
   isActive,
   onClick,
+  className,
 }) => {
   return (
     <button
-      className={`${styles.button} ${isActive ? styles.active : ''} ${direction == 'left' ? styles.left : styles.right} `}
+      className={`${styles.button} ${className || ''} ${isActive ? styles.active : ''} ${direction == 'left' ? styles.left : styles.right} `}
       disabled={!isActive}
       onClick={onClick}
     >

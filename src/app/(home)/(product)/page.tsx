@@ -6,6 +6,9 @@ import {
   PromoSection,
   ReviewSection,
 } from './_components';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 function HomePage() {
   return (
