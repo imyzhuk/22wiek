@@ -68,7 +68,7 @@ async function up() {
       link: '/refrigerators/1',
       preview:
         'https://cdn21vek.by/img/galleries/58/129/preview/atlant_4208000_65bc97b9ca11d.jpeg',
-      discountTypes: ['Sale'],
+      discountTypes: ['Discount', 'Sale'],
       isInStock: true,
       model: 'ХМ 4208-000',
       price: 794.7,

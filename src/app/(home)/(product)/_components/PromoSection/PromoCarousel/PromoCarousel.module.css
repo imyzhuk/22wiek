@@ -1,0 +1,35 @@
+.body {
+  position: relative;
+}
+
+.products {
+  display: flex;
+  width: 100%;
+}
+
+.product {
+  padding-top: 20px;
+  height: auto;
+}
+
+.product:not(:nth-child(5n)) {
+  padding-right: 20px;
+  border-right: 1px solid #e6e8eb;
+}
+
+.product:not(:nth-child(5n + 1)) {
+  padding-left: 21px;
+}
+
+.arrowLeft {
+}
+.arrowRight {
+}
+
+.disabledButton:disabled {
+  color: var(--button-disabled-color);
+  background-color: var(--white);
+  border: 1px solid var(--gray-200);
+  pointer-events: none;
+  cursor: default;
+}
