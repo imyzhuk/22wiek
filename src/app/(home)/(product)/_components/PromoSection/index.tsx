@@ -1,8 +1,11 @@
+'use client';
 import React from 'react';
 import styles from './PromoSection.module.css';
 import { options, promoProducts } from '@/data/promo';
 import { ArrowButton, Chips, ProductCard } from '@/components';
 import { SectionHeader } from '..';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 
 type PromoSectionProps = {};
 
@@ -17,10 +20,23 @@ export const PromoSection: React.FC<PromoSectionProps> = () => {
         <Chips options={options} />
       </SectionHeader>
       <div className={styles.body}>
-        <ArrowButton direction="left" isActive={false} />
-        <ul className={styles.products}>
+        <ArrowButton
+          direction="left"
+          className={`${styles.arrowLeft} ${styles.disabledButton}`}
+        />
+        <Swiper
+          className={styles.products}
+          slidesPerView={5}
+          slidesPerGroup={5}
+          modules={[Navigation]}
+          navigation={{
+            nextEl: `.${styles.arrowRight}`,
+            prevEl: `.${styles.arrowLeft}`,
+            disabledClass: styles.disabledButton,
+          }}
+        >
           {promoProducts.map((promoCard) => (
-            <div key={promoCard.id} className={styles.product}>
+            <SwiperSlide key={promoCard.id} className={styles.product}>
               <ProductCard
                 id={promoCard.id}
                 currentPrice={promoCard.currentPrice}
@@ -32,10 +48,13 @@ export const PromoSection: React.FC<PromoSectionProps> = () => {
                 discountType={promoCard.discountType}
                 hasLikeButton
               />
-            </div>
+            </SwiperSlide>
           ))}
-        </ul>
-        <ArrowButton direction="right" isActive />
+        </Swiper>
+        <ArrowButton
+          direction="right"
+          className={`${styles.arrowRight} ${styles.disabledButton}`}
+        />
       </div>
     </section>
   );

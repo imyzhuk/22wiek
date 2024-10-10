@@ -3,7 +3,7 @@ import styles from './ArrowButton.module.css';
 
 type ArrowButtonProps = {
   direction: 'left' | 'right';
-  isActive: boolean;
+  isActive?: boolean;
   onClick?: any;
   className?: string;
 };
@@ -12,14 +12,12 @@ type ArrowButtonProps = {
 // you must point that the parent element has position: relative;
 export const ArrowButton: React.FC<ArrowButtonProps> = ({
   direction,
-  isActive,
   onClick,
   className,
 }) => {
   return (
     <button
-      className={`${styles.button} ${className || ''} ${isActive ? styles.active : ''} ${direction == 'left' ? styles.left : styles.right} `}
-      disabled={!isActive}
+      className={`${styles.button} ${className || ''} ${direction == 'left' ? styles.left : styles.right} `}
       onClick={onClick}
     >
       <svg

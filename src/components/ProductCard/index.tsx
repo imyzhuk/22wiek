@@ -22,7 +22,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   hasLikeButton,
 }) => {
   return (
-    <li className={styles.product}>
+    <div className={styles.product}>
       {hasLikeButton && <LikeButton />}
       <div className={styles.wrapper}>
         <Link href={productLink} className={styles.imgLink}>
@@ -83,6 +83,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       </div>
       <ProductCardButton id={id} />
-    </li>
+    </div>
   );
 };

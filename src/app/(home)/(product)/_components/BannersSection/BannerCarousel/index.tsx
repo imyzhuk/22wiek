@@ -9,10 +9,10 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Banner } from '@prisma/client';
 
 type BannerCarouselProps = {
-  banners: Banner[]
+  banners: Banner[];
 };
 
-export const BannerCarousel: React.FC<BannerCarouselProps> = ({banners}) => {
+export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
   return (
     <div className={styles.bannersContainer}>
       <Swiper
@@ -51,8 +51,8 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({banners}) => {
           <span key={idx} className={styles.bullet}></span>
         ))}
       </div>
-      <ArrowButton direction="left" isActive className={styles.arrowLeft} />
-      <ArrowButton direction="right" isActive className={styles.arrowRight} />
+      <ArrowButton direction="left" className={styles.arrowLeft} />
+      <ArrowButton direction="right" className={styles.arrowRight} />
     </div>
   );
 };
