@@ -3,7 +3,7 @@ import { prisma } from '@prisma/prisma-client';
 import { HttpStatusCodes } from '../../statusCodes';
 import { ExpandedDiscountType } from '@/types/product';
 
-const discountTypes: (ExpandedDiscountType)[] = [
+const discountTypes: ExpandedDiscountType[] = [
   'All',
   'Discount',
   'Superprice',
@@ -15,7 +15,7 @@ export async function GET(request: Request) {
   const limit = searchParams.get('limit')
     ? Number(searchParams.get('limit'))
     : 10;
-  let where;
+  let discountTypesCondition;
 
   if (!discountTypes.includes(type as ExpandedDiscountType)) {
     return new Response('Invalid params', {
@@ -25,7 +25,7 @@ export async function GET(request: Request) {
 
   switch (type) {
     case 'All':
-      where = {
+      discountTypesCondition = {
         discountTypes: {
           isEmpty: false,
         },
@@ -34,14 +34,27 @@ export async function GET(request: Request) {
     case 'Discount':
     case 'Superprice':
     case 'Sale':
-      where = { discountTypes: { has: type } };
+      discountTypesCondition = { discountTypes: { has: type } };
       break;
   }
 
   const promoProducts = await prisma.product.findMany({
-    where: where,
-    include: {
-      producer: true,
+    where: {
+      NOT: {
+        isInStock: false,
+      },
+      ...discountTypesCondition,
+    },
+    select: {
+      id: true,
+      name: true,
+      discount: true,
+      discountTypes: true,
+      price: true,
+      oldPrice: true,
+      preview: true,
+      link: true,
+      isInStock: true,
     },
     take: limit,
   });

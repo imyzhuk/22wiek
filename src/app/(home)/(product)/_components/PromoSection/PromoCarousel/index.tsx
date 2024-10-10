@@ -1,11 +1,11 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './PromoCarousel.module.css';
-import { ArrowButton, ChipButton, Chips, ProductCard } from '@/components';
+import { ArrowButton, ChipButton, ProductCard } from '@/components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { SectionHeader } from '../..';
-import { ExpandedDiscountType, ProductWithProducer } from '@/types/product';
+import { ExpandedDiscountType, IProductCard } from '@/types/product';
 import { getDiscountTypeName } from '@/utils/formatDiscountType';
 import productAPI from '@/services/productAPI';
 import { Loader } from './Loader';
@@ -26,7 +26,7 @@ export const options: { name: string; value: ExpandedDiscountType }[] = [
 ];
 
 type PromoCarouselProps = {
-  products: ProductWithProducer[];
+  products: Omit<IProductCard, 'isInStock'>[];
 };
 
 export const PromoCarousel: React.FC<PromoCarouselProps> = (props) => {
@@ -45,7 +45,7 @@ export const PromoCarousel: React.FC<PromoCarouselProps> = (props) => {
     const { data } = await productAPI.getPromoProducts(type, 20);
     setProducts(data);
     setActiveOption(type);
-    setIsLoading(false)
+    setIsLoading(false);
   };
   return (
     <>
@@ -87,8 +87,6 @@ export const PromoCarousel: React.FC<PromoCarouselProps> = (props) => {
             ({
               id,
               name,
-              model,
-              producer,
               discount,
               discountTypes,
               price,
@@ -103,7 +101,7 @@ export const PromoCarousel: React.FC<PromoCarouselProps> = (props) => {
                   oldPrice={oldPrice ? `${format(oldPrice)}  р.` : ''}
                   productImg={preview}
                   productLink={link}
-                  title={`${name} ${model} ${producer?.name ?? ''}`}
+                  title={name}
                   type={name}
                   discount={discount}
                   discountType={getDiscountTypeName(discountTypes)}

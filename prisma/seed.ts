@@ -64,13 +64,12 @@ async function up() {
 
   const product = await prisma.product.create({
     data: {
-      name: 'Холодильник с морозильником',
+      name: 'Холодильник с морозильником ХМ 4208-000 Atlant',
       link: '/refrigerators/1',
       preview:
         'https://cdn21vek.by/img/galleries/58/129/preview/atlant_4208000_65bc97b9ca11d.jpeg',
       discountTypes: ['Discount', 'Sale'],
       isInStock: true,
-      model: 'ХМ 4208-000',
       price: 794.7,
       oldPrice: 883.0,
       discount: 10,

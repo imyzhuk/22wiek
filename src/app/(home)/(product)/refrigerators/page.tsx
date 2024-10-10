@@ -345,8 +345,8 @@ function RefrigeratorsPage() {
                   oldPrice={refrigerator.oldPrice ?? undefined}
                   productImg={refrigerator.picture}
                   productLink={refrigerator.url}
-                  title={`${refrigerator.name} ${refrigerator.producerName} ${refrigerator.model}`}
-                  type={`${refrigerator.name} ${refrigerator.producerName} ${refrigerator.model}`}
+                  title={refrigerator.name}
+                  type={refrigerator.name}
                   discount={refrigerator.promoDiscount}
                   discountType={discountValues[refrigerator.discountTypes[0]]}
                   hasLikeButton

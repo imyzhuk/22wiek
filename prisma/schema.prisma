@@ -84,7 +84,6 @@ model Product {
   preview                 String
   discountTypes           DiscountType[]
   isInStock               Boolean
-  model                   String
   price                   Decimal
   oldPrice                Decimal        @default(0)
   discount                Int

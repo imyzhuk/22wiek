@@ -1,13 +1,15 @@
-import { DiscountType, Producer, Product } from '@prisma/client';
+import { DiscountType } from '@prisma/client';
 
-export type ProductWithProducer = Omit<
-  Product,
-  'price' | 'oldPrice' | 'rating'
-> & {
-  producer: Producer | null;
+export type IProductCard = {
+  id: number;
+  name: string;
+  link: string;
+  preview: string;
+  discount: number;
+  discountTypes: DiscountType[];
   price: number;
   oldPrice: number;
-  rating: number;
+  isInStock: boolean;
 };
 
 export type ExpandedDiscountType = DiscountType | 'All';

@@ -4,6 +4,7 @@ import { prisma } from '@prisma/prisma-client';
 import { redirect } from 'next/navigation';
 import { ProductTabs, ReviewAside } from '@/components';
 import { Review, Summary } from './_components';
+import { toLowerCaseFirstLetter } from '@/utils/string';
 
 type RefrigeratorReviewsPageProps = {
   params: {
@@ -19,8 +20,6 @@ const RefrigeratorReviewsPage: React.FC<RefrigeratorReviewsPageProps> = async ({
     select: {
       name: true,
       price: true,
-      producer: true,
-      model: true,
       link: true,
       reviewsCount: true,
       fiveStarsCommentsCount: true,
@@ -65,8 +64,7 @@ const RefrigeratorReviewsPage: React.FC<RefrigeratorReviewsPageProps> = async ({
   return (
     <>
       <h1 className={styles.title}>
-        Отзывы на {product.name.toLowerCase()} {product.producer?.name}{' '}
-        {product.model}
+        Отзывы на {toLowerCaseFirstLetter(product.name)}
       </h1>
       <ProductTabs
         tabs={[

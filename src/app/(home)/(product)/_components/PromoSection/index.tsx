@@ -8,12 +8,22 @@ type PromoSectionProps = {};
 export const PromoSection: React.FC<PromoSectionProps> = async () => {
   const promoProducts = await prisma.product.findMany({
     where: {
+      NOT: {
+        isInStock: false,
+      },
       discountTypes: {
         isEmpty: false,
       },
     },
-    include: {
-      producer: true,
+    select: {
+      id: true,
+      name: true,
+      discount: true,
+      discountTypes: true,
+      price: true,
+      oldPrice: true,
+      preview: true,
+      link: true,
     },
     take: 20,
   });
@@ -24,7 +34,6 @@ export const PromoSection: React.FC<PromoSectionProps> = async () => {
           ...product,
           price: Number(product.price),
           oldPrice: Number(product.oldPrice),
-          rating: Number(product.rating),
         }))}
       />
     </section>

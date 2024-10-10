@@ -28,7 +28,6 @@ const RefrigeratorPage: React.FC<RefrigeratorPageProps> = async ({
     include: {
       additionalServices: true,
       categories: true,
-      producer: true,
       images: true,
       refrigerator: {
         include: {
@@ -46,7 +45,6 @@ const RefrigeratorPage: React.FC<RefrigeratorPageProps> = async ({
     additionalServices,
     refrigerator: { additionalLinks, ...refrigerator },
     images,
-    producer,
     ...product
   } = data;
   const averageRating =
@@ -68,9 +66,7 @@ const RefrigeratorPage: React.FC<RefrigeratorPageProps> = async ({
 
   return (
     <>
-      <h1 className={styles.title}>
-        {product.name} {producer?.name} {product.model}
-      </h1>
+      <h1 className={styles.title}>{product.name}</h1>
       <ProductTabs
         tabs={[
           { id: 0, name: 'Основное', link: product.link },
