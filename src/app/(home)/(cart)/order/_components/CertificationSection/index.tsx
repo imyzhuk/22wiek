@@ -4,7 +4,7 @@ import { EmptySection } from './EmptySection';
 import { Certificate } from '@/types/cartModel';
 import { TotalPrice } from './TotalPrice';
 import Link from 'next/link';
-import { transformNumToPrice } from '@/utils/transformNumToPrice';
+import { formatPrice } from '@/utils';
 import BinIcon from '@icons/binIcon.svg';
 import HeartIcon from '@icons/heartIcon.svg';
 import { Counter } from './Counter';
@@ -24,7 +24,7 @@ export const CertificationSection: React.FC<CertificationSectionProps> = ({
     <div className={styles.section}>
       <ul className={styles.productsContainer}>
         {certificates.map((certificate) => {
-          const [intPricePart, decimalPricePart] = transformNumToPrice(
+          const [intPricePart, decimalPricePart] = formatPrice(
             certificate.prices.price,
           ).split(',');
           return (

@@ -10,7 +10,6 @@ import {
   RangeFilter,
 } from '@/components';
 import { PromoDropdown } from './_components';
-import { addSpacesToPrice } from '@/utils/addSpacesToPrice';
 import { promoProducts } from '@/data/promo';
 
 const discounts = [
@@ -28,6 +27,9 @@ function PromoPage() {
   const elementsInRow = 4;
   const IndexOfElementWithputBottomBorder =
     Math.floor((promoProducts.length - 1) / elementsInRow) * elementsInRow;
+  const { format } = new Intl.NumberFormat('ru', {
+    minimumFractionDigits: 2,
+  });
   return (
     <div className={styles.wrapper}>
       <div>
@@ -62,8 +64,8 @@ function PromoPage() {
         <FilterItem title="Цена" hasBottomBorder>
           <RangeFilter
             unit="р."
-            fromValuePlaceholder="0.24"
-            untilValuePlaceholder={addSpacesToPrice('37500.00')}
+            fromValuePlaceholder={format(0.24)}
+            untilValuePlaceholder={format(37500)}
           />
         </FilterItem>
         <FilterItem title="Производители">

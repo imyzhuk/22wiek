@@ -4,7 +4,7 @@ import { prisma } from '@prisma/prisma-client';
 import { redirect } from 'next/navigation';
 import { ProductTabs, ReviewAside } from '@/components';
 import { Review, Summary } from './_components';
-import { toLowerCaseFirstLetter } from '@/utils/string';
+import { toLowerCaseFirstLetter } from '@/utils';
 
 type RefrigeratorReviewsPageProps = {
   params: {

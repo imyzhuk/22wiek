@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './TotalPrice.module.css';
-import { transformNumToPrice } from '@/utils/transformNumToPrice';
+import { formatPrice } from '@/utils';
 import { Bonuses } from './Bonuses';
 
 type TotalPriceProps = {};
@@ -14,13 +14,13 @@ const mockData = {
   bonuses: 3,
 };
 export const TotalPrice: React.FC<TotalPriceProps> = () => {
-  const [intTotalPricePart, decimalTotalPricePart] = transformNumToPrice(
+  const [intTotalPricePart, decimalTotalPricePart] = formatPrice(
     mockData.totalPrice,
   ).split(',');
-  const [intFinishedPricePart, decimalFinishedPricePart] = transformNumToPrice(
+  const [intFinishedPricePart, decimalFinishedPricePart] = formatPrice(
     mockData.finishedPrice,
   ).split(',');
-  const [intDiscountPart, decimalDiscountPart] = transformNumToPrice(
+  const [intDiscountPart, decimalDiscountPart] = formatPrice(
     mockData.discount,
   ).split(',');
   return (

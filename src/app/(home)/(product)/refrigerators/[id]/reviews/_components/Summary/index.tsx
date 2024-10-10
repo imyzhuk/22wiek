@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Summary.module.css';
-import { formatReviewCountString } from '@/utils/formatReviewCountString';
+import { formatReviewCountString } from '@/utils';
 import { Rating, RatingBar } from '..';
 
 type SummaryProps = {

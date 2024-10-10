@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './FavoriteProductCard.module.css';
 import { FavoriteProduct } from '@/types/favoriteProductModel';
 import Link from 'next/link';
-import Image from 'next/image';
-import { addDotsToNumber } from '@/utils/addDotsToNumber';
 
 type FavoriteProductCardProps = FavoriteProduct;
 
@@ -18,6 +16,8 @@ export const FavoriteProductCard: React.FC<FavoriteProductCardProps> = ({
   rating,
   packPrice,
 }) => {
+  const { format: formatCode } = new Intl.NumberFormat('de');
+
   return (
     <li className={styles.card}>
       <Link href={link} className={styles.imgLink}>
@@ -32,7 +32,7 @@ export const FavoriteProductCard: React.FC<FavoriteProductCardProps> = ({
         <Link href={link} className={styles.title}>
           {name}
         </Link>
-        <div className={styles.code}>код {addDotsToNumber(code)}</div>
+        <div className={styles.code}>код {formatCode(code)}</div>
         <div className={styles.ratingWrapper}>
           <span
             className={styles.rating}

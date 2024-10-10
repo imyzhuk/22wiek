@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Bonuses.module.css';
 import WalletIcon from '@icons/walletIcon.svg';
-import { transformNumToPrice } from '@/utils/transformNumToPrice';
+import { formatPrice } from '@/utils';
 
 type BonusesProps = {
   bonuses: number;
@@ -13,7 +13,7 @@ export const Bonuses: React.FC<BonusesProps> = ({ bonuses }) => {
       <WalletIcon />
       <div>
         <h3 className={styles.heading}>
-          от {transformNumToPrice(bonuses)} бонусных баллов
+          от {formatPrice(bonuses)} бонусных баллов
         </h3>
         <span className={styles.description}>на следующие покупки</span>
       </div>

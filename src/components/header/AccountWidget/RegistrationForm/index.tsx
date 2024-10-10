@@ -3,7 +3,7 @@ import styles from './RegistrationForm.module.css';
 import { Input } from '@/components';
 import ErrorInfoIcon from '@icons/errorInfo.svg';
 import { PhoneInput } from './PhoneInput';
-import { isStringMatched } from '@/utils/isStringMatched';
+import { isStringMatched } from '@/utils';
 
 type RegistrationFormProps = {};
 

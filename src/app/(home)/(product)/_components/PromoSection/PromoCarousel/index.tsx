@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { SectionHeader } from '../..';
 import { ExpandedDiscountType, IProductCard } from '@/types/product';
-import { getDiscountTypeName } from '@/utils/formatDiscountType';
+import { getDiscountTypeName } from '@/utils';
 import productAPI from '@/services/productAPI';
 import { Loader } from './Loader';
 

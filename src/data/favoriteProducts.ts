@@ -8,7 +8,7 @@ export const favoriteProducts: FavoriteProduct[] = [
     discount: 0,
     status: 'in',
     packSize: 1,
-    code: '5.815.120',
+    code: 5815120,
     name: '\u041c\u0430\u0442\u0440\u0430\u0441 EOS \u0418\u0434\u0435\u0430\u043b 1\u0430/2 160x200 (\u043f\u0440\u0435\u043c\u0438\u0443\u043c Aloe Vera)',
     alias: '12160x200_eos_09',
     image:
@@ -45,7 +45,7 @@ export const favoriteProducts: FavoriteProduct[] = [
     discount: 0,
     status: 'in',
     packSize: 1,
-    code: '8.215.427',
+    code: 8215427,
     name: '\u041c\u0430\u0442\u0440\u0430\u0441 AMI \u0418\u043c\u043f\u0435\u0440\u0438\u0430\u043b 160x200',
     alias: '160x200_ami_02',
     image:
@@ -82,7 +82,7 @@ export const favoriteProducts: FavoriteProduct[] = [
     discount: 24,
     status: 'in',
     packSize: 1,
-    code: '6.272.377',
+    code: 6272377,
     name: '\u0422\u0443\u0430\u043b\u0435\u0442\u043d\u0430\u044f \u0431\u0443\u043c\u0430\u0433\u0430 Zewa Deluxe \u0431\u0435\u0437 \u0430\u0440\u043e\u043c\u0430\u0442\u0430 3-c\u043b\u043e\u0439\u043d\u0430\u044f (1x12\u0440\u0443\u043b)',
     alias: 'deluxe3c_zewa',
     image:
@@ -119,7 +119,7 @@ export const favoriteProducts: FavoriteProduct[] = [
     discount: 0,
     status: 'in',
     packSize: 1,
-    code: '6.414.537',
+    code: 6414537,
     name: '\u0422\u0443\u0430\u043b\u0435\u0442\u043d\u0430\u044f \u0431\u0443\u043c\u0430\u0433\u0430 Veiro Classic 2\u0445 \u0441\u043b\u043e\u0439\u043d\u0430\u044f (24\u0440\u0443\u043b, \u0431\u0435\u043b\u044b\u0439)',
     alias: 'classic2_veiro',
     image:

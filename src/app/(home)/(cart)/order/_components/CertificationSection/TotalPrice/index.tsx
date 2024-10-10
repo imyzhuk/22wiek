@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './TotalPrice.module.css';
-import { transformNumToPrice } from '@/utils/transformNumToPrice';
+import { formatPrice } from '@/utils';
 import EnvelopeIcon from '@icons/envelopeIcon.svg';
 
 type TotalPriceProps = {
@@ -9,7 +9,7 @@ type TotalPriceProps = {
 
 export const TotalPrice: React.FC<TotalPriceProps> = ({ totalPrice }) => {
   const [intTotalPricePart, decimalTotalPricePart] =
-    transformNumToPrice(totalPrice).split(',');
+    formatPrice(totalPrice).split(',');
 
   return (
     <div className={styles.wrapper}>

@@ -16,7 +16,6 @@ import {
 } from '@/components';
 import React from 'react';
 import styles from './RefrigeratorsPage.module.css';
-import { addSpacesToPrice } from '@/utils/addSpacesToPrice';
 import { Option } from '@/types/optionsModel';
 import { refrigerators } from '@/data/products';
 import Link from 'next/link';
@@ -313,6 +312,9 @@ function RefrigeratorsPage() {
   const currentPageNumber = 1;
   const pagesCount = Math.ceil(mockAllProductsCount / productsOnPage);
   const isPaginationShown = pagesCount > 1;
+  const { format } = new Intl.NumberFormat('ru', {
+    minimumFractionDigits: 2,
+  });
   return (
     <div className={styles.wrapper}>
       <Breadcrumps
@@ -370,8 +372,8 @@ function RefrigeratorsPage() {
           <FilterItem title="Цена" hasBottomBorder>
             <RangeFilter
               unit="р."
-              fromValuePlaceholder={addSpacesToPrice('420.00')}
-              untilValuePlaceholder={addSpacesToPrice('10760.00')}
+              fromValuePlaceholder={format(420)}
+              untilValuePlaceholder={format(10760)}
             />
           </FilterItem>
           <FilterItem title="Срок доставки" hasBottomBorder>

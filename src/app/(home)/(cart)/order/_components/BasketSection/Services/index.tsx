@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Services.module.css';
 import { FilterCheckbox } from '@/components';
 import MoreIcon from '@icons/moreIcon.svg';
-import { transformNumToPrice } from '@/utils/transformNumToPrice';
+import { formatPrice } from '@/utils';
 import { CartService } from '@/types/cartModel';
 
 type ServicesProps = {
@@ -15,7 +15,7 @@ export const Services: React.FC<ServicesProps> = ({ items }) => {
       <h4 className={styles.title}>Дополнительные услуги</h4>
       <ul className={styles.list}>
         {items.slice(0, 2).map((service) => {
-          const [intPricePart, decimalPricePart] = transformNumToPrice(
+          const [intPricePart, decimalPricePart] = formatPrice(
             +service.price,
           ).split(',');
           return (

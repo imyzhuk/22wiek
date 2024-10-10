@@ -5,7 +5,7 @@ export type FavoriteProduct = {
   discount: number;
   status: string;
   packSize: number;
-  code: string;
+  code: number;
   name: string;
   alias: string;
   image: string;

@@ -4,16 +4,14 @@ import { FilterCheckbox } from '@/components';
 import Image from 'next/image';
 import { deliveryDetails, services } from '@/data/cart';
 import Link from 'next/link';
-import { addDotsToNumber } from '@/utils/addDotsToNumber';
 import MinusIcon from '@icons/minusIcon.svg';
 import PlusIcon from '@icons/plusIcon.svg';
-import { transformNumToPrice } from '@/utils/transformNumToPrice';
+import { formatPrice, getRelativeTimeFromTodayTo } from '@/utils';
 import GiftIcon from '@icons/giftIcon.svg';
 import DeliveryIcon from '@icons/deliveryIcon.svg';
 import ArrivalPointIcon from '@icons/arrivalPointIcon.svg';
 import BinIcon from '@icons/binIcon.svg';
 import HeartIcon from '@icons/heartIcon.svg';
-import { getRelativeTimeFromTodayTo } from '@/utils/getRelativeTimeFromTodayTo';
 import { Services } from './Services';
 import { Adgames } from './Adgames';
 import { Promocode } from './Promocode';
@@ -36,6 +34,8 @@ export const discountTypes = {
 export const BasketSection: React.FC<BasketSectionProps> = ({ products }) => {
   if (!products.length) return <EmptySection />;
 
+  const { format: formatCode } = new Intl.NumberFormat('de');
+
   return (
     <div className={styles.section}>
       <div className={styles.productsContainer}>
@@ -48,7 +48,7 @@ export const BasketSection: React.FC<BasketSectionProps> = ({ products }) => {
           <button className={styles.deleteAllButton}>Удалить выбранные</button>
         </div>
         {products.map((product) => {
-          const [intPricePart, decimalPricePart] = transformNumToPrice(
+          const [intPricePart, decimalPricePart] = formatPrice(
             product.prices.salePrice,
           ).split(',');
           return (
@@ -73,7 +73,7 @@ export const BasketSection: React.FC<BasketSectionProps> = ({ products }) => {
                       {product.name}
                     </Link>
                     <span className={styles.code}>
-                      код товара {addDotsToNumber(product.code)}
+                      код товара {formatCode(product.code)}
                     </span>
                   </div>
                   <div className={styles.counter}>
@@ -92,7 +92,7 @@ export const BasketSection: React.FC<BasketSectionProps> = ({ products }) => {
                   </div>
                   <div className={styles.priceBlock}>
                     <div className={styles.oldPrice}>
-                      {transformNumToPrice(product.prices.price)} р.
+                      {formatPrice(product.prices.price)} р.
                     </div>
                     <div className={styles.price}>
                       {intPricePart},
@@ -103,7 +103,7 @@ export const BasketSection: React.FC<BasketSectionProps> = ({ products }) => {
                     {product.discountType && (
                       <div className={styles.discount}>
                         {product.discountType === 'discount'
-                          ? `Скидка ${transformNumToPrice(product.discount)} р.`
+                          ? `Скидка ${formatPrice(product.discount)} р.`
                           : discountTypes[product.discountType]}
                       </div>
                     )}
