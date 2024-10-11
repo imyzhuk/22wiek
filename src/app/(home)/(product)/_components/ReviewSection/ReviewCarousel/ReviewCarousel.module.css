@@ -1,0 +1,21 @@
+.body {
+  position: relative;
+}
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.arrowLeft {
+}
+.arrowRight {
+}
+
+.disabledButton:disabled {
+  color: var(--button-disabled-color);
+  background-color: var(--white);
+  border: 1px solid var(--gray-200);
+  pointer-events: none;
+  cursor: default;
+}

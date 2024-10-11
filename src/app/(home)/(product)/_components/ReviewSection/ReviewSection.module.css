@@ -19,12 +19,3 @@
 .youtubeIcon {
   margin-right: 7px;
 }
-
-.body {
-  position: relative;
-}
-.cards {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-}

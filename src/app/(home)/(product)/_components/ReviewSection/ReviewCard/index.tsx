@@ -11,6 +11,10 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
   viewsCount,
   likesCount,
 }) => {
+  const { format } = new Intl.NumberFormat('ru', {
+    notation: 'compact',
+    maximumFractionDigits: 1,
+  });
   return (
     <li className={styles.card}>
       <div className={styles.imgContainer}>
@@ -52,7 +56,9 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
                 fill="currentColor"
               ></path>
             </svg>
-            <span className={styles.detailValue}>{viewsCount} посмотрели</span>
+            <span className={styles.detailValue}>
+              {format(viewsCount)} посмотрели
+            </span>
           </li>
           <li className={styles.detail}>
             <svg
@@ -66,7 +72,9 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
                 fill="currentColor"
               ></path>
             </svg>
-            <span className={styles.detailValue}>{likesCount} понравилось</span>
+            <span className={styles.detailValue}>
+              {format(likesCount)} понравилось
+            </span>
           </li>
         </ul>
       </div>
