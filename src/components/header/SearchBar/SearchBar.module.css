@@ -1,3 +1,7 @@
+.searchWidget {
+  width: 100%;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -55,12 +59,120 @@
   background: none;
   color: #c8c9cc;
   cursor: pointer;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px 0 4px;
+  width: 0;
+  height: 0;
   transition: color 0.2s ease;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .clearBtn:hover {
   color: #b4b5b8;
+}
+
+.clearBtnVisible {
+  width: 24px;
+  height: 24px;
+  margin: 0 10px 0 4px;
+  pointer-events: all;
+}
+
+.overlay {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: hsla(0, 0%, 5%, 0.5);
+  display: block;
+  z-index: -1;
+}
+
+.top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f7f8fa;
+  z-index: -1;
+}
+
+.popup {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  z-index: 5;
+  padding: 12px 0;
+}
+
+.popupWrapper {
+  width: 770px;
+  margin: auto;
+}
+
+.popupGroup {
+  display: flex;
+}
+
+.popupGroupTitle {
+  font-size: 13px;
+  color: #a0a1a3;
+  margin: 8px 6px 0;
+  min-width: 128px;
+  text-align: right;
+}
+
+.popupList {
+  width: 100%;
+}
+
+.popupItem {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.popupItemLink {
+  padding: 8px;
+  margin-left: 7px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.popupItemLink:hover {
+  background-color: #fdeef3;
+  color: #d62761;
+}
+
+.popupItemImageWrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.popupItemInfo {
+  width: 100%;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.popupItemName {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.popupItemPrice {
+  color: #a0a1a3;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.loader {
+  width: 24px;
+  height: 24px;
+  margin: 0 10px 0 4px;
 }

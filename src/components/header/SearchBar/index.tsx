@@ -1,40 +1,146 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import styles from './SearchBar.module.css';
 import SearchIcon from '@icons/searchIcon.svg';
+import CrossExitIcon from '@icons/crossExitIcon.svg';
+import { useOutsideClick } from '@/hooks';
+import searchAPI from '@/services/searchAPI';
+import { SearchResponse } from '@/types/search';
+import { useDebounce } from '@/hooks';
+import Link from 'next/link';
+import Image from 'next/image';
+import { formatPrice } from '@/utils';
+import SearchLoaderIcon from '@icons/searchLoaderIcon.svg';
 
 type SearchBarProps = {};
 
 export const SearchBar: React.FC<SearchBarProps> = () => {
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [searchedProducts, setSearchedProducts] = useState<
+    SearchResponse['products'] | []
+  >([]);
+  const [searchedCategories, setSearchedCategories] = useState<
+    SearchResponse['categories'] | []
+  >([]);
+  const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  useDebounce(
+    async () => {
+      if (!searchValue) {
+        setIsActive(false);
+        return;
+      }
+      setIsLoading(true);
+      const { data } = await searchAPI.search(searchValue);
+      setSearchedProducts(data.products);
+      setSearchedCategories(data.categories);
+      if (data.products.length > 0 || data.categories.length > 0) {
+        setIsActive(true);
+      }
+      setIsLoading(false);
+    },
+    800,
+    [searchValue],
+  );
+
   return (
-    <div className={styles.container}>
-      <button type="button" className={styles.searchBtn} disabled>
-        <SearchIcon />
-      </button>
-      <input
-        id="catalogSearch"
-        type="text"
-        placeholder="Поиск товаров"
-        aria-label="search"
-        className={styles.input}
-        autoComplete="off"
-        spellCheck="false"
-      />
-      <button type="button" className={styles.clearBtn} disabled>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM9.42426 8.57574C9.18995 8.34142 8.81005 8.34142 8.57574 8.57574C8.34142 8.81005 8.34142 9.18995 8.57574 9.42426L11.1515 12L8.57574 14.5757C8.34142 14.8101 8.34142 15.1899 8.57574 15.4243C8.81005 15.6586 9.18995 15.6586 9.42426 15.4243L12 12.8485L14.5757 15.4243C14.8101 15.6586 15.1899 15.6586 15.4243 15.4243C15.6586 15.1899 15.6586 14.8101 15.4243 14.5757L12.8485 12L15.4243 9.42426C15.6586 9.18995 15.6586 8.81005 15.4243 8.57574C15.1899 8.34142 14.8101 8.34142 14.5757 8.57574L12 11.1515L9.42426 8.57574Z"
-            fill="currentColor"
-          ></path>
-        </svg>
-      </button>
-    </div>
+    <>
+      <div className={styles.searchWidget} ref={ref}>
+        <search role="search" className={styles.container}>
+          <button type="button" className={styles.searchBtn} disabled>
+            <SearchIcon />
+          </button>
+          <input
+            id="catalogSearch"
+            type="text"
+            placeholder="Поиск товаров"
+            className={styles.input}
+            autoComplete="off"
+            spellCheck="false"
+            onChange={(e) => setSearchValue(e.target.value)}
+            value={searchValue}
+          />
+          {isLoading ? (
+            <div className={styles.loader}>
+              <SearchLoaderIcon />
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setSearchValue('')}
+              className={`${styles.clearBtn} ${searchValue ? styles.clearBtnVisible : ''}`}
+            >
+              <CrossExitIcon />
+            </button>
+          )}
+        </search>
+        {isActive && (
+          <div className={styles.popup}>
+            <div className={styles.popupWrapper}>
+              {searchedCategories.length > 0 && (
+                <div className={styles.popupGroup}>
+                  <div className={styles.popupGroupTitle}>Категории</div>
+                  <ul className={styles.popupList}>
+                    {searchedCategories.map((category) => (
+                      <li key={category.id} className={styles.popupItem}>
+                        <a
+                          href={category.link}
+                          className={styles.popupItemLink}
+                          onClick={() => setIsActive((prev) => !prev)}
+                        >
+                          {category.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {searchedProducts.length > 0 && (
+                <div className={styles.popupGroup}>
+                  <div className={styles.popupGroupTitle}>Товары</div>
+                  <ul className={styles.popupList}>
+                    {searchedProducts.map((product) => (
+                      <li key={product.id} className={styles.popupItem}>
+                        <Link
+                          href={product.link}
+                          className={styles.popupItemLink}
+                          onClick={() => setIsActive((prev) => !prev)}
+                        >
+                          <div className={styles.popupItemImageWrapper}>
+                            <Image
+                              src={product.preview}
+                              alt={product.name}
+                              style={{ objectFit: 'contain' }}
+                              fill
+                              className={styles.popupItemImage}
+                            />
+                          </div>
+                          <div className={styles.popupItemInfo}>
+                            <div className={styles.popupItemName}>
+                              {product.name}
+                            </div>
+                            <div className={styles.popupItemPrice}>
+                              {formatPrice(product.price)} р.
+                            </div>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+      {isActive && (
+        <>
+          <div className={styles.overlay}></div>
+          <div className={styles.top}></div>
+        </>
+      )}
+    </>
   );
 };
