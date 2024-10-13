@@ -11,11 +11,7 @@ export const Chips: React.FC<ChipsProps> = ({ options }) => {
   return (
     <ul className={styles.chips}>
       {options.map((option) => (
-        <ChipButton
-          key={option.value}
-          value={option.value}
-          name={option.name}
-        />
+        <ChipButton key={option.value} name={option.name} />
       ))}
     </ul>
   );

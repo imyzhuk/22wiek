@@ -1,14 +1,21 @@
 import { IProductCard } from '@/types/product';
 import axiosInstance from './api-client';
 import { ExpandedDiscountType } from '@/types/product';
-import { AxiosResponse } from 'axios';
 
 const productAPI = {
-  getPromoProducts(
-    type: ExpandedDiscountType,
-    limit: number,
-  ): Promise<AxiosResponse<IProductCard[]>> {
-    return axiosInstance.get('/product/promo', { params: { type, limit } });
+  getPromoProducts(type: ExpandedDiscountType, limit: number) {
+    return axiosInstance.get<IProductCard[]>('/product/promo', {
+      params: { type, limit },
+    });
+  },
+  getPopularProducts(limit?: number, fromPrice?: number, untilPrice?: number) {
+    return axiosInstance.get<IProductCard[]>('/product/popular', {
+      params: {
+        limit,
+        untilPrice,
+        fromPrice,
+      },
+    });
   },
 };
 

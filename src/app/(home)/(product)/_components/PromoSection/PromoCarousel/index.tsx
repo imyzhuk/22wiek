@@ -4,11 +4,10 @@ import styles from './PromoCarousel.module.css';
 import { ArrowButton, ChipButton, ProductCard } from '@/components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { SectionHeader } from '../..';
+import { Loader, SectionHeader } from '../..';
 import { ExpandedDiscountType, IProductCard } from '@/types/product';
 import { getDiscountTypeName } from '@/utils';
 import productAPI from '@/services/productAPI';
-import { Loader } from './Loader';
 
 export const options: { name: string; value: ExpandedDiscountType }[] = [
   {
@@ -58,7 +57,6 @@ export const PromoCarousel: React.FC<PromoCarouselProps> = (props) => {
           {options.map((option) => (
             <ChipButton
               key={option.value}
-              value={option.value}
               name={option.name}
               isActive={activeOption === option.value}
               onClick={() => getProducts(option.value)}

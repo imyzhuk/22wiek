@@ -80,6 +80,7 @@ model Category {
 model Product {
   id                      Int            @id @default(autoincrement())
   name                    String
+  ordersCount             Int            @default(0)
   link                    String
   preview                 String
   discountTypes           DiscountType[]
@@ -288,10 +289,10 @@ model WaitedItem {
 }
 
 model Banner {
-  id Int @id @default(autoincrement())
-  image String
-  link String
-  title String
+  id          Int        @id @default(autoincrement())
+  image       String
+  link        String
+  title       String
   description String?
-  size BannerSize
+  size        BannerSize
 }
