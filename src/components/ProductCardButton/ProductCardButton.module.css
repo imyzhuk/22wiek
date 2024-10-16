@@ -4,15 +4,37 @@
   font-size: var(--button-font-size);
   line-height: var(--button-line-height);
   height: 40px;
-  color: var(--white);
-  background-color: var(--pink-500);
-  border: 1px solid var(--pink-500);
   font-weight: 700;
   border-radius: 4px;
   cursor: pointer;
 }
-.buttonActive {
+
+.unactive {
+  color: var(--white);
+  background-color: var(--pink-500);
+  border: 1px solid var(--pink-500);
+}
+
+.unactive:hover {
+  background-color: var(--pink-600);
+  border: 1px solid var(--pink-600);
+}
+
+.unactive:active {
+  background-color: var(--pink-700);
+  border: 1px solid var(--pink-700);
+}
+
+.active {
   color: var(--pink-500);
   background-color: var(--white);
   border: 1px solid var(--pink-500);
+}
+
+.active:hover {
+  background-color: var(--pink-300);
+}
+
+.active:active {
+  background-color: var(--pink-400);
 }

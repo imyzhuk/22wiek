@@ -1,62 +1,46 @@
-import React from 'react';
-import Container from './_components/Container';
-import { prisma } from '@prisma/prisma-client';
-import { cookies } from 'next/headers';
-import { CartItemWithProduct } from '@/types/cart';
-import { AdditionalService } from '@prisma/client';
+'use client';
+import React, { useEffect } from 'react';
+import styles from './OrderPage.module.css';
+import { BasketSection, CertificationSection, Tabs } from './_components';
+import { useSearchParams } from 'next/navigation';
+import cartAPI from '@/services/cartAPI';
+import { useActions } from '@/hooks';
+import { eCertificates } from '@/data/cart';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { EmptySection as EmptyBasketSection } from './_components/BasketSection/EmptySection';
 
 type OrderPageProps = {};
 
-const OrderPage: React.FC<OrderPageProps> = async () => {
-  let userId = cookies().get('userId')?.value;
-  let cardItemsWithoutDecimal: CartItemWithProduct[] = [];
-
-  if (userId) {
-    const cartItems = await prisma.cartItem.findMany({
-      where: {
-        userId,
-      },
-      include: {
-        product: {
-          select: {
-            id: true,
-            name: true,
-            price: true,
-            oldPrice: true,
-            preview: true,
-            link: true,
-            discount: true,
-            discountTypes: true,
-            isInStock: true,
-            additionalServices: true,
-          },
-        },
-      },
-    });
-
-    const getAdditionalServicesWithoutDecimal = (
-      additionalServices: AdditionalService[],
-    ) => {
-      return additionalServices.map((service) => ({
-        ...service,
-        price: Number(service.price),
-      }));
+const OrderPage: React.FC<OrderPageProps> = () => {
+  const searchParams = useSearchParams();
+  let tabName = searchParams.get('tab') as 'certifications' | null;
+  const cartItems = useTypedSelector((state) => state.cart.cartItems);
+  const cartItemsCount = useTypedSelector((state) => state.cart.cartItemsCount);
+  console.dir(cartItems, cartItemsCount);
+  const { setCartItems, setCartInfo } = useActions();
+  useEffect(() => {
+    const getAllCartItems = async () => {
+      const promises = Promise.all([cartAPI.getAll(), cartAPI.getInfo([])]);
+      const [{ data: cartItems }, { data: cartInfo }] = await promises;
+      setCartItems({ cartItems });
+      setCartInfo(cartInfo);
     };
-    cardItemsWithoutDecimal = cartItems.map((item) => {
-      return {
-        ...item,
-        product: {
-          ...item.product,
-          price: Number(item.product.price),
-          oldPrice: Number(item.product.oldPrice),
-          additionalServices: getAdditionalServicesWithoutDecimal(
-            item.product.additionalServices,
-          ),
-        },
-      };
-    });
-  }
-  return <Container cartItems={cardItemsWithoutDecimal} />;
+    getAllCartItems();
+  }, []);
+  return (
+    <div className={styles.container}>
+      <Tabs tabName={tabName || 'basket'} />
+      {!!tabName && (
+        <CertificationSection certificates={eCertificates} totalPrice={300} />
+      )}
+      {!tabName && Boolean(cartItems.length) && Boolean(cartItemsCount) && (
+        <BasketSection />
+      )}
+      {!tabName && !(Boolean(cartItems.length) && Boolean(cartItemsCount)) && (
+        <EmptyBasketSection />
+      )}
+    </div>
+  );
 };
 
 export default OrderPage;

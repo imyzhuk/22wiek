@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import styles from './Tabs.module.css';
 import { useQueryParams } from '@/hooks';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 type TabsProps = {
-  productsCount: number;
-  certificatesCount: number;
   tabName: 'basket' | 'certifications';
 };
 
-export const Tabs: React.FC<TabsProps> = ({
-  productsCount,
-  tabName,
-  certificatesCount,
-}) => {
+export const Tabs: React.FC<TabsProps> = ({ tabName }) => {
   const { setQuery } = useQueryParams();
+  const productsCount = useTypedSelector(
+    (state) => state.cart.chosenProductsCount,
+  );
 
   const onBasketTabClick = () => {
     setQuery('tab');
@@ -41,9 +39,7 @@ export const Tabs: React.FC<TabsProps> = ({
       >
         <span className={styles.tabBody}>
           <span className={styles.tabTitle}>Сертификаты</span>
-          {certificatesCount && (
-            <span className={styles.tabCounter}>{certificatesCount}</span>
-          )}
+          {false && <span className={styles.tabCounter}>{0}</span>}
         </span>
       </button>
     </div>

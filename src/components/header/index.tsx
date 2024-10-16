@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Header.module.css';
 import { CircleButton } from '@/components';
 import { promos } from '@/data/promo';
-import { useOutsideClick } from '@/hooks';
+import { useActions, useOutsideClick } from '@/hooks';
 import { SearchBar } from './SearchBar';
 import { LocalityButton } from './LocalityButton';
 import { CatalogPopup } from './CatalogPopup';
@@ -25,6 +25,7 @@ import LineGradient from '@icons/lineGradient.svg';
 import PromoIcon from '@icons/promoIcon.svg';
 import ClockIcon from '@icons/clockIcon.svg';
 import Link from 'next/link';
+import cartAPI from '@/services/cartAPI';
 
 type HeaderProps = {};
 
@@ -34,6 +35,20 @@ export const Header: React.FC<HeaderProps> = () => {
     isActive: isCatalogActive,
     setIsActive: setIsCatalogActive,
   } = useOutsideClick<HTMLDivElement>(false);
+  const { setCartProductIds } = useActions();
+
+  useEffect(() => {
+    const getCartItems = async () => {
+      const {
+        data: { productIds, count },
+      } = await cartAPI.getCartProductIds();
+      setCartProductIds({
+        productIds,
+        count,
+      });
+    };
+    getCartItems();
+  }, []);
   return (
     <header className={styles.header}>
       <div className={styles.headerWrapper}>

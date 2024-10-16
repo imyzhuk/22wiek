@@ -1,6 +1,8 @@
 import React from 'react';
 import cartAPI from '@/services/cartAPI';
 import { ExpandedCartItemWithProduct, GetCartInfoResponse } from '@/types/cart';
+import { useTypedSelector } from './useTypedSelector';
+import { useActions } from '.';
 
 type DeleteCallbackType = (index?: number | number[]) => void;
 
@@ -17,31 +19,18 @@ const getChosenCartItemIds = (cartItems?: ExpandedCartItemWithProduct[]) => {
   }, []);
 };
 
-export const useCartInfo = (
-  initialCartInfo: GetCartInfoResponse,
-  setCartItemsCountForTabs: (count: number) => void,
-) => {
-  const [totalPrice, setTotalPrice] = React.useState(
-    initialCartInfo.totalPrice,
+export const useCartInfo = () => {
+  const totalPrice = useTypedSelector((state) => state.cart.totalPrice);
+  const finishedPrice = useTypedSelector((state) => state.cart.finishedPrice);
+  const discount = useTypedSelector((state) => state.cart.discount);
+  const totalProductsCount = useTypedSelector(
+    (state) => state.cart.chosenProductsCount,
   );
-  const [finishedPrice, setFinishedPrice] = React.useState(
-    initialCartInfo.finishedPrice,
-  );
-  const [discount, setDiscount] = React.useState(initialCartInfo.discount);
-  const [totalProductsCount, setTotalProductsCount] = React.useState(
-    initialCartInfo.totalProductsCount,
-  );
+  const { setCartInfo, setCartItemsCount, removeCartProductIds } = useActions();
+
   const [isLoadingCartInfo, setIsLoadingCartInfo] =
     React.useState<boolean>(false);
   const [isDeleting, setIsDeleting] = React.useState<boolean>(false);
-
-  const setCartInfo = (cartInfo: GetCartInfoResponse) => {
-    setTotalPrice(cartInfo.totalPrice);
-    setFinishedPrice(cartInfo.finishedPrice);
-    setDiscount(cartInfo.discount);
-    setTotalProductsCount(cartInfo.totalProductsCount);
-    setCartItemsCountForTabs(cartInfo.totalProductsCount);
-  };
 
   const updateCartInfo = async (cartItemIds: number[]) => {
     setIsLoadingCartInfo(true);
@@ -57,7 +46,8 @@ export const useCartInfo = (
   const changeQuantity = async (cartItemId: number, newQuantity: number) => {
     setIsLoadingCartInfo(true);
     try {
-      await cartAPI.changeQuantity(cartItemId, newQuantity);
+      const { data } = await cartAPI.changeQuantity(cartItemId, newQuantity);
+      setCartItemsCount(data);
     } catch (error) {
       console.log(error);
     }
@@ -68,22 +58,30 @@ export const useCartInfo = (
     cartItems: ExpandedCartItemWithProduct[],
   ) => {
     const removingElementsIndexes: number[] = [];
+    const removingProductIds: number[] = [];
     const itemIds = cartItems.reduce<number[]>((acc, item, index) => {
       if (item.checked) {
         acc.push(item.backupId);
         removingElementsIndexes.push(index);
+        removingProductIds.push(item.product.id);
       }
       return acc;
     }, []);
     try {
       setIsDeleting(true);
-      await cartAPI.deleteMany(itemIds);
+      const {
+        data: { quantity },
+      } = await cartAPI.deleteMany(itemIds);
+      setCartItemsCount({
+        newQuantity: quantity,
+      });
       setCartInfo({
         discount: 0,
         finishedPrice: 0,
         totalPrice: 0,
         totalProductsCount: 0,
       });
+      removeCartProductIds(removingProductIds);
     } catch (error) {
       console.log(error);
       return;
@@ -100,7 +98,13 @@ export const useCartInfo = (
     const deletedItem = cartItems[index];
     try {
       setIsDeleting(true);
-      await cartAPI.deleteMany([deletedItem.backupId]);
+      const {
+        data: { quantity },
+      } = await cartAPI.deleteMany([deletedItem.backupId]);
+      setCartItemsCount({
+        newQuantity: quantity,
+      });
+      removeCartProductIds([deletedItem.product.id]);
     } catch (error) {
       console.log(error);
       return;

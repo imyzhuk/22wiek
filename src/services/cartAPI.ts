@@ -1,7 +1,15 @@
-import { GetCartInfoResponse } from '@/types/cart';
+import { CartItemWithProduct, GetCartInfoResponse } from '@/types/cart';
 import axiosInstance from './api-client';
 
 const cartAPI = {
+  getAll() {
+    return axiosInstance.get<CartItemWithProduct[]>('/cart');
+  },
+  getCartProductIds() {
+    return axiosInstance.get<{ productIds: number[]; count: number }>(
+      '/cart/productIds',
+    );
+  },
   getInfo(productIds: number[]) {
     return axiosInstance.get<GetCartInfoResponse>('/cart/info', {
       params: {
@@ -13,7 +21,9 @@ const cartAPI = {
     });
   },
   deleteMany(productIds: number[]) {
-    return axiosInstance.delete('/cart', {
+    return axiosInstance.delete<{
+      quantity: number;
+    }>('/cart', {
       params: {
         productIds: JSON.stringify(productIds),
       },
@@ -30,7 +40,7 @@ const cartAPI = {
     });
   },
   changeQuantity(cartItemId: number, newQuantity: number) {
-    return axiosInstance.patch(`/cart/${cartItemId}`, {
+    return axiosInstance.patch<{ newQuantity: number }>(`/cart/${cartItemId}`, {
       data: {
         quantity: newQuantity,
       },

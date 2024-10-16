@@ -31,7 +31,6 @@ export const Counter: React.FC<CounterProps> = ({ quantity, onChange }) => {
   useDebounce(
     () => {
       if (hasMount.current) {
-        console.log('debug');
         onChange(count);
       } else {
         hasMount.current = true;

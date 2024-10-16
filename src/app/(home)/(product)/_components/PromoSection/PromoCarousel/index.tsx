@@ -92,7 +92,11 @@ export const PromoCarousel: React.FC<PromoCarouselProps> = (props) => {
               preview,
               link,
             }) => (
-              <SwiperSlide key={id} className={styles.product}>
+              <SwiperSlide
+                key={id}
+                className={styles.product}
+                style={{ height: 'auto' }}
+              >
                 <ProductCard
                   id={id}
                   currentPrice={`${format(price)}  р.`}

@@ -6,28 +6,12 @@ import LikeIcon from '@icons/heartIcon.svg';
 import { CircleButton } from '@/components';
 import Link from 'next/link';
 import { AccountWidget } from '../AccountWidget';
-import userAPI from '@/services/userAPI';
+import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 type AdditionalUserInfoProps = {};
 
 export const AdditionalUserInfo: React.FC<AdditionalUserInfoProps> = () => {
-  const [favoritesItemsCount, setFavoritesItemsCount] = useState<number>(0);
-  const [cartItemsCount, setCartItemsCount] = useState<number>(0);
-
-  useEffect(() => {
-    /*
-    const getAdditionalUserInfo = async () => {
-      try {
-        const { data } = await userAPI.getAdditionalInfo();
-        setCartItemsCount(data.cartItemsCount);
-        setFavoritesItemsCount(data.favoriteItemsCount);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    getAdditionalUserInfo();*/
-  }, []);
+  const cartItemsCount = useTypedSelector((state) => state.cart.cartItemsCount);
 
   return (
     <>
@@ -35,11 +19,11 @@ export const AdditionalUserInfo: React.FC<AdditionalUserInfoProps> = () => {
         <Link href="/aside">
           <CircleButton>
             <span className={styles.iconsContainer}>
-              {favoritesItemsCount > 0 && (
+              {false && (
                 <span
                   className={`${styles.countIcon} ${styles.favoritesCountIcon}`}
                 >
-                  {favoritesItemsCount}
+                  0
                 </span>
               )}
               <LikeIcon />

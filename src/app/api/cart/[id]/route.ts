@@ -60,7 +60,22 @@ export async function PATCH(
         quantity,
       },
     });
-    return NextResponse.json('OK', { status: HttpStatusCodes.OK });
+
+    const cartItems = await prisma.cartItem.findMany({
+      where: {
+        userId,
+      },
+      select: {
+        quantity: true,
+      },
+    });
+
+    const newQuantity = cartItems.reduce(
+      (acc, { quantity }) => acc + quantity,
+      0,
+    );
+
+    return NextResponse.json({ newQuantity }, { status: HttpStatusCodes.OK });
   } catch (e) {
     return NextResponse.json(
       {

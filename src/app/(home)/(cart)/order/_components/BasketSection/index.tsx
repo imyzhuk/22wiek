@@ -21,15 +21,7 @@ import { useCartInfo } from '@/hooks';
 import { Modal } from '..';
 import { Counter } from './Counter';
 import DeleteButtonLoader from '@icons/deleteButtonLoader.svg';
-
-type BasketSectionProps = {
-  cartItems: CartItemWithProduct[];
-  totalPrice: number;
-  finishedPrice: number;
-  discount: number;
-  totalProductsCount: number;
-  setCartItemsCountForTabs: React.Dispatch<React.SetStateAction<number>>;
-};
+import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 /* TODO: make a modal with all services*/
 /* TODO: make interactive*/
@@ -47,12 +39,13 @@ const getChosenCartItemIds = (cartItems?: ExpandedCartItemWithProduct[]) => {
   }, []);
 };
 
-export const BasketSection: React.FC<BasketSectionProps> = ({
-  cartItems,
-  setCartItemsCountForTabs,
-  ...props
-}) => {
-  if (!cartItems?.length) return <EmptySection />;
+type BasketSectionProps = {};
+
+export const BasketSection: React.FC<BasketSectionProps> = ({}) => {
+  const cartItems = useTypedSelector((state) => state.cart.cartItems);
+  const chosenProductsCount = useTypedSelector(
+    (state) => state.cart.chosenProductsCount,
+  );
   const [deletedItem, setDeletedItem] = useState<{
     index: number | 'all';
   } | null>(null);
@@ -64,7 +57,7 @@ export const BasketSection: React.FC<BasketSectionProps> = ({
     changeQuantity,
     deleteItems,
     isDeleting,
-  } = useCartInfo(props, setCartItemsCountForTabs);
+  } = useCartInfo();
   const cartDefaultValues: ExpandedCartItemWithProduct[] = cartItems.map(
     (item) => ({
       ...item,
@@ -86,7 +79,6 @@ export const BasketSection: React.FC<BasketSectionProps> = ({
 
   React.useEffect(() => {
     const subscription = watch((formData, { name, type }) => {
-      console.log(formData, name, type);
       if (type !== 'change' || !name) {
         return;
       }
@@ -180,9 +172,6 @@ export const BasketSection: React.FC<BasketSectionProps> = ({
     setDeletedItem(null);
   };
 
-  if (!fields.length) {
-    return <EmptySection />;
-  }
   return (
     <div className={styles.section}>
       {deletedItem && (
@@ -196,7 +185,10 @@ export const BasketSection: React.FC<BasketSectionProps> = ({
             </h5>
             <div className={styles.modalDescription}>
               Вы уверены, что хотите удалить
-              {deletedItem.index === 'all' ? 'выбранные товары' : 'этот товар'}?
+              {deletedItem.index === 'all'
+                ? ' выбранные товары'
+                : ' этот товар'}
+              ?
             </div>
             <div className={styles.modalButtons}>
               <button
@@ -218,13 +210,15 @@ export const BasketSection: React.FC<BasketSectionProps> = ({
       <div className={styles.productsContainer}>
         <div className={styles.firstRow}>
           <FilterCheckbox name="Выбрать все" value="all" register={register} />
-          <button
-            type="button"
-            className={styles.deleteAllButton}
-            onClick={() => setDeletedItem({ index: 'all' })}
-          >
-            Удалить выбранные
-          </button>
+          {Boolean(chosenProductsCount) && (
+            <button
+              type="button"
+              className={styles.deleteAllButton}
+              onClick={() => setDeletedItem({ index: 'all' })}
+            >
+              Удалить выбранные
+            </button>
+          )}
         </div>
         {fields.map(({ id, backupId, quantity, product }, index) => {
           const [intPricePart, decimalPricePart] = formatPrice(
