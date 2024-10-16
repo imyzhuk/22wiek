@@ -4,9 +4,10 @@ import { FilterCheckbox } from '@/components';
 import MoreIcon from '@icons/moreIcon.svg';
 import { formatPrice } from '@/utils';
 import { CartService } from '@/types/cartModel';
+import { IAdditionalService } from '@/types/cart';
 
 type ServicesProps = {
-  items: CartService[];
+  items: IAdditionalService[];
 };
 
 export const Services: React.FC<ServicesProps> = ({ items }) => {
@@ -25,7 +26,6 @@ export const Services: React.FC<ServicesProps> = ({ items }) => {
                   <FilterCheckbox
                     name=""
                     value=""
-                    checkboxGroupName=""
                     className={styles.checkbox}
                   />
                   <span className={styles.itemTitle}>{service.name}</span>

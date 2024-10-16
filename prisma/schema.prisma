@@ -36,7 +36,7 @@ enum BannerSize {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String      @id @default(cuid())
   name      String?
   email     String?  @unique
   phone     String?  @unique
@@ -46,13 +46,13 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  location     Location       @relation(fields: [id], references: [id])
+  location     Location       @relation(fields: [locationId], references: [id])
   locationId   Int
   reviews      Review[]
-  cartItem     CartItem[]
-  FavoriteItem FavoriteItem[]
-  ViewedItem   ViewedItem[]
-  WaitedItem   WaitedItem[]
+  cartItems     CartItem[]
+  favoriteItems FavoriteItem[]
+  viewedItems   ViewedItem[]
+  waitedItems   WaitedItem[]
 }
 
 model Location {
@@ -130,7 +130,7 @@ model Review {
   productId Int
 
   user   User @relation(fields: [userId], references: [id])
-  userId Int
+  userId String
 }
 
 model Image {
@@ -239,7 +239,7 @@ model CartItem {
   productId Int
 
   user   User @relation(fields: [userId], references: [id])
-  userId Int
+  userId String
 
   quantity  Int      @default(1)
   createdAt DateTime @default(now())
@@ -253,7 +253,7 @@ model FavoriteItem {
   productId Int
 
   user   User @relation(fields: [userId], references: [id])
-  userId Int
+  userId String
 
   quantity  Int      @default(1)
   createdAt DateTime @default(now())
@@ -267,7 +267,7 @@ model ViewedItem {
   productId Int
 
   user   User @relation(fields: [userId], references: [id])
-  userId Int
+  userId String
 
   quantity  Int      @default(1)
   createdAt DateTime @default(now())
@@ -281,7 +281,7 @@ model WaitedItem {
   productId Int
 
   user   User @relation(fields: [userId], references: [id])
-  userId Int
+  userId String
 
   quantity  Int      @default(1)
   createdAt DateTime @default(now())

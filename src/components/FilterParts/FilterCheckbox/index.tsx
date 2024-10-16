@@ -1,30 +1,34 @@
 'use client';
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import styles from './FilterCheckbox.module.css';
 import CheckmarkIcon from '@icons/smallCheckmark.svg';
 import CheckboxLineIcon from '@icons/checkboxLine.svg';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
-type FilterCheckboxProps = {
+type FilterCheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string;
   value: string;
-  checkboxGroupName: string;
   className?: string;
+  checked?: boolean;
+  register?: UseFormRegister<FieldValues>;
 };
 
 export const FilterCheckbox: React.FC<FilterCheckboxProps> = ({
-  checkboxGroupName,
   name,
   value,
   className,
+  register,
+  ...props
 }) => {
   return (
     <div key={value} className={`${styles.wrapper} ${className || ''}`}>
       <label className={styles.checkbox}>
         <input
           type="checkbox"
-          name={checkboxGroupName}
-          value={value}
           className={styles.input}
+          value={value}
+          {...register?.(value)}
+          {...props}
         />
         <span className={styles.square}></span>
         <CheckmarkIcon className={styles.checkmark} />

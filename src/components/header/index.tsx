@@ -9,10 +9,8 @@ import { SearchBar } from './SearchBar';
 import { LocalityButton } from './LocalityButton';
 import { CatalogPopup } from './CatalogPopup';
 import { MoreItemsDropdown } from './MoreItemsDropdown';
-import { AccountWidget } from './AccountWidget';
 import { CatalogIcon } from './CatalogIcon';
-import BasketIcon from '@icons/basketIcon.svg';
-import LikeIcon from '@icons/heartIcon.svg';
+import { AdditionalUserInfo } from './AdditionalUserInfo';
 import PartlyPayIcon from '@icons/partlyPayIcon.svg';
 import LifeIcon from '@icons/life.svg';
 import HomePhoneIcon from '@icons/home.svg';
@@ -203,24 +201,7 @@ export const Header: React.FC<HeaderProps> = () => {
                 </CircleButton>
               </div>
               <SearchBar />
-              <div className={styles.circleButtonContainer}>
-                <Link href="/aside">
-                  <CircleButton>
-                    <LikeIcon />
-                  </CircleButton>
-                </Link>
-              </div>
-              <AccountWidget />
-              <div className={styles.circleButtonContainer}>
-                <Link href="/order">
-                  <CircleButton>
-                    <span className={styles.orderWrapper}>
-                      <BasketIcon className={styles.orderIcon} />
-                      <span>Корзина</span>
-                    </span>
-                  </CircleButton>
-                </Link>
-              </div>
+              <AdditionalUserInfo />
             </div>
           </div>
         </div>

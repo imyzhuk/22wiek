@@ -7,6 +7,7 @@
     0 4px 16px rgba(6, 10, 13, 0.06),
     0 1px 4px rgba(6, 10, 13, 0.08);
   border-radius: 12px;
+  position: relative;
 }
 
 .priceWrapper {
@@ -31,6 +32,10 @@
   justify-content: space-between;
   font-size: 14px;
   line-height: 20px;
+}
+
+.grayRow {
+  color: #a0a1a3;
 }
 
 .secondRow {
@@ -85,6 +90,13 @@
   cursor: pointer;
 }
 
+.button:disabled {
+  color: var(--gray-600);
+  background-color: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  cursor: default;
+}
+
 .description {
   font-size: 12px;
   line-height: 18px;
@@ -95,4 +107,11 @@
 
 .asterisk {
   margin-right: 2px;
+}
+
+.priceLine {
+  background-color: #b4b5b8;
+  width: 14px;
+  height: 1.5px;
+  align-self: center;
 }

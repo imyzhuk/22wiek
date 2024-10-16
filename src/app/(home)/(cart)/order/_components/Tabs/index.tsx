@@ -30,7 +30,7 @@ export const Tabs: React.FC<TabsProps> = ({
       >
         <span className={styles.tabBody}>
           <span className={styles.tabTitle}>Корзина</span>
-          {productsCount && (
+          {Boolean(productsCount) && (
             <span className={styles.tabCounter}>{productsCount}</span>
           )}
         </span>

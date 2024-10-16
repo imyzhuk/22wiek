@@ -87,38 +87,6 @@
   line-height: 18px;
 }
 
-.counter {
-  width: 107px;
-  display: flex;
-  justify-content: center;
-  flex-flow: row nowrap;
-  align-items: center;
-  height: 32px;
-  overflow: hidden;
-}
-
-.counterButton {
-  padding: 3px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid var(--gray-300);
-  cursor: pointer;
-}
-
-.counterButton:disabled {
-  color: var(--button-disabled-color);
-  cursor: default;
-}
-
-.counterInput {
-  width: 100%;
-  height: 32px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .priceBlock {
   flex-grow: 1;
   text-align: right;
@@ -226,4 +194,65 @@
 
 .productButton:hover {
   color: var(--pink-500);
+}
+
+.modalWrapper {
+  padding: 24px 0;
+}
+
+.modalTitle {
+  margin-bottom: 8px;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+}
+
+.modalDescription {
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.modalButtons {
+  margin: 24px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 12px;
+}
+
+.modalButton {
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  padding: 0 24px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancelModalButton {
+  border: 1px solid var(--gray-300);
+}
+
+.cancelModalButton:hover {
+  background-color: var(--gray-100);
+}
+
+.deleteModalButton {
+  min-width: 106px;
+  color: var(--white);
+  background-color: var(--pink-500);
+  border: 1px solid var(--pink-500);
+}
+
+.deleteModalButton:hover {
+  background-color: var(--pink-600);
+  border: 1px solid var(--pink-600);
 }

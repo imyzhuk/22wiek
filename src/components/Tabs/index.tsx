@@ -1,11 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Tabs.module.css';
-import { useQueryParams } from '@/hooks';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { link } from 'fs';
 
 type TabsProps = {
   tabs: {
