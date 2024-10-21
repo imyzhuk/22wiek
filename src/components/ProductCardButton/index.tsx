@@ -13,6 +13,7 @@ type ProductCardButtonProps = {
 
 export const ProductCardButton: React.FC<ProductCardButtonProps> = ({ id }) => {
   const cartProductIds = useTypedSelector((state) => state.cart.productIds);
+  const { addCartProductId } = useActions();
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
@@ -20,6 +21,7 @@ export const ProductCardButton: React.FC<ProductCardButtonProps> = ({ id }) => {
     if (!isActive) {
       setIsLoading(true);
       await cartAPI.addToCart(id);
+      addCartProductId(id);
       setIsLoading(false);
       setIsActive(true);
       return;

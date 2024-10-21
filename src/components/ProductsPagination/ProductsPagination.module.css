@@ -1,0 +1,31 @@
+.moreButton {
+  display: block;
+  position: relative;
+  z-index: 1;
+  margin: -25px auto 18px auto;
+  width: 417px;
+  font-weight: 700;
+  color: var(--blue-500);
+  background-color: var(--white);
+  border: 1px solid var(--blue-500);
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  height: 40px;
+  padding: 0 24px;
+}
+
+.moreButton:hover {
+  background-color: var(--blue-300);
+}
+
+.moreButton:disabled {
+  pointer-events: none;
+  border: 1px solid var(--gray-200);
+  color: var(--button-disabled-color);
+}
+
+.pagination {
+  margin-bottom: 20px;
+}

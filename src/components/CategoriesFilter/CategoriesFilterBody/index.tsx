@@ -56,7 +56,6 @@ export const CategoriesFilterBody: React.FC<CategoriesFilterBodyProps> = ({
       <ScrollContainer maxHeight="362px">
         <ul>
           <FilterCheckbox
-            checkboxGroupName=""
             name="Все товары"
             value="all"
             className={styles.firstItem}

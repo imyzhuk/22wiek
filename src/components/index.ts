@@ -19,4 +19,5 @@ export { Tabs } from './Tabs';
 export { ProductTabs } from './ProductTabs';
 export { ReviewAside } from './ReviewAside';
 export { Main } from './Main';
+export { ProductsPagination } from './ProductsPagination';
 export * from './FilterParts';

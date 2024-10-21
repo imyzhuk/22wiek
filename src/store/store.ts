@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { cartReducer } from './cart/cartSlice';
+import { productReducer } from './product/productSlice';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       cart: cartReducer,
+      product: productReducer,
     },
     devTools: process.env.NODE_ENV !== 'production',
   });

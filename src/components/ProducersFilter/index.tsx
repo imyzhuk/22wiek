@@ -103,7 +103,6 @@ export const ProducersFilter: React.FC<ProducersFilterProps> = () => {
                   key={option.value}
                   name={option.name}
                   value={option.value}
-                  checkboxGroupName="producers"
                 />
               ))}
             </ul>

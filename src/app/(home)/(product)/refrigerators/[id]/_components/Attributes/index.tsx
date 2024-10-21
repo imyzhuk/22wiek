@@ -4,7 +4,11 @@ import React from 'react';
 import styles from './Attributes.module.css';
 import { Popover } from '@/components';
 import { Attribute } from '..';
-import { Refrigerator } from '@prisma/client';
+import {
+  Refrigerator,
+  RefrigeratorConstruction,
+  RefrigeratorType,
+} from '@prisma/client';
 import ArrowDownIcon from '@icons/arrowDownIcon.svg';
 import ArrowUpIcon from '@icons/arrowUpIcon.svg';
 
@@ -24,6 +28,28 @@ type AttributesProps = Omit<
   width: number;
   depth: number;
   weight: number;
+};
+
+type RefrigeratorTypeMap = {
+  [K in RefrigeratorType]: string;
+};
+
+type RefrigeratorConstructionMap = {
+  [K in RefrigeratorConstruction]: string;
+};
+
+const refrigeratorTypeMapper: RefrigeratorTypeMap = {
+  WithFreezer: 'холодильник с морозильником',
+  WithoutFreezer: 'холодильник без морозильника',
+  Commercial: 'торговый холодильник',
+};
+
+const refrigeratorConstructionMapper: RefrigeratorConstructionMap = {
+  SideBySide: 'side-by-side',
+  SingleDoor: 'однодверный',
+  TwoDoors: 'двухдверный',
+  FourDoors: 'четырехдверный',
+  FrenchDoor: 'french door',
 };
 
 export const Attributes: React.FC<AttributesProps> = ({
@@ -91,52 +117,47 @@ export const Attributes: React.FC<AttributesProps> = ({
             <h2 className={styles.name}>Основные характеристики</h2>
             <Attribute
               name="Тип"
-              value={type}
+              value={refrigeratorTypeMapper[type]}
               link="/"
               popover={
                 <Popover
-                  title="Конструкция"
                   popoverClassName={styles.popover}
                   popoverButtonClassName={styles.popoverButton}
+                  title="Тип"
                   body={
                     <>
                       <p>
-                        <strong>Однодверный холодильник</strong> – самая простая
-                        конструкция холодильника с одной дверью. Но не очень
-                        практичная в случае с комбинированными моделями, так как
-                        морозильная камера отделена от холодильника обычно лишь
-                        пластиковой дверцей. И при открывании двери в
-                        морозильнике может повышаться температура, что приводит
-                        к необходимости чаще его размораживать.
+                        <strong>Холодильник без морозильника</strong>{' '}
+                        представляет собой одну холодильную камеру, где
+                        поддерживается температура для хранения продуктов в
+                        диапазоне примерно от +2 до +14°С. Такие модели чаще
+                        всего используется для дачи или в комбинации с
+                        отдельными морозильниками.
                       </p>
                       <p>
-                        В <strong>двухдверном варианте</strong> конструкции
-                        холодильная и морозильная камеры располагаются
-                        независимо друг от друга.
+                        <strong>Холодильник с морозильником</strong> —
+                        универсальный, наиболее привычный и распространенный
+                        тип, который включает в себя камеру для хранения
+                        продуктов при низкой плюсовой температуре, так и камеру
+                        для заморозки продуктов и хранения их в замороженном
+                        виде (при температуре до -24°С).
                       </p>
                       <p>
-                        <strong>Side-by-side</strong> – конструкция холодильника
-                        с распашными дверьми, при этом может быть двух- или
-                        четырехдверной. Варианты расположения камер с такой
-                        конструкцией: холодильное и морозильные отделения сбоку
-                        друг от друга или морозильная камера внизу. Такие
-                        холодильники отличаются большой вместимостью,
-                        практичностью, стильным внешним видом, но они достаточно
-                        габаритны и занимают много пространства на кухне.
-                      </p>
-                      <p>
-                        Конструкция типа <strong>French door</strong> или
-                        «французская дверь» представляет собой верхнюю
-                        холодильную камеру с распашными дверьми, а морозильное
-                        отделение – в виде выдвижных ящиков, число которых
-                        варьируется от одного до 4.
+                        <strong>Винный кулер</strong> — это устройство, которое
+                        охлаждает бутылку до нужной температуры для подачи её к
+                        столу, а также поддерживает необходимую температуру
+                        напитка после открытия бутылки.
                       </p>
                     </>
                   }
                 />
               }
             />
-            <Attribute name="Конструкция" value={construction} link="/" />
+            <Attribute
+              name="Конструкция"
+              value={refrigeratorConstructionMapper[construction]}
+              link="/"
+            />
             <Attribute name="Камеры" value={cameras.join(', ')} />
             <Attribute
               name="Расположение морозильной камеры"

@@ -18,7 +18,6 @@ export const FilterCheckboxGroup: React.FC<FilterCheckboxGroupProps> = ({
     <ul className={className || ''}>
       {options.map((option) => (
         <FilterCheckbox
-          checkboxGroupName={name}
           name={option.name}
           value={option.value}
           key={option.value}

@@ -1,41 +1,58 @@
 import React from 'react';
 import styles from './Pagination.module.css';
 import MiniRightArrow from '@icons/miniRightArrow.svg';
-import Link from 'next/link';
 
 type PaginationProps = {
-  pagesCount: number;
-  currentPage: number;
   className?: string;
+  pagesCount: number;
+  page: number;
+  onChangePage: (page: number) => void;
 };
 
 export const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  pagesCount,
   className,
+  pagesCount,
+  page,
+  onChangePage,
 }) => {
+  const onClickPrevPage = () => {
+    onChangePage(page - 1);
+  };
+
+  const onClickNextPage = () => {
+    onChangePage(page + 1);
+  };
+
+  const onClickPage = (newPage: number) => {
+    onChangePage(newPage);
+  };
   return (
     <nav className={`${styles.pagination} ${className}`}>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <button className={styles.arrowBtn} disabled={currentPage === 1}>
+          <button
+            className={styles.arrowBtn}
+            disabled={page === 1}
+            onClick={onClickPrevPage}
+          >
             <MiniRightArrow className={styles.arrow} />
           </button>
         </li>
         {[...Array(pagesCount)].map((_, index) => (
           <li key={index} className={styles.item}>
-            <Link
-              href=""
-              className={`${styles.link} ${currentPage === index + 1 ? styles.linkActive : ''}`}
+            <button
+              onClick={() => onClickPage(index + 1)}
+              className={`${styles.link} ${page === index + 1 ? styles.linkActive : ''}`}
             >
               {index + 1}
-            </Link>
+            </button>
           </li>
         ))}
         <li className={styles.item}>
           <button
             className={styles.arrowBtn}
-            disabled={currentPage === pagesCount}
+            disabled={page === pagesCount}
+            onClick={onClickNextPage}
           >
             <MiniRightArrow />
           </button>

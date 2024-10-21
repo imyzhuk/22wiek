@@ -35,6 +35,10 @@ const cartSlice = createSlice({
         cartItemsCount: action.payload.count,
       };
     },
+    addCartProductId(state, action: PayloadAction<number>) {
+      state.productIds.push(action.payload);
+      state.cartItemsCount++;
+    },
     removeCartProductIds(state, action: PayloadAction<number[]>) {
       const set = new Set(action.payload);
       return {

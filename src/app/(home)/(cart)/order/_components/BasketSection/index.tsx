@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styles from './BasketSection.module.css';
 import { FilterCheckbox } from '@/components';
 import Image from 'next/image';
-import { services } from '@/data/cart';
 import Link from 'next/link';
 import { formatPrice } from '@/utils';
 import GiftIcon from '@icons/giftIcon.svg';

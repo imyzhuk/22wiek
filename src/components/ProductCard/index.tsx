@@ -25,7 +25,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     <div className={styles.product}>
       {hasLikeButton && <LikeButton />}
       <div className={styles.wrapper}>
-        <Link href={productLink} className={styles.imgLink}>
+        <Link href={`${productLink}${id}`} className={styles.imgLink}>
           <span className={styles.imgContainer}>
             <img className={styles.img} src={productImg} alt={type} />
           </span>

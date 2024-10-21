@@ -2,9 +2,10 @@ import {
   additionalServicesCategoriesNames,
   locations,
   initialReview,
-  refrigerator,
   refrigeratorImages,
   banners,
+  products,
+  refrigerators,
 } from './constants';
 import { prisma } from './prisma-client';
 
@@ -62,95 +63,131 @@ async function up() {
     ),
   );
 
-  const product = await prisma.product.create({
-    data: {
-      name: 'Холодильник с морозильником ХМ 4208-000 Atlant',
-      link: '/refrigerators/1',
-      preview:
-        'https://cdn21vek.by/img/galleries/58/129/preview/atlant_4208000_65bc97b9ca11d.jpeg',
-      discountTypes: ['Discount', 'Sale'],
-      isInStock: true,
-      price: 794.7,
-      oldPrice: 883.0,
-      discount: 10,
-      rating: 4,
-      reviewsCount: 1,
-      fourStarsCommentsCount: 1,
-      categories: {
-        connect: [
-          { id: category.id },
-          { id: subcategory.id },
-          { id: subSubcategory.id },
-        ],
+  const additionalServices = await prisma.additionalService.createMany({
+    data: [
+      {
+        name: 'Перенавеска 2 дверей холодильника без электронного управления на дверях',
+        description:
+          'При наличии электронных доводчиков стоимость перенавески дверей составит 45 руб., время работ – 1-1,5 часа. Производится в Барановичах, Бресте, Бобруйске, Борисове, Витебске, Гомеле, Гродно, Жлобине, Минске, Минском районе, Могилеве, Мозыре, Молодечно, Орше, Пинске, Полоцке.*Итоговая стоимость может измениться. Оплачивается только наличными по факту выполнения работ.',
+        price: 70.0,
+        priceCurrency: 'р',
+        categoryId: additionalServiceCategories[0].id,
       },
-      images: {
-        createMany: {
-          data: refrigeratorImages,
+      {
+        name: 'Надежная защита +1 год (500-999 руб.)',
+        description:
+          'Дополнительная поддержка вашей техники. В программу входит: увеличение гарантийного периода, бесплатный ремонт в негарантийных случаях, замена товара в случае отсутствия возможности ремонта, бесплатные консультации по вопросам эффективного использования товара, техническое обслуживание.',
+        link: '/info/extended_warranty',
+        price: 118.17,
+        priceCurrency: 'р',
+        categoryId: additionalServiceCategories[1].id,
+      },
+      {
+        name: 'Надежная защита +2 года (500-999 руб.)',
+        description:
+          'Дополнительная поддержка вашей техники. В программу входит: увеличение гарантийного периода, бесплатный ремонт в негарантийных случаях, замена товара в случае отсутствия возможности ремонта, бесплатные консультации по вопросам эффективного использования товара, техническое обслуживание.',
+        link: '/info/extended_warranty',
+        price: 136.35,
+        priceCurrency: 'р',
+        categoryId: additionalServiceCategories[1].id,
+      },
+      {
+        name: 'Страхование бытовой техники',
+        description:
+          'Комплексное страхование новой бытовой техники от хищения, гибели, а также от повреждения вследствие воздействия жидкостей, короткого замыкания, пожара, взрыва, удара молнии.',
+        link: '/services/insurance',
+        price: 45.45,
+        priceCurrency: 'р',
+        categoryId: additionalServiceCategories[2].id,
+      },
+    ],
+  });
+
+  const producersPromises = [
+    'ATLANT',
+    'Indesit',
+    'Nordfrost',
+    'Centek',
+    'Stinol',
+    'LG',
+    'TECHNO',
+    'Beko',
+    'Maunfeld',
+  ].map((name) =>
+    prisma.producer.create({
+      data: {
+        name,
+      },
+    }),
+  );
+
+  const producers = await Promise.all(producersPromises);
+
+  const additionalLinks = await prisma.additionalLink.createMany({
+    data: [
+      {
+        name: 'Руководство по эксплуатации',
+        link: '/files/atlant_4208000.pdf',
+        type: 'File',
+      },
+      {
+        name: 'Руководство по эксплуатации (особенности моделей)',
+        link: '/files/atlant_4208000_models.pdf',
+        type: 'File',
+      },
+      {
+        name: 'Сервисные центры ATLANT',
+        link: '/info/service_centres?producer=atlant',
+        type: 'Link',
+      },
+      {
+        name: 'Другая продукция бренда ATLANT',
+        link: '/info/brands/atlant',
+        type: 'Link',
+      },
+    ],
+  });
+
+  const productsPromise = products.map((el, index) =>
+    prisma.product.create({
+      data: {
+        ...el,
+        producerId:
+          producers.find((producer) => el.name.includes(producer.name))?.id ||
+          null,
+        refrigerator: {
+          create: {
+            ...refrigerators[index],
+            additionalLinks: {
+              connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
+            },
+          },
         },
-      },
-      producer: {
-        create: {
-          name: 'Atlant',
+        categories: {
+          connect: [
+            { id: category.id },
+            { id: subcategory.id },
+            { id: subSubcategory.id },
+          ],
         },
-      },
-      additionalServices: {
-        create: [
-          {
-            name: 'Перенавеска 2 дверей холодильника без электронного управления на дверях',
-            description:
-              'При наличии электронных доводчиков стоимость перенавески дверей составит 45 руб., время работ – 1-1,5 часа. Производится в Барановичах, Бресте, Бобруйске, Борисове, Витебске, Гомеле, Гродно, Жлобине, Минске, Минском районе, Могилеве, Мозыре, Молодечно, Орше, Пинске, Полоцке.*Итоговая стоимость может измениться. Оплачивается только наличными по факту выполнения работ.',
-            price: 70.0,
-            priceCurrency: 'р',
-            category: {
-              connect: { id: additionalServiceCategories[0].id },
-            },
+        additionalServices: {
+          connect: [{ id: 1 }],
+        },
+        images: {
+          createMany: {
+            data: refrigeratorImages,
           },
-          {
-            name: 'Надежная защита +1 год (500-999 руб.)',
-            description:
-              'Дополнительная поддержка вашей техники. В программу входит: увеличение гарантийного периода, бесплатный ремонт в негарантийных случаях, замена товара в случае отсутствия возможности ремонта, бесплатные консультации по вопросам эффективного использования товара, техническое обслуживание.',
-            link: '/info/extended_warranty',
-            price: 118.17,
-            priceCurrency: 'р',
-            category: {
-              connect: { id: additionalServiceCategories[1].id },
-            },
-          },
-          {
-            name: 'Надежная защита +2 года (500-999 руб.)',
-            description:
-              'Дополнительная поддержка вашей техники. В программу входит: увеличение гарантийного периода, бесплатный ремонт в негарантийных случаях, замена товара в случае отсутствия возможности ремонта, бесплатные консультации по вопросам эффективного использования товара, техническое обслуживание.',
-            link: '/info/extended_warranty',
-            price: 136.35,
-            priceCurrency: 'р',
-            category: {
-              connect: { id: additionalServiceCategories[1].id },
-            },
-          },
-          {
-            name: 'Страхование бытовой техники',
-            description:
-              'Комплексное страхование новой бытовой техники от хищения, гибели, а также от повреждения вследствие воздействия жидкостей, короткого замыкания, пожара, взрыва, удара молнии.',
-            link: '/services/insurance',
-            price: 45.45,
-            priceCurrency: 'р',
-            category: {
-              connect: { id: additionalServiceCategories[2].id },
-            },
-          },
-        ],
-      },
-      refrigerator: refrigerator,
-      reviews: {
-        create: [
-          {
+        },
+        reviews: {
+          create: {
             userId: user.id,
             ...initialReview,
           },
-        ],
+        },
       },
-    },
-  });
+    }),
+  );
+  await Promise.all(productsPromise);
 
   await prisma.banner.createMany({
     data: banners,
@@ -162,9 +199,13 @@ async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "Location" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Producer" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Review" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Image" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "AdditionalServiceCategory" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "AdditionalService" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Refrigerator" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "AdditionalLink" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "CartItem" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "FavoriteItem" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "ViewedItem" RESTART IDENTITY CASCADE`;

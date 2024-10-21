@@ -3,7 +3,6 @@ import styles from './Services.module.css';
 import { FilterCheckbox } from '@/components';
 import MoreIcon from '@icons/moreIcon.svg';
 import { formatPrice } from '@/utils';
-import { CartService } from '@/types/cartModel';
 import { IAdditionalService } from '@/types/cart';
 
 type ServicesProps = {

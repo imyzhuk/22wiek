@@ -35,8 +35,22 @@ enum BannerSize {
   Small
 }
 
+enum RefrigeratorType {
+  WithFreezer
+  WithoutFreezer
+  Commercial
+}
+
+enum RefrigeratorConstruction {
+  SideBySide
+  SingleDoor
+  TwoDoors
+  FourDoors
+  FrenchDoor
+}
+
 model User {
-  id        String      @id @default(cuid())
+  id        String   @id @default(cuid())
   name      String?
   email     String?  @unique
   phone     String?  @unique
@@ -46,9 +60,9 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  location     Location       @relation(fields: [locationId], references: [id])
-  locationId   Int
-  reviews      Review[]
+  location      Location       @relation(fields: [locationId], references: [id])
+  locationId    Int
+  reviews       Review[]
   cartItems     CartItem[]
   favoriteItems FavoriteItem[]
   viewedItems   ViewedItem[]
@@ -87,8 +101,8 @@ model Product {
   isInStock               Boolean
   price                   Decimal
   oldPrice                Decimal        @default(0)
-  discount                Int
-  rating                  Decimal
+  discount                Int            @default(0)
+  rating                  Decimal        @default(0.0)
   reviewsCount            Int            @default(0)
   oneStarCommentsCount    Int            @default(0)
   twoStarsCommentsCount   Int            @default(0)
@@ -98,10 +112,10 @@ model Product {
   createdAt               DateTime       @default(now())
 
   producer           Producer?           @relation(fields: [producerId], references: [id])
+  producerId         Int?
   reviews            Review[]
   images             Image[]
   additionalServices AdditionalService[]
-  producerId         Int
   categories         Category[]
   cartItems          CartItem[]
   favoriteItems      FavoriteItem[]
@@ -129,7 +143,7 @@ model Review {
   product   Product @relation(fields: [productId], references: [id])
   productId Int
 
-  user   User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
   userId String
 }
 
@@ -172,8 +186,8 @@ model Refrigerator {
   product         Product          @relation(fields: [productId], references: [id])
   productId       Int              @unique
 
-  type                 String
-  construction         String
+  type                 RefrigeratorType
+  construction         RefrigeratorConstruction
   cameras              String[]
   freezerLocation      String
   freezerSectionsCount Int
@@ -182,6 +196,7 @@ model Refrigerator {
   energyClass          String
   compressorsCount     Int
   noiseLevel           Int
+  
   retrodesign          Boolean
   camerasCount         Int
   totalVolume          Int
@@ -238,7 +253,7 @@ model CartItem {
   product   Product @relation(fields: [productId], references: [id])
   productId Int
 
-  user   User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
   userId String
 
   quantity  Int      @default(1)
@@ -252,7 +267,7 @@ model FavoriteItem {
   product   Product @relation(fields: [productId], references: [id])
   productId Int
 
-  user   User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
   userId String
 
   quantity  Int      @default(1)
@@ -266,7 +281,7 @@ model ViewedItem {
   product   Product @relation(fields: [productId], references: [id])
   productId Int
 
-  user   User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
   userId String
 
   quantity  Int      @default(1)
@@ -280,7 +295,7 @@ model WaitedItem {
   product   Product @relation(fields: [productId], references: [id])
   productId Int
 
-  user   User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
   userId String
 
   quantity  Int      @default(1)
