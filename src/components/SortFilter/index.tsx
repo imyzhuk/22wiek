@@ -3,22 +3,26 @@
 import React, { useState } from 'react';
 import styles from './SortFilter.module.css';
 import { Option } from '@/types/optionsModel';
-import { options } from '@/data/promo';
 import { useOutsideClick } from '@/hooks';
 import { FilterDropdownRadioButton } from '@/components';
 
 type SortFilterProps = {
   options: Option[];
+  onChange: (option: Option) => void;
+  activeOption: Option;
 };
 
-export const SortFilter: React.FC<SortFilterProps> = ({ options }) => {
-  const [activeOption, setActiveOption] = useState<Option>(options[0]);
+export const SortFilter: React.FC<SortFilterProps> = ({
+  options,
+  onChange,
+  activeOption,
+}) => {
   const { ref, isActive, setIsActive } = useOutsideClick<HTMLDivElement>(false);
 
   const handleOptionClick = (option: Option) => {
     if (option.value !== activeOption.value) {
-      setActiveOption(option);
       setIsActive(false);
+      onChange(option);
     }
   };
 

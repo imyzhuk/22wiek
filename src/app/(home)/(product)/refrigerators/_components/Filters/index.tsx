@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Filters.module.css';
 import {
-  FilterCheckboxGroup,
+  FilterCheckbox,
   FilterItem,
   FilterResetButton,
   FixedRangeFilter,
@@ -13,9 +13,15 @@ import {
 } from '@/components';
 import { Option } from '@/types/optionsModel';
 import refrigeratorAPI from '@/services/refrigeratorAPI';
-import { useActions } from '@/hooks';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
-import { productsOnPage } from '@/data/product';
+import { Controller, useFieldArray, useForm } from 'react-hook-form';
+import {
+  GetRefrigeratorMutableFiltersParamsType,
+  GetRefrigeratorsParamsType,
+} from '@/types/refrigerator';
+import { DiscountType, Producer, RefrigeratorType } from '@prisma/client';
+import { useActions, useQueryState, useGetRefrigerators } from '@/hooks';
+import { RecursivePartial } from '@/types/utils';
 
 const sortOptions: Option[] = [
   { name: 'Популярные', value: 'popular' },
@@ -24,73 +30,384 @@ const sortOptions: Option[] = [
   { name: 'Выгодные', value: 'profitable' },
 ];
 
-const discountTypes: Option[] = [
+const discountTypesOptions: {
+  name: string;
+  value: DiscountType;
+  checked: boolean;
+}[] = [
   {
     name: 'Товары со скидкой',
-    value: 'discounts',
+    value: 'Discount',
+    checked: false,
   },
   {
     name: 'Суперцена',
-    value: 'superprice',
+    value: 'Superprice',
+    checked: false,
   },
   {
     name: 'Уцененные товары',
-    value: 'sale',
+    value: 'Sale',
+    checked: false,
   },
 ];
 
-const typeOptions: Option[] = [
-  { name: 'холодильник с морозильником', value: 'with_freezer' },
-  { name: 'холодильник без морозильника', value: 'without_freezer' },
-  { name: 'торговый холодильник', value: 'trade' },
+const typesOptions: {
+  name: string;
+  value: RefrigeratorType;
+  checked: boolean;
+}[] = [
+  { name: 'холодильник с морозильником', value: 'WithFreezer', checked: false },
+  {
+    name: 'холодильник без морозильника',
+    value: 'WithoutFreezer',
+    checked: false,
+  },
+  { name: 'торговый холодильник', value: 'Commercial', checked: false },
 ];
 
-const constructionOptions: Option[] = [
-  { name: 'side-by-side', value: 'sideBySide' },
-  { name: 'однодверный', value: 'oneDoor:' },
-  { name: 'двухдверный', value: 'twoDoor' },
-  { name: 'четырехдверный', value: 'fourDoor' },
-  { name: 'french door', value: 'frenchDoor' },
-];
+type FiltersProps = {
+  initialSearchParams: Partial<GetRefrigeratorsParamsType>;
+};
 
-const { format } = new Intl.NumberFormat('ru', {
-  minimumFractionDigits: 2,
-});
-
-type FiltersProps = {};
-
-export const Filters: React.FC<FiltersProps> = () => {
-  const { setProducts, setProductsCount, setIsProductsLoading } = useActions();
+export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
   const page = useTypedSelector((state) => state.product.page);
-  useEffect(() => {
-    const getProducts = async () => {
-      setIsProductsLoading(true);
-      const {
-        data: { products, count },
-      } = await refrigeratorAPI.getProducts(page);
-      setProducts(products);
-      setProductsCount(count);
-      setIsProductsLoading(false);
+  const { setPage } = useActions();
+  const [maxPrice, setMaxPrice] = useState<number>(0);
+  const [minPrice, setMinPrice] = useState<number>(0);
+  const { getProducts } = useGetRefrigerators();
+  const [freezerSectionsCountOptions, setFreezerSectionsCountOptions] =
+    useState<number[]>([]);
+  const { setQuery } = useQueryState();
+  const [init, setInit] = useState<number>(0);
+
+  const defaultValues = {
+    page: page,
+    order: sortOptions[0],
+    price: {
+      fromValue: undefined as number | undefined,
+      untilValue: undefined as number | undefined,
+    },
+    freezerSectionsCount: {
+      fromValue: undefined as number | undefined,
+      untilValue: undefined as number | undefined,
+    },
+    types: typesOptions,
+    discountTypes: discountTypesOptions,
+    producers: [] as (Producer & { checked: boolean })[],
+  };
+
+  const { setValue, getValues, control, watch, register, reset } = useForm({
+    defaultValues,
+  });
+
+  const {
+    fields: typesFields,
+    append: typesAppend,
+    remove: typesRemove,
+  } = useFieldArray({ control, name: 'types' });
+  const {
+    fields: discountTypesFields,
+    append: discountTypesAppend,
+    remove: discountTypesRemove,
+  } = useFieldArray({ control, name: 'discountTypes' });
+  const { fields: producersFields } = useFieldArray({
+    control,
+    name: 'producers',
+  });
+
+  const getMutableFilters = async (
+    params?: GetRefrigeratorMutableFiltersParamsType,
+  ) => {
+    const { data } = await refrigeratorAPI.getMutableFilters({ ...params });
+    setMinPrice(data.fromPrice);
+    setMaxPrice(data.untilPrice);
+    const formValues = getValues();
+    if (
+      formValues.price.fromValue &&
+      formValues.price.fromValue < data.fromPrice
+    ) {
+      setValue('price', {
+        fromValue: data.fromPrice,
+        untilValue: formValues.price.untilValue,
+      });
+    }
+    if (
+      formValues.price.untilValue &&
+      formValues.price.untilValue > data.untilPrice
+    ) {
+      setValue('price', {
+        fromValue: formValues.price.fromValue,
+        untilValue: data.untilPrice,
+      });
+    }
+    if (
+      formValues.freezerSectionsCount.fromValue &&
+      formValues.freezerSectionsCount.fromValue <
+        data.freezerSectionsCountOptions[0]
+    ) {
+      setValue('freezerSectionsCount', {
+        fromValue: data.freezerSectionsCountOptions[0],
+        untilValue: formValues.freezerSectionsCount.untilValue,
+      });
+    }
+    if (
+      formValues.freezerSectionsCount.untilValue &&
+      formValues.freezerSectionsCount.untilValue >
+        data.freezerSectionsCountOptions.at(-1)!
+    ) {
+      setValue('freezerSectionsCount', {
+        fromValue: formValues.freezerSectionsCount.fromValue,
+        untilValue: data.freezerSectionsCountOptions.at(-1),
+      });
+    }
+
+    const removedElementsIdx: number[] = [];
+    formValues.types.forEach((type, typeIndex) => {
+      const matchingElementIdx = data.types.findIndex(
+        (dataType) => dataType === type.value,
+      );
+      if (matchingElementIdx === -1) {
+        removedElementsIdx.push(typeIndex);
+      } else {
+        data.types.splice(matchingElementIdx, 1);
+      }
+    });
+
+    typesRemove(removedElementsIdx);
+    typesAppend(
+      typesOptions.filter((type) => {
+        return data.types.includes(type.value);
+      }),
+    );
+
+    const removedDiscountTypesIdx: number[] = [];
+    formValues.discountTypes.forEach((discountType, discountTypeIndex) => {
+      const matchingElementIdx = data.discountTypes.findIndex(
+        (dataDiscountType) => dataDiscountType === discountType.value,
+      );
+      if (matchingElementIdx === -1) {
+        removedDiscountTypesIdx.push(discountTypeIndex);
+      } else {
+        data.discountTypes.splice(matchingElementIdx, 1);
+      }
+    });
+
+    discountTypesRemove(removedDiscountTypesIdx);
+    discountTypesAppend(
+      discountTypesOptions.filter((discountType) => {
+        return data.discountTypes.includes(discountType.value);
+      }),
+    );
+
+    setFreezerSectionsCountOptions(data.freezerSectionsCountOptions);
+  };
+
+  const prepareFormValuesForRequest = (
+    formData: RecursivePartial<typeof defaultValues>,
+  ) => {
+    const order: GetRefrigeratorsParamsType['order'] = {};
+    const filters: GetRefrigeratorsParamsType['filters'] = {};
+
+    switch (formData.order?.value) {
+      case sortOptions[0].value:
+        order.popularity = 'desc';
+        break;
+      case sortOptions[1].value:
+        order.price = 'asc';
+        break;
+      case sortOptions[2].value:
+        order.price = 'desc';
+        break;
+      case sortOptions[3].value:
+        order.promoDiscount = 'desc';
+        break;
+    }
+    filters.fromPrice = formData.price?.fromValue;
+    filters.untilPrice = formData.price?.untilValue;
+    filters.fromFreezerSectionsCount = formData.freezerSectionsCount?.fromValue;
+    filters.untilFreezerSectionsCount =
+      formData.freezerSectionsCount?.untilValue;
+    filters.types = formData.types?.reduce((acc, type) => {
+      if (type?.value && type?.checked) {
+        acc.push(type.value);
+      }
+      return acc;
+    }, [] as RefrigeratorType[]);
+
+    filters.discountTypes = formData.discountTypes?.reduce(
+      (acc, discountType) => {
+        if (discountType?.value && discountType?.checked) {
+          acc.push(discountType.value);
+        }
+        return acc;
+      },
+      [] as DiscountType[],
+    );
+    filters.producerIds = formData.producers?.reduce(
+      (acc, producer) => {
+        if (producer?.id && producer?.checked) {
+          acc.push(producer.id);
+        }
+        return acc;
+      },
+      [] as Producer['id'][],
+    );
+
+    return {
+      filters,
+      order,
+      page: formData.page,
     };
-    getProducts();
+  };
+
+  useEffect(() => {
+    const subscription = watch((formData, { name, type }) => {
+      if (name && name !== 'page' && !type) {
+        return;
+      }
+
+      const { filters, order, page } = prepareFormValuesForRequest(formData);
+      debugger;
+      if (name === 'page') {
+        setQuery({ filters, order, page });
+        getProducts({ order, filters, page });
+        return;
+      }
+      setPage(1);
+      setQuery({ filters, order, page });
+      getProducts({ order, filters, page });
+      getMutableFilters(filters);
+    });
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
+  useEffect(() => {
+    debugger;
+    if (init !== 2) {
+      setInit((prev) => prev + 1);
+      return;
+    }
+    setValue('page', page);
   }, [page]);
+
+  useEffect(() => {
+    debugger;
+    const params = {
+      page: initialSearchParams.page ? Number(initialSearchParams.page) : 1,
+      order: initialSearchParams.order,
+      filters: {
+        ...initialSearchParams.filters,
+        producerIds: initialSearchParams.filters?.producerIds?.map(Number),
+        fromPrice: Number(initialSearchParams.filters?.fromPrice) || undefined,
+        untilPrice:
+          Number(initialSearchParams.filters?.untilPrice) || undefined,
+        fromFreezerSectionsCount:
+          Number(initialSearchParams.filters?.fromFreezerSectionsCount) ||
+          undefined,
+        untilFreezerSectionsCount:
+          Number(initialSearchParams.filters?.untilFreezerSectionsCount) ||
+          undefined,
+      },
+    };
+
+    setPage(params.page);
+
+    if (params.order) {
+      if (params.order.popularity) {
+        setValue('order', sortOptions[0]);
+      } else if (params.order.price && params.order.price === 'asc') {
+        setValue('order', sortOptions[1]);
+      } else if (params.order.price && params.order.price === 'desc') {
+        setValue('order', sortOptions[2]);
+      } else if (params.order.promoDiscount) {
+        setValue('order', sortOptions[3]);
+      }
+    }
+    setValue('price', {
+      fromValue: params.filters.fromPrice,
+      untilValue: params.filters.untilPrice,
+    });
+    setValue('freezerSectionsCount', {
+      fromValue: params.filters.fromFreezerSectionsCount,
+      untilValue: params.filters.untilFreezerSectionsCount,
+    });
+
+    setValue(
+      'types',
+      typesOptions.map((typeOption) => ({
+        ...typeOption,
+        checked: params.filters.types?.includes(typeOption.value) || false,
+      })),
+    );
+    setValue(
+      'discountTypes',
+      discountTypesOptions.map((discountTypeOption) => ({
+        ...discountTypeOption,
+        checked:
+          params.filters.discountTypes?.includes(discountTypeOption.value) ||
+          false,
+      })),
+    );
+
+    const getImmutableFilters = async () => {
+      const { data } = await refrigeratorAPI.getImmutableFilters();
+      setValue(
+        'producers',
+        data.map((producer) => ({
+          ...producer,
+          checked: params.filters.producerIds?.includes(producer.id) || false,
+        })),
+      );
+    };
+
+    getProducts(params);
+    getImmutableFilters();
+    getMutableFilters(params.filters);
+  }, []);
+
   return (
     <aside>
       <FilterItem title="Сортировка" hasBottomBorder>
-        <SortFilter options={sortOptions} />
+        <Controller
+          name="order"
+          control={control}
+          render={({ field }) => (
+            <SortFilter
+              options={sortOptions}
+              activeOption={field.value}
+              onChange={field.onChange}
+            />
+          )}
+        />
       </FilterItem>
       <FilterItem title="Цена" hasBottomBorder>
-        <RangeFilter
-          unit="р."
-          fromValuePlaceholder={format(420)}
-          untilValuePlaceholder={format(10760)}
+        <Controller
+          name="price"
+          control={control}
+          render={({ field }) => (
+            <RangeFilter
+              unit="р."
+              maxPrice={maxPrice}
+              minPrice={minPrice}
+              values={field.value}
+              {...field}
+            />
+          )}
         />
       </FilterItem>
       <FilterItem title="Производитель" hasBottomBorder>
-        <ProducersFilter />
+        <ProducersFilter fields={producersFields} register={register} />
       </FilterItem>
       <FilterItem title="Спецпредложения" hasBottomBorder>
-        <FilterCheckboxGroup name="discount" options={discountTypes} />
+        {discountTypesFields.map((item, index) => (
+          <FilterCheckbox
+            key={item.id}
+            name={item.name}
+            value={`discountTypes.${index}.checked`}
+            register={register}
+          />
+        ))}
       </FilterItem>
       <FilterItem
         title="Тип"
@@ -126,67 +443,43 @@ export const Filters: React.FC<FiltersProps> = () => {
           />
         }
       >
-        <FilterCheckboxGroup name="type" options={typeOptions} />
-      </FilterItem>
-      <FilterItem
-        title="Конструкция"
-        hasBottomBorder
-        popover={
-          <Popover
-            popoverClassName={styles.popover}
-            title="Конструкция"
-            body={
-              <>
-                <p>
-                  <strong>Однодверный холодильник</strong> – самая простая
-                  конструкция холодильника с одной дверью. Но не очень
-                  практичная в случае с комбинированными моделями, так как
-                  морозильная камера отделена от холодильника обычно лишь
-                  пластиковой дверцей. И при открывании двери в морозильнике
-                  может повышаться температура, что приводит к необходимости
-                  чаще его размораживать.
-                </p>
-                <p>
-                  В <strong>двухдверном варианте</strong> конструкции
-                  холодильная и морозильная камеры располагаются независимо друг
-                  от друга.
-                </p>
-                <p>
-                  <strong>Side-by-side</strong> – конструкция холодильника с
-                  распашными дверьми, при этом может быть двух- или
-                  четырехдверной. Варианты расположения камер с такой
-                  конструкцией: холодильное и морозильные отделения сбоку друг
-                  от друга или морозильная камера внизу. Такие холодильники
-                  отличаются большой вместимостью, практичностью, стильным
-                  внешним видом, но они достаточно габаритны и занимают много
-                  пространства на кухне.
-                </p>
-                <p>
-                  Конструкция типа <strong>French door</strong> или «французская
-                  дверь» представляет собой верхнюю холодильную камеру с
-                  распашными дверьми, а морозильное отделение – в виде выдвижных
-                  ящиков, число которых варьируется от одного до 4.
-                </p>
-              </>
-            }
+        {typesFields.map((item, index) => (
+          <FilterCheckbox
+            key={item.id}
+            name={item.name}
+            value={`types.${index}.checked`}
+            register={register}
           />
-        }
-      >
-        <FilterCheckboxGroup
-          name="construction"
-          options={constructionOptions}
-        />
-      </FilterItem>
-      <FilterItem title="Высота" hasBottomBorder>
-        <RangeFilter unit="см" />
+        ))}
       </FilterItem>
       <FilterItem
         title="Количество отделений морозильной камеры"
         hasBottomBorder
       >
-        <FixedRangeFilter options={[1, 2, 3, 4, 5, 6, 7, 8]} />
+        <Controller
+          name="freezerSectionsCount"
+          control={control}
+          render={({ field }) => (
+            <FixedRangeFilter
+              options={freezerSectionsCountOptions}
+              values={field.value}
+              {...field}
+            />
+          )}
+        />
       </FilterItem>
-      <FilterResetButton />
+      <FilterResetButton
+        onClick={() => {
+          reset({
+            producers: getValues().producers.map((producer) => ({
+              ...producer,
+              checked: false,
+            })),
+            types: typesOptions,
+            discountTypes: discountTypesOptions,
+          });
+        }}
+      />
     </aside>
   );
 };

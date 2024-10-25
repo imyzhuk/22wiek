@@ -2,14 +2,11 @@
 
 import React, { useState } from 'react';
 import styles from './ProducersFilter.module.css';
-import {
-  FilterCheckbox,
-  FilterCheckboxGroup,
-  FilterDropdown,
-  ScrollContainer,
-} from '@/components';
+import { FilterCheckbox, FilterDropdown, ScrollContainer } from '@/components';
 import SearchIcon from '@icons/searchIcon.svg';
 import CrossExitIcon from '@icons/crossExitTransparent.svg';
+import { UseFormRegister } from 'react-hook-form';
+import { Producer } from '@prisma/client';
 
 const options = [
   { name: 'A1', value: 'a1' },
@@ -60,18 +57,33 @@ const options = [
   { name: 'Сити', value: 'city' },
   { name: 'Сказка', value: 'skazka' },
 ];
-type ProducersFilterProps = {};
+type ProducersFilterProps = {
+  fields: (Producer & { checked: boolean })[];
+  register: UseFormRegister<any>;
+};
 
-export const ProducersFilter: React.FC<ProducersFilterProps> = () => {
-  const [searchValue, setSearchValue] = useState('');
+export const ProducersFilter: React.FC<ProducersFilterProps> = ({
+  fields,
+  register,
+}) => {
+  /* const [searchValue, setSearchValue] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-  };
+  };*/
   return (
     <>
-      <FilterCheckboxGroup name="producers" options={options.slice(0, 10)} />
-      <FilterDropdown
+      <ul>
+        {fields.slice(0, 10).map((item, index) => (
+          <FilterCheckbox
+            key={item.id}
+            name={item.name}
+            value={`producers.${index}.checked`}
+            register={register}
+          />
+        ))}
+      </ul>
+      {/*Boolean(fields.length) && <FilterDropdown
         buttonContent="Посмотреть все"
         activeButtonClassname={styles.buttonActive}
         buttonClassname={styles.button}
@@ -98,17 +110,18 @@ export const ProducersFilter: React.FC<ProducersFilterProps> = () => {
           </div>
           <ScrollContainer maxHeight="300px">
             <ul className={styles.options} role="listbox">
-              {options.map((option) => (
+              {fields.map((item, index) => (
                 <FilterCheckbox
-                  key={option.value}
-                  name={option.name}
-                  value={option.value}
+                  key={item.id}
+                  name={item.name}
+                  value={`producers.${index}.checked`}
+                  register={register}
                 />
               ))}
             </ul>
           </ScrollContainer>
         </div>
-      </FilterDropdown>
+              </FilterDropdown>*/}
     </>
   );
 };

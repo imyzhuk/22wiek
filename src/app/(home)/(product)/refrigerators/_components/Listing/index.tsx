@@ -2,8 +2,9 @@
 import React from 'react';
 import styles from './Listing.module.css';
 import { ProductCard, ProductsPagination } from '@/components';
-import { useTypedSelector } from '@/hooks/useTypedSelector';
+import { useTypedSelector } from '@/hooks';
 import { getDiscountTypeName } from '@/utils';
+import CrossedLoopIcon from '@icons/crossedLoopIcon.svg';
 
 let { format } = new Intl.NumberFormat('ru', {
   minimumFractionDigits: 2,
@@ -22,41 +23,48 @@ export const Listing: React.FC<ListingProps> = () => {
   return (
     <main className={styles.main}>
       {isProductsLoading && <p>...Loading</p>}
-      <ul className={styles.products}>
-        {refrigerators.map(
-          (
-            {
-              id,
-              name,
-              discount,
-              discountTypes,
-              price,
-              oldPrice,
-              preview,
-              link,
-            },
-            idx,
-          ) => (
-            <div
-              key={id}
-              className={`${styles.product} ${idx === IndexOfElementWithputBottomBorder ? styles.noBottomBorder : ''}`}
-            >
-              <ProductCard
-                id={id}
-                currentPrice={`${format(price)}  р.`}
-                oldPrice={oldPrice ? `${format(oldPrice)}  р.` : ''}
-                productImg={preview}
-                productLink={link}
-                title={name}
-                type={name}
-                discount={discount}
-                discountType={getDiscountTypeName(discountTypes)}
-                hasLikeButton
-              />
-            </div>
-          ),
-        )}
-      </ul>
+      {refrigerators.length ? (
+        <ul className={styles.products}>
+          {refrigerators.map(
+            (
+              {
+                id,
+                name,
+                discount,
+                discountTypes,
+                price,
+                oldPrice,
+                preview,
+                link,
+              },
+              idx,
+            ) => (
+              <div
+                key={id}
+                className={`${styles.product} ${idx === IndexOfElementWithputBottomBorder ? styles.noBottomBorder : ''}`}
+              >
+                <ProductCard
+                  id={id}
+                  currentPrice={`${format(price)}  р.`}
+                  oldPrice={oldPrice ? `${format(oldPrice)}  р.` : ''}
+                  productImg={preview}
+                  productLink={link}
+                  title={name}
+                  type={name}
+                  discount={discount}
+                  discountType={getDiscountTypeName(discountTypes)}
+                  hasLikeButton
+                />
+              </div>
+            ),
+          )}
+        </ul>
+      ) : (
+        <div className={styles.notProductWrapper}>
+          <CrossedLoopIcon />
+          <span>Ничего не найдено</span>
+        </div>
+      )}
       <ProductsPagination />
     </main>
   );

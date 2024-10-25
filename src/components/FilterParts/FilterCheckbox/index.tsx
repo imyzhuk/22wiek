@@ -10,7 +10,7 @@ type FilterCheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   value: string;
   className?: string;
   checked?: boolean;
-  register?: UseFormRegister<FieldValues>;
+  register?: UseFormRegister<any>;
 };
 
 export const FilterCheckbox: React.FC<FilterCheckboxProps> = ({

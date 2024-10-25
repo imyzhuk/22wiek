@@ -4,6 +4,8 @@ import styles from './RefrigeratorsPage.module.css';
 import { Option } from '@/types/optionsModel';
 import Link from 'next/link';
 import { Filters, Listing } from './_components';
+import qs from 'qs';
+import { GetRefrigeratorsParamsType } from '@/types/refrigerator';
 
 const chipOptions: Option[] = [
   { name: 'Все', value: '/refrigerators/' },
@@ -242,7 +244,19 @@ const chipOptions: Option[] = [
   { name: 'Однокомпрессорные', value: '/refrigerators/3026/' },
 ];
 
-function RefrigeratorsPage() {
+async function RefrigeratorsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const data = await searchParams;
+  const searchParamsString = Object.entries(data)
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&');
+  // TODO: add validity checking for search params
+  const searchParamsObject = qs.parse(
+    searchParamsString,
+  ) as unknown as Partial<GetRefrigeratorsParamsType>;
   return (
     <div className={styles.wrapper}>
       <Breadcrumps
@@ -265,7 +279,7 @@ function RefrigeratorsPage() {
       )}
       <div className={styles.contentContainer}>
         <Listing />
-        <Filters />
+        <Filters initialSearchParams={searchParamsObject} />
       </div>
     </div>
   );

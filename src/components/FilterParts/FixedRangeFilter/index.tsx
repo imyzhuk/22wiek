@@ -10,13 +10,15 @@ import ArrowDownIcon from '@icons/arrowDownIcon.svg';
 
 type FixedRangeFilterProps = {
   options: number[];
+  onChange: (values: { fromValue?: number; untilValue?: number }) => void;
+  values: { fromValue?: number; untilValue?: number };
 };
 
 export const FixedRangeFilter: React.FC<FixedRangeFilterProps> = ({
   options,
+  onChange,
+  values,
 }) => {
-  const [fromValue, setFromValue] = React.useState<number>();
-  const [untilValue, setUntilValue] = React.useState<number>();
   const {
     ref: fromInputRef,
     isActive: isFromInputActive,
@@ -28,22 +30,31 @@ export const FixedRangeFilter: React.FC<FixedRangeFilterProps> = ({
     setIsActive: setIsUntilInputActive,
   } = useOutsideClick<HTMLDivElement>(false);
   const handleFromChange = (value: number) => {
-    if (fromValue === value) {
-      setFromValue(undefined);
+    if (values.fromValue === value) {
+      onChange({
+        fromValue: undefined,
+        untilValue: values.untilValue,
+      });
       return;
     }
-    setFromValue(value);
-    console.log(value);
+    onChange({
+      fromValue: value,
+      untilValue: values.untilValue,
+    });
   };
   const handleUntilChange = (value: number) => {
-    if (untilValue === value) {
-      setUntilValue(undefined);
+    if (values.untilValue === value) {
+      onChange({
+        fromValue: values.fromValue,
+        untilValue: undefined,
+      });
       return;
     }
-    setUntilValue(value);
-    console.log(value);
+    onChange({
+      fromValue: values.fromValue,
+      untilValue: value,
+    });
   };
-
   return (
     <div className={styles.inputs}>
       <label className={styles.label}>
@@ -51,7 +62,7 @@ export const FixedRangeFilter: React.FC<FixedRangeFilterProps> = ({
         <input
           type="number"
           className={styles.input}
-          value={fromValue || ''}
+          value={values.fromValue || ''}
           onChange={() => null}
           onClick={() => setIsFromInputActive((prev) => !prev)}
         />
@@ -72,11 +83,11 @@ export const FixedRangeFilter: React.FC<FixedRangeFilterProps> = ({
               <div className={styles.options}>
                 {options.map((option) => (
                   <li
-                    className={`${styles.option} ${fromValue === option ? styles.activeOption : ''}`}
+                    className={`${styles.option} ${values.fromValue === option ? styles.activeOption : ''}`}
                     onClick={() => handleFromChange(option)}
                   >
                     {option}
-                    {fromValue === option && <CheckmarkIcon />}
+                    {values.fromValue === option && <CheckmarkIcon />}
                   </li>
                 ))}
               </div>
@@ -90,7 +101,7 @@ export const FixedRangeFilter: React.FC<FixedRangeFilterProps> = ({
         <input
           type="number"
           className={styles.input}
-          value={untilValue || ''}
+          value={values.untilValue || ''}
           onChange={() => null}
           onClick={() => setIsUntilInputActive((prev) => !prev)}
         />
@@ -111,11 +122,11 @@ export const FixedRangeFilter: React.FC<FixedRangeFilterProps> = ({
               <div className={styles.options}>
                 {options.map((option) => (
                   <li
-                    className={`${styles.option} ${untilValue === option ? styles.activeOption : ''}`}
+                    className={`${styles.option} ${values.untilValue === option ? styles.activeOption : ''}`}
                     onClick={() => handleUntilChange(option)}
                   >
                     {option}
-                    {untilValue === option && <CheckmarkIcon />}
+                    {values.untilValue === option && <CheckmarkIcon />}
                   </li>
                 ))}
               </div>

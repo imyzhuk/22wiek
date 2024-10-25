@@ -11,7 +11,7 @@ type InitialStateType = {
 const initialState: InitialStateType = {
   items: [],
   count: 0,
-  page: 1,
+  page: 0,
   isLoading: false,
 };
 

@@ -1,14 +1,8 @@
-.title {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
 .inputs {
   display: flex;
   justify-content: space-between;
 }
+
 .label {
   display: block;
   position: relative;
@@ -42,6 +36,7 @@
   line-height: 20px;
   color: var(--black-500);
   background: transparent;
+  cursor: text;
 }
 
 .input::placeholder {

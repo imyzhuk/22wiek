@@ -1,31 +1,58 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './RangeFilter.module.css';
 
 type RangeFilterProps = {
   fromValuePlaceholder?: string;
   untilValuePlaceholder?: string;
   unit?: string;
+  onChange: (values: { fromValue?: number; untilValue?: number }) => void;
+  values: { fromValue?: number; untilValue?: number };
+  maxPrice: number;
+  minPrice: number;
 };
 
+const { format } = new Intl.NumberFormat('ru', {
+  minimumFractionDigits: 2,
+});
+
 export const RangeFilter: React.FC<RangeFilterProps> = ({
-  fromValuePlaceholder,
-  untilValuePlaceholder,
   unit,
+  onChange,
+  values,
+  maxPrice,
+  minPrice,
 }) => {
-  const handleFromChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [fromValue, setFromValue] = useState<number>(values.fromValue || 0);
+  const [untilValue, setUntilValue] = useState<number>(values.untilValue || 0);
+
+  useEffect(() => {
+    setFromValue(values.fromValue || 0);
+    setUntilValue(values.untilValue || 0);
+  }, [values]);
+  const handleFromValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
-    if (value) {
-      console.log(value);
-    }
+    setFromValue(value);
   };
 
-  const handleUntilChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFromValueBlur = () => {
+    onChange({
+      fromValue: fromValue,
+      untilValue: values.untilValue,
+    });
+  };
+
+  const handleUntilValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value;
-    if (value) {
-      console.log(value);
-    }
+    setUntilValue(value);
+  };
+
+  const handleUntilValueBlur = () => {
+    onChange({
+      fromValue: values.fromValue,
+      untilValue: untilValue,
+    });
   };
 
   return (
@@ -33,20 +60,26 @@ export const RangeFilter: React.FC<RangeFilterProps> = ({
       <label className={styles.label}>
         <span className={styles.labelText}>От {unit && `, ${unit}`}</span>
         <input
-          type="number"
-          placeholder={fromValuePlaceholder || ''}
+          type="text"
+          inputMode="decimal"
+          placeholder={format(minPrice)}
           className={styles.input}
-          onBlur={handleFromChange}
+          onChange={handleFromValueChange}
+          onBlur={handleFromValueBlur}
+          value={fromValue || ''}
         />
       </label>
 
       <label className={styles.label}>
         <span className={styles.labelText}>До {unit && `, ${unit}`}</span>
         <input
-          type="number"
-          placeholder={untilValuePlaceholder || ''}
+          type="text"
+          inputMode="decimal"
+          placeholder={format(maxPrice)}
           className={styles.input}
-          onBlur={handleUntilChange}
+          onBlur={handleUntilValueBlur}
+          onChange={handleUntilValueChange}
+          value={untilValue || ''}
         />
       </label>
     </div>

@@ -1,42 +1,18 @@
-import { NextRequest } from 'next/server';
-import { parseParams } from '../_utils/params';
+import { NextRequest, NextResponse } from 'next/server';
+import { Prisma } from '@prisma/client';
+import qs from 'qs';
 import { prisma } from '@prisma/prisma-client';
-import {
-  DiscountType,
-  Prisma,
-  Producer,
-  RefrigeratorConstruction,
-  RefrigeratorType,
-} from '@prisma/client';
 import { productsOnPage } from '@/data/product';
-
-type GetHandlerParamsType = {
-  limit: string;
-  page: string;
-  order: {
-    price?: 'desc' | 'asc';
-    popularity?: 'desc';
-    promoDiscount?: 'desc';
-  };
-  filters: {
-    fromPrice?: string;
-    untilPrice?: string;
-    fromHeight?: string;
-    untilHeight?: string;
-    discountTypes?: DiscountType[];
-    types?: RefrigeratorType[];
-    constructions?: RefrigeratorConstruction[];
-    producerIds?: Producer['id'][];
-    fromFreezerSectionsCount: string;
-    untilFreezerSectionsCount: string;
-  };
-};
+import { GetRefrigeratorsParamsType } from '@/types/refrigerator';
 
 export async function GET(request: NextRequest) {
-  console.log(JSON.parse(request.nextUrl.searchParams.get('order') || ''));
-  const { order, filters, page } = parseParams<GetHandlerParamsType>(
-    request.nextUrl.searchParams,
-  );
+  const {
+    order,
+    filters,
+    page = 1,
+  } = qs.parse(
+    request.url.split('?')[1],
+  ) as Partial<GetRefrigeratorsParamsType>;
   const whereConditions: Prisma.ProductWhereInput[] = [];
   const orderCondition: Prisma.ProductOrderByWithAggregationInput = {};
   const refrigeratorWhereConditions: Prisma.RefrigeratorWhereInput[] = [];
@@ -61,23 +37,22 @@ export async function GET(request: NextRequest) {
   if (filters?.discountTypes?.length) {
     whereConditions.push({
       discountTypes: {
-        hasEvery: filters?.discountTypes,
+        hasSome: filters?.discountTypes,
       },
     });
   }
 
-  if (filters?.fromHeight || filters?.untilHeight) {
-    refrigeratorWhereConditions.push({
-      height: {
-        gte: Number(filters.fromHeight) || undefined,
-        lte: Number(filters.untilHeight) || undefined,
+  if (filters?.producerIds) {
+    whereConditions.push({
+      producerId: {
+        in: filters.producerIds.map(Number),
       },
     });
   }
 
   if (filters?.fromFreezerSectionsCount || filters?.untilFreezerSectionsCount) {
     refrigeratorWhereConditions.push({
-      height: {
+      freezerSectionsCount: {
         gte: Number(filters.fromFreezerSectionsCount) || undefined,
         lte: Number(filters.untilFreezerSectionsCount) || undefined,
       },
@@ -88,21 +63,6 @@ export async function GET(request: NextRequest) {
     refrigeratorWhereConditions.push({
       type: {
         in: filters.types,
-      },
-    });
-  }
-  if (filters?.constructions) {
-    refrigeratorWhereConditions.push({
-      construction: {
-        in: filters.constructions,
-      },
-    });
-  }
-
-  if (filters?.producerIds) {
-    whereConditions.push({
-      producerId: {
-        in: filters.producerIds,
       },
     });
   }
@@ -154,5 +114,5 @@ export async function GET(request: NextRequest) {
     productsPromise,
     productsCountPromise,
   ]);
-  return Response.json({ products, count: productsCount });
+  return NextResponse.json({ products, count: productsCount });
 }

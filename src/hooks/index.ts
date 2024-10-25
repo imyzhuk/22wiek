@@ -5,3 +5,6 @@ export { useDebounce } from './useDebounce';
 export { usePopularProducts } from './usePopularProducts';
 export { useCartInfo } from './useCartInfo';
 export { useActions } from './useActions';
+export { useTypedSelector } from './useTypedSelector';
+export { useGetRefrigerators } from './useGetRefrigerators';
+export { useQueryState } from './useQueryState';

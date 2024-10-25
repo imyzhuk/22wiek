@@ -35,7 +35,7 @@ export const ProductCardButton: React.FC<ProductCardButtonProps> = ({ id }) => {
       return;
     }
 
-    if (cartProductIds.some((productId) => productId === id)) {
+    if (cartProductIds?.some((productId) => productId === id)) {
       setIsActive(true);
     }
   }, [cartProductIds]);
