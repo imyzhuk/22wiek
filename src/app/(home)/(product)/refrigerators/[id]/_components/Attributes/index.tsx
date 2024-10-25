@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import styles from './Attributes.module.css';
 import { Popover } from '@/components';
 import { Attribute } from '..';
@@ -11,6 +11,7 @@ import {
 } from '@prisma/client';
 import ArrowDownIcon from '@icons/arrowDownIcon.svg';
 import ArrowUpIcon from '@icons/arrowUpIcon.svg';
+import { usePathname } from 'next/navigation';
 
 type AttributesProps = Omit<
   Refrigerator,
@@ -106,6 +107,13 @@ export const Attributes: React.FC<AttributesProps> = ({
 }) => {
   const [showAll, setShowAll] = React.useState(false);
   const toggleAttributes = () => setShowAll((showAll) => !showAll);
+  const pathname = usePathname();
+  const baseLink = useMemo(() => {
+    const linkArray = pathname.split('/');
+    linkArray.pop();
+    return linkArray.join('/');
+  }, []);
+  console.log(baseLink);
   return (
     <div>
       <div
@@ -118,7 +126,7 @@ export const Attributes: React.FC<AttributesProps> = ({
             <Attribute
               name="Тип"
               value={refrigeratorTypeMapper[type]}
-              link="/"
+              link={`${baseLink}?filters[types][0]=${type}`}
               popover={
                 <Popover
                   popoverClassName={styles.popover}
@@ -156,7 +164,6 @@ export const Attributes: React.FC<AttributesProps> = ({
             <Attribute
               name="Конструкция"
               value={refrigeratorConstructionMapper[construction]}
-              link="/"
             />
             <Attribute name="Камеры" value={cameras.join(', ')} />
             <Attribute
@@ -167,13 +174,12 @@ export const Attributes: React.FC<AttributesProps> = ({
               name="Количество отделений морозильной камеры"
               value={freezerSectionsCount}
             />
-            <Attribute name="Цвет" value={color} link="/" />
+            <Attribute name="Цвет" value={color} />
             <Attribute name="Система No Frost" value={noFrostSystem} />
             <Attribute name="Класс энергопотребления" value={energyClass} />
             <Attribute
               name="Количество компрессоров"
               value={compressorsCount}
-              link="/"
             />
             <Attribute name="Уровень шума" value={`${noiseLevel} дБ`} />
           </div>
@@ -223,7 +229,7 @@ export const Attributes: React.FC<AttributesProps> = ({
           </div>
           <div className={styles.group}>
             <h2 className={styles.name}>Управление и индикация</h2>
-            <Attribute name="Тип управления" value={controlType} link="/" />
+            <Attribute name="Тип управления" value={controlType} />
             <Attribute
               name="Расположение блока управления"
               value={controlUnitLocation}

@@ -13,10 +13,11 @@ type RefrigeratorReviewsPageProps = {
 };
 
 const RefrigeratorReviewsPage: React.FC<RefrigeratorReviewsPageProps> = async ({
-  params: { id },
+  params,
 }) => {
+  const id = Number(params.id);
   const productPromise = prisma.product.findFirst({
-    where: { id: Number(id) },
+    where: { id },
     select: {
       name: true,
       price: true,
@@ -30,7 +31,7 @@ const RefrigeratorReviewsPage: React.FC<RefrigeratorReviewsPageProps> = async ({
     },
   });
   const reviewsPromise = prisma.review.findMany({
-    where: { productId: Number(id) },
+    where: { productId: id },
     include: {
       user: {
         select: {
@@ -68,12 +69,12 @@ const RefrigeratorReviewsPage: React.FC<RefrigeratorReviewsPageProps> = async ({
       </h1>
       <ProductTabs
         tabs={[
-          { id: 0, name: 'Основное', link: product.link },
+          { id: 0, name: 'Основное', link: `${product.link}${id}` },
           {
             id: 1,
             name: 'Отзывы',
             count: product.reviewsCount,
-            link: `${product.link}/reviews`,
+            link: `${product.link}${id}/reviews`,
           },
         ]}
       />
@@ -93,6 +94,7 @@ const RefrigeratorReviewsPage: React.FC<RefrigeratorReviewsPageProps> = async ({
           ))}
         </div>
         <ReviewAside
+          id={id}
           className={styles.reviewAside}
           reviewsCount={product.reviewsCount}
           averageRating={averageRating}

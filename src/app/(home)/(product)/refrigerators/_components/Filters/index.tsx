@@ -119,6 +119,7 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
   const getMutableFilters = async (
     params?: GetRefrigeratorMutableFiltersParamsType,
   ) => {
+    debugger;
     const { data } = await refrigeratorAPI.getMutableFilters({ ...params });
     setMinPrice(data.fromPrice);
     setMaxPrice(data.untilPrice);
@@ -257,7 +258,7 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
     return {
       filters,
       order,
-      page: formData.page,
+      page: formData.page || 1,
     };
   };
 

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ProductCardGallery, TopAttribute, Labels } from '..';
 
 type TopBlockProps = {
+  id: number;
   reviewsCount: number;
   averageRating: number;
   price: number;
@@ -22,6 +23,7 @@ type TopBlockProps = {
 };
 
 export const TopBlock: React.FC<TopBlockProps> = ({
+  id,
   reviewsCount,
   averageRating,
   price,
@@ -51,7 +53,7 @@ export const TopBlock: React.FC<TopBlockProps> = ({
   if (guarantee) {
     labels.push({
       id: 0,
-      name: `Гарантия ${guarantee}`,
+      name: guarantee,
       style: { background: 'linear-gradient(90deg, #3C64F0 0%, #384EC3 100%)' },
     });
   }
@@ -81,6 +83,7 @@ export const TopBlock: React.FC<TopBlockProps> = ({
         </div>
       </div>
       <ReviewAside
+        id={id}
         className={styles.reviewAside}
         averageRating={averageRating}
         reviewsCount={reviewsCount}

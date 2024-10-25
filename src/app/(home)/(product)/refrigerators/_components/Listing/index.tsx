@@ -23,7 +23,7 @@ export const Listing: React.FC<ListingProps> = () => {
   return (
     <main className={styles.main}>
       {isProductsLoading && <p>...Loading</p>}
-      {refrigerators.length ? (
+      {Boolean(refrigerators.length) && (
         <ul className={styles.products}>
           {refrigerators.map(
             (
@@ -59,12 +59,14 @@ export const Listing: React.FC<ListingProps> = () => {
             ),
           )}
         </ul>
-      ) : (
+      )}
+      {!(isProductsLoading || refrigerators.length) && (
         <div className={styles.notProductWrapper}>
           <CrossedLoopIcon />
           <span>Ничего не найдено</span>
         </div>
       )}
+
       <ProductsPagination />
     </main>
   );

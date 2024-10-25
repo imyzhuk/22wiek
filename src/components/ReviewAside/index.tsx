@@ -10,6 +10,7 @@ type ReviewAsideProps = {
   averageRating: number;
   price: number;
   className?: string;
+  id: number;
 };
 
 export const ReviewAside: React.FC<ReviewAsideProps> = ({
@@ -17,6 +18,7 @@ export const ReviewAside: React.FC<ReviewAsideProps> = ({
   averageRating,
   price,
   className,
+  id,
 }) => {
   let { format } = new Intl.NumberFormat('ru', {
     minimumFractionDigits: 2,
@@ -28,24 +30,35 @@ export const ReviewAside: React.FC<ReviewAsideProps> = ({
       <div className={`${styles.content} ${className}`}>
         <div className={styles.wrapper}>
           <div className={styles.ratingArea}>
-            <a
-              className={`${styles.ratingAreaLink} ${styles.ratingAreaLinkDisabled}`}
-            >
-              <div className={styles.ratingInfo}>
-                <StarIcon className={styles.star} />
-                <span className={styles.rating}>
-                  {averageRating.toFixed(1)}
-                </span>
-              </div>
-              <span className={styles.reviewCount}>({reviewsCount})</span>
-            </a>
+            {averageRating ? (
+              <a
+                className={`${styles.ratingAreaLink} ${styles.ratingAreaLinkDisabled}`}
+              >
+                <div className={styles.ratingInfo}>
+                  <StarIcon className={styles.star} />
+                  <span className={styles.rating}>
+                    {averageRating.toFixed(1)}
+                  </span>
+                </div>
+                <span className={styles.reviewCount}>({reviewsCount})</span>
+              </a>
+            ) : (
+              <a
+                className={`${styles.ratingAreaLink} ${styles.ratingAreaLinkDisabled}`}
+              >
+                <div className={styles.ratingInfo}>
+                  <StarIcon className={styles.emptyStar} />
+                  <span className={styles.emptyRating}>0.0</span>
+                </div>
+              </a>
+            )}
           </div>
           <div className={styles.price}>
             {intPricePart}
             <span className={styles.pricePart}>,{decimalPricePart} р.</span>
           </div>
           <div className={styles.buttons}>
-            <CartButton isThereProduct={false} />
+            <CartButton isThereProduct={false} id={id} />
             <FavoriteButton isThereProduct={false} />
           </div>
         </div>

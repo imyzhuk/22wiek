@@ -27,7 +27,9 @@ export const Tabs: React.FC<TabsProps> = ({ tabs }) => {
         >
           <span className={styles.tabBody}>
             <span className={styles.tabTitle}>{name}</span>
-            {count && <span className={styles.tabCounter}>{count}</span>}
+            {Boolean(count) && (
+              <span className={styles.tabCounter}>{count}</span>
+            )}
           </span>
         </Link>
       ))}

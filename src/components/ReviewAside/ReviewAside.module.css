@@ -51,6 +51,17 @@
   fill: #faaa32;
 }
 
+.emptyStar {
+  transform: translateY(-1px);
+  width: 18px;
+  height: 18px;
+  fill: #e6e8eb;
+}
+
+.emptyRating {
+  color: #b4b5b8;
+}
+
 .reviewCount {
   color: #b4b5b8;
 }

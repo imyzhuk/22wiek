@@ -21,10 +21,11 @@ type RefrigeratorPageProps = {
 };
 
 const RefrigeratorPage: React.FC<RefrigeratorPageProps> = async ({
-  params: { id },
+  params,
 }) => {
+  const id = Number(params.id);
   const data = await prisma.product.findFirst({
-    where: { id: Number(id) },
+    where: { id },
     include: {
       additionalServices: true,
       categories: true,
@@ -69,16 +70,17 @@ const RefrigeratorPage: React.FC<RefrigeratorPageProps> = async ({
       <h1 className={styles.title}>{product.name}</h1>
       <ProductTabs
         tabs={[
-          { id: 0, name: 'Основное', link: product.link },
+          { id: 0, name: 'Основное', link: `${product.link}${id}` },
           {
             id: 1,
             name: 'Отзывы',
             count: product.reviewsCount,
-            link: `${product.link}/reviews`,
+            link: `${product.link}${product.id}/reviews`,
           },
         ]}
       />
       <TopBlock
+        id={id}
         guarantee={refrigerator.guarantee}
         discountInCurrency={
           product.oldPrice
