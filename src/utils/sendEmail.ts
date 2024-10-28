@@ -13,6 +13,6 @@ export const sendEmail = async (
       html: template,
     });
   } catch (error) {
-    throw error;
+    throw new Error('Произошла проблема с отправкой письма!');
   }
 };

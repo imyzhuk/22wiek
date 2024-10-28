@@ -1,0 +1,91 @@
+.wrapper {
+  background-color: #f7f8fa;
+  width: 100dvw;
+  height: 100dvh;
+  position: relative;
+}
+
+.form {
+  position: absolute;
+  top: 96px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 460px;
+  height: auto;
+  max-height: 700px;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.title {
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--black-500);
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.triggerContainer {
+  position: relative;
+  margin-top: 38px;
+  margin-bottom: 16px;
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  color: var(--black-500);
+  font-family: var(--base-font-family);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.errorIcon {
+  margin-right: 4px;
+}
+
+.submitButton {
+  height: auto;
+  display: block;
+  margin: 32px auto 24px auto;
+  padding: 14px 24px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--white);
+  background-color: var(--blue-500);
+  border: 1px solid var(--blue-500);
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.submitButton:hover {
+  background-color: var(--blue-600);
+  color: var(--white);
+  border: 1px solid var(--blue-600);
+}
+
+.submitButton:disabled {
+  color: var(--gray-600);
+  background-color: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  pointer-events: none;
+  cursor: default;
+}
+
+.togglePasswordButton {
+  position: absolute;
+  right: 8px;
+  top: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  color: var(--gray-400);
+}
+
+.togglePasswordButton:hover {
+  color: var(--gray-600);
+}

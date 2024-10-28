@@ -77,7 +77,7 @@ model VerificationCode {
   user   User   @relation(fields: [userId], references: [id])
   userId String @unique
 
-  code String
+  code String @default(uuid())
 
   createdAt DateTime @default(now())
 

@@ -24,7 +24,7 @@ export const AccountWidget: React.FC<AccountWidgetProps> = () => {
   const pathname = usePathname();
   const { data: session } = useSession();
   const cartItemsCount = useTypedSelector((state) => state.cart.cartItemsCount);
-  
+
   return (
     <div className={styles.container}>
       <CircleButton onClick={() => setIsActive(!isActive)} isActive={isActive}>

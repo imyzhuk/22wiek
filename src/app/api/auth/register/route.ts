@@ -33,11 +33,8 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    const code = Math.floor(100000000 + Math.random() * 900000000).toString();
-
-    await prisma.verificationCode.create({
+    const { code } = await prisma.verificationCode.create({
       data: {
-        code,
         userId: createdUser.id,
       },
     });
@@ -47,6 +44,7 @@ export async function POST(req: NextRequest) {
       '22wiek.by / Подтверждение регистрации',
       generateCodeMessage(code),
     );
+
     return NextResponse.json('OK');
   } catch (error) {
     console.log(error);
