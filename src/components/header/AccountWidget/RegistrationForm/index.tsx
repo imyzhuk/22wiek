@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import styles from './RegistrationForm.module.css';
-import { Input } from '@/components';
+import { Input, LoadingButton } from '@/components';
 import ErrorInfoIcon from '@icons/errorInfo.svg';
 import { PhoneInput } from './PhoneInput';
 import { isStringMatched } from '@/utils';
 import EyeCrossedIcon from '@icons/eyeCrossedIcon.svg';
 import EyeIcon from '@icons/eyeIcon.svg';
 import { authAPI } from '@/services/authAPI';
+import toast from 'react-hot-toast';
 
-type RegistrationFormProps = {};
+type RegistrationFormProps = {
+  onClose: () => void;
+};
 
-export const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
+export const RegistrationForm: React.FC<RegistrationFormProps> = ({
+  onClose,
+}) => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -19,6 +24,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
   const [passwordError, setPasswordError] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const checkFormValidity = () => {
     if (!email || emailError) {
@@ -78,13 +84,23 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
+      setIsLoading(true);
       await authAPI.register({
         email: email,
         phone: phoneNumber,
         password: password,
       });
+      onClose();
+      toast.success(
+        'Отлично! Теперь найдите письмо от нас на вашей почте и перейдите по ссылке внутри.',
+        {
+          duration: 6000,
+        },
+      );
     } catch (error) {
-      console.error(error);
+      toast.error('Произошла ошибка!');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -140,13 +156,14 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
             {isPasswordVisible ? <EyeCrossedIcon /> : <EyeIcon />}
           </button>
         </div>
-        <button
+        <LoadingButton
+          isLoading={isLoading}
           type="submit"
           className={styles.submitButton}
           disabled={!isFormValid}
         >
           Продолжить
-        </button>
+        </LoadingButton>
       </div>
     </form>
   );

@@ -29,7 +29,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({ closeModal }) => {
           onResetButtonClick={() => setCurrentFormName('reset')}
         />
       )}
-      {currentFormName === 'register' && <RegistrationForm />}
+      {currentFormName === 'register' && (
+        <RegistrationForm onClose={closeModal} />
+      )}
       {currentFormName === 'reset' && <ResetPasswordForm />}
     </Modal>
   );

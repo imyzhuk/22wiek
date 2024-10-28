@@ -18,7 +18,7 @@ export const LoadingButton: React.FC<LoadingButtonProps> = ({
   return (
     <button
       {...props}
-      disabled={disabled || isLoading}
+      disabled={disabled}
       className={`${styles.button} ${isLoading ? styles.loadingButton : ''} ${className}`}
     >
       <span className={isLoading ? styles.content : ''}>{children}</span>

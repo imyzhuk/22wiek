@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styles from './LoginForm.module.css';
-import { Input } from '@/components';
+import { Input, LoadingButton } from '@/components';
 import ErrorInfoIcon from '@icons/errorInfo.svg';
 import EyeCrossedIcon from '@icons/eyeCrossedIcon.svg';
 import EyeIcon from '@icons/eyeIcon.svg';
 import { signIn } from 'next-auth/react';
+import toast from 'react-hot-toast';
 
 type LoginFormProps = {
   onRegisterButtonClick: () => void;
@@ -22,6 +23,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onEmailChange = (value: string) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -60,6 +62,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
     }
 
     try {
+      setIsLoading(true);
       const res = await signIn('credentials', {
         email,
         password,
@@ -71,9 +74,12 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       }
 
       onClose();
+      toast.success('Добро пожаловать!');
     } catch (error) {
-      console.error('Login error: ', error);
+      toast.error('Аккаунт не верифицирован, либо неверны пароль и логин');
     }
+
+    setIsLoading(false);
   };
 
   return (
@@ -126,9 +132,13 @@ export const LoginForm: React.FC<LoginFormProps> = ({
             {isPasswordVisible ? <EyeCrossedIcon /> : <EyeIcon />}
           </button>
         </div>
-        <button type="submit" className={styles.submitButton}>
+        <LoadingButton
+          isLoading={isLoading}
+          type="submit"
+          className={styles.submitButton}
+        >
           Войти
-        </button>
+        </LoadingButton>
         <button
           type="button"
           className={styles.registerButton}
