@@ -4,15 +4,18 @@ import { Input } from '@/components';
 import ErrorInfoIcon from '@icons/errorInfo.svg';
 import EyeCrossedIcon from '@icons/eyeCrossedIcon.svg';
 import EyeIcon from '@icons/eyeIcon.svg';
+import { signIn } from 'next-auth/react';
 
 type LoginFormProps = {
   onRegisterButtonClick: () => void;
   onResetButtonClick: () => void;
+  onClose: () => void;
 };
 
 export const LoginForm: React.FC<LoginFormProps> = ({
   onRegisterButtonClick,
   onResetButtonClick,
+  onClose,
 }) => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -41,7 +44,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
     }
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email) {
       onEmailChange(email);
@@ -56,7 +59,21 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       return;
     }
 
-    console.log(email, password);
+    try {
+      const res = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (!res?.ok) {
+        throw Error();
+      }
+
+      onClose();
+    } catch (error) {
+      console.error('Login error: ', error);
+    }
   };
 
   return (

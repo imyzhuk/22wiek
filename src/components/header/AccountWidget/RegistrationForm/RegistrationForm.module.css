@@ -55,3 +55,18 @@
   pointer-events: none;
   cursor: default;
 }
+
+.togglePasswordButton {
+  position: absolute;
+  right: 8px;
+  top: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  color: var(--gray-400);
+}
+
+.togglePasswordButton:hover {
+  color: var(--gray-600);
+}

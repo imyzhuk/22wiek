@@ -1,3 +1,4 @@
+import { hashSync } from 'bcrypt';
 import {
   additionalServicesCategoriesNames,
   locations,
@@ -22,11 +23,11 @@ async function up() {
     data: {
       name: 'Test User',
       email: 'user@example.com',
-      password: 'password',
+      password: hashSync('23456789', 10),
       phone: '+375291234567',
       role: 'User',
-      image: '/images/anonym.svg',
       locationId: location.id,
+      verified: true
     },
   });
 
@@ -196,6 +197,7 @@ async function up() {
 
 async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "VerificationCode" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Location" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;

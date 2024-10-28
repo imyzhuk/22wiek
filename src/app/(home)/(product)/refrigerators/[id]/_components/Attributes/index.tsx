@@ -113,7 +113,6 @@ export const Attributes: React.FC<AttributesProps> = ({
     linkArray.pop();
     return linkArray.join('/');
   }, []);
-  console.log(baseLink);
   return (
     <div>
       <div

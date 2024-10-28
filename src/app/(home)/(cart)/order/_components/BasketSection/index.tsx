@@ -23,7 +23,6 @@ import DeleteButtonLoader from '@icons/deleteButtonLoader.svg';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 /* TODO: make a modal with all services*/
-/* TODO: make interactive*/
 
 const getChosenCartItemIds = (cartItems?: ExpandedCartItemWithProduct[]) => {
   if (!cartItems) {

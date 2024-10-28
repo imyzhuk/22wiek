@@ -5,7 +5,7 @@ export const createUser = async () => {
   const user = await prisma.user.create({
     data: {
       image: '/images/anonym.svg',
-      name: 'Пользователь',
+      name: 'Покупатель 22wiek.by',
       locationId: 1,
     },
   });

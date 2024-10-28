@@ -6,3 +6,4 @@ export {
 export { getDiscountTypeName } from './formatDiscountType';
 export { getRelativeTimeFromTodayTo } from './date';
 export { formatPrice } from './formatPrice';
+export { generateCodeMessage } from './mailMessages';

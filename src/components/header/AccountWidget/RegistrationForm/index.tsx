@@ -4,6 +4,9 @@ import { Input } from '@/components';
 import ErrorInfoIcon from '@icons/errorInfo.svg';
 import { PhoneInput } from './PhoneInput';
 import { isStringMatched } from '@/utils';
+import EyeCrossedIcon from '@icons/eyeCrossedIcon.svg';
+import EyeIcon from '@icons/eyeIcon.svg';
+import { authAPI } from '@/services/authAPI';
 
 type RegistrationFormProps = {};
 
@@ -12,6 +15,9 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
   const [emailError, setEmailError] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [phoneMask, setPhoneMask] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
   const checkFormValidity = () => {
@@ -22,13 +28,16 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
     if (!phoneNumber || !isStringMatched(phoneNumber, phoneMask)) {
       return false;
     }
+    if (!password || passwordError) {
+      return false;
+    }
 
     return true;
   };
 
   useEffect(() => {
     setIsFormValid(checkFormValidity());
-  }, [email, phoneNumber]);
+  }, [email, phoneNumber, password]);
 
   const onEmailChange = (value: string) => {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -42,6 +51,22 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
     }
   };
 
+  const onPasswordChange = (value: string) => {
+    const pattern = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/gm;
+    setPassword(value);
+    if (!value) {
+      setPasswordError('Пароль не указан');
+    } else if (value.length < 8) {
+      setPasswordError('Пароль должен не меньше 8 символов');
+    } else if (!pattern.test(value)) {
+      setPasswordError(
+        'Пароль должен содержать латинские буквы разных регистров, числа и специальные символы: !, @, #, $, %, ^, &, *',
+      );
+    } else {
+      setPasswordError('');
+    }
+  };
+
   const onPhoneNumberChange = (value: string) => {
     setPhoneNumber(value);
   };
@@ -50,9 +75,17 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
     setPhoneMask(value);
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(email, phoneNumber);
+    try {
+      await authAPI.register({
+        email: email,
+        phone: phoneNumber,
+        password: password,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -82,7 +115,31 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = ({}) => {
             </span>
           )}
         </div>
-
+        <div className={styles.triggerContainer}>
+          <Input
+            type={isPasswordVisible ? 'text' : 'password'}
+            name="password"
+            label="Пароль"
+            value={password}
+            onChange={onPasswordChange}
+            hasError={Boolean(passwordError)}
+          />
+          {passwordError && (
+            <span className={styles.errorMessage}>
+              <span>
+                <ErrorInfoIcon className={styles.errorIcon} />
+              </span>
+              <span>{passwordError}</span>
+            </span>
+          )}
+          <button
+            type="button"
+            className={styles.togglePasswordButton}
+            onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+          >
+            {isPasswordVisible ? <EyeCrossedIcon /> : <EyeIcon />}
+          </button>
+        </div>
         <button
           type="submit"
           className={styles.submitButton}

@@ -50,23 +50,38 @@ enum RefrigeratorConstruction {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  name      String?
-  email     String?  @unique
-  phone     String?  @unique
-  password  String?
-  role      UserRole @default(User)
-  image     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id               String            @id @default(cuid())
+  name             String?
+  email            String?           @unique
+  phone            String?           @unique
+  password         String?
+  role             UserRole          @default(User)
+  image            String            @default("/images/anonym.svg")
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  verified         Boolean           @default(false)
+  verificationCode VerificationCode?
 
-  location      Location       @relation(fields: [locationId], references: [id])
-  locationId    Int
+  location      Location?      @relation(fields: [locationId], references: [id])
+  locationId    Int?
   reviews       Review[]
   cartItems     CartItem[]
   favoriteItems FavoriteItem[]
   viewedItems   ViewedItem[]
   waitedItems   WaitedItem[]
+}
+
+model VerificationCode {
+  id Int @id @default(autoincrement())
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+
+  code String
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, code])
 }
 
 model Location {
@@ -196,17 +211,17 @@ model Refrigerator {
   energyClass          String
   compressorsCount     Int
   noiseLevel           Int
-  
-  retrodesign          Boolean
-  camerasCount         Int
-  totalVolume          Int
-  refrigeratorVolume   Int
-  freezerVolume        Int
-  multifunctionalArea  Boolean
-  dispenser            Boolean
-  minibar              Boolean
-  hingesLocation       String
-  lighting             Boolean
+
+  retrodesign         Boolean
+  camerasCount        Int
+  totalVolume         Int
+  refrigeratorVolume  Int
+  freezerVolume       Int
+  multifunctionalArea Boolean
+  dispenser           Boolean
+  minibar             Boolean
+  hingesLocation      String
+  lighting            Boolean
 
   annualElectricityConsumption Int
   inverterTechnology           Boolean

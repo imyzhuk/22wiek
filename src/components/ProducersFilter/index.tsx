@@ -66,11 +66,6 @@ export const ProducersFilter: React.FC<ProducersFilterProps> = ({
   fields,
   register,
 }) => {
-  /* const [searchValue, setSearchValue] = useState('');
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };*/
   return (
     <>
       <ul>
