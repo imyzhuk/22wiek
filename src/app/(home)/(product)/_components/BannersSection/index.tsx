@@ -7,6 +7,8 @@ import { Banner } from '@prisma/client';
 
 type BannersSectionProps = {};
 
+// TODO: implement BottomBanners
+
 export const BannersSection: React.FC<BannersSectionProps> = async () => {
   const largeBanners: Banner[] = [];
   const bottomBanners: Banner[] = [];
@@ -21,7 +23,7 @@ export const BannersSection: React.FC<BannersSectionProps> = async () => {
   return (
     <section>
       <BannerCarousel banners={largeBanners} />
-      <BottomBanners banners={bottomBanners} />
+      {false && <BottomBanners banners={bottomBanners} />}
     </section>
   );
 };
