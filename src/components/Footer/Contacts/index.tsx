@@ -29,7 +29,7 @@ export const Contacts: React.FC<ContactsProps> = () => {
         <li className={`${styles.contact} ${styles.link} ${styles.viber}`}>
           <ViberIcon />
           <a
-            href="https://www.viber.com/21vek.by"
+            href="https://www.viber.com/22wiek.by"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -39,7 +39,7 @@ export const Contacts: React.FC<ContactsProps> = () => {
         <li className={`${styles.contact} ${styles.link} ${styles.telegram}`}>
           <TelegramIcon />
           <a
-            href="http://t.me/e21vekbot"
+            href="http://t.me/e22wiekbot"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -49,7 +49,7 @@ export const Contacts: React.FC<ContactsProps> = () => {
         <li className={`${styles.contact} ${styles.link} ${styles.email}`}>
           <EmailIcon />
           <a
-            href="mailto:21@21vek.by"
+            href="mailto:21@22wiek.by"
             target="_blank"
             rel="noopener noreferrer"
           >

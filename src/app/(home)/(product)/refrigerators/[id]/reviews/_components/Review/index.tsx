@@ -51,8 +51,8 @@ export const Review: React.FC<ReviewProps> = ({
           <Comment
             comment={comment}
             user={{
-              name: 'Сотрудник 21vek.by',
-              image: '/images/21vekAvatar.svg',
+              name: 'Сотрудник 22wiek.by',
+              image: '/images/22wiekAvatar.svg',
             }}
           />
         </div>

@@ -97,7 +97,7 @@ export const Header: React.FC<HeaderProps> = () => {
               <ul className={styles.communications}>
                 <li className={styles.communicationItem}>
                   <a
-                    href="https://www.viber.com/21vek.by"
+                    href="https://www.viber.com/22wiek.by"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.communicationItemBox}
@@ -139,7 +139,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     <li className={styles.moreButtonItem}>
                       <a
                         className={styles.moreButtonLink}
-                        href="https://t.me/e21vekbot"
+                        href="https://t.me/e22wiekbot"
                       >
                         <TelegramIcon
                           className={`${styles.moreButtonIcon} ${styles.telegramIcon}`}
@@ -150,7 +150,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     <li className={styles.moreButtonItem}>
                       <a
                         className={styles.moreButtonLink}
-                        href="mailto:21@21vek.by"
+                        href="mailto:company@22wiek.by"
                       >
                         <EnvelopeIcon className={styles.moreButtonIcon} />
                         <span>Почта</span>
