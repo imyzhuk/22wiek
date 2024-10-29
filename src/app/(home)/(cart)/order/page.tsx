@@ -30,9 +30,7 @@ const OrderPage: React.FC<OrderPageProps> = () => {
   return (
     <div className={styles.container}>
       <Tabs tabName={tabName || 'basket'} />
-      {!!tabName && (
-        <CertificationSection certificates={eCertificates} totalPrice={300} />
-      )}
+      {!!tabName && <CertificationSection certificates={[]} totalPrice={300} />}
       {!tabName && Boolean(cartItems.length) && Boolean(cartItemsCount) && (
         <BasketSection />
       )}

@@ -206,7 +206,6 @@
 .promoList {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .fixedPromoItem {
@@ -226,7 +225,6 @@
 }
 
 .promoItem {
-  width: 100%;
   color: var(--header-promo-item-text-color);
   transition: 0.2s ease;
   white-space: nowrap;
@@ -234,6 +232,7 @@
   display: flex;
   align-items: center;
   padding: 0 8px;
+  cursor: pointer;
 }
 
 .promoItem:hover {

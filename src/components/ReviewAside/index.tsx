@@ -13,6 +13,8 @@ type ReviewAsideProps = {
   id: number;
 };
 
+// TODO: add <FavoriteButton isThereProduct={false} />
+
 export const ReviewAside: React.FC<ReviewAsideProps> = ({
   reviewsCount,
   averageRating,
@@ -59,7 +61,7 @@ export const ReviewAside: React.FC<ReviewAsideProps> = ({
           </div>
           <div className={styles.buttons}>
             <CartButton isThereProduct={false} id={id} />
-            <FavoriteButton isThereProduct={false} />
+            {false && <FavoriteButton isThereProduct={false} />}
           </div>
         </div>
         <DeliveryDetails />

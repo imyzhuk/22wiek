@@ -2,8 +2,8 @@ import React, { Fragment } from 'react';
 import styles from './Aside.module.css';
 import { favoriteProducts } from '@/data/favoriteProducts';
 import { FavoriteProductCards } from './_components';
-import { Footer } from '@/components';
 
+/* TODO: finish the page */
 function Aside() {
   return (
     <div className={styles.container}>

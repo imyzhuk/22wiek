@@ -10,27 +10,30 @@ import { useTypedSelector } from '@/hooks/useTypedSelector';
 
 type AdditionalUserInfoProps = {};
 
+/* TODO: add button for a liked products page*/
 export const AdditionalUserInfo: React.FC<AdditionalUserInfoProps> = () => {
   const cartItemsCount = useTypedSelector((state) => state.cart.cartItemsCount);
 
   return (
     <>
-      <div className={styles.circleButtonContainer}>
-        <Link href="/aside">
-          <CircleButton>
-            <span className={styles.iconsContainer}>
-              {false && (
-                <span
-                  className={`${styles.countIcon} ${styles.favoritesCountIcon}`}
-                >
-                  0
-                </span>
-              )}
-              <LikeIcon />
-            </span>
-          </CircleButton>
-        </Link>
-      </div>
+      {false && (
+        <div className={styles.circleButtonContainer}>
+          <Link href="/aside">
+            <CircleButton>
+              <span className={styles.iconsContainer}>
+                {false && (
+                  <span
+                    className={`${styles.countIcon} ${styles.favoritesCountIcon}`}
+                  >
+                    0
+                  </span>
+                )}
+                <LikeIcon />
+              </span>
+            </CircleButton>
+          </Link>
+        </div>
+      )}
       <AccountWidget />
       <div className={styles.circleButtonContainer}>
         <Link href="/order">

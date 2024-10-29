@@ -53,7 +53,7 @@ export const Listing: React.FC<ListingProps> = () => {
                   type={name}
                   discount={discount}
                   discountType={getDiscountTypeName(discountTypes)}
-                  hasLikeButton
+                  hasLikeButton={false}
                 />
               </div>
             ),

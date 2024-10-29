@@ -4,7 +4,6 @@ import { Selections } from './Selections';
 import { Category } from './Category';
 import KitchenIcon from '@icons/kitchenIcon.svg';
 import AllPromoIcon from '@icons/allPromoIcon.svg';
-import PartlyPayIcon from '@icons/partlyPayIcon.svg';
 import ProcentIcon from '@icons/procentIcon.svg';
 import { Chips, Loader } from '@/components';
 import { BrandCrisps } from './BrandCrisps';
@@ -78,17 +77,10 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                       </Link>
                     </li>
                     <li>
-                      <Link className={styles.category} href="/not-found">
-                        <span className={`${styles.icon} ${styles.secondIcon}`}>
-                          <PartlyPayIcon />
-                        </span>
-                        <span className={styles.categoryName}>
-                          Оплата частями
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className={styles.category} href="/not-found">
+                      <Link
+                        className={styles.category}
+                        href="/special_offers/promo?filters[discountTypes][0]=Sale"
+                      >
                         <span className={styles.icon}>
                           <ProcentIcon />
                         </span>

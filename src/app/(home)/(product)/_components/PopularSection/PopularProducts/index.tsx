@@ -85,7 +85,7 @@ export const PopularProducts: React.FC<PopularProductsProps> = ({
       <SectionHeader
         title="Популярные"
         link="/special_offers/recommend"
-        linkText="Смотреть все"
+        linkText={false ? 'Смотреть все' : ''}
       >
         <ul className={styles.chips}>
           {options.map((option) => (
@@ -99,7 +99,11 @@ export const PopularProducts: React.FC<PopularProductsProps> = ({
         </ul>
       </SectionHeader>
       <div className={styles.body}>
-        {isLoading && <Loader />}
+        {isLoading && (
+          <div className={styles.loader}>
+            <Loader />
+          </div>
+        )}
         <div className={styles.products}>
           {shownProducts.map(
             (
@@ -129,7 +133,7 @@ export const PopularProducts: React.FC<PopularProductsProps> = ({
                   type={name}
                   discount={discount}
                   discountType={getDiscountTypeName(discountTypes)}
-                  hasLikeButton
+                  hasLikeButton={false}
                 />
               </div>
             ),

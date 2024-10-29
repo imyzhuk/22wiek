@@ -107,7 +107,7 @@ export const PromoCarousel: React.FC<PromoCarouselProps> = (props) => {
                   type={name}
                   discount={discount}
                   discountType={getDiscountTypeName(discountTypes)}
-                  hasLikeButton
+                  hasLikeButton={false}
                 />
               </SwiperSlide>
             ),
