@@ -1,5 +1,14 @@
+import { GetPopularProductsType } from '@/types/catalog';
+import { Decimal } from '@prisma/client/runtime/library';
 import { prisma } from '@prisma/prisma-client';
 import { NextRequest, NextResponse } from 'next/server';
+
+type GetResponse = Array<
+  Omit<GetPopularProductsType[number], 'price' | 'oldPrice'> & {
+    price: Decimal;
+    oldPrice: Decimal;
+  }
+>;
 
 export async function GET(req: NextRequest) {
   const limit = Number(req.nextUrl.searchParams.get('limit')) || 10;
@@ -34,5 +43,5 @@ export async function GET(req: NextRequest) {
     },
   });
 
-  return NextResponse.json(popularProducts);
+  return NextResponse.json<GetResponse>(popularProducts);
 }

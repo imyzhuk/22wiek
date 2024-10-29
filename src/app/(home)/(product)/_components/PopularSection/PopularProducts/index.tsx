@@ -2,11 +2,11 @@
 import React from 'react';
 import styles from './PopularProducts.module.css';
 import Link from 'next/link';
-import { ChipButton, ProductCard } from '@/components';
+import { ChipButton, Loader, ProductCard } from '@/components';
 import { IProductCard } from '@/types/product';
 import { getDiscountTypeName } from '@/utils';
-import { Loader, SectionHeader } from '../..';
-import productAPI from '@/services/productAPI';
+import { SectionHeader } from '../..';
+import catalogAPI from '@/services/catalogAPI';
 import { usePopularProducts } from '@/hooks';
 
 type Option = {
@@ -65,7 +65,7 @@ export const PopularProducts: React.FC<PopularProductsProps> = ({
     setIsLoading(true);
     setActiveOption(option);
     try {
-      const { data } = await productAPI.getPopularProducts(
+      const { data } = await catalogAPI.getPopularProducts(
         20,
         option.fromPrice,
         option.untilPrice,

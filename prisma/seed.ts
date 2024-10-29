@@ -31,10 +31,40 @@ async function up() {
     },
   });
 
+  const producersPromises = [
+    'ATLANT',
+    'Indesit',
+    'Nordfrost',
+    'Centek',
+    'Stinol',
+    'LG',
+    'TECHNO',
+    'Beko',
+    'Maunfeld',
+  ].map((name) =>
+    prisma.producer.create({
+      data: {
+        name,
+      },
+    }),
+  );
+
+  const producers = await Promise.all(producersPromises);
+
   const category = await prisma.category.create({
     data: {
       name: 'Бытовая техника',
       link: '/kitchen',
+      producers: {
+        connect: producers.map(producer => ({id: producer.id}))
+      },
+      compilations: {
+        create: {
+          link: `/refrigerators?filters[producerIds][0]=${producers[0].id}`,
+          name: producers[0].name,
+          image: '/images/atlantLogo.png'
+        }
+      }
     },
   });
 
@@ -103,26 +133,6 @@ async function up() {
       },
     ],
   });
-
-  const producersPromises = [
-    'ATLANT',
-    'Indesit',
-    'Nordfrost',
-    'Centek',
-    'Stinol',
-    'LG',
-    'TECHNO',
-    'Beko',
-    'Maunfeld',
-  ].map((name) =>
-    prisma.producer.create({
-      data: {
-        name,
-      },
-    }),
-  );
-
-  const producers = await Promise.all(producersPromises);
 
   const additionalLinks = await prisma.additionalLink.createMany({
     data: [

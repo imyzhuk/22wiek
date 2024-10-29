@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
 import styles from './Category.module.css';
-import { Categories } from '@/types/category';
 import ArrowUpIcon from '@icons/arrowUpIcon.svg';
 import ArrowDownIcon from '@icons/arrowDownIcon.svg';
 import Link from 'next/link';
+import { Category as CategoryType } from '@prisma/client';
 
 type CategoryProps = {
   name: string;
-  subCategories: Categories;
+  link: string;
+  subCategories: Omit<CategoryType, 'parendId'>[];
 };
 
-export const Category: React.FC<CategoryProps> = ({ name, subCategories }) => {
+export const Category: React.FC<CategoryProps> = ({
+  name,
+  link,
+  subCategories,
+}) => {
   const [shownCategoriesCount, setShownCategoriesCount] = useState<number>(7);
   return (
     <ul className={styles.container}>
       <li>
-        <Link href="/not-found" className={styles.titleLink}>
+        <Link href={link} className={styles.titleLink}>
           {name}
         </Link>
       </li>
       {subCategories.slice(0, shownCategoriesCount).map((category) => (
         <li key={category.id}>
-          <Link href="/not-found" className={styles.link}>
+          <Link href={category.link} className={styles.link}>
             {category.name}
           </Link>
         </li>

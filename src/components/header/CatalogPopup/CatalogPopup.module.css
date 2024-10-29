@@ -17,6 +17,10 @@
   z-index: 5;
 }
 
+.loadingWrapper {
+  height: calc(100dvh - 130px);
+}
+
 .wrapper {
   display: flex;
   align-items: flex-start;
@@ -121,6 +125,7 @@
 
 .content {
   display: flex;
+  justify-content: space-between;
 }
 
 .categoriesList {

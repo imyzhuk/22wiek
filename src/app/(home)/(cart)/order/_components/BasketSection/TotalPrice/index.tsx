@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './TotalPrice.module.css';
 import { formatPrice } from '@/utils';
-import { Loader } from '../..';
+import { Loader } from '@/components';
 
 type TotalPriceProps = {
   totalPrice: number;

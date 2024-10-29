@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
 import styles from './PromoCarousel.module.css';
-import { ArrowButton, ChipButton, ProductCard } from '@/components';
+import { ArrowButton, ChipButton, Loader, ProductCard } from '@/components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { Loader, SectionHeader } from '../..';
+import { SectionHeader } from '../..';
 import { ExpandedDiscountType, IProductCard } from '@/types/product';
 import { getDiscountTypeName } from '@/utils';
-import productAPI from '@/services/productAPI';
+import catalogAPI from '@/services/catalogAPI';
 
 export const options: { name: string; value: ExpandedDiscountType }[] = [
   {
@@ -41,7 +41,7 @@ export const PromoCarousel: React.FC<PromoCarouselProps> = (props) => {
 
   const getProducts = async (type: ExpandedDiscountType) => {
     setIsLoading(true);
-    const { data } = await productAPI.getPromoProducts(type, 20);
+    const { data } = await catalogAPI.getPromoProducts(type, 20);
     setProducts(data);
     setActiveOption(type);
     setIsLoading(false);

@@ -15,7 +15,7 @@ export const usePopularProducts = (
     setProductsPage((currentProductsPage) => currentProductsPage + 1);
   };
 
-  const setNewProducts = (products: IProductCard[]) => {
+  const setNewProducts = (products: typeof initialProducts) => {
     setProducts(products);
     setProductsPage(1);
   };

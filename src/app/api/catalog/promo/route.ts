@@ -2,6 +2,16 @@ import { DiscountType } from '@prisma/client';
 import { prisma } from '@prisma/prisma-client';
 import { HttpStatusCodes } from '../../statusCodes';
 import { ExpandedDiscountType } from '@/types/product';
+import { GetPromoProductsType } from '@/types/catalog';
+import { NextResponse } from 'next/server';
+import { Decimal } from '@prisma/client/runtime/library';
+
+type GetResponse = Array<
+  Omit<GetPromoProductsType[number], 'price' | 'oldPrice'> & {
+    price: Decimal;
+    oldPrice: Decimal;
+  }
+>;
 
 const discountTypes: ExpandedDiscountType[] = [
   'All',
@@ -59,5 +69,5 @@ export async function GET(request: Request) {
     take: limit,
   });
 
-  return Response.json(promoProducts);
+  return NextResponse.json<GetResponse>(promoProducts);
 }

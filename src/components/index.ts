@@ -23,4 +23,5 @@ export { ProductsPagination } from './ProductsPagination';
 export { Providers } from './Providers';
 export { VerificationUserTemplate } from './VerificationUserTemplate';
 export { LoadingButton } from './LoadingButton';
+export { Loader } from './Loader';
 export * from './FilterParts';

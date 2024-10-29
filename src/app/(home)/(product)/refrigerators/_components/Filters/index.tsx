@@ -119,7 +119,6 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
   const getMutableFilters = async (
     params?: GetRefrigeratorMutableFiltersParamsType,
   ) => {
-    debugger;
     const { data } = await refrigeratorAPI.getMutableFilters({ ...params });
     setMinPrice(data.fromPrice);
     setMaxPrice(data.untilPrice);
@@ -269,7 +268,6 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
       }
 
       const { filters, order, page } = prepareFormValuesForRequest(formData);
-      debugger;
       if (name === 'page') {
         setQuery({ filters, order, page });
         getProducts({ order, filters, page });
@@ -284,7 +282,6 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
   }, [watch]);
 
   useEffect(() => {
-    debugger;
     if (init !== 2) {
       setInit((prev) => prev + 1);
       return;
@@ -293,7 +290,6 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
   }, [page]);
 
   useEffect(() => {
-    debugger;
     const params = {
       page: initialSearchParams.page ? Number(initialSearchParams.page) : 1,
       order: initialSearchParams.order,

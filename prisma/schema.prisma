@@ -100,10 +100,20 @@ model Category {
   name String @unique
   link String
 
-  products      Product[]
-  parent        Category?  @relation("Subcategories", fields: [parentId], references: [id])
-  subcategories Category[] @relation("Subcategories")
+  parent        Category?     @relation("Subcategories", fields: [parentId], references: [id])
   parentId      Int?
+  subcategories Category[]    @relation("Subcategories")
+  products      Product[]
+  producers     Producer[]
+  compilations   Compilation[]
+}
+
+model Compilation {
+  id         Int        @id @default(autoincrement())
+  image      String
+  link       String
+  name       String
+  categories Category[]
 }
 
 model Product {
@@ -143,7 +153,8 @@ model Producer {
   id   Int    @id @default(autoincrement())
   name String
 
-  products Product[]
+  products   Product[]
+  categories   Category[]
 }
 
 model Review {
