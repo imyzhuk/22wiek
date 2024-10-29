@@ -1,12 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import qs from 'qs';
-import {
-  DiscountType,
-  Prisma,
-  Producer,
-  RefrigeratorConstruction,
-  RefrigeratorType,
-} from '@prisma/client';
+import { DiscountType, Prisma, RefrigeratorType } from '@prisma/client';
 import { prisma } from '@prisma/prisma-client';
 import {
   GetRefrigeratorMutableFiltersParamsType,
@@ -192,5 +186,7 @@ export async function GET(request: NextRequest) {
       (a, b) => a - b,
     ),
   };
-  return NextResponse.json(productsInfo);
+  return NextResponse.json<GetRefrigeratorMutableFiltersResponseType>(
+    productsInfo,
+  );
 }

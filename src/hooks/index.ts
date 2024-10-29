@@ -7,4 +7,5 @@ export { useCartInfo } from './useCartInfo';
 export { useActions } from './useActions';
 export { useTypedSelector } from './useTypedSelector';
 export { useGetRefrigerators } from './useGetRefrigerators';
+export { useGetPromotions } from './useGetPromotions';
 export { useQueryState } from './useQueryState';

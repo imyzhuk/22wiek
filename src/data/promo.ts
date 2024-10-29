@@ -4,7 +4,7 @@ import { Option } from '@/types/optionsModel';
 export const promos = [
   {
     name: 'Уценка',
-    url: '/special_offers/promo?discountTypes=sale',
+    url: '/special_offers/promo?filters[discountTypes][0]=Sale',
   },
   {
     name: 'Зоотовары',

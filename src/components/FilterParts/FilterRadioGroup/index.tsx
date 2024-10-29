@@ -1,23 +1,17 @@
 import React from 'react';
 import styles from './FilterRadioGroup.module.css';
+import { UseFormRegister } from 'react-hook-form';
 
 type FilterRadioGroupProps = {
   name: string;
   options: { name: string; value: string }[];
+  register: UseFormRegister<any>;
 };
-
-const discounts = [
-  { name: 'Все', value: 'all' },
-  { name: 'от 50%', value: '50' },
-  { name: 'от 40%', value: '40' },
-  { name: 'от 30%', value: '30' },
-  { name: 'от 20%', value: '20' },
-  { name: 'от 10%', value: '10' },
-];
 
 export const FilterRadioGroup: React.FC<FilterRadioGroupProps> = ({
   name,
   options,
+  register,
 }) => {
   return (
     <ul role="radiogroup" className={styles.radioGroup}>
@@ -26,8 +20,8 @@ export const FilterRadioGroup: React.FC<FilterRadioGroupProps> = ({
           <label className={styles.radio}>
             <input
               type="radio"
-              name={name}
               value={option.value}
+              {...register?.(name)}
               className={styles.input}
             />
             <span className={styles.radioCircle}>

@@ -31,6 +31,11 @@ const productSlice = createSlice({
     setIsProductsLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
     },
+    resetProductsStore(state) {
+      state.items = [];
+      state.count = 0;
+      state.page = 0;
+    },
   },
 });
 

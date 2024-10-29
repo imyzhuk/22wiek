@@ -1,9 +1,9 @@
-import { Breadcrumps, Chips } from '@/components';
+import { Breadcrumps, Chips, Listing } from '@/components';
 import React from 'react';
 import styles from './RefrigeratorsPage.module.css';
 import { Option } from '@/types/optionsModel';
 import Link from 'next/link';
-import { Filters, Listing } from './_components';
+import { Filters } from './_components';
 import qs from 'qs';
 import { GetRefrigeratorsParamsType } from '@/types/refrigerator';
 

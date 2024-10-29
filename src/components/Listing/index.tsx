@@ -13,19 +13,19 @@ let { format } = new Intl.NumberFormat('ru', {
 type ListingProps = {};
 
 export const Listing: React.FC<ListingProps> = () => {
-  const refrigerators = useTypedSelector((state) => state.product.items);
+  const products = useTypedSelector((state) => state.product.items);
   const isProductsLoading = useTypedSelector(
     (state) => state.product.isLoading,
   );
   const elementsInRow = 4;
   const IndexOfElementWithputBottomBorder =
-    Math.floor((refrigerators.length - 1) / elementsInRow) * elementsInRow;
+    Math.floor((products.length - 1) / elementsInRow) * elementsInRow;
   return (
     <main className={styles.main}>
       {isProductsLoading && <p>...Loading</p>}
-      {Boolean(refrigerators.length) && (
+      {Boolean(products.length) && (
         <ul className={styles.products}>
-          {refrigerators.map(
+          {products.map(
             (
               {
                 id,
@@ -60,7 +60,7 @@ export const Listing: React.FC<ListingProps> = () => {
           )}
         </ul>
       )}
-      {!(isProductsLoading || refrigerators.length) && (
+      {!(isProductsLoading || products.length) && (
         <div className={styles.notProductWrapper}>
           <CrossedLoopIcon />
           <span>Ничего не найдено</span>

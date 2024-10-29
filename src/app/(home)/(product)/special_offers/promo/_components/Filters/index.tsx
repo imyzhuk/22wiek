@@ -1,27 +1,26 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import styles from './Filters.module.css';
 import {
   FilterCheckbox,
   FilterItem,
+  FilterRadioGroup,
   FilterResetButton,
-  FixedRangeFilter,
-  Popover,
   ProducersFilter,
   RangeFilter,
   SortFilter,
 } from '@/components';
 import { Option } from '@/types/optionsModel';
-import refrigeratorAPI from '@/services/refrigeratorAPI';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
-import {
-  GetRefrigeratorMutableFiltersParamsType,
-  GetRefrigeratorsParamsType,
-} from '@/types/refrigerator';
-import { DiscountType, Producer, RefrigeratorType } from '@prisma/client';
-import { useActions, useQueryState, useGetRefrigerators } from '@/hooks';
+import { DiscountType, Producer } from '@prisma/client';
+import { useActions, useQueryState, useGetPromotions } from '@/hooks';
 import { RecursivePartial } from '@/types/utils';
+import promoAPI from '@/services/promoAPI';
+import {
+  GetPromotionsFiltersParamsType,
+  GetPromotionsParamsType,
+} from '@/types/promo';
+import producerAPI from '@/services/producerAPI';
 
 const sortOptions: Option[] = [
   { name: 'Популярные', value: 'popular' },
@@ -52,32 +51,27 @@ const discountTypesOptions: {
   },
 ];
 
-const typesOptions: {
-  name: string;
-  value: RefrigeratorType;
-  checked: boolean;
-}[] = [
-  { name: 'холодильник с морозильником', value: 'WithFreezer', checked: false },
-  {
-    name: 'холодильник без морозильника',
-    value: 'WithoutFreezer',
-    checked: false,
-  },
-  { name: 'торговый холодильник', value: 'Commercial', checked: false },
+const discounts = [
+  { name: 'Все', value: 'all' },
+  { name: 'от 50%', value: '50' },
+  { name: 'от 40%', value: '40' },
+  { name: 'от 30%', value: '30' },
+  { name: 'от 20%', value: '20' },
+  { name: 'от 10%', value: '10' },
 ];
 
 type FiltersProps = {
-  initialSearchParams: Partial<GetRefrigeratorsParamsType>;
+  initialSearchParams: Partial<GetPromotionsParamsType>;
 };
+
+/*TODO: Create categories filter*/
 
 export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
   const page = useTypedSelector((state) => state.product.page);
   const { setPage, resetProductsStore } = useActions();
   const [maxPrice, setMaxPrice] = useState<number>(0);
   const [minPrice, setMinPrice] = useState<number>(0);
-  const { getProducts } = useGetRefrigerators();
-  const [freezerSectionsCountOptions, setFreezerSectionsCountOptions] =
-    useState<number[]>([]);
+  const { getProducts } = useGetPromotions();
   const { setQuery } = useQueryState();
   const [init, setInit] = useState<number>(0);
 
@@ -88,24 +82,15 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
       fromValue: undefined as number | undefined,
       untilValue: undefined as number | undefined,
     },
-    freezerSectionsCount: {
-      fromValue: undefined as number | undefined,
-      untilValue: undefined as number | undefined,
-    },
-    types: typesOptions,
     discountTypes: discountTypesOptions,
     producers: [] as (Producer & { checked: boolean })[],
+    discount: discounts[0].value as (typeof discounts)[number]['value'],
   };
 
   const { setValue, getValues, control, watch, register, reset } = useForm({
     defaultValues,
   });
 
-  const {
-    fields: typesFields,
-    append: typesAppend,
-    remove: typesRemove,
-  } = useFieldArray({ control, name: 'types' });
   const {
     fields: discountTypesFields,
     append: discountTypesAppend,
@@ -116,10 +101,8 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
     name: 'producers',
   });
 
-  const getMutableFilters = async (
-    params?: GetRefrigeratorMutableFiltersParamsType,
-  ) => {
-    const { data } = await refrigeratorAPI.getMutableFilters({ ...params });
+  const getFilters = async (params?: GetPromotionsFiltersParamsType) => {
+    const { data } = await promoAPI.getFilters({ ...params });
     setMinPrice(data.fromPrice);
     setMaxPrice(data.untilPrice);
     const formValues = getValues();
@@ -141,45 +124,6 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
         untilValue: data.untilPrice,
       });
     }
-    if (
-      formValues.freezerSectionsCount.fromValue &&
-      formValues.freezerSectionsCount.fromValue <
-        data.freezerSectionsCountOptions[0]
-    ) {
-      setValue('freezerSectionsCount', {
-        fromValue: data.freezerSectionsCountOptions[0],
-        untilValue: formValues.freezerSectionsCount.untilValue,
-      });
-    }
-    if (
-      formValues.freezerSectionsCount.untilValue &&
-      formValues.freezerSectionsCount.untilValue >
-        data.freezerSectionsCountOptions.at(-1)!
-    ) {
-      setValue('freezerSectionsCount', {
-        fromValue: formValues.freezerSectionsCount.fromValue,
-        untilValue: data.freezerSectionsCountOptions.at(-1),
-      });
-    }
-
-    const removedElementsIdx: number[] = [];
-    formValues.types.forEach((type, typeIndex) => {
-      const matchingElementIdx = data.types.findIndex(
-        (dataType) => dataType === type.value,
-      );
-      if (matchingElementIdx === -1) {
-        removedElementsIdx.push(typeIndex);
-      } else {
-        data.types.splice(matchingElementIdx, 1);
-      }
-    });
-
-    typesRemove(removedElementsIdx);
-    typesAppend(
-      typesOptions.filter((type) => {
-        return data.types.includes(type.value);
-      }),
-    );
 
     const removedDiscountTypesIdx: number[] = [];
     formValues.discountTypes.forEach((discountType, discountTypeIndex) => {
@@ -199,15 +143,13 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
         return data.discountTypes.includes(discountType.value);
       }),
     );
-
-    setFreezerSectionsCountOptions(data.freezerSectionsCountOptions);
   };
 
   const prepareFormValuesForRequest = (
     formData: RecursivePartial<typeof defaultValues>,
   ) => {
-    const order: GetRefrigeratorsParamsType['order'] = {};
-    const filters: GetRefrigeratorsParamsType['filters'] = {};
+    const order: GetPromotionsParamsType['order'] = {};
+    const filters: GetPromotionsParamsType['filters'] = {};
 
     switch (formData.order?.value) {
       case sortOptions[0].value:
@@ -225,15 +167,7 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
     }
     filters.fromPrice = formData.price?.fromValue;
     filters.untilPrice = formData.price?.untilValue;
-    filters.fromFreezerSectionsCount = formData.freezerSectionsCount?.fromValue;
-    filters.untilFreezerSectionsCount =
-      formData.freezerSectionsCount?.untilValue;
-    filters.types = formData.types?.reduce((acc, type) => {
-      if (type?.value && type?.checked) {
-        acc.push(type.value);
-      }
-      return acc;
-    }, [] as RefrigeratorType[]);
+    filters.discount = Number(formData.discount) || undefined;
 
     filters.discountTypes = formData.discountTypes?.reduce(
       (acc, discountType) => {
@@ -276,7 +210,7 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
       setPage(1);
       setQuery({ filters, order, page });
       getProducts({ order, filters, page });
-      getMutableFilters(filters);
+      getFilters(filters);
     });
     return () => subscription.unsubscribe();
   }, [watch]);
@@ -299,12 +233,7 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
         fromPrice: Number(initialSearchParams.filters?.fromPrice) || undefined,
         untilPrice:
           Number(initialSearchParams.filters?.untilPrice) || undefined,
-        fromFreezerSectionsCount:
-          Number(initialSearchParams.filters?.fromFreezerSectionsCount) ||
-          undefined,
-        untilFreezerSectionsCount:
-          Number(initialSearchParams.filters?.untilFreezerSectionsCount) ||
-          undefined,
+        discount: Number(initialSearchParams.filters?.discount) || undefined,
       },
     };
 
@@ -325,18 +254,12 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
       fromValue: params.filters.fromPrice,
       untilValue: params.filters.untilPrice,
     });
-    setValue('freezerSectionsCount', {
-      fromValue: params.filters.fromFreezerSectionsCount,
-      untilValue: params.filters.untilFreezerSectionsCount,
-    });
 
     setValue(
-      'types',
-      typesOptions.map((typeOption) => ({
-        ...typeOption,
-        checked: params.filters.types?.includes(typeOption.value) || false,
-      })),
+      'discount',
+      params.filters.discount ? String(params.filters.discount) : 'all',
     );
+
     setValue(
       'discountTypes',
       discountTypesOptions.map((discountTypeOption) => ({
@@ -347,8 +270,8 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
       })),
     );
 
-    const getImmutableFilters = async () => {
-      const { data } = await refrigeratorAPI.getImmutableFilters();
+    const getProducers = async () => {
+      const { data } = await producerAPI.getProducers();
       setValue(
         'producers',
         data.map((producer) => ({
@@ -359,10 +282,10 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
     };
 
     getProducts(params);
-    getImmutableFilters();
-    getMutableFilters(params.filters);
+    getProducers();
+    getFilters(params.filters);
 
-    () => {
+    return () => {
       resetProductsStore();
     };
   }, []);
@@ -380,6 +303,13 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
               onChange={field.onChange}
             />
           )}
+        />
+      </FilterItem>
+      <FilterItem title="Скидка" hasBottomBorder>
+        <FilterRadioGroup
+          register={register}
+          name="discount"
+          options={discounts}
         />
       </FilterItem>
       <FilterItem title="Цена" hasBottomBorder>
@@ -410,65 +340,6 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
           />
         ))}
       </FilterItem>
-      <FilterItem
-        title="Тип"
-        hasBottomBorder
-        popover={
-          <Popover
-            popoverClassName={styles.popover}
-            title="Тип"
-            body={
-              <>
-                <p>
-                  <strong>Холодильник без морозильника</strong> представляет
-                  собой одну холодильную камеру, где поддерживается температура
-                  для хранения продуктов в диапазоне примерно от +2 до +14°С.
-                  Такие модели чаще всего используется для дачи или в комбинации
-                  с отдельными морозильниками.
-                </p>
-                <p>
-                  <strong>Холодильник с морозильником</strong> — универсальный,
-                  наиболее привычный и распространенный тип, который включает в
-                  себя камеру для хранения продуктов при низкой плюсовой
-                  температуре, так и камеру для заморозки продуктов и хранения
-                  их в замороженном виде (при температуре до -24°С).
-                </p>
-                <p>
-                  <strong>Винный кулер</strong> — это устройство, которое
-                  охлаждает бутылку до нужной температуры для подачи её к столу,
-                  а также поддерживает необходимую температуру напитка после
-                  открытия бутылки.
-                </p>
-              </>
-            }
-          />
-        }
-      >
-        {typesFields.map((item, index) => (
-          <FilterCheckbox
-            key={item.id}
-            name={item.name}
-            value={`types.${index}.checked`}
-            register={register}
-          />
-        ))}
-      </FilterItem>
-      <FilterItem
-        title="Количество отделений морозильной камеры"
-        hasBottomBorder
-      >
-        <Controller
-          name="freezerSectionsCount"
-          control={control}
-          render={({ field }) => (
-            <FixedRangeFilter
-              options={freezerSectionsCountOptions}
-              values={field.value}
-              {...field}
-            />
-          )}
-        />
-      </FilterItem>
       <FilterResetButton
         onClick={() => {
           reset({
@@ -476,8 +347,8 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
               ...producer,
               checked: false,
             })),
-            types: typesOptions,
             discountTypes: discountTypesOptions,
+            discount: discounts[0].value,
           });
         }}
       />
