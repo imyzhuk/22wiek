@@ -83,6 +83,7 @@ export const FixedRangeFilter: React.FC<FixedRangeFilterProps> = ({
               <div className={styles.options}>
                 {options.map((option) => (
                   <li
+                    key={option}
                     className={`${styles.option} ${values.fromValue === option ? styles.activeOption : ''}`}
                     onClick={() => handleFromChange(option)}
                   >
@@ -122,6 +123,7 @@ export const FixedRangeFilter: React.FC<FixedRangeFilterProps> = ({
               <div className={styles.options}>
                 {options.map((option) => (
                   <li
+                    key={option}
                     className={`${styles.option} ${values.untilValue === option ? styles.activeOption : ''}`}
                     onClick={() => handleUntilChange(option)}
                   >

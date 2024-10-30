@@ -148,7 +148,7 @@ export async function POST(req: NextRequest) {
   try {
     await prisma.cartItem.create({
       data: {
-        userId: token?.id || userId,
+        userId: token?.id || (userId as string),
         productId: Number(productId),
       },
     });

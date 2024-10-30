@@ -40,15 +40,15 @@ export const Header: React.FC<HeaderProps> = () => {
   } = useOutsideClick<HTMLDivElement>(false);
   const { setCartProductIds } = useActions();
   const { data: session } = useSession();
-  const params = useSearchParams()
+  const params = useSearchParams();
   const router = useRouter();
 
   useEffect(() => {
     if (params.has('verified')) {
-      toast.success("Регистрация заверешена!")
-      router.replace('/')
+      toast.success('Регистрация заверешена!');
+      router.replace('/');
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     const getCartItems = async () => {

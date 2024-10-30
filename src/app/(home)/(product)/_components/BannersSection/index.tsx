@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './BannersSection.module.css';
 import { BottomBanners } from './BottomBanners';
 import { BannerCarousel } from './BannerCarousel';
 import { prisma } from '@prisma/prisma-client';

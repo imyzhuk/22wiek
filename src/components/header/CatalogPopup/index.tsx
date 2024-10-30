@@ -147,3 +147,5 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
     );
   },
 );
+
+CatalogPopup.displayName = 'CatalogPopup';

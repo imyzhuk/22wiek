@@ -1,4 +1,5 @@
 import { Header, Main } from '@/components';
+import { Suspense } from 'react';
 
 type HomeLayoutProps = Readonly<{
   children: React.ReactNode;
@@ -6,7 +7,9 @@ type HomeLayoutProps = Readonly<{
 export default function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <>
-      <Header />
+      <Suspense>
+        <Header />
+      </Suspense>
       {children}
     </>
   );

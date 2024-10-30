@@ -1,4 +1,5 @@
 import { Main } from '@/components';
+import { Suspense } from 'react';
 
 type CartLayoutProps = Readonly<{
   children: React.ReactNode;
@@ -6,7 +7,9 @@ type CartLayoutProps = Readonly<{
 export default function CartLayout({ children }: CartLayoutProps) {
   return (
     <>
-      <Main>{children}</Main>
+      <Main>
+        <Suspense>{children}</Suspense>
+      </Main>
     </>
   );
 }

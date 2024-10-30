@@ -15,7 +15,7 @@ export const FooterSubscription: React.FC<FooterSubscriptionProps> = () => {
         &nbsp;на весь ассортимент наших товаров!
       </span>
       <form className={styles.form}>
-        <Input placeholder="Введите почту" />
+        <Input placeholder="Введите почту" onChange={() => null} />
         <button className={styles.button}>
           <SendLetterIcon />
         </button>

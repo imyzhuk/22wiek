@@ -37,7 +37,7 @@ export const ResetForm: React.FC<ResetFormProps> = ({ userId }) => {
     }
 
     setIsFormValid(true);
-  }, [password, confirmPassword]);
+  }, [password, passwordError, confirmPassword, confirmPasswordError]);
 
   const onPasswordChange = (value: string) => {
     const pattern = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/gm;

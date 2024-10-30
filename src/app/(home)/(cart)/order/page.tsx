@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import styles from './OrderPage.module.css';
 import { BasketSection, CertificationSection, Tabs } from './_components';
 import { useSearchParams } from 'next/navigation';
@@ -32,7 +32,9 @@ const OrderPage: React.FC<OrderPageProps> = () => {
   }, []);
   return (
     <div className={styles.container}>
-      <Tabs tabName={tabName || 'basket'} />
+      <Suspense>
+        <Tabs tabName={tabName || 'basket'} />
+      </Suspense>
       {!!tabName && <CertificationSection certificates={[]} totalPrice={300} />}
       {!tabName && Boolean(cartItems.length) && Boolean(cartItemsCount) && (
         <BasketSection />

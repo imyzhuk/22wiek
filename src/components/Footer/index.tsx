@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import styles from './Footer.module.css';
 import BelcartIcon from '@icons/belcart.svg';
@@ -10,14 +12,17 @@ import { SitemapBlock } from './SitemapBlock';
 import { Contacts } from './Contacts';
 import { Networks } from './Networks';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 
 type FooterProps = {};
 
+// TODO: implement FooterSubscription mechanism
 export const Footer: React.FC<FooterProps> = () => {
+  const { data: session } = useSession();
   return (
     <footer className={styles.footer}>
       <div className={styles.footerWrapper}>
-        <FooterSubscription />
+        {session && <FooterSubscription />}
         <SitemapBlock />
         <Contacts />
         <Networks />

@@ -4,9 +4,6 @@ import { HttpStatusCodes } from '../../statusCodes';
 import { prisma } from '@prisma/prisma-client';
 import { getToken } from 'next-auth/jwt';
 
-type Action = 'increment' | 'decrement';
-const actions: Action[] = ['increment', 'decrement'];
-
 export async function PATCH(
   req: NextRequest,
   { params }: { params: { id: string } },
