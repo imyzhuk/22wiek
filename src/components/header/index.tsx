@@ -27,6 +27,8 @@ import ClockIcon from '@icons/clockIcon.svg';
 import Link from 'next/link';
 import cartAPI from '@/services/cartAPI';
 import { useSession } from 'next-auth/react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 type HeaderProps = {};
 
@@ -38,6 +40,15 @@ export const Header: React.FC<HeaderProps> = () => {
   } = useOutsideClick<HTMLDivElement>(false);
   const { setCartProductIds } = useActions();
   const { data: session } = useSession();
+  const params = useSearchParams()
+  const router = useRouter();
+
+  useEffect(() => {
+    if (params.has('verified')) {
+      toast.success("Регистрация заверешена!")
+      router.replace('/')
+    }
+  }, [])
 
   useEffect(() => {
     const getCartItems = async () => {
