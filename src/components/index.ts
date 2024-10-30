@@ -1,5 +1,5 @@
 export { Header } from './Header';
-export { CircleButton } from './CircleButton';
+export { CircleButton } from './circleButtonTemp';
 export { ProductCard } from './ProductCard';
 export { ProductCardButton } from './ProductCardButton';
 export { ChipButton } from './ChipButton';
