@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { HttpStatusCodes } from '../statusCodes';
 import { prisma } from '@prisma/prisma-client';
-import { createUser } from '@/app/api/_utils/user';
+import { getToken } from 'next-auth/jwt';
 
 export async function GET(req: NextRequest) {
   const cookieStore = cookies();
   let userId = cookieStore.get('userId')?.value;
-  if (!userId) {
-    userId = await createUser();
-    cookies().set('userId', userId);
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+
+  if (!userId && !token) {
     return NextResponse.json([], {
       status: HttpStatusCodes.OK,
     });
@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
   try {
     const cartItems = await prisma.cartItem.findMany({
       where: {
-        userId,
+        userId: token?.id || userId,
       },
       include: {
         product: {
@@ -55,8 +55,9 @@ export async function GET(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
   const cookieStore = cookies();
   const userId = cookieStore.get('userId')?.value;
-  let condition;
-  if (!userId) {
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+
+  if (!token && !userId) {
     return NextResponse.json(
       { error: 'Unauthorized' },
       { status: HttpStatusCodes.UNAUTHORIZED },
@@ -80,7 +81,7 @@ export async function DELETE(req: NextRequest) {
     await prisma.cartItem.deleteMany({
       where: {
         AND: [
-          { userId },
+          { userId: token?.id || userId },
           {
             id: {
               in: JSON.parse(productIds),
@@ -91,7 +92,7 @@ export async function DELETE(req: NextRequest) {
     });
     const cartItems = await prisma.cartItem.findMany({
       where: {
-        userId,
+        userId: token?.id || userId,
       },
       select: {
         quantity: true,
@@ -120,9 +121,13 @@ export async function DELETE(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const cookieStore = cookies();
   let userId = cookieStore.get('userId')?.value;
-  if (!userId) {
-    userId = await createUser();
-    cookies().set('userId', userId);
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+
+  if (!token && !userId) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: HttpStatusCodes.UNAUTHORIZED },
+    );
   }
 
   const {
@@ -143,7 +148,7 @@ export async function POST(req: NextRequest) {
   try {
     await prisma.cartItem.create({
       data: {
-        userId,
+        userId: token?.id || userId,
         productId: Number(productId),
       },
     });

@@ -37,9 +37,7 @@ export const useCartInfo = () => {
     try {
       const { data } = await cartAPI.getInfo(cartItemIds);
       setCartInfo(data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
     setIsLoadingCartInfo(false);
   };
 

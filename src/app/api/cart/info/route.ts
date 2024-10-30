@@ -3,15 +3,19 @@ import { prisma } from '@prisma/prisma-client';
 import { cookies } from 'next/headers';
 import { HttpStatusCodes } from '../../statusCodes';
 import { GetCartInfoResponse } from '@/types/cart';
-import { createUser } from '@/app/api/_utils/user';
+import { getToken } from 'next-auth/jwt';
 
 export async function GET(req: NextRequest) {
   const cookieStore = cookies();
   let userId = cookieStore.get('userId')?.value;
   let condition;
-  if (!userId) {
-    userId = await createUser();
-    cookies().set('userId', userId);
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+
+  if (!token && !userId) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: HttpStatusCodes.UNAUTHORIZED },
+    );
   }
 
   const productIds = req.nextUrl.searchParams.get('productIds');
@@ -28,7 +32,7 @@ export async function GET(req: NextRequest) {
 
   const cartItems = await prisma.cartItem.findMany({
     where: {
-      AND: [{ userId }, condition],
+      AND: [{ userId: token?.id || userId }, condition],
     },
     select: {
       id: true,

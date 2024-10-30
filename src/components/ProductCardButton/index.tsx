@@ -6,6 +6,7 @@ import cartAPI from '@/services/cartAPI';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { useActions } from '@/hooks';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 type ProductCardButtonProps = {
   id: number;
@@ -20,11 +21,15 @@ export const ProductCardButton: React.FC<ProductCardButtonProps> = ({ id }) => {
   const handleClick = async () => {
     if (!isActive) {
       setIsLoading(true);
-      await cartAPI.addToCart(id);
-      addCartProductId(id);
-      setIsLoading(false);
-      setIsActive(true);
-      return;
+      try {
+        await cartAPI.addToCart(id);
+        addCartProductId(id);
+        setIsActive(true);
+      } catch (error) {
+        toast.error('Не получилось добавить товар в корзину');
+      } finally {
+        setIsLoading(false);
+      }
     } else {
       router.push('/order', { scroll: false });
     }

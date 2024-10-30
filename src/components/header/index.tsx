@@ -26,6 +26,7 @@ import PromoIcon from '@icons/promoIcon.svg';
 import ClockIcon from '@icons/clockIcon.svg';
 import Link from 'next/link';
 import cartAPI from '@/services/cartAPI';
+import { useSession } from 'next-auth/react';
 
 type HeaderProps = {};
 
@@ -36,19 +37,24 @@ export const Header: React.FC<HeaderProps> = () => {
     setIsActive: setIsCatalogActive,
   } = useOutsideClick<HTMLDivElement>(false);
   const { setCartProductIds } = useActions();
+  const { data: session } = useSession();
 
   useEffect(() => {
     const getCartItems = async () => {
-      const {
-        data: { productIds, count },
-      } = await cartAPI.getCartProductIds();
-      setCartProductIds({
-        productIds,
-        count,
-      });
+      try {
+        const {
+          data: { productIds, count },
+        } = await cartAPI.getCartProductIds();
+        setCartProductIds({
+          productIds,
+          count,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     };
     getCartItems();
-  }, []);
+  }, [session]);
   return (
     <header className={styles.header}>
       <div className={styles.headerWrapper}>

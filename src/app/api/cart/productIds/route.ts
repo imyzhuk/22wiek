@@ -1,24 +1,33 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { prisma } from '@prisma/prisma-client';
-import { createUser } from '../../_utils/user';
 import { HttpStatusCodes } from '../../statusCodes';
+import { getToken } from 'next-auth/jwt';
+import { createUser } from '../../_utils/user';
 
 export async function GET(req: NextRequest) {
   const cookieStore = cookies();
   let userId = cookieStore.get('userId')?.value;
-  if (!userId) {
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+
+  if (!token && !userId) {
     userId = await createUser();
     cookies().set('userId', userId);
-    return NextResponse.json([], {
-      status: HttpStatusCodes.OK,
-    });
+    return NextResponse.json(
+      {
+        productIds: [],
+        count: 0,
+      },
+      {
+        status: HttpStatusCodes.OK,
+      },
+    );
   }
 
   try {
     const response = await prisma.cartItem.findMany({
       where: {
-        userId,
+        userId: token?.id || userId,
       },
       select: {
         quantity: true,

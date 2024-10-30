@@ -4,6 +4,7 @@ import styles from './CartButton.module.css';
 import { useRouter } from 'next/navigation';
 import { useActions, useTypedSelector } from '@/hooks';
 import cartAPI from '@/services/cartAPI';
+import toast from 'react-hot-toast';
 
 type CartButtonProps = {
   isThereProduct: boolean;
@@ -22,10 +23,15 @@ export const CartButton: React.FC<CartButtonProps> = ({
   const handleClick = async () => {
     if (!isActive) {
       setIsLoading(true);
-      await cartAPI.addToCart(id);
-      addCartProductId(id);
-      setIsLoading(false);
-      setIsActive(true);
+      try {
+        await cartAPI.addToCart(id);
+        addCartProductId(id);
+        setIsActive(true);
+      } catch (error) {
+        toast.error('Не получилось добавить товар в корзину');
+      } finally {
+        setIsLoading(false);
+      }
       return;
     } else {
       router.push('/order', { scroll: false });

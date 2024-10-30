@@ -16,14 +16,17 @@ const OrderPage: React.FC<OrderPageProps> = () => {
   let tabName = searchParams.get('tab') as 'certifications' | null;
   const cartItems = useTypedSelector((state) => state.cart.cartItems);
   const cartItemsCount = useTypedSelector((state) => state.cart.cartItemsCount);
-  console.dir(cartItems, cartItemsCount);
   const { setCartItems, setCartInfo } = useActions();
   useEffect(() => {
     const getAllCartItems = async () => {
-      const promises = Promise.all([cartAPI.getAll(), cartAPI.getInfo([])]);
-      const [{ data: cartItems }, { data: cartInfo }] = await promises;
-      setCartItems({ cartItems });
-      setCartInfo(cartInfo);
+      try {
+        const promises = Promise.all([cartAPI.getAll(), cartAPI.getInfo([])]);
+        const [{ data: cartItems }, { data: cartInfo }] = await promises;
+        setCartItems({ cartItems });
+        setCartInfo(cartInfo);
+      } catch (error) {
+        console.log(error);
+      }
     };
     getAllCartItems();
   }, []);
