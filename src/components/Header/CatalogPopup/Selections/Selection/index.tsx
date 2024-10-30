@@ -7,12 +7,18 @@ type SelectionProps = {
   link: string;
   image: string;
   name: string;
+  onClick: () => void;
 };
 
-export const Selection: React.FC<SelectionProps> = ({ name, image, link }) => {
+export const Selection: React.FC<SelectionProps> = ({
+  name,
+  image,
+  link,
+  onClick,
+}) => {
   return (
     <li>
-      <Link href={link} className={styles.link}>
+      <Link href={link} className={styles.link} onClick={onClick}>
         <span className={styles.imageWrapper}>
           <Image src={image} alt={name} fill style={{ objectFit: 'contain' }} />
         </span>

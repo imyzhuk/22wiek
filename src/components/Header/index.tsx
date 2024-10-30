@@ -258,7 +258,12 @@ export const Header: React.FC<HeaderProps> = () => {
           </div>
         </div>
       </div>
-      {isCatalogActive && <CatalogPopup ref={catalogRef} />}
+      {isCatalogActive && (
+        <CatalogPopup
+          onClose={() => setIsCatalogActive(false)}
+          ref={catalogRef}
+        />
+      )}
     </header>
   );
 };

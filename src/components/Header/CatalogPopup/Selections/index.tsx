@@ -9,9 +9,13 @@ type SelectionsProps = {
     link: string;
     image: string;
   }[];
+  onSelectClick: () => void;
 };
 
-export const Selections: React.FC<SelectionsProps> = ({ items }) => {
+export const Selections: React.FC<SelectionsProps> = ({
+  items,
+  onSelectClick,
+}) => {
   if (!items) return null;
   return (
     <div className={styles.selectionsContainer}>
@@ -19,6 +23,7 @@ export const Selections: React.FC<SelectionsProps> = ({ items }) => {
       <ul>
         {items.map((selection) => (
           <Selection
+            onClick={onSelectClick}
             key={selection.id}
             link={selection.link}
             image={selection.image}

@@ -9,24 +9,26 @@ type CategoryProps = {
   name: string;
   link: string;
   subCategories: Omit<CategoryType, 'parendId'>[];
+  onClick: () => void;
 };
 
 export const Category: React.FC<CategoryProps> = ({
   name,
   link,
   subCategories,
+  onClick,
 }) => {
   const [shownCategoriesCount, setShownCategoriesCount] = useState<number>(7);
   return (
     <ul className={styles.container}>
       <li>
-        <Link href={link} className={styles.titleLink}>
+        <Link onClick={onClick} href={link} className={styles.titleLink}>
           {name}
         </Link>
       </li>
       {subCategories.slice(0, shownCategoriesCount).map((category) => (
         <li key={category.id}>
-          <Link href={category.link} className={styles.link}>
+          <Link onClick={onClick} href={category.link} className={styles.link}>
             {category.name}
           </Link>
         </li>

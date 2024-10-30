@@ -11,10 +11,12 @@ import Link from 'next/link';
 import catalogAPI from '@/services/catalogAPI';
 import { useActions, useTypedSelector } from '@/hooks';
 
-type CatalogPopupProps = {};
+type CatalogPopupProps = {
+  onClose: () => void;
+};
 
 export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
-  (props, ref) => {
+  ({ onClose }, ref) => {
     const [isLoading, setIsLoading] = useState(false);
     const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
     const { setCatalog } = useActions();
@@ -51,6 +53,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                         onMouseOver={() => setActiveCategoryIndex(idx)}
                       >
                         <Link
+                          onClick={onClose}
                           href={category.link}
                           className={`${styles.category} ${activeCategoryIndex === idx ? styles.activeCategory : ''}`}
                         >
@@ -67,6 +70,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                   <ul className={styles.linksContainer}>
                     <li>
                       <Link
+                        onClick={onClose}
                         className={styles.category}
                         href="/special_offers/promo"
                       >
@@ -78,6 +82,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                     </li>
                     <li>
                       <Link
+                        onClick={onClose}
                         className={styles.category}
                         href="/special_offers/promo?filters[discountTypes][0]=Sale"
                       >
@@ -108,6 +113,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                           )
                           .map((subCategory) => (
                             <Category
+                              onClick={onClose}
                               link={subCategory.link}
                               key={subCategory.id}
                               name={subCategory.name}
@@ -125,6 +131,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                           )
                           .map((subCategory) => (
                             <Category
+                              onClick={onClose}
                               link={subCategory.link}
                               key={subCategory.id}
                               name={subCategory.name}
@@ -135,6 +142,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                     </div>
                     <Selections
                       items={categories[activeCategoryIndex]?.compilations}
+                      onSelectClick={onClose}
                     />
                   </div>
                 </div>
