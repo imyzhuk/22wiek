@@ -104,7 +104,7 @@ export const SearchBar: React.FC<SearchBarProps> = () => {
                     {searchedProducts.map((product) => (
                       <li key={product.id} className={styles.popupItem}>
                         <Link
-                          href={product.link}
+                          href={`${product.link}${product.id}`}
                           className={styles.popupItemLink}
                           onClick={() => setIsActive((prev) => !prev)}
                         >
