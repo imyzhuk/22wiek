@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cartAPI from '@/services/cartAPI';
 import { ExpandedCartItemWithProduct, GetCartInfoResponse } from '@/types/cart';
 import { useTypedSelector } from './useTypedSelector';
@@ -26,11 +26,22 @@ export const useCartInfo = () => {
   const totalProductsCount = useTypedSelector(
     (state) => state.cart.chosenProductsCount,
   );
-  const { setCartInfo, setCartItemsCount, removeCartProductIds } = useActions();
+  const {
+    setCartInfo,
+    setCartItemsCount,
+    removeCartProductIds,
+    resetCartInfo,
+  } = useActions();
 
   const [isLoadingCartInfo, setIsLoadingCartInfo] =
     React.useState<boolean>(false);
   const [isDeleting, setIsDeleting] = React.useState<boolean>(false);
+
+  useEffect(() => {
+    return () => {
+      resetCartInfo();
+    };
+  }, []);
 
   const updateCartInfo = async (cartItemIds: number[]) => {
     setIsLoadingCartInfo(true);

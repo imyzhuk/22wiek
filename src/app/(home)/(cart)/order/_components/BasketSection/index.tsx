@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './BasketSection.module.css';
 import { FilterCheckbox } from '@/components';
 import Image from 'next/image';
