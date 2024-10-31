@@ -19,11 +19,11 @@ export const AdvantageCard: React.FC<AdvantageCardProps> = ({
       className={`${styles.card} ${styles[color]}`}
       style={{ backgroundImage: `url('./images/${bgImg}')` }}
     >
-      <Link href={link} className={styles.link}>
+      <div className={styles.link}>
         <h6 className={styles.title}>{title}</h6>
         <p className={styles.desc}>{desc}</p>
         <Image alt={title} src={img} width={168} />
-      </Link>
+      </div>
     </li>
   );
 };

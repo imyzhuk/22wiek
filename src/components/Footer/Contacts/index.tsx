@@ -10,21 +10,23 @@ import MessageIcon from '@icons/message.svg';
 
 type ContactsProps = {};
 
+// TODO: implement feedback mechanism
+
 export const Contacts: React.FC<ContactsProps> = () => {
   return (
     <div className={styles.container}>
       <ul className={styles.contacts}>
         <li className={styles.contact}>
           <A1Icon />
-          <span>+375 29 302 10 21</span>
+          <span>+375 29 111 11 11</span>
         </li>
         <li className={styles.contact}>
           <LifeMobileIcon />
-          <span>+375 25 502 10 21</span>
+          <span>+375 25 222 22 22</span>
         </li>
         <li className={styles.contact}>
           <HomePhoneIcon />
-          <span>+375 17 302 10 21</span>
+          <span>+375 17 333 33 33</span>
         </li>
         <li className={`${styles.contact} ${styles.link} ${styles.viber}`}>
           <ViberIcon />
@@ -56,12 +58,14 @@ export const Contacts: React.FC<ContactsProps> = () => {
             Почта
           </a>
         </li>
-        <li className={`${styles.contact} ${styles.link}`}>
-          <button className={styles.button}>
-            <MessageIcon />
-            <span>Написать нам</span>
-          </button>
-        </li>
+        {false && (
+          <li className={`${styles.contact} ${styles.link}`}>
+            <button className={styles.button}>
+              <MessageIcon />
+              <span>Написать нам</span>
+            </button>
+          </li>
+        )}
       </ul>
     </div>
   );

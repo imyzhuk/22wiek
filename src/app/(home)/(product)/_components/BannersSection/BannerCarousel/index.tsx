@@ -35,14 +35,14 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
       >
         {banners.map((banner) => (
           <SwiperSlide className={styles.banner} key={banner.id}>
-            <Link href={banner.link}>
+            <div>
               <Image
                 src={banner.image}
                 width={1090}
                 height={360}
                 alt={banner.title}
               />
-            </Link>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

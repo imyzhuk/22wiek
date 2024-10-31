@@ -312,9 +312,11 @@ export const BasketSection: React.FC<BasketSectionProps> = ({}) => {
                     >
                       <BinIcon /> Удалить
                     </button>
-                    <button className={styles.productButton}>
-                      <HeartIcon /> В избранное
-                    </button>
+                    {false && (
+                      <button className={styles.productButton}>
+                        <HeartIcon /> В избранное
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

@@ -52,9 +52,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                         key={category.id}
                         onMouseOver={() => setActiveCategoryIndex(idx)}
                       >
-                        <Link
-                          onClick={onClose}
-                          href={category.link}
+                        <span
                           className={`${styles.category} ${activeCategoryIndex === idx ? styles.activeCategory : ''}`}
                         >
                           <span className={styles.icon}>
@@ -63,7 +61,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                           <span className={styles.categoryName}>
                             {category.name}
                           </span>
-                        </Link>
+                        </span>
                       </li>
                     ))}
                   </ul>

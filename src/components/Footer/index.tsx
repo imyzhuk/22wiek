@@ -22,7 +22,7 @@ export const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerWrapper}>
-        {session && <FooterSubscription />}
+        {false && <FooterSubscription />}
         <SitemapBlock />
         <Contacts />
         <Networks />

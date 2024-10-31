@@ -25,9 +25,9 @@ export const DeliveryDetails: React.FC<DeliveryDetailsProps> = () => {
             <p className={`${styles.itemBody} ${styles.green}`}>завтра</p>
           </div>
           <p className={styles.price}>бесплатно</p>
-          <Link href="/services/delivery" className={styles.itemLink}>
+          <span className={styles.itemLink}>
             <ArrowUpIcon className={styles.arrow} />
-          </Link>
+          </span>
         </div>
         <div className={styles.deliveryItem}>
           <div className={styles.description}>
@@ -35,9 +35,9 @@ export const DeliveryDetails: React.FC<DeliveryDetailsProps> = () => {
             <p className={`${styles.itemBody} ${styles.green}`}>завтра</p>
           </div>
           <p className={styles.price}>бесплатно</p>
-          <Link href="/self_delivery/" className={styles.itemLink}>
+          <span className={styles.itemLink}>
             <ArrowUpIcon className={styles.arrow} />
-          </Link>
+          </span>
         </div>
       </div>
     </div>

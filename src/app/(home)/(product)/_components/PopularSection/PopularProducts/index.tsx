@@ -145,9 +145,6 @@ export const PopularProducts: React.FC<PopularProductsProps> = ({
           Показать еще
         </button>
       )}
-      <Link href="/special_offers/recommend" className={styles.allButton}>
-        Смотреть все
-      </Link>
     </>
   );
 };

@@ -38,7 +38,6 @@
 .itemTitle {
   font-size: 14px;
   line-height: 20px;
-  margin-left: 4px;
   cursor: pointer;
 }
 
@@ -49,13 +48,11 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  padding-left: 28px;
   color: #a0a1a3;
 }
 
 .moreButton {
   display: flex;
-  margin-left: 28px;
   color: var(--blue-500);
   font-size: 12px;
   line-height: 16px;

@@ -42,7 +42,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <div className={styles.discountType}>{discountType}</div>
           )}
         </div>
-        <Link href={productLink} className={styles.description}>
+        <Link href={`${productLink}${id}`} className={styles.description}>
           {title}
         </Link>
         <div className={styles.productStatus}>

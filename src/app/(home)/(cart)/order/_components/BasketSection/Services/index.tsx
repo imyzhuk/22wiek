@@ -22,11 +22,6 @@ export const Services: React.FC<ServicesProps> = ({ items }) => {
             <li className={styles.item} key={service.id}>
               <div className={styles.info}>
                 <div className={styles.topBlock}>
-                  <FilterCheckbox
-                    name=""
-                    value=""
-                    className={styles.checkbox}
-                  />
                   <span className={styles.itemTitle}>{service.name}</span>
                 </div>
                 <p className={styles.description}>{service.description}</p>

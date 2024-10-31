@@ -62,16 +62,6 @@
   background-color: var(--blue-300);
 }
 
-.allButton {
-  margin-top: 18px;
-  display: block;
-  text-align: center;
-  font-weight: 700;
-  color: var(--blue-500);
-  font-size: 14px;
-  line-height: 20px;
-}
-
 .loader {
   position: absolute;
   top: 0;

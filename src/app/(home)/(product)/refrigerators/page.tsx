@@ -268,9 +268,6 @@ async function RefrigeratorsPage({
       />
       <div className={styles.titleWrapper}>
         <h1 className={styles.title}>Холодильники</h1>
-        <Link href="/info/howto/42" className={styles.titleLink}>
-          Как выбрать холодильник
-        </Link>
       </div>
       {false && (
         <div className={styles.chips}>

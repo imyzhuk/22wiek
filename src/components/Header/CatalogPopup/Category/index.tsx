@@ -22,9 +22,7 @@ export const Category: React.FC<CategoryProps> = ({
   return (
     <ul className={styles.container}>
       <li>
-        <Link onClick={onClick} href={link} className={styles.titleLink}>
-          {name}
-        </Link>
+        <span className={styles.titleLink}>{name}</span>
       </li>
       {subCategories.slice(0, shownCategoriesCount).map((category) => (
         <li key={category.id}>

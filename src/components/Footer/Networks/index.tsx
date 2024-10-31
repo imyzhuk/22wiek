@@ -12,27 +12,27 @@ export const Networks: React.FC<NetworksProps> = () => {
   return (
     <ul className={styles.networks}>
       <li className={styles.network}>
-        <a href="" className={`${styles.link} ${styles.vk}`}>
+        <a href="#!" className={`${styles.link} ${styles.vk}`}>
           <VKIcon />
         </a>
       </li>
       <li className={styles.network}>
-        <a href="" className={`${styles.link} ${styles.facebook}`}>
+        <a href="#!" className={`${styles.link} ${styles.facebook}`}>
           <FacebookIcon />
         </a>
       </li>
       <li className={styles.network}>
-        <a href="" className={`${styles.link} ${styles.instagram}`}>
+        <a href="#!" className={`${styles.link} ${styles.instagram}`}>
           <InstagramIcon />
         </a>
       </li>
       <li className={styles.network}>
-        <a href="" className={`${styles.link} ${styles.youtube}`}>
+        <a href="#!" className={`${styles.link} ${styles.youtube}`}>
           <YoutubeIcon />
         </a>
       </li>
       <li className={styles.network}>
-        <a href="" className={`${styles.link} ${styles.dzen}`}>
+        <a href="#!" className={`${styles.link} ${styles.dzen}`}>
           <DzenIcon />
         </a>
       </li>
