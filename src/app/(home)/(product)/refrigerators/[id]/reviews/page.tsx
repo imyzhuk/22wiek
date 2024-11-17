@@ -5,6 +5,8 @@ import { redirect } from 'next/navigation';
 import { ProductTabs, ReviewAside } from '@/components';
 import { Review, Summary } from './_components';
 import { toLowerCaseFirstLetter } from '@/utils';
+import RightArrow from '@icons/rightArrow.svg';
+import Link from 'next/link';
 
 type RefrigeratorReviewsPageProps = {
   params: {
@@ -64,9 +66,14 @@ const RefrigeratorReviewsPage: React.FC<RefrigeratorReviewsPageProps> = async ({
 
   return (
     <>
-      <h1 className={styles.title}>
-        Отзывы на {toLowerCaseFirstLetter(product.name)}
-      </h1>
+      <div className={styles.titleContainer}>
+        <Link href={`/refrigerators/${id}`} className={styles.backLink}>
+          <RightArrow className={styles.backArrow} />
+        </Link>
+        <h1 className={styles.title}>
+          Отзывы на {toLowerCaseFirstLetter(product.name)}
+        </h1>
+      </div>
       <ProductTabs
         tabs={[
           { id: 0, name: 'Основное', link: `${product.link}${id}` },

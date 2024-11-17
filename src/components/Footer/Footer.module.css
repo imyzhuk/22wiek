@@ -29,3 +29,10 @@
   margin: 24px 0 8px;
   gap: 16px;
 }
+
+@media screen and (max-width: 1200px) {
+  .footerWrapper {
+    max-width: 100%;
+    padding: 0 16px;
+  }
+}

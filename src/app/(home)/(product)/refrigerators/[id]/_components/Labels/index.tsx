@@ -5,7 +5,7 @@ type LabelsProps = {
   items: {
     id: number;
     name: string;
-    style: CSSProperties;
+    style?: CSSProperties;
   }[];
 };
 

@@ -7,14 +7,10 @@ import cartAPI from '@/services/cartAPI';
 import toast from 'react-hot-toast';
 
 type CartButtonProps = {
-  isThereProduct: boolean;
   id: number;
 };
 
-export const CartButton: React.FC<CartButtonProps> = ({
-  isThereProduct,
-  id,
-}) => {
+export const CartButton: React.FC<CartButtonProps> = ({ id }) => {
   const cartProductIds = useTypedSelector((state) => state.cart.productIds);
   const { addCartProductId } = useActions();
   const [isActive, setIsActive] = useState<boolean>(false);

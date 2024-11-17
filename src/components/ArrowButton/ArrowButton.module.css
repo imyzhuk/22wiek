@@ -26,3 +26,18 @@
 .right {
   right: -72px;
 }
+
+@media screen and (max-width: 1200px) {
+  .left {
+    left: -55px;
+  }
+  .right {
+    right: -55px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .button {
+    display: none;
+  }
+}

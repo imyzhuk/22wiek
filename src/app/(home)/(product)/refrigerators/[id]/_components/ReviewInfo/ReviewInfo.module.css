@@ -1,0 +1,55 @@
+.container {
+  margin-bottom: 20px;
+  margin-top: 12px;
+  padding: 12px 16px 0 16px;
+  border-top: 1px solid #ebedf0;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+  height: 24px;
+  gap: 7px;
+}
+
+.ratingAreaLink {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.ratingAreaLinkDisabled {
+  pointer-events: none;
+}
+
+.star {
+  transform: translateY(-1px);
+  width: 18px;
+  height: 18px;
+  fill: #faaa32;
+}
+
+.emptyStar {
+  transform: translateY(-1px);
+  width: 18px;
+  height: 18px;
+  fill: #e6e8eb;
+}
+
+.emptyRating {
+  color: #b4b5b8;
+}
+
+.reviewCount {
+  color: #07c;
+}
+
+@media screen and (min-width: 993px) {
+  .container {
+    display: none;
+  }
+}

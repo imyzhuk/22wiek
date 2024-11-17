@@ -1,11 +1,22 @@
 .list {
   display: flex;
   align-items: center;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
 }
 
 .item {
   display: inline-flex;
   align-items: center;
+  scroll-snap-align: start;
+  min-width: fit-content;
   font-size: 12px;
   line-height: 16px;
   color: var(--gray-700);

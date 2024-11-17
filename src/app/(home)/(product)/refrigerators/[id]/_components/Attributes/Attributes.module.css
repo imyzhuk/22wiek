@@ -51,3 +51,13 @@
   top: -20px;
   left: 100%;
 }
+
+@media screen and (max-width: 992px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .column {
+    width: 100%;
+  }
+}

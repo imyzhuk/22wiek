@@ -24,7 +24,7 @@ export const AdditionalInfo: React.FC<AdditionalInfoProps> = ({ items }) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FileIcon />
+                <FileIcon className={styles.fileIcon} />
                 {name}
               </a>
             </li>

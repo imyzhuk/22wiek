@@ -15,6 +15,7 @@ type ProductCardGalleryProps = {
 export const ProductCardGallery: React.FC<ProductCardGalleryProps> = ({
   images,
 }) => {
+  const isTablet = window?.innerWidth < 993;
   const [previewsSwiper, setPreviewsSwiper] = useState<SwiperClass | null>(
     null,
   );
@@ -26,8 +27,8 @@ export const ProductCardGallery: React.FC<ProductCardGalleryProps> = ({
         <Swiper
           loop={true}
           slidesPerView={'auto'}
-          spaceBetween={16}
-          direction={'vertical'}
+          spaceBetween={isTablet ? 10 : 16}
+          direction={isTablet ? 'horizontal' : 'vertical'}
           grabCursor={true}
           navigation={{
             nextEl: `.${styles.arrowUp}`,
@@ -45,7 +46,13 @@ export const ProductCardGallery: React.FC<ProductCardGalleryProps> = ({
             <ArrowDownIcon />
           </button>
           {images.map((image) => (
-            <SwiperSlide key={image.id} style={{ height: '56px' }}>
+            <SwiperSlide
+              key={image.id}
+              style={{
+                height: isTablet ? '60px' : '56px',
+                width: isTablet ? '60px' : '56px',
+              }}
+            >
               <div className={styles.miniature}>
                 <NextImage
                   src={image.url}

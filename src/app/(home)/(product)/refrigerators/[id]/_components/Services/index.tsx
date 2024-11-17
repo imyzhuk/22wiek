@@ -21,9 +21,11 @@ export const Services: React.FC<ServicesProps> = ({ items }) => {
     <div className={styles.services}>
       <div className={styles.headline}>
         <h4 className={styles.title}>Дополнительные услуги</h4>
-        <button className={styles.titleButton}>
-          Смотрите все {items.length} услуги
-        </button>
+        {items.length > 2 && (
+          <button className={styles.titleButton}>
+            Смотрите все {items.length} услуги
+          </button>
+        )}
       </div>
       <ul className={styles.list}>
         {items.slice(0, 2).map((service) => {

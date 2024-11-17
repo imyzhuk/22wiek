@@ -25,4 +25,5 @@ export { VerificationUserTemplate } from './VerificationUserTemplate';
 export { LoadingButton } from './LoadingButton';
 export { Loader } from './Loader';
 export { Listing } from './Listing';
+export { CartButton } from './CartButton';
 export * from './FilterParts';

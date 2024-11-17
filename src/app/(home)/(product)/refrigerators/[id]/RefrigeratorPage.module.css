@@ -6,35 +6,20 @@
   font-weight: 400;
 }
 
-.additions {
-  display: flex;
-  margin-top: 26px;
-  padding-bottom: 80px;
+.mobileTitle {
+  display: none;
+  font-weight: 400;
+  margin: 20px 0 4px;
+  font-size: 18px;
+  line-height: 26px;
 }
 
-.leftColumn {
-  flex-shrink: 0;
-  width: 730px;
-}
+@media screen and (max-width: 992px) {
+  .title {
+    display: none;
+  }
 
-.producerInfo {
-  color: #a0a1a3;
-  word-break: break-word;
-  font-size: 13px;
-  line-height: 18px;
-}
-
-.disclaimer {
-  margin-top: 12px;
-  font-size: 13px;
-  line-height: 18px;
-  color: #a0a1a3;
-}
-
-.disclaimerButton {
-  color: var(--blue-500);
-}
-
-.disclaimerButton:hover {
-  color: var(--blue-800);
+  .mobileTitle {
+    display: block;
+  }
 }

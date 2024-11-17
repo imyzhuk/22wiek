@@ -54,3 +54,44 @@
   height: 340px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 992px) {
+  .content {
+    flex-direction: column;
+    width: 350px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .miniatures {
+    order: 2;
+    width: 100%;
+    height: 60px;
+  }
+
+  .previews {
+    order: 1;
+    width: 350px;
+    height: 350px;
+  }
+
+  .miniature {
+    width: 60px;
+    height: 60px;
+  }
+
+  .arrow {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .content {
+    width: 200px;
+  }
+
+  .previews {
+    width: 200px;
+    height: 200px;
+  }
+}

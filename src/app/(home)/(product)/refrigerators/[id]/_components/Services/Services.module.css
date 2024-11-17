@@ -32,7 +32,6 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 17px;
 }
 
 .list::after {
@@ -46,6 +45,7 @@
 }
 
 .item {
+  margin-top: 17px;
   width: 488px;
   height: -moz-fit-content;
   height: fit-content;
@@ -60,6 +60,12 @@
 .itemTitle {
   font-size: 14px;
   line-height: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  overflow: hidden;
 }
 
 .price {
@@ -127,4 +133,39 @@
   font-size: 13px;
   line-height: 18px;
   color: var(--black-500);
+}
+
+@media screen and (max-width: 1200px) {
+  .item {
+    width: calc(50% - 12px);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .services {
+    margin: 20px 0;
+    padding: 20px 0 0 0;
+    border-top: 1px solid #ebedf0;
+    background-color: transparent;
+  }
+
+  .headline {
+    justify-content: space-between;
+  }
+
+  .list::after {
+    display: none;
+  }
+
+  .item {
+    width: 100%;
+  }
+
+  .info {
+    display: none;
+  }
+
+  .descriptionButton {
+    display: none;
+  }
 }

@@ -79,14 +79,14 @@
   line-height: 28px;
 }
 
-.wrapper .buttons {
+.buttons {
   display: flex;
   width: 100%;
   justify-content: space-between;
   gap: 8px;
 }
 
-.wrapper .buttons:not(:first-child) {
+.buttons:not(:first-child) {
   margin-top: 24px;
 }
 
@@ -99,4 +99,16 @@
 
 .stickers:empty {
   margin: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .wrapper {
+    width: 285px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .container {
+    display: none;
+  }
 }

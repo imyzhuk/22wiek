@@ -32,8 +32,8 @@ export const Summary: React.FC<SummaryProps> = ({
         <span className={styles.reviewCountText}>
           {formatReviewCountString(reviewsCount)}
         </span>
-        <button className={styles.addReviewButton}>Добавить отзыв</button>
       </div>
+      <button className={styles.addReviewButton}>Добавить отзыв</button>
       <div className={styles.ratingStatistics}>
         <RatingBar
           starsCount={5}

@@ -1,0 +1,26 @@
+.additions {
+  display: flex;
+  margin-top: 26px;
+}
+
+.leftColumn {
+  flex-shrink: 0;
+  width: 68%;
+}
+
+.producerInfo {
+  color: #a0a1a3;
+  word-break: break-word;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+@media screen and (max-width: 992px) {
+  .additions {
+    flex-direction: column;
+  }
+
+  .leftColumn {
+    width: 100%;
+  }
+}

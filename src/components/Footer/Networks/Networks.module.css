@@ -52,3 +52,9 @@
 .dzen:hover {
   background-color: #1a1a1a;
 }
+
+@media screen and (max-width: 1200px) {
+  .networks {
+    padding-top: 32px;
+  }
+}

@@ -36,3 +36,21 @@
   width: 15px;
   fill: #faaa32;
 }
+
+@media screen and (max-width: 1200px) {
+  .bar {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .bar {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .valueCount {
+    justify-content: flex-end;
+    display: flex;
+  }
+}

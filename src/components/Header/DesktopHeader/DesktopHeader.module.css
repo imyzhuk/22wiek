@@ -1,0 +1,293 @@
+.header {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  position: relative;
+}
+
+.headerWrapper {
+  position: relative;
+  z-index: 5;
+  background-color: #f7f8fa;
+}
+
+.firstLine {
+  border-bottom: 1px solid #e6e8eb;
+}
+
+.rowWrapper {
+  min-width: 941px;
+  max-width: 1130px;
+  padding: 0 20px;
+  margin: 0 auto;
+  color: #1a1a1a;
+}
+
+.firstRow {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 40px;
+}
+
+.firstRowMenu {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+  border-right: 1px solid #dcdde0;
+}
+
+.firstRowMenuItem {
+  margin-right: 12px;
+}
+.firstRowMenuItem:hover .firstRowMenuLink,
+.firstRowMenuItem:hover .firstRowMenuIcon {
+  color: #d62761;
+}
+
+.firstRowMenuLink {
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+.firstRowMenuPayLink {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.firstRowMenuIcon {
+  color: #faaa32;
+  transition: 0.2s ease;
+  margin-right: 4px;
+}
+
+.moreButton {
+  position: relative;
+  padding-right: 17px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: block;
+  transition: 0.2s ease;
+}
+.moreButton:before {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-2px);
+  right: 0;
+  border: 4px solid transparent;
+  border-top: 5px solid #1a1a1a;
+  transition: border-top-color 0.2s ease;
+}
+
+.communications {
+  display: flex;
+  align-items: center;
+  padding: 0 16px 0 12px;
+}
+
+.communicationItem:first-child {
+  margin: 0;
+}
+
+.communicationItem {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+  width: 100%;
+  white-space: nowrap;
+  height: 30px;
+  transition: 0.2s ease;
+}
+
+.communicationItem:nth-child(1):hover,
+.communicationItem:nth-child(1):hover .communicationIconViber,
+.communicationItem:nth-child(3):hover {
+  color: #d62761;
+}
+
+.communicationItem:nth-child(3):hover .moreButton::before {
+  border-top-color: #d62761;
+}
+
+.communicationItem > * {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.communicationItemBox {
+  display: flex;
+  align-items: center;
+}
+
+.communicationIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 2px;
+}
+
+.communicationIconViber {
+  color: #7c53a6;
+}
+
+.workingTime {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding-left: 13px;
+  color: #a0a1a3;
+}
+
+.workingTime:before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 0;
+  display: block;
+  height: 16px;
+  border-left: 1px solid #dcdde0;
+}
+
+.workingTimeIcon {
+  height: 24px;
+}
+
+.workingTimeText {
+  min-width: 74px;
+  margin-left: 2px;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.secondRow {
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+}
+
+.catalogContainer {
+  margin-right: 8px;
+}
+
+.circleButtonContainer {
+  margin-left: 9px;
+}
+
+.logoLink {
+  display: block;
+  margin-right: 12px;
+}
+
+.catalogText {
+  margin-right: 4px;
+}
+
+.thirdLine {
+  background: var(--header-promo-line-bg);
+  height: 42px;
+}
+
+.thirdLineGradient {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.thirdRow {
+  position: relative;
+  z-index: 1;
+}
+
+.promoList {
+  display: flex;
+  align-items: center;
+}
+
+.fixedPromoItem {
+  position: relative;
+}
+.fixedPromoItem::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: block;
+  width: 1px;
+  height: 14px;
+  margin-top: -7px;
+  background: var(--header-promo-item-separator);
+  opacity: 0.3;
+}
+
+.promoItem {
+  color: var(--header-promo-item-text-color);
+  transition: 0.2s ease;
+  white-space: nowrap;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+.promoItem:hover {
+  background: var(--header-promo-item-hover);
+}
+
+.promoIcon {
+  margin-right: 6px;
+}
+
+.moreButtonItem {
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  color: var(--header-list-item-color);
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.moreButtonItemLast {
+  margin-top: 7px;
+  border-top: 1px solid var(--communication-list-border-color);
+  padding-top: 9px;
+}
+
+.moreButtonLink,
+.moreButtonLine {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 4px 16px;
+}
+
+.moreButtonLink {
+  cursor: pointer;
+}
+
+.moreButtonLink:hover {
+  color: var(--header-list-item-color-hover);
+  background: var(--header-list-item-bg-color-hover);
+}
+
+.moreButtonLink:hover .moreButtonIcon {
+  color: var(--header-list-item-color-hover);
+}
+
+.moreButtonLinkLast {
+  padding-left: 45px;
+}
+
+.moreButtonIcon {
+  margin-right: 4px;
+}
+
+.telegramIcon {
+  color: var(--icon-telegram-bg-color);
+}

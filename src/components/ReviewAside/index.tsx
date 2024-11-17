@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ReviewAside.module.css';
 import StarIcon from '@icons/starIcon.svg';
-import { CartButton } from './CartButton';
+import { CartButton } from '@/components';
 import { FavoriteButton } from './FavoriteButton';
 import { DeliveryDetails } from './DeliveryDetails';
 
@@ -60,7 +60,7 @@ export const ReviewAside: React.FC<ReviewAsideProps> = ({
             <span className={styles.pricePart}>,{decimalPricePart} р.</span>
           </div>
           <div className={styles.buttons}>
-            <CartButton isThereProduct={false} id={id} />
+            <CartButton id={id} />
             {false && <FavoriteButton isThereProduct={false} />}
           </div>
         </div>

@@ -3,10 +3,12 @@ import styles from './RefrigeratorPage.module.css';
 import { prisma } from '@prisma/prisma-client';
 import { ProductTabs } from '@/components';
 import {
-  AdditionalInfo,
-  Attributes,
-  Description,
+  Disclaimer,
+  MobileLabels,
+  ProductInfo,
+  ReviewInfo,
   Services,
+  StaticBlock,
   TopBlock,
 } from './_components';
 
@@ -68,6 +70,11 @@ const RefrigeratorPage: React.FC<RefrigeratorPageProps> = async ({
   return (
     <>
       <h1 className={styles.title}>{product.name}</h1>
+      <ReviewInfo
+        id={id}
+        averageRating={averageRating}
+        reviewsCount={product.reviewsCount}
+      />
       <ProductTabs
         tabs={[
           { id: 0, name: 'Основное', link: `${product.link}${id}` },
@@ -99,45 +106,26 @@ const RefrigeratorPage: React.FC<RefrigeratorPageProps> = async ({
         price={Number(product.price)}
         reviewsCount={product.reviewsCount}
       />
+      <MobileLabels
+        guarantee={refrigerator.guarantee}
+        discount={
+          product.oldPrice
+            ? Number(product.oldPrice) - Number(product.price)
+            : null
+        }
+      />
+      <h1 className={styles.mobileTitle}>{product.name}</h1>
       <Services items={additionalServices} />
-      <Attributes {...refrigeratorData} />
-      <div className={styles.additions}>
-        <div className={styles.leftColumn}>
-          <Description text={refrigerator.description} />
-          {refrigerator.originCountry && (
-            <p className={styles.producerInfo}>
-              Страна производства: {refrigerator.originCountry}
-            </p>
-          )}
-          {refrigerator.producerInfo && (
-            <p className={styles.producerInfo}>
-              Производитель: {refrigerator.producerInfo}
-            </p>
-          )}
-          {refrigerator.importerInfo && (
-            <p className={styles.producerInfo}>
-              Импортер в РБ: {refrigerator.importerInfo}
-            </p>
-          )}
-          {refrigerator.supplierInfo && (
-            <p className={styles.producerInfo}>
-              Поставщик: {refrigerator.supplierInfo}
-            </p>
-          )}
-          <p className={styles.disclaimer}>
-            Производители оставляют за собой право изменять внешний вид,
-            характеристики и комплектацию товара, предварительно не уведомляя
-            продавцов и потребителей. Просим вас отнестись с пониманием к
-            данному факту и заранее приносим извинения за возможные неточности в
-            описании и фотографиях товара. Будем благодарны вам за{' '}
-            <button className={styles.disclaimerButton}>
-              сообщение об ошибках
-            </button>{' '}
-            — это поможет сделать наш каталог еще точнее!
-          </p>
-        </div>
-        <AdditionalInfo items={additionalLinks} />
-      </div>
+      <ProductInfo
+        refrigerator={refrigeratorData}
+        additionalLinks={additionalLinks}
+      />
+      <Disclaimer />
+      <StaticBlock
+        id={id}
+        price={Number(product.price)}
+        oldPrice={Number(product.oldPrice)}
+      />
     </>
   );
 };

@@ -1,0 +1,45 @@
+.tabs {
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid var(--gray-300);
+  margin-bottom: 32px;
+}
+
+.tab {
+  background: transparent;
+  cursor: pointer;
+  color: var(--gray-600);
+  font-weight: 700;
+  position: relative;
+  padding: 2px 0 13px;
+}
+
+.tabActive {
+  color: var(--black-500);
+}
+
+.tabBody {
+  display: flex;
+}
+
+.tabTitle {
+  font-size: 16px;
+  line-height: 24px;
+  position: relative;
+}
+
+.tabActive .tabTitle::after {
+  content: ' ';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: var(--black-500);
+  bottom: -14px;
+  left: 0;
+}
+
+.tabCounter {
+  font-size: 12px;
+  line-height: 16px;
+  margin-left: 2px;
+}

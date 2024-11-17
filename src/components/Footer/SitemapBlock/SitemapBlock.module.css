@@ -28,3 +28,9 @@
   white-space: nowrap;
   color: var(--sitemap-item-color);
 }
+
+@media screen and (max-width: 1200px) {
+  .sitemap {
+    display: none;
+  }
+}

@@ -49,3 +49,9 @@
 .email svg {
   color: #1a1a1a;
 }
+
+@media screen and (max-width: 1200px) {
+  .container {
+    display: none;
+  }
+}
