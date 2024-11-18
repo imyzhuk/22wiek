@@ -1,5 +1,5 @@
 .wrapper {
-  width: 336px;
+  width: 100%;
   padding: 32px;
   background: #fff;
   z-index: 2;
@@ -114,4 +114,15 @@
   width: 14px;
   height: 1.5px;
   align-self: center;
+}
+
+@media screen and (max-width: 992px) {
+  .wrapper {
+    order: 2;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    box-shadow: none;
+    border-radius: 0;
+  }
 }

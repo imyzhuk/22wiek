@@ -13,10 +13,9 @@ import { Services } from './Services';
 import { Adgames } from './Adgames';
 import { Promocode } from './Promocode';
 import { TotalPrice } from './TotalPrice';
-import { EmptySection } from './EmptySection';
-import { CartItemWithProduct, ExpandedCartItemWithProduct } from '@/types/cart';
+import { ExpandedCartItemWithProduct } from '@/types/cart';
 import { useFieldArray, useForm } from 'react-hook-form';
-import { useCartInfo } from '@/hooks';
+import { useCartInfo, useMediaQuery } from '@/hooks';
 import { Modal } from '..';
 import { Counter } from './Counter';
 import DeleteButtonLoader from '@icons/deleteButtonLoader.svg';
@@ -39,7 +38,7 @@ const getChosenCartItemIds = (cartItems?: ExpandedCartItemWithProduct[]) => {
 
 type BasketSectionProps = {};
 
-export const BasketSection: React.FC<BasketSectionProps> = ({}) => {
+export const BasketSection: React.FC<BasketSectionProps> = () => {
   const cartItems = useTypedSelector((state) => state.cart.cartItems);
   const chosenProductsCount = useTypedSelector(
     (state) => state.cart.chosenProductsCount,
@@ -47,6 +46,7 @@ export const BasketSection: React.FC<BasketSectionProps> = ({}) => {
   const [deletedItem, setDeletedItem] = useState<{
     index: number | 'all';
   } | null>(null);
+  const isMatched = useMediaQuery({ maxWidth: 992 });
   const {
     isLoadingCartInfo,
     cartInfo,
@@ -170,6 +170,14 @@ export const BasketSection: React.FC<BasketSectionProps> = ({}) => {
     setDeletedItem(null);
   };
 
+  const onCounterChange = async (productId: number, quantity: number) => {
+    await changeQuantity(productId, quantity);
+    const chosenCartItemsIds = getChosenCartItemIds(getValues().cart);
+    if (chosenCartItemsIds.length) {
+      updateCartInfo(chosenCartItemsIds);
+    }
+  };
+
   return (
     <div className={styles.section}>
       {deletedItem && (
@@ -243,41 +251,41 @@ export const BasketSection: React.FC<BasketSectionProps> = ({}) => {
                       />
                     </Link>
                   </div>
-                  <div className={styles.titleWrapper}>
-                    <Link href={product.link} className={styles.title}>
-                      {product.name}
-                    </Link>
-                  </div>
-                  <Counter
-                    quantity={quantity}
-                    onChange={async (newQuantity) => {
-                      await changeQuantity(backupId, newQuantity);
-                      const chosenCartItems = getChosenCartItemIds(
-                        getValues().cart,
-                      );
-                      updateCartInfo(chosenCartItems);
-                    }}
-                  />
-                  <div className={styles.priceBlock}>
-                    {Boolean(product.oldPrice) && (
-                      <div className={styles.oldPrice}>
-                        {formatPrice(product.oldPrice)} р.
-                      </div>
-                    )}
-                    <div className={styles.price}>
-                      {intPricePart},
-                      <span className={styles.priceDecimalPart}>
-                        {decimalPricePart} р.
-                      </span>
+                  <div className={styles.productInfo}>
+                    <div className={styles.titleWrapper}>
+                      <Link href={product.link} className={styles.title}>
+                        {product.name}
+                      </Link>
                     </div>
-                    {product.discountTypes.length && (
-                      <div className={styles.discount}>
-                        {product.discountTypes[0] === 'Discount' &&
-                          `Скидка ${formatPrice(product.oldPrice - product.price)} р.`}
-                        {product.discountTypes[0] === 'Superprice' &&
-                          'Суперцена'}
-                      </div>
+                    {!isMatched && (
+                      <Counter
+                        quantity={quantity}
+                        onChange={(newQuantity) =>
+                          onCounterChange(backupId, newQuantity)
+                        }
+                      />
                     )}
+                    <div className={styles.priceBlock}>
+                      {Boolean(Number(product.oldPrice)) && (
+                        <div className={styles.oldPrice}>
+                          {formatPrice(Number(product.oldPrice))} р.
+                        </div>
+                      )}
+                      <div className={styles.price}>
+                        {`${intPricePart},`}
+                        <span className={styles.priceDecimalPart}>
+                          {decimalPricePart} р.
+                        </span>
+                      </div>
+                      {Boolean(product.discountTypes.length) && (
+                        <div className={styles.discount}>
+                          {product.discountTypes[0] === 'Discount' &&
+                            `Скидка ${formatPrice(Number(product.oldPrice) - product.price)} р.`}
+                          {product.discountTypes[0] === 'Superprice' &&
+                            'Суперцена'}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className={styles.bottomBlock}>
@@ -291,14 +299,16 @@ export const BasketSection: React.FC<BasketSectionProps> = ({}) => {
                       </li>
                     )}
                     <li className={styles.detail}>
-                      <span className={styles.detailName}>Доставка:</span>
+                      {!isMatched && (
+                        <span className={styles.detailName}>Доставка:</span>
+                      )}
                       <span className={styles.detailPart}>
                         <DeliveryIcon className={styles.deliveryIcon} />
-                        Курьером Завтра
+                        Курьером завтра
                       </span>
                       <span className={styles.detailPart}>
                         <ArrivalPointIcon className={styles.deliveryIcon} />
-                        Самовывоз Завтра
+                        Самовывоз завтра
                       </span>
                     </li>
                   </ul>
@@ -310,8 +320,16 @@ export const BasketSection: React.FC<BasketSectionProps> = ({}) => {
                       className={styles.productButton}
                       onClick={() => setDeletedItem({ index })}
                     >
-                      <BinIcon /> Удалить
+                      <BinIcon /> {!isMatched && 'Удалить'}
                     </button>
+                    {isMatched && (
+                      <Counter
+                        quantity={quantity}
+                        onChange={(newQuantity) =>
+                          onCounterChange(backupId, newQuantity)
+                        }
+                      />
+                    )}
                     {false && (
                       <button className={styles.productButton}>
                         <HeartIcon /> В избранное

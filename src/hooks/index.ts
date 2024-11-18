@@ -9,3 +9,4 @@ export { useTypedSelector } from './useTypedSelector';
 export { useGetRefrigerators } from './useGetRefrigerators';
 export { useGetPromotions } from './useGetPromotions';
 export { useQueryState } from './useQueryState';
+export { useMediaQuery } from './useMediaQuery';

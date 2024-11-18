@@ -4,7 +4,7 @@ import styles from './Header.module.css';
 import { DesktopHeader } from './DesktopHeader';
 import { MobileHeader } from './MobileHeader';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useActions } from '@/hooks';
+import { useActions, useMediaQuery } from '@/hooks';
 import { useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
 import cartAPI from '@/services/cartAPI';
@@ -16,7 +16,7 @@ export const Header: React.FC<HeaderProps> = () => {
   const { data: session } = useSession();
   const params = useSearchParams();
   const router = useRouter();
-  const isTablet = window.innerWidth < 993;
+  const isMatched = useMediaQuery({ maxWidth: 992 });
 
   useEffect(() => {
     if (params.has('verified')) {
@@ -41,5 +41,5 @@ export const Header: React.FC<HeaderProps> = () => {
     };
     getCartItems();
   }, [session]);
-  return <>{isTablet ? <MobileHeader /> : <DesktopHeader />}</>;
+  return <>{isMatched ? <MobileHeader /> : <DesktopHeader />}</>;
 };

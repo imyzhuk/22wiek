@@ -1,17 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 
-export const useMediaQuery = (query: string): boolean => {
-  const [matches, setMatches] = useState<boolean>(false);
+type MediaQuery = {
+  maxWidth: number;
+};
 
-  useEffect(() => {
-    const mediaQueryList = window.matchMedia(query);
-    const updateMatches = () => setMatches(mediaQueryList.matches);
+export const useMediaQuery = (query: MediaQuery): boolean => {
+  const [matched, setMatched] = useState<boolean>(false);
 
-    updateMatches();
-    mediaQueryList.addEventListener;
+  useLayoutEffect(() => {
+    const isMaxWidthMatched = window.innerWidth <= query.maxWidth;
+    if (isMaxWidthMatched) {
+      setMatched(true);
+    } else {
+      setMatched(false);
+    }
+  }, []);
 
-    return () => mediaQueryList.removeEventListener('change', updateMatches);
-  }, [query]);
-
-  return matches;
+  return matched;
 };

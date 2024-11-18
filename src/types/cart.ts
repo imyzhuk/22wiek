@@ -12,7 +12,8 @@ export type IAdditionalService = {
 };
 
 export type CartItemWithProduct = CartItem & {
-  product: IProductCard & {
+  product: Omit<IProductCard, 'oldPrice'> & {
+    oldPrice: string;
     additionalServices: IAdditionalService[];
   };
 };

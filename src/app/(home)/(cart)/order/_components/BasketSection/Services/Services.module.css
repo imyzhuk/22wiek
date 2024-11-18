@@ -99,3 +99,9 @@
 .button:hover {
   color: var(--blue-600);
 }
+
+@media screen and (max-width: 992px) {
+  .services {
+    display: none;
+  }
+}

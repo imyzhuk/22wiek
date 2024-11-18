@@ -16,3 +16,10 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 992px) {
+  .container {
+    order: 1;
+    margin-bottom: 32px;
+  }
+}

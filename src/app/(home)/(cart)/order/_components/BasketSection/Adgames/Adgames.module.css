@@ -1,8 +1,8 @@
 .container {
   margin-top: 16px;
   padding: 18px 20px;
-  max-height: 108px;
-  width: 336px;
+  max-height: fit-content;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background: #fff;
@@ -34,4 +34,10 @@
 
 .button:hover {
   color: var(--blue-600);
+}
+
+@media screen and (max-width: 992px) {
+  .container {
+    order: 3;
+  }
 }
