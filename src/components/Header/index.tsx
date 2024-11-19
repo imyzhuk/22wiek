@@ -12,11 +12,11 @@ import cartAPI from '@/services/cartAPI';
 type HeaderProps = {};
 
 export const Header: React.FC<HeaderProps> = () => {
+  const isMatched = useMediaQuery({ maxWidth: 992 });
   const { setCartProductIds } = useActions();
   const { data: session } = useSession();
   const params = useSearchParams();
   const router = useRouter();
-  const isMatched = useMediaQuery({ maxWidth: 992 });
 
   useEffect(() => {
     if (params.has('verified')) {

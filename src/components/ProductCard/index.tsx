@@ -7,9 +7,11 @@ import Link from 'next/link';
 
 type ProductCardProps = ProductCardType & {
   hasLikeButton?: boolean;
+  growable?: boolean;
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({
+  growable = false,
   discount,
   productImg,
   type,
@@ -22,7 +24,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   hasLikeButton,
 }) => {
   return (
-    <div className={styles.product}>
+    <div
+      className={`${styles.product} ${growable ? styles.growable : styles.static}`}
+    >
       {hasLikeButton && <LikeButton />}
       <div className={styles.wrapper}>
         <Link href={`${productLink}${id}`} className={styles.imgLink}>

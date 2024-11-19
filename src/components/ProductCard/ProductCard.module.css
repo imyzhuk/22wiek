@@ -126,3 +126,40 @@
   font-size: 12px;
   line-height: 18px;
 }
+
+@media screen and (max-width: 992px) {
+  .static .currentPrice {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .static .oldPrice {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .growable {
+    max-width: 100%;
+  }
+
+  .growable .currentPrice {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .growable .oldPrice {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .growable .imgContainer {
+    height: 112px;
+    min-height: auto;
+  }
+
+  .growable .img {
+    max-height: 112px;
+  }
+}

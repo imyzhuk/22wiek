@@ -19,4 +19,13 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
+  gap: 10px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.cards::-webkit-scrollbar {
+  display: none;
 }

@@ -7,7 +7,7 @@ import { IProductCard } from '@/types/product';
 import { getDiscountTypeName } from '@/utils';
 import { SectionHeader } from '../..';
 import catalogAPI from '@/services/catalogAPI';
-import { usePopularProducts } from '@/hooks';
+import { useMediaQuery, usePopularProducts } from '@/hooks';
 
 type Option = {
   id: number;
@@ -23,37 +23,40 @@ export const options: Option[] = [
   },
   {
     id: 1,
-    name: 'до 100 р.',
-    untilPrice: 100,
+    name: 'до 500 р.',
+    untilPrice: 500,
   },
   {
     id: 2,
-    name: '200 – 400 р.',
-    fromPrice: 200,
-    untilPrice: 400,
+    name: '500 – 1000 р.',
+    fromPrice: 500,
+    untilPrice: 1000,
   },
   {
     id: 3,
-    name: 'от 400 р.',
-    fromPrice: 400,
+    name: 'от 1000 р.',
+    fromPrice: 1000,
   },
 ];
 
 type PopularProductsProps = {
-  elementsInRow: number;
   products: Omit<IProductCard, 'isInStock'>[];
 };
 
 export const PopularProducts: React.FC<PopularProductsProps> = ({
-  elementsInRow,
   products,
 }) => {
+  const isTablet = useMediaQuery({ maxWidth: 992 });
+  const elementsInRow = isTablet ? 2 : 5;
   const {
     shownProducts,
     isAllProductsShown,
     showMoreProducts,
     setNewProducts,
-  } = usePopularProducts(products, elementsInRow * 2);
+  } = usePopularProducts(
+    products,
+    isTablet ? elementsInRow * 3 : elementsInRow * 2,
+  );
   const [activeOption, setActiveOption] = React.useState<Option>(options[0]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -77,7 +80,7 @@ export const PopularProducts: React.FC<PopularProductsProps> = ({
     setIsLoading(false);
   };
 
-  const IndexOfElementWithputBottomBorder =
+  const IndexOfElementWithoutBottomBorder =
     Math.floor((shownProducts.length - 1) / elementsInRow) * elementsInRow;
 
   return (
@@ -120,21 +123,23 @@ export const PopularProducts: React.FC<PopularProductsProps> = ({
               index,
             ) => (
               <div
-                key={id}
-                className={`${styles.product} ${index === IndexOfElementWithputBottomBorder ? styles.noBottomBorder : ''}`}
+                className={`${styles.productWrapper} ${index === IndexOfElementWithoutBottomBorder ? styles.noBottomBorder : ''}`}
               >
-                <ProductCard
-                  id={id}
-                  currentPrice={`${format(price)}  р.`}
-                  oldPrice={oldPrice ? `${format(oldPrice)}  р.` : ''}
-                  productImg={preview}
-                  productLink={link}
-                  title={name}
-                  type={name}
-                  discount={discount}
-                  discountType={getDiscountTypeName(discountTypes)}
-                  hasLikeButton={false}
-                />
+                <div key={id} className={styles.product}>
+                  <ProductCard
+                    id={id}
+                    growable
+                    currentPrice={`${format(price)}  р.`}
+                    oldPrice={oldPrice ? `${format(oldPrice)}  р.` : ''}
+                    productImg={preview}
+                    productLink={link}
+                    title={name}
+                    type={name}
+                    discount={discount}
+                    discountType={getDiscountTypeName(discountTypes)}
+                    hasLikeButton={false}
+                  />
+                </div>
               </div>
             ),
           )}

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ReviewCard.module.css';
 import Image from 'next/image';
 import { ReviewType } from '@/types/reviewsModel';
+import { useMediaQuery } from '@/hooks';
 
 type ReviewCardProps = Omit<ReviewType, 'id'>;
 
@@ -11,6 +12,8 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
   viewsCount,
   likesCount,
 }) => {
+  const isTablet = useMediaQuery({ maxWidth: 992 });
+
   const { format } = new Intl.NumberFormat('ru', {
     notation: 'compact',
     maximumFractionDigits: 1,
@@ -57,7 +60,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
               ></path>
             </svg>
             <span className={styles.detailValue}>
-              {format(viewsCount)} посмотрели
+              {format(viewsCount)} {isTablet ? '' : 'посмотрели'}
             </span>
           </li>
           <li className={styles.detail}>
@@ -73,7 +76,7 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({
               ></path>
             </svg>
             <span className={styles.detailValue}>
-              {format(likesCount)} понравилось
+              {format(likesCount)} {isTablet ? '' : 'понравилось'}
             </span>
           </li>
         </ul>

@@ -19,18 +19,24 @@ export const ReviewCarousel: React.FC<ReviewCarouselProps> = ({ reviews }) => {
         className={`${styles.arrowLeft} ${styles.disabledButton}`}
       />
       <Swiper
-        slidesPerView={5}
-        slidesPerGroup={5}
+        breakpoints={{
+          992: {
+            slidesPerView: 5,
+            slidesPerGroup: 5,
+          },
+        }}
+        slidesPerView={'auto'}
+        slidesPerGroup={1}
+        spaceBetween={12}
         modules={[Navigation]}
         navigation={{
           nextEl: `.${styles.arrowRight}`,
           prevEl: `.${styles.arrowLeft}`,
           disabledClass: styles.disabledButton,
         }}
-        className={styles.cards}
       >
         {reviews.map((review) => (
-          <SwiperSlide key={review.id}>
+          <SwiperSlide key={review.id} className={styles.card}>
             <ReviewCard
               likesCount={review.likesCount}
               poster={review.poster}

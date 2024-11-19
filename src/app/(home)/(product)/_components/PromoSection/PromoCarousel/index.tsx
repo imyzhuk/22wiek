@@ -71,9 +71,17 @@ export const PromoCarousel: React.FC<PromoCarouselProps> = (props) => {
           className={`${styles.arrowLeft} ${styles.disabledButton}`}
         />
         <Swiper
+          breakpoints={{
+            992: {
+              spaceBetween: 40,
+              slidesPerView: 5,
+              slidesPerGroup: 5,
+            },
+          }}
           className={styles.products}
-          slidesPerView={5}
-          slidesPerGroup={5}
+          spaceBetween={24}
+          slidesPerView={'auto'}
+          slidesPerGroup={1}
           modules={[Navigation]}
           navigation={{
             nextEl: `.${styles.arrowRight}`,

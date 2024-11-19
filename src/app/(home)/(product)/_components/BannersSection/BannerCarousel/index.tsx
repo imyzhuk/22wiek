@@ -35,12 +35,12 @@ export const BannerCarousel: React.FC<BannerCarouselProps> = ({ banners }) => {
       >
         {banners.map((banner) => (
           <SwiperSlide className={styles.banner} key={banner.id}>
-            <div>
+            <div className={styles.imgContainer}>
               <Image
                 src={banner.image}
-                width={1090}
-                height={360}
                 alt={banner.title}
+                fill
+                style={{ objectFit: 'contain' }}
               />
             </div>
           </SwiperSlide>

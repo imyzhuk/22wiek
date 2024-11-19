@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  max-width: 208px;
+  width: calc(20% - 8px);
   border: 1px solid #e6e8eb;
   border-radius: 10px;
   min-height: 276px;
@@ -52,4 +52,10 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
+}
+
+@media screen and (max-width: 992px) {
+  .card {
+    min-width: 184px;
+  }
 }

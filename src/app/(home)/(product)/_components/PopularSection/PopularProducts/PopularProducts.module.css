@@ -2,44 +2,66 @@
   position: relative;
 }
 
+.chips {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.chips::-webkit-scrollbar {
+  display: none;
+}
+
 .products {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  column-gap: 33px;
   width: 100%;
   position: relative;
 }
 
-.product {
-  padding-top: 18px;
+.productWrapper {
   margin-bottom: 65px;
 }
 
-.product:not(:nth-child(5n)) {
-  padding-right: 16px;
-  border-right: 1px solid #e6e8eb;
-}
-
-.product:not(:nth-child(5n + 1)) {
-  padding-left: 16px;
-}
-
-.product:nth-child(5n + 1)::after {
+.productWrapper:nth-child(5n + 1)::after {
   content: '';
   position: absolute;
   display: block;
-  width: calc(100% - 37px);
+  width: 100%;
   height: 1px;
   transform: translateY(32px);
   background-color: #e6e8eb;
 }
 
-.product.noBottomBorder::after {
+.productWrapper.noBottomBorder::after {
   display: none;
 }
 
-.product.noBottomBorder,
-.product.noBottomBorder ~ .product {
+.productWrapper.noBottomBorder,
+.productWrapper.noBottomBorder ~ .productWrapper {
   margin-bottom: 0px;
+}
+
+.product {
+  padding-top: 18px;
+  height: 100%;
+  position: relative;
+}
+
+.productWrapper:not(:nth-child(5n)) .product::after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  right: -17px;
+  width: 1px;
+  height: 100%;
+  background-color: #e6e8eb;
 }
 
 .moreButton {
@@ -68,4 +90,52 @@
   left: 0;
   width: 100%;
   height: 450px;
+}
+
+@media screen and (max-width: 992px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .productWrapper {
+    margin-bottom: 49px;
+  }
+
+  .productWrapper:nth-child(5n + 1)::after {
+    display: none;
+  }
+
+  .productWrapper:nth-child(2n + 1)::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
+    transform: translateY(24px);
+    background-color: #e6e8eb;
+  }
+
+  .productWrapper:not(:nth-child(5n)) .product::after {
+    display: none;
+  }
+
+  .productWrapper:not(:nth-child(2n)) .product::after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    right: -17px;
+    width: 1px;
+    height: 100%;
+    background-color: #e6e8eb;
+  }
+
+  .productWrapper.noBottomBorder::after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .moreButton {
+    width: 100%;
+  }
 }

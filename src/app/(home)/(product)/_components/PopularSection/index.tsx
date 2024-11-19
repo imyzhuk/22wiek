@@ -6,7 +6,6 @@ import { prisma } from '@prisma/prisma-client';
 type PopularSectionProps = {};
 
 export const PopularSection: React.FC<PopularSectionProps> = async () => {
-  const elementsInRow = 5;
   const popularProducts = await prisma.product.findMany({
     where: {
       NOT: {
@@ -32,7 +31,6 @@ export const PopularSection: React.FC<PopularSectionProps> = async () => {
   return (
     <section className={styles.section}>
       <PopularProducts
-        elementsInRow={elementsInRow}
         products={popularProducts.map((product) => ({
           ...product,
           price: Number(product.price),

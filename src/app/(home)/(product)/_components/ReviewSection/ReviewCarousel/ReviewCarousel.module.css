@@ -19,3 +19,9 @@
   pointer-events: none;
   cursor: default;
 }
+
+@media screen and (max-width: 992px) {
+  .card {
+    max-width: 184px;
+  }
+}
