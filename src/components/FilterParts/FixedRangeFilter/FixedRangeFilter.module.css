@@ -100,3 +100,15 @@
   color: var(--blue-500);
   cursor: pointer;
 }
+
+@media screen and (max-width: 992px) {
+  .inputs {
+    gap: 8px;
+    padding-bottom: 20px;
+  }
+
+  .label {
+    max-width: none;
+    width: 50%;
+  }
+}

@@ -29,3 +29,13 @@
 .pagination {
   margin-bottom: 20px;
 }
+
+@media screen and (max-width: 480px) {
+  .pagination {
+    width: 100%;
+  }
+
+  .moreButton {
+    width: 100%;
+  }
+}

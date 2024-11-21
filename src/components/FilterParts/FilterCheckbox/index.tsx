@@ -10,6 +10,7 @@ type FilterCheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   value: string;
   className?: string;
   checked?: boolean;
+  responsive?: boolean;
   register?: UseFormRegister<any>;
 };
 
@@ -18,10 +19,14 @@ export const FilterCheckbox: React.FC<FilterCheckboxProps> = ({
   value,
   className,
   register,
+  responsive,
   ...props
 }) => {
   return (
-    <div key={value} className={`${styles.wrapper} ${className || ''}`}>
+    <div
+      key={value}
+      className={`${styles.wrapper} ${responsive ? styles.responsive : ''} ${className || ''}`}
+    >
       <label className={styles.checkbox}>
         <input
           type="checkbox"
@@ -30,9 +35,11 @@ export const FilterCheckbox: React.FC<FilterCheckboxProps> = ({
           {...register?.(value)}
           {...props}
         />
-        <span className={styles.square}></span>
-        <CheckmarkIcon className={styles.checkmark} />
-        <CheckboxLineIcon className={styles.checkboxLine} />
+        <span className={styles.square}>
+          <span className={styles.emptyCheckmark}></span>
+          <CheckmarkIcon className={styles.checkmark} />
+          <CheckboxLineIcon className={styles.checkboxLine} />
+        </span>
         <span className={styles.text}>{name}</span>
       </label>
     </div>

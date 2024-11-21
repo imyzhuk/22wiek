@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from './Listing.module.css';
 import { ProductCard, ProductsPagination } from '@/components';
-import { useTypedSelector } from '@/hooks';
+import { useMediaQuery, useTypedSelector } from '@/hooks';
 import { getDiscountTypeName } from '@/utils';
 import CrossedLoopIcon from '@icons/crossedLoopIcon.svg';
 
@@ -17,11 +17,13 @@ export const Listing: React.FC<ListingProps> = () => {
   const isProductsLoading = useTypedSelector(
     (state) => state.product.isLoading,
   );
-  const elementsInRow = 4;
-  const IndexOfElementWithputBottomBorder =
+  const isTablet = useMediaQuery({ maxWidth: 992 });
+  const elementsInRow = isTablet ? 2 : 4;
+  const IndexOfElementWithoutBottomBorder =
     Math.floor((products.length - 1) / elementsInRow) * elementsInRow;
+
   return (
-    <main className={styles.main}>
+    <div className={styles.main}>
       {isProductsLoading && <p>...Loading</p>}
       {Boolean(products.length) && (
         <ul className={styles.products}>
@@ -41,20 +43,23 @@ export const Listing: React.FC<ListingProps> = () => {
             ) => (
               <div
                 key={id}
-                className={`${styles.product} ${idx === IndexOfElementWithputBottomBorder ? styles.noBottomBorder : ''}`}
+                className={`${styles.productWrapper} ${idx === IndexOfElementWithoutBottomBorder ? styles.noBottomBorder : ''}`}
               >
-                <ProductCard
-                  id={id}
-                  currentPrice={`${format(price)}  р.`}
-                  oldPrice={oldPrice ? `${format(oldPrice)}  р.` : ''}
-                  productImg={preview}
-                  productLink={link}
-                  title={name}
-                  type={name}
-                  discount={discount}
-                  discountType={getDiscountTypeName(discountTypes)}
-                  hasLikeButton={false}
-                />
+                <div className={styles.product}>
+                  <ProductCard
+                    id={id}
+                    growable
+                    currentPrice={`${format(price)} р.`}
+                    oldPrice={+oldPrice ? `${format(oldPrice)} р.` : ''}
+                    productImg={preview}
+                    productLink={link}
+                    title={name}
+                    type={name}
+                    discount={discount}
+                    discountType={getDiscountTypeName(discountTypes)}
+                    hasLikeButton={false}
+                  />
+                </div>
               </div>
             ),
           )}
@@ -68,6 +73,6 @@ export const Listing: React.FC<ListingProps> = () => {
       )}
 
       <ProductsPagination />
-    </main>
+    </div>
   );
 };

@@ -13,3 +13,18 @@
   font-weight: 700;
   margin-bottom: 12px;
 }
+
+@media screen and (max-width: 992px) {
+  .wrapper {
+    padding: 0 24px;
+  }
+  .title {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .hasBottomBorder {
+    border-bottom: 16px solid #f7f8fa;
+  }
+}

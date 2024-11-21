@@ -7,3 +7,5 @@ export { FilterDropdown } from './FilterDropdown';
 export { FilterDropdownRadioButton } from './FilterDropdownRadioButton';
 export { FixedRangeFilter } from './FixedRangeFilter';
 export { FilterResetButton } from './FilterResetButton';
+export { FiltersButtons } from './FiltersButtons';
+export { FiltersWrapper } from './FiltersWrapper';

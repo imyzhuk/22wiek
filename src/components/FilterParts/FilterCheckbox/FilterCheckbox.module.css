@@ -25,17 +25,22 @@
 }
 
 .square {
-  display: inline-block;
-  position: relative;
   width: 16px;
   height: 16px;
+}
+
+.emptyCheckmark {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 100%;
   border: 1px solid #dcdde0;
   border-radius: 3px;
   margin-right: 8px;
   color: #dcdde0;
 }
 
-.checkbox:hover .square {
+.checkbox:hover .emptyCheckmark {
   border-color: var(--blue-500);
 }
 .checkmark,
@@ -45,12 +50,43 @@
   display: none;
 }
 
-.input:checked + .square {
+.input:checked + .square .emptyCheckmark {
   display: none;
 }
-.checkbox:not(:hover) .input:checked ~ .checkmark {
+.checkbox:not(:hover) .input:checked ~ .square .checkmark {
   display: block;
 }
-.checkbox:hover .input:checked ~ .checkboxLine {
+.checkbox:hover .input:checked ~ .square .checkboxLine {
   display: block;
+}
+
+@media screen and (max-width: 992px) {
+  .responsive.wrapper {
+    margin-bottom: 0;
+  }
+  .responsive .checkbox {
+    justify-content: space-between;
+    padding-left: 0;
+    margin: 0;
+    height: 48px;
+    border-top: 1px solid #ebedf0;
+  }
+
+  .responsive .input {
+    order: 2;
+  }
+
+  .responsive .square {
+    order: 3;
+  }
+
+  .responsive .text {
+    order: 1;
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .responsive .checkbox:has(:checked) .text {
+    color: #07c;
+  }
 }

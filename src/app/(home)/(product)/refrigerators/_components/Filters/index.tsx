@@ -368,7 +368,7 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
   }, []);
 
   return (
-    <aside>
+    <aside className={styles.wrapper}>
       <FilterItem title="Сортировка" hasBottomBorder>
         <Controller
           name="order"
@@ -407,6 +407,7 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
             name={item.name}
             value={`discountTypes.${index}.checked`}
             register={register}
+            responsive
           />
         ))}
       </FilterItem>
@@ -450,6 +451,7 @@ export const Filters: React.FC<FiltersProps> = ({ initialSearchParams }) => {
             name={item.name}
             value={`types.${index}.checked`}
             register={register}
+            responsive
           />
         ))}
       </FilterItem>

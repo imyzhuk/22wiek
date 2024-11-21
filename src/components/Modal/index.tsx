@@ -36,7 +36,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div
-      className={`${isVisible && 'visibleModal'} ${styles.overlay} ${!isVisibilityChanged ? '' : isVisible ? styles.shown : styles.hidden}`}
+      className={`${isVisible ? 'visibleModal' : ''} ${styles.overlay} ${!isVisibilityChanged ? '' : isVisible ? styles.shown : styles.hidden}`}
       onClick={closeModal}
     >
       <div className={styles.modal} onClick={handleModalClick}>

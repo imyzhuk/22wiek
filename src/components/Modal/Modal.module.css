@@ -91,6 +91,7 @@
     transition: left 0.7s ease-in-out;
     padding: 0;
     border-radius: 0;
+    overflow-y: scroll;
   }
 
   .shown .modal {

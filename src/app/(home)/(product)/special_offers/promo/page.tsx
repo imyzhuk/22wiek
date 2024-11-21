@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './PromoPage.module.css';
-import { Listing } from '@/components';
+import { FiltersWrapper, Listing } from '@/components';
 import { Filters } from './_components';
 import qs from 'qs';
 import { GetPromotionsParamsType } from '@/types/promo';
@@ -27,7 +27,9 @@ async function PromoPage({
       </div>
       <div className={styles.contentContainer}>
         <Listing />
-        <Filters initialSearchParams={searchParamsObject} />
+        <FiltersWrapper>
+          <Filters initialSearchParams={searchParamsObject} />
+        </FiltersWrapper>
       </div>
     </div>
   );

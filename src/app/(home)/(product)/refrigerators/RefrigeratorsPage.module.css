@@ -37,3 +37,13 @@
   grid-template-columns: auto 224px;
   grid-column-gap: 28px;
 }
+
+@media screen and (max-width: 992px) {
+  .contentContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    margin-bottom: 0;
+  }
+}

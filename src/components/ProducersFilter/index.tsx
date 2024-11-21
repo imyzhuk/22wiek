@@ -75,6 +75,7 @@ export const ProducersFilter: React.FC<ProducersFilterProps> = ({
             name={item.name}
             value={`producers.${index}.checked`}
             register={register}
+            responsive
           />
         ))}
       </ul>
