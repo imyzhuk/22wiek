@@ -3,10 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 type InitialStateType = {
-  categories: GetCatalogType;
+  catalog: GetCatalogType;
 };
 const initialState: InitialStateType = {
-  categories: [],
+  catalog: [],
 };
 
 const catalogSlice = createSlice({
@@ -14,7 +14,7 @@ const catalogSlice = createSlice({
   initialState,
   reducers: {
     setCatalog(state, action: PayloadAction<GetCatalogType>) {
-      state.categories = action.payload;
+      state.catalog = action.payload;
     },
   },
 });

@@ -1,15 +1,13 @@
-import React, { forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import styles from './CatalogPopup.module.css';
 import { Selections } from './Selections';
 import { Category } from './Category';
 import KitchenIcon from '@icons/kitchenIcon.svg';
 import AllPromoIcon from '@icons/allPromoIcon.svg';
 import ProcentIcon from '@icons/procentIcon.svg';
-import { Chips, Loader } from '@/components';
-import { BrandCrisps } from './BrandCrisps';
+import { Loader } from '@/components';
 import Link from 'next/link';
-import catalogAPI from '@/services/catalogAPI';
-import { useActions, useTypedSelector } from '@/hooks';
+import { useGetCatalog } from '@/hooks';
 
 type CatalogPopupProps = {
   onClose: () => void;
@@ -17,23 +15,8 @@ type CatalogPopupProps = {
 
 export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
   ({ onClose }, ref) => {
-    const [isLoading, setIsLoading] = useState(false);
     const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
-    const { setCatalog } = useActions();
-    const categories = useTypedSelector((state) => state.catalog.categories);
-
-    const getCatalog = async () => {
-      setIsLoading(true);
-      const { data } = await catalogAPI.getCatalog();
-      setCatalog(data);
-      setIsLoading(false);
-    };
-
-    useEffect(() => {
-      if (!categories.length) {
-        getCatalog();
-      }
-    }, []);
+    const { isLoading, catalog } = useGetCatalog();
 
     return (
       <>
@@ -47,7 +30,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
               <>
                 <div className={styles.leftColumn}>
                   <ul className={styles.listContainer}>
-                    {categories.map((category, idx) => (
+                    {catalog.map((category, idx) => (
                       <li
                         key={category.id}
                         onMouseOver={() => setActiveCategoryIndex(idx)}
@@ -96,16 +79,16 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                 </div>
                 <div className={styles.rightColumn}>
                   <h3 className={styles.heading}>
-                    {categories[activeCategoryIndex]?.name}
+                    {catalog[activeCategoryIndex]?.name}
                   </h3>
                   <div className={styles.content}>
                     <div className={styles.categoriesList}>
                       <div className={styles.categoriesColumn}>
-                        {categories[activeCategoryIndex]?.subcategories
+                        {catalog[activeCategoryIndex]?.subcategories
                           .slice(
                             0,
                             Math.ceil(
-                              categories[activeCategoryIndex]?.subcategories
+                              catalog[activeCategoryIndex]?.subcategories
                                 .length / 2,
                             ),
                           )
@@ -120,10 +103,10 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                           ))}
                       </div>
                       <div className={styles.catagoriesColumn}>
-                        {categories[activeCategoryIndex]?.subcategories
+                        {catalog[activeCategoryIndex]?.subcategories
                           .slice(
                             Math.ceil(
-                              categories[activeCategoryIndex]?.subcategories
+                              catalog[activeCategoryIndex]?.subcategories
                                 .length / 2,
                             ),
                           )
@@ -139,7 +122,7 @@ export const CatalogPopup = forwardRef<HTMLDivElement, CatalogPopupProps>(
                       </div>
                     </div>
                     <Selections
-                      items={categories[activeCategoryIndex]?.compilations}
+                      items={catalog[activeCategoryIndex]?.compilations}
                       onSelectClick={onClose}
                     />
                   </div>

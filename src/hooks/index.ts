@@ -10,3 +10,5 @@ export { useGetRefrigerators } from './useGetRefrigerators';
 export { useGetPromotions } from './useGetPromotions';
 export { useQueryState } from './useQueryState';
 export { useMediaQuery } from './useMediaQuery';
+export { useLocation } from './useLocation';
+export { useGetCatalog } from './useGetCatalog';

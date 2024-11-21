@@ -6,15 +6,20 @@ import { RegistrationForm } from '../RegistrationForm';
 import { ResetPasswordForm } from '../ResetPasswordForm';
 
 type AuthModalProps = {
+  isVisible: boolean;
   closeModal: () => void;
 };
 
-export const AuthModal: React.FC<AuthModalProps> = ({ closeModal }) => {
+export const AuthModal: React.FC<AuthModalProps> = ({
+  closeModal,
+  isVisible,
+}) => {
   const [currentFormName, setCurrentFormName] = useState<
     'login' | 'register' | 'reset'
   >('login');
   return (
     <Modal
+      isVisible={isVisible}
       closeModal={closeModal}
       onBackButtonClick={
         currentFormName === 'login'

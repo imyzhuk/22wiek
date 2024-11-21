@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import styles from './LocalityModal.module.css';
+import React, { use, useEffect, useState } from 'react';
+import styles from './LocalityModalContent.module.css';
 import {
   FilterDropdown,
   FilterDropdownRadioButton,
@@ -14,19 +14,16 @@ import LocationImg from '@images/location.png';
 import { locations as initialLocations } from '@/data/locations';
 import { Location } from '@/types/locationModel';
 import ErrorInfoIcon from '@icons/errorInfo.svg';
-import { useFocus } from '@/hooks';
+import { useFocus, useLocation } from '@/hooks';
 
-type LocalityModalProps = {
+type LocalityModalContentProps = {
   closeModal: () => void;
-  currentLocation: Location;
-  setCurrentLocation: (location: Location) => void;
 };
 
-export const LocalityModal: React.FC<LocalityModalProps> = ({
+export const LocalityModalContent: React.FC<LocalityModalContentProps> = ({
   closeModal,
-  currentLocation,
-  setCurrentLocation,
 }) => {
+  const { location: currentLocation, saveLocation } = useLocation();
   const [locations, setLocations] = useState<Location[]>(initialLocations);
   const [searchValue, setSearchValue] = useState<string>(
     `${currentLocation.type}. ${currentLocation.name}`,
@@ -37,6 +34,11 @@ export const LocalityModal: React.FC<LocalityModalProps> = ({
   const [inputRef, isInputFocused, setInputFocus] =
     useFocus<HTMLInputElement>();
 
+  useEffect(() => {
+    setSearchValue(`${currentLocation.type}. ${currentLocation.name}`);
+    setActiveLocation(currentLocation);
+  }, [currentLocation]);
+
   const handleLocationClick = (location: Location) => {
     setIsLocationSelected(true);
     setSearchValue(`${location.type}. ${location.name}`);
@@ -45,14 +47,13 @@ export const LocalityModal: React.FC<LocalityModalProps> = ({
     }
   };
 
-  const saveLocation = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const save = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     if (`${activeLocation.type}. ${activeLocation.name}` !== searchValue) {
       return;
     }
     if (activeLocation.id !== currentLocation.id) {
-      localStorage.setItem('location', JSON.stringify(activeLocation));
-      setCurrentLocation(activeLocation);
+      saveLocation(activeLocation);
     }
     closeModal();
   };
@@ -69,7 +70,7 @@ export const LocalityModal: React.FC<LocalityModalProps> = ({
   };
 
   return (
-    <Modal closeModal={closeModal}>
+    <>
       <div className={styles.imgContainer}>
         <Image src={LocationImg} alt="Населенный пункт" />
       </div>
@@ -149,12 +150,14 @@ export const LocalityModal: React.FC<LocalityModalProps> = ({
         <button
           type="button"
           className={styles.saveButton}
-          onClick={saveLocation}
-          disabled={!isLocationSelected}
+          onClick={save}
+          disabled={
+            !isLocationSelected || currentLocation.id === activeLocation.id
+          }
         >
           Сохранить
         </button>
       </form>
-    </Modal>
+    </>
   );
 };

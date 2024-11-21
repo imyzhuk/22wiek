@@ -1,28 +1,16 @@
 'use client';
-
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './LocalityButton.module.css';
 import LocalityIcon from '@icons/localityIcon.svg';
-import { locations as initialLocations } from '@/data/locations';
-import { Location } from '@/types/locationModel';
-import { LocalityModal } from './LocalityModal';
+import { Modal } from '@/components/Modal';
+import { LocalityModalContent } from './LocalityModalContent';
+import { useLocation } from '@/hooks';
 
-const initialLocation = initialLocations[0];
 type LocalityButtonProps = {};
 
 export const LocalityButton: React.FC<LocalityButtonProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [location, setLocation] = useState<Location | null>(null);
-
-  useEffect(() => {
-    if (localStorage.getItem('location')) {
-      const locationFromLocalStorage = localStorage.getItem('location');
-      setLocation(JSON.parse(locationFromLocalStorage as string));
-    } else {
-      localStorage.setItem('location', JSON.stringify(initialLocation));
-      setLocation(initialLocation);
-    }
-  }, []);
+  const { location } = useLocation();
 
   return (
     <>
@@ -38,12 +26,10 @@ export const LocalityButton: React.FC<LocalityButtonProps> = () => {
           </span>
         )}
       </button>
-      {isOpen && location && (
-        <LocalityModal
-          closeModal={() => setIsOpen(false)}
-          setCurrentLocation={setLocation}
-          currentLocation={location}
-        />
+      {location && (
+        <Modal isVisible={isOpen} closeModal={() => setIsOpen(false)}>
+          <LocalityModalContent closeModal={() => setIsOpen(false)} />
+        </Modal>
       )}
     </>
   );

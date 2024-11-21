@@ -60,6 +60,7 @@
   color: #1a1a1a;
   font-weight: 700;
   margin-right: 2px;
+  white-space: nowrap;
 }
 
 .oldPrice {
@@ -68,6 +69,7 @@
   height: 18px;
   text-decoration: line-through;
   color: #a0a1a3;
+  white-space: nowrap;
 }
 
 .discountType {

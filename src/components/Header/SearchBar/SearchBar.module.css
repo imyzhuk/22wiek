@@ -176,3 +176,12 @@
   height: 24px;
   margin: 0 10px 0 4px;
 }
+
+@media screen and (max-width: 992px) {
+  .overlay {
+    z-index: -1;
+  }
+  .popup {
+    top: 74px;
+  }
+}

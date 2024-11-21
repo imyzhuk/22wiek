@@ -1,0 +1,56 @@
+.list {
+  background-color: #ffffff;
+  padding: 0 16px;
+}
+
+.item:not(:last-child) {
+  border-bottom: 1px solid #ebedf0;
+}
+
+.link {
+  font-size: 15px;
+  line-height: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  color: #1a1a1a;
+  height: 47px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logoutLink {
+  color: #d62761;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+  width: 24px;
+  height: 24px;
+}
+
+.text {
+  flex: 1 1 auto;
+}
+
+.count {
+  display: block;
+  flex-shrink: 0;
+  min-width: 18px;
+  height: 18px;
+  padding-left: 6px;
+  padding-right: 6px;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 18px;
+  border-radius: 10px;
+  text-align: center;
+  background: var(--counter-bg-color);
+  color: var(--counter-color);
+}
+
+.pink {
+  background: var(--pink-500);
+}

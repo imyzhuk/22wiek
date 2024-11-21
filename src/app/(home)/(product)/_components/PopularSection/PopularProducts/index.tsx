@@ -123,14 +123,15 @@ export const PopularProducts: React.FC<PopularProductsProps> = ({
               index,
             ) => (
               <div
+                key={id}
                 className={`${styles.productWrapper} ${index === IndexOfElementWithoutBottomBorder ? styles.noBottomBorder : ''}`}
               >
-                <div key={id} className={styles.product}>
+                <div className={styles.product}>
                   <ProductCard
                     id={id}
                     growable
-                    currentPrice={`${format(price)}  р.`}
-                    oldPrice={oldPrice ? `${format(oldPrice)}  р.` : ''}
+                    currentPrice={`${format(price)} р.`}
+                    oldPrice={oldPrice ? `${format(oldPrice)} р.` : ''}
                     productImg={preview}
                     productLink={link}
                     title={name}

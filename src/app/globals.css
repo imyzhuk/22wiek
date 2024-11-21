@@ -6,7 +6,7 @@ html {
   scroll-behavior: smooth;
 }
 
-body:has(.overlay) {
+body:has(.visibleModal) {
   overflow-y: hidden;
 }
 

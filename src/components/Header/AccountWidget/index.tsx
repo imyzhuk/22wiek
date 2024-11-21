@@ -12,7 +12,7 @@ import CompareIcon from '@icons/compareIcon.svg';
 import ViewIcon from '@icons/viewIcon.svg';
 import { usePathname } from 'next/navigation';
 import { useOutsideClick, useTypedSelector } from '@/hooks';
-import { AuthModal } from './AuthModal';
+import { AuthModal } from '../AuthModal';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 
@@ -125,7 +125,10 @@ export const AccountWidget: React.FC<AccountWidgetProps> = () => {
           </ul>
         </div>
       )}
-      {isModalOpen && <AuthModal closeModal={() => setIsModalOpen(false)} />}
+      <AuthModal
+        closeModal={() => setIsModalOpen(false)}
+        isVisible={isModalOpen}
+      />
     </div>
   );
 };
