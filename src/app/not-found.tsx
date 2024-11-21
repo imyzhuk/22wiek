@@ -1,17 +1,16 @@
-'use client';
-
-import React from 'react';
+import React, { Suspense } from 'react';
 import styles from './NotFoundPage.module.css';
-import { useRouter } from 'next/navigation';
 import { Header } from '@/components';
+import Link from 'next/link';
 
 type NotFoundPageProps = {};
 
 function NotFoundPage() {
-  const router = useRouter();
   return (
     <>
-      <Header />
+      <Suspense>
+        <Header />
+      </Suspense>
       <main className={styles.main}>
         <div className={styles.bubble}></div>
         <div className={styles.bubble}></div>
@@ -22,13 +21,9 @@ function NotFoundPage() {
         <p className={styles.description}>
           Это страница пока не сделана. Мы работаем над ней...
         </p>
-        <button
-          type="button"
-          onClick={() => router.push('/')}
-          className={styles.button}
-        >
+        <Link href="/" className={styles.button}>
           Вернуться на главную
-        </button>
+        </Link>
       </main>
     </>
   );
