@@ -4,6 +4,16 @@ import styles from './RefrigeratorsPage.module.css';
 import { Filters } from './_components';
 import qs from 'qs';
 import { GetRefrigeratorsParamsType } from '@/types/refrigerator';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Купить холодильник в рассрочку – интернет-магазин 22wiek',
+  description: 'Холодильники для дома недорого в 22веке',
+  openGraph: {
+    title: 'Купить холодильник в рассрочку – интернет-магазин 22wiek',
+    description: 'Холодильники для дома недорого в 22веке',
+  },
+};
 
 async function RefrigeratorsPage({
   searchParams,

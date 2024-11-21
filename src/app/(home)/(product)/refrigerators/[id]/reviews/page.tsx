@@ -7,6 +7,43 @@ import { Review, Summary } from './_components';
 import { toLowerCaseFirstLetter } from '@/utils';
 import RightArrow from '@icons/rightArrow.svg';
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const id = Number((await params).id);
+  const product = await prisma.product.findFirst({
+    where: {
+      id,
+    },
+    select: {
+      name: true,
+    },
+  });
+
+  return {
+    title: `Отзывы на ${toLowerCaseFirstLetter(product?.name || 'Холодильник')}`,
+    description: `Отзывы на ${toLowerCaseFirstLetter(product?.name || 'Холодильник')} в интернет-магазине 22wiek.`,
+    openGraph: {
+      title: `Отзывы на ${toLowerCaseFirstLetter(product?.name || 'Холодильник')}`,
+      description: `Отзывы на ${toLowerCaseFirstLetter(product?.name || 'Холодильник')} в интернет-магазине 22wiek.`,
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  const ids = await prisma.product.findMany({
+    select: {
+      id: true,
+    },
+  });
+  return ids.map(({ id }) => ({
+    id: String(id),
+  }));
+}
 
 type RefrigeratorReviewsPageProps = {
   params: {

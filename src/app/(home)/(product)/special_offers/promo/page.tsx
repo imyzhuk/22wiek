@@ -4,8 +4,16 @@ import { FiltersWrapper, Listing } from '@/components';
 import { Filters } from './_components';
 import qs from 'qs';
 import { GetPromotionsParamsType } from '@/types/promo';
+import { Metadata } from 'next';
 
-type PromoPageProps = {};
+export const metadata: Metadata = {
+  title: 'Скидки и акции интернет-магазина 22wiek, каталог с низкими ценами',
+  description: 'Скидки, акции и суперцены онлайн-гипермаркета 22wiek',
+  openGraph: {
+    title: 'Скидки и акции интернет-магазина 22wiek, каталог с низкими ценами',
+    description: 'Скидки, акции и суперцены онлайн-гипермаркета 22wiek',
+  },
+};
 
 async function PromoPage({
   searchParams,

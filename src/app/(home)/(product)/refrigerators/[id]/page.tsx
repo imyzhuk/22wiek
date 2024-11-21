@@ -11,10 +11,46 @@ import {
   StaticBlock,
   TopBlock,
 } from './_components';
-
+import { Metadata } from 'next';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const id = Number((await params).id);
+  const product = await prisma.product.findFirst({
+    where: {
+      id,
+    },
+    select: {
+      name: true,
+    },
+  });
+
+  return {
+    title: `${product?.name || 'Холодильник'} купить в Беларуси`,
+    description: `${product?.name || 'Холодильник'} по доступной цене в интернет-магазине 22wiek. ${product?.name || 'Холодильник'} купить в Беларуси`,
+    openGraph: {
+      title: `${product?.name || 'Холодильник'} купить в Беларуси`,
+      description: `${product?.name || 'Холодильник'} по доступной цене в интернет-магазине 22wiek. ${product?.name || 'Холодильник'} купить в Беларуси`,
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  const ids = await prisma.product.findMany({
+    select: {
+      id: true,
+    },
+  });
+  return ids.map(({ id }) => ({
+    id: String(id),
+  }));
+}
 
 type RefrigeratorPageProps = {
   params: {

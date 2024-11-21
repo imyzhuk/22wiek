@@ -7,6 +7,7 @@ import { Attributes } from '../Attributes';
 import { Description } from '../Description';
 import { AdditionalLink, Refrigerator } from '@prisma/client';
 import { AdditionalInfo } from '../AdditionalInfo';
+import { useMediaQuery } from '@/hooks';
 
 type RefrigeratorWihoutDecimal = Omit<
   Refrigerator,
@@ -37,7 +38,7 @@ export const ProductInfo: React.FC<ProductInfoProps> = ({
   additionalLinks,
 }) => {
   const [tabName, setTabName] = React.useState(tabs[0]);
-  const isTablet = window?.innerWidth < 993;
+  const isTablet = useMediaQuery({ maxWidth: 992 });
   return (
     <>
       {isTablet && <Tabs items={tabs} onChange={setTabName} />}

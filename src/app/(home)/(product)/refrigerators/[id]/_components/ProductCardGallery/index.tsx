@@ -7,6 +7,7 @@ import { Image } from '@prisma/client';
 import { Navigation, Thumbs } from 'swiper/modules';
 import ArrowUpIcon from '@icons/arrowUpIcon.svg';
 import ArrowDownIcon from '@icons/arrowDownIcon.svg';
+import { useMediaQuery } from '@/hooks';
 
 type ProductCardGalleryProps = {
   images: Image[];
@@ -15,7 +16,7 @@ type ProductCardGalleryProps = {
 export const ProductCardGallery: React.FC<ProductCardGalleryProps> = ({
   images,
 }) => {
-  const isTablet = window?.innerWidth < 993;
+  const isTablet = useMediaQuery({ maxWidth: 992 });
   const [previewsSwiper, setPreviewsSwiper] = useState<SwiperClass | null>(
     null,
   );
