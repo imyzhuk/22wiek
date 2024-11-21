@@ -1,8 +1,7 @@
 'use client';
 import React from 'react';
-import { GetPromotionsParamsType } from '@/types/promo';
+import styles from './FiltersWrapper.module.css';
 import { useMediaQuery } from '@/hooks';
-import { Filters } from '../../../app/(home)/(product)/special_offers/promo/_components/Filters';
 import { FiltersButtons, Modal } from '@/components';
 
 type FiltersWrapperProps = {
@@ -20,6 +19,6 @@ export const FiltersWrapper: React.FC<FiltersWrapperProps> = ({ children }) => {
       </Modal>
     </>
   ) : (
-    children
+    <div className={styles.wrapper}>{children}</div>
   );
 };
