@@ -1,7 +1,12 @@
 'use client';
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import styles from './OrderPage.module.css';
-import { BasketSection, CertificationSection, Tabs } from './_components';
+import {
+  BasketSection,
+  BasketSectionSkeleton,
+  CertificationSection,
+  Tabs,
+} from './_components';
 import { useSearchParams } from 'next/navigation';
 import cartAPI from '@/services/cartAPI';
 import { useActions } from '@/hooks';
@@ -17,15 +22,20 @@ const OrderPage: React.FC<OrderPageProps> = () => {
   const cartItems = useTypedSelector((state) => state.cart.cartItems);
   const cartItemsCount = useTypedSelector((state) => state.cart.cartItemsCount);
   const { setCartItems, setCartInfo } = useActions();
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const getAllCartItems = async () => {
       try {
+        setIsLoading(true);
         const promises = Promise.all([cartAPI.getAll(), cartAPI.getInfo([])]);
         const [{ data: cartItems }, { data: cartInfo }] = await promises;
         setCartItems({ cartItems });
         setCartInfo(cartInfo);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     getAllCartItems();
@@ -39,9 +49,12 @@ const OrderPage: React.FC<OrderPageProps> = () => {
       {!tabName && Boolean(cartItems.length) && Boolean(cartItemsCount) && (
         <BasketSection />
       )}
-      {!tabName && !(Boolean(cartItems.length) && Boolean(cartItemsCount)) && (
-        <EmptyBasketSection />
-      )}
+      {!isLoading &&
+        !tabName &&
+        !(Boolean(cartItems.length) && Boolean(cartItemsCount)) && (
+          <EmptyBasketSection />
+        )}
+      {isLoading && <BasketSectionSkeleton />}
     </div>
   );
 };

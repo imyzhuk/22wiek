@@ -1,0 +1,302 @@
+.section {
+  display: flex;
+  align-items: flex-start;
+  min-width: 1090px;
+}
+
+.productsContainer {
+  width: 65%;
+}
+
+.rightColumn {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  top: 32px;
+  margin-left: 48px;
+  width: 31%;
+}
+
+.firstRow {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.firstRowButtons {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.firstRowButton {
+  width: 120px;
+  height: 24px;
+}
+
+.deleteAllButton {
+  color: var(--pink-500);
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.deleteAllButton:hover {
+  color: var(--pink-600);
+}
+
+.product {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.checkboxWrapper {
+  margin: 35px 12px 0 0;
+}
+
+.checkboxSkeleton {
+  width: 16px;
+  height: 16px;
+}
+
+.info {
+  width: calc(100% - 35px);
+  flex-grow: 1;
+}
+
+.topBlock {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.imgSkeleton {
+  min-width: 76px;
+  width: 88px;
+  height: 88px;
+  margin-right: 12px;
+}
+
+.titleSkeleton {
+  width: 274px;
+  height: 44px;
+}
+
+.counterSkeleton {
+  width: 107px;
+  height: 32px;
+  border-radius: 20px;
+}
+
+.priceSkeleton {
+  width: 100px;
+  height: 26px;
+}
+
+.priceDecimalPart {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.bottomBlock {
+  margin: 4px 0 0 100px;
+  border-bottom: 1px solid #e6e8eb;
+}
+
+.details {
+  border: 1px solid #ebedf0;
+  border-radius: 4px;
+}
+
+.detailSkeleton {
+  align-items: center;
+  margin: 12px 20px;
+  height: 20px;
+}
+
+.servicesBlock {
+  margin-top: 15px;
+  border: 1px solid #ebedf0;
+  border-radius: 4px;
+}
+
+.servicesSkeleton {
+  margin: 12px 20px;
+  height: 128px;
+}
+
+.deletingButtonsSkeleton {
+  margin: 12px 0 16px auto;
+  height: 24px;
+  width: 80px;
+}
+
+.totalPriceBlock {
+  width: 100%;
+  padding: 32px;
+  background: #fff;
+  box-shadow:
+    0 4px 16px rgba(6, 10, 13, 0.06),
+    0 1px 4px rgba(6, 10, 13, 0.08);
+  border-radius: 12px;
+}
+
+.totalPriceText {
+  margin-bottom: 8px;
+  height: 28px;
+}
+
+.totalPriceSeparator {
+  height: 1px;
+  margin-bottom: 16px;
+}
+
+.totalPriceCount {
+  height: 20px;
+}
+
+.totalPriceButton {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 4px;
+  height: 48px;
+  padding: 0 24px;
+}
+
+.totalPriceInfo {
+  margin-top: 16px;
+}
+
+.totalPriceInfoRow {
+  height: 18px;
+  margin-bottom: 10px;
+}
+
+.totalPriceInfoRow:last-child {
+  margin-bottom: 0;
+}
+
+.imgSkeleton,
+.titleSkeleton,
+.counterSkeleton,
+.priceSkeleton,
+.checkboxSkeleton,
+.firstRowButton,
+.detailSkeleton,
+.servicesSkeleton,
+.deletingButtonsSkeleton,
+.totalPriceText,
+.totalPriceSeparator,
+.totalPriceCount,
+.totalPriceButton,
+.totalPriceInfoRow {
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .section {
+    min-width: auto;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .section {
+    flex-direction: column;
+  }
+
+  .productsContainer {
+    width: 100%;
+  }
+
+  .product {
+    padding: 12px 12px 0 12px;
+    border: 1px solid #e6e8eb;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+
+  .topBlock {
+    padding-bottom: 12px;
+  }
+
+  .productInfo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .counterSkeleton {
+    display: none;
+  }
+
+  .titleSkeleton {
+    order: 2;
+    width: 100%;
+  }
+
+  .priceSkeleton {
+    order: 1;
+    position: relative;
+  }
+
+  .servicesBlock {
+    display: none;
+  }
+
+  .bottomBlock {
+    margin-left: 0;
+    border-bottom: none;
+  }
+
+  .details {
+    border: none;
+    border-top: 1px solid #e6e8eb;
+    padding-top: 12px;
+    margin-left: -28px;
+  }
+
+  .detailSkeleton {
+    border-top: 1px solid #e6e8eb;
+    margin: 0;
+  }
+
+  .deletingButtonsSkeleton {
+    width: 107px;
+    height: 32px;
+    border-radius: 20px;
+  }
+
+  .rightColumn {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .totalPriceBlock {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .totalPriceInfoRow {
+    height: 12px;
+    margin-bottom: 6px;
+  }
+}
