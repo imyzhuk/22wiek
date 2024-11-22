@@ -39,7 +39,7 @@ export const Listing: React.FC<ListingProps> = () => {
           ))}
         </ul>
       )}
-      {Boolean(products.length) && (
+      {!isProductsLoading && Boolean(products.length) && (
         <ul className={styles.products}>
           {products.map(
             (

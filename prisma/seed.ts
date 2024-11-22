@@ -163,6 +163,7 @@ async function up() {
     prisma.product.create({
       data: {
         ...el,
+        ordersCount: Math.floor(Math.random() * 1000),
         producerId:
           producers.find((producer) => el.name.includes(producer.name))?.id ||
           null,

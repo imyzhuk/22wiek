@@ -269,7 +269,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     name: 'Холодильник с морозильником ХМ 4208-000 ATLANT',
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/58/129/preview/atlant_4208000_65bc97b9ca11d.jpeg',
+      '/images/refrigerators/atlant_4208000_65bc97b9ca11d.jpeg',
     discountTypes: ['Discount', 'Sale'],
     isInStock: true,
     price: 794.7,
@@ -284,7 +284,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/7350/133/preview/4626159nd_atlant_4f920dc8f2fbc6db97727b37b4aab449.png',
+      '/images/refrigerators/4626159nd_atlant_3de3742cb666c888fbb07714a90113f4.jpg',
     price: 1913,
     oldPrice: 0,
     discountTypes: [],
@@ -298,7 +298,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8511/846/preview/nr403s_nord_64f57d53380e2.jpeg',
+      '/images/refrigerators/nr403s_nord_64f57d53380e2.jpeg',
     price: 640,
     oldPrice: 0,
     discountTypes: [],
@@ -312,7 +312,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9028/600/preview/its5180ng_indesit_9028600_66a8a3aa8d26c.jpeg',
+      '/images/refrigerators/its5180ng_indesit_9028600_66a8a3aa8d26c.jpeg',
     price: 1499,
     oldPrice: 0,
     discountTypes: [],
@@ -326,7 +326,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8563/671/preview/ct1700_centek_01_6515231938be8.jpeg',
+      '/images/refrigerators/ct1700_centek_01_6515231938be8.jpeg',
     price: 450,
     oldPrice: 0,
     discountTypes: ['Sale'],
@@ -340,7 +340,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/5915/271/preview/1601100_atlant_bf4ec16e5fd69b1084f8699bf212464b.png',
+      '/images/refrigerators/1601100_atlant_65f9905fc4501.jpg',
     price: 1087.5,
     oldPrice: 0,
     discountTypes: [],
@@ -354,7 +354,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8512/683/preview/rf50b_nord_64ec3b4c536fc.jpeg',
+      '/images/refrigerators/rf50b_nord_64ec3b4c536fc.jpeg',
     price: 420,
     oldPrice: 0,
     discountTypes: [],
@@ -368,7 +368,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8512/682/preview/rf50w_nord_64ec3d3ae4596.jpeg',
+      '/images/refrigerators/rf50w_nord_64ec3d3ae4596.jpeg',
     price: 420,
     oldPrice: 0,
     discountTypes: ['Sale'],
@@ -382,7 +382,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8977/752/preview/nr404b_nord_8977752_6628a68f7b5ff.jpeg',
+      '/images/refrigerators/nr404b_nord_8977752_6628a68f7b5ff.jpeg',
     price: 719,
     oldPrice: 0,
     discountTypes: ['Sale'],
@@ -396,7 +396,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/6388/882/preview/itr4160e_indesit_607e617cc16d6.jpeg',
+      '/images/refrigerators/itr4160e_indesit_607e617cc16d6.jpeg',
     price: 1249,
     oldPrice: 1479,
     discountTypes: ['Discount', 'Sale'],
@@ -410,7 +410,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/476/322/preview/rcnk335k00w_beko_59c251eddd18c.jpeg',
+      '/images/refrigerators/rcnk335k00w_beko_59c251eddd18c.jpeg',
     price: 1399,
     oldPrice: 1569,
     discountTypes: ['Discount', 'Superprice'],
@@ -424,7 +424,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/640/147/preview/x16027606n_atlant_5b4f0a91b508d.jpeg',
+      '/images/refrigerators/x16027606n_atlant_5b4f0a91b508d.jpeg',
     price: 2800,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -438,7 +438,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8563/670/preview/ct1700_centek_65151e3e4d910.jpeg',
+      '/images/refrigerators/ct1700_centek_65151e3e4d910.jpeg',
     price: 460,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -452,7 +452,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/95/201/preview/283508_atlant_f602684c9d47798e0d8b95af42f647bc.png',
+      '/images/refrigerators/283508_atlant_65bba792dd881.jpg',
     price: 979,
     oldPrice: 1058,
     discountTypes: [],
@@ -462,11 +462,11 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     fourStarsCommentsCount: 1,
   },
   {
-    name: 'Холодильник с морозильником ATLANT ХМ 4624-101 NL',
+    name: 'Холодильник с морозильником ATLANT ХМ 4624-101',
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/6488/538/preview/4624101nl_atlant_a4a1f7f1ac89fb299074ce95ab79a29f.png',
+      '/images/refrigerators/4624101_atlant_65f17fa3cf10c.jpg',
     price: 1556.64,
     oldPrice: 0,
     discountTypes: [],
@@ -480,7 +480,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/7247/777/preview/b3rcnk362hx_beko_6204081de987e.jpeg',
+      '/images/refrigerators/b3rcnk362hx_beko_6204081de987e.jpeg',
     price: 1639,
     oldPrice: 1949,
     discountTypes: ['Discount'],
@@ -494,7 +494,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9028/606/preview/sts185g_stinol__9028606_665995e153db1.jpeg',
+      '/images/refrigerators/sts185g_stinol__9028606_665995e153db1.jpeg',
     price: 1069,
     oldPrice: 1119,
     discountTypes: ['Superprice'],
@@ -508,7 +508,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/7235/292/preview/itr4180w_indesit_66a39e3926920.jpeg',
+      '/images/refrigerators/itr4180w_indesit_66a39e3926920.jpeg',
     price: 1289,
     oldPrice: 1499,
     discountTypes: ['Discount', 'Sale'],
@@ -522,7 +522,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/6384/212/preview/4623109nd_atlant_79278c2b27d92bc9c31f26cdee4ccfc6.png',
+    '/images/refrigerators/4623109nd_atlant_65c322dc4b7a6.jpg',
     price: 1700,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -536,7 +536,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/6388/884/preview/itr4180e_indesit_63c91ad93e5c6.jpeg',
+      '/images/refrigerators/itr4180e_indesit_63c91ad93e5c6.jpeg',
     price: 1299,
     oldPrice: 1539,
     discountTypes: ['Discount', 'Sale'],
@@ -550,7 +550,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/5/433/preview/atlant_282690_694e0ad54441b7f9d82d640d25483ff8.png',
+      '/images/refrigerators/atlant_282690_56c337ed9d07f.jpg',
     price: 958,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -564,7 +564,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8507/519/preview/gcb459slcl_lg_0c4ac884d01c80edd21a6b4a7ee58866.jpg',
+      '/images/refrigerators/gcb459slcl_lg_0c4ac884d01c80edd21a6b4a7ee58866.jpg',
     price: 2099,
     oldPrice: 2650,
     discountTypes: ['Discount', 'Superprice'],
@@ -578,24 +578,10 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9027/432/preview/4613101_atlant_9027432_691b0d08c477a3fe277a623b9ce9f09f.png',
+      '/images/refrigerators/4613101_atlant_9027432_6646fb63f2a3a.jpg',
     price: 1142,
     oldPrice: 0,
     discountTypes: ['Superprice'],
-    discount: 0,
-    rating: 4,
-    reviewsCount: 1,
-    fourStarsCommentsCount: 1,
-  },
-  {
-    name: 'Холодильник с морозильником ATLANT ХМ 4621-141',
-    isInStock: true,
-    link: '/refrigerators/',
-    preview:
-      'https://cdn21vek.by/img/galleries/653/552/preview/4621141_atlant_4db95642cf88e95a74f4047e4ccefd5b.png',
-    price: 1340,
-    oldPrice: 0,
-    discountTypes: [],
     discount: 0,
     rating: 4,
     reviewsCount: 1,
@@ -606,7 +592,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/461/712/preview/4619100_atlant_0ba73755bac43021ee00f5caffb44349.png',
+      '/images/refrigerators/4619100_atlant_59525f196b585.jpg',
     price: 1170,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -620,7 +606,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/7/93/preview/atlant_4009022_13344ec2bbbf038406503b6e2e0a70fe.png',
+      '/images/refrigerators/atlant_4009022_65bbaf3834af9.jpg',
     price: 1038,
     oldPrice: 0,
     discountTypes: ['Sale'],
@@ -634,7 +620,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/7347/804/preview/1602150_atlant_008fcd8af1b2a734700d8d1d53a2bff1.png',
+      '/images/refrigerators/1602150_atlant_65f9a1575ae5b.jpg',
     price: 1321,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -648,7 +634,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/6368/407/preview/4624149nd_atlant_65c330dfaeb1f.jpeg',
+      '/images/refrigerators/4624149nd_atlant_65c330dfaeb1f.jpg',
     price: 1830,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -662,7 +648,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9030/342/preview/b1rcsk332w_beko_9030342_664affbbd78d4.jpeg',
+      '/images/refrigerators/b1rcsk332w_beko_9030342_664affbbd78d4.jpg',
     price: 1259,
     oldPrice: 1409,
     discountTypes: ['Discount', 'Superprice'],
@@ -676,7 +662,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9132/465/preview/3635109_atlant_9132465_f6f287a7b8a4fae6f00cff897a0fd65e.png',
+    '/images/refrigerators/3635109_atlant_9132465_6686446e78ed5.jpg',
     price: 988,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -690,7 +676,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/46/87/preview/atlant_xm4021000_0387cd9fb0d73dee9cd3b469c4daa6a1.png',
+      '/images/refrigerators/atlant_xm4021000_65bc9050eb676.jpg',
     price: 1124,
     oldPrice: 0,
     discountTypes: [],
@@ -704,7 +690,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8745/563/preview/ff255nbiiv_techno__661d0749988b8.jpeg',
+      '/images/refrigerators/ff255nbiiv_techno__661d0749988b8.jpeg',
     price: 2540,
     oldPrice: 0,
     discountTypes: [],
@@ -718,7 +704,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/13/939/preview/atlant_6021080_65c5ccc535e29.jpeg',
+      '/images/refrigerators/atlant_6021080_65c5ccc535e29.jpeg',
     price: 1321,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -732,7 +718,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/7238/420/preview/nr507w_nord_64f821c42273d.jpeg',
+      '/images/refrigerators/nr507w_nord_64f821c42273d.jpeg',
     price: 620,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -746,7 +732,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8657/170/preview/nr506s_nord_655afcbe9adcd.jpeg',
+      '/images/refrigerators/nr506s_nord_655afcbe9adcd.jpeg',
     price: 443.69,
     oldPrice: 42.18,
     discountTypes: [],
@@ -760,7 +746,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/5996/911/preview/4626181_atlant_99b5d2f4f25609704774c87bfd0a62a5.png',
+      '/images/refrigerators/4626181_atlant_65f43bfdb588b.jpg',
     price: 1536.13,
     oldPrice: 0,
     discountTypes: [],
@@ -774,7 +760,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8821/265/preview/stn167_stinol__8821265_661f6770ce4af.jpeg',
+      '/images/refrigerators/stn167_stinol__8821265_661f6770ce4af.jpg',
     price: 1090,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -788,7 +774,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/522/727/preview/rcsk270m20w_beko_6202ae92c79db.jpeg',
+      '/images/refrigerators/rcsk270m20w_beko_6202ae92c79db.jpeg',
     price: 1079,
     oldPrice: 1139,
     discountTypes: [],
@@ -802,7 +788,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8590/24/preview/ct1749nfinoxinverter_centek_653626ba7610d.jpeg',
+      '/images/refrigerators/ct1749nfinoxinverter_centek_653626ba7610d.jpg',
     price: 2999,
     oldPrice: 0,
     discountTypes: [],
@@ -816,7 +802,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/4/552/preview/atlant_6026031_9cd14fffc94f85ba6e005d7106885f34.png',
+      '/images/refrigerators/atlant_6026031_65f409787ea27.jpg',
     price: 1425,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -830,7 +816,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/7353/379/preview/b5rcnk363zw_beko_6251d2f4abd4e.jpeg',
+      '/images/refrigerators/b5rcnk363zw_beko_6251d2f4abd4e.jpeg',
     price: 1889,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -844,7 +830,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/476/162/preview/rcsk250m00s_beko_5a3a4a9825db7.jpeg',
+      '/images/refrigerators/rcsk250m00s_beko_5a3a4a9825db7.jpeg',
     price: 1109,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -858,7 +844,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/513/578/preview/4626101_atlant_39623a6e96e94e26dacef68bcdc0e216.png',
+      '/images/refrigerators/4626101_atlant_65f3f7ee99217.jpg',
     price: 1374,
     oldPrice: 0,
     discountTypes: ['Sale'],
@@ -872,7 +858,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9047/797/preview/4612101_atlant_9047797_6c062f3d26a6701c417ddfa3b9af0283.png',
+      '/images/refrigerators/4612101_atlant_9047797_6654272d3e769.jpg',
     price: 1147,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -886,7 +872,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/7347/856/preview/4621159nd_atlant_65c247cd32d36.jpeg',
+      '/images/refrigerators/4621159nd_atlant_65c247cd32d36.jpg',
     price: 1822,
     oldPrice: 0,
     discountTypes: [],
@@ -900,7 +886,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8579/617/preview/gcb509sqcl_lg_f24f76fbd43777760342139d1fd155bd.jpg',
+      '/images/refrigerators/gcb509sqcl_lg_f24f76fbd43777760342139d1fd155bd.jpg',
     price: 2700,
     oldPrice: 0,
     discountTypes: [],
@@ -914,7 +900,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8478/622/preview/nrt141232_nord_64d0b124a5d86.jpeg',
+      '/images/refrigerators/nrt141232_nord_64d0b124a5d86.jpeg',
     price: 995,
     oldPrice: 0,
     discountTypes: [],
@@ -928,7 +914,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9246/986/preview/b3r0cnk332hx_beko_9246986_f3f50c7397aa5ed011b4d96abfb3ff4a.jpg',
+      '/images/refrigerators/b3r0cnk332hx_beko_9246986_f3f50c7397aa5ed011b4d96abfb3ff4a.jpg',
     price: 1495,
     oldPrice: 0,
     discountTypes: [],
@@ -942,7 +928,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8285/584/preview/sts185_stinol__66aa0129d2a4b.jpeg',
+      '/images/refrigerators/sts185_stinol__66aa0129d2a4b.jpeg',
     price: 999,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -956,7 +942,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9043/56/preview/4610101_atlant_9043056_8721faea15c3d8e4c93c5cc9e38707de.png',
+      '/images/refrigerators/4610101_atlant_9043056_66502ef72cfb4.jpg',
     price: 1111,
     oldPrice: 0,
     discountTypes: [],
@@ -970,7 +956,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8864/849/preview/gcb509sbsm_lg_8864849_66b095bf03fca.jpeg',
+      '/images/refrigerators/gcb509sbsm_lg_8864849_66b095bf03fca.jpeg',
     price: 3659,
     oldPrice: 0,
     discountTypes: [],
@@ -984,7 +970,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/6388/892/preview/itr5180e_indesit_60d4183f13e18.jpeg',
+      '/images/refrigerators/itr5180e_indesit_60d4183f13e18.jpeg',
     price: 1613.06,
     oldPrice: 0,
     discountTypes: [],
@@ -998,7 +984,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/517/621/preview/4424049nd_atlant_6f5d5093337c8e79b4666d00362dd57c.png',
+      '/images/refrigerators/4424049nd_atlant_65c0abd1085d0.jpg',
     price: 1773,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -1012,7 +998,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9030/546/preview/4611101_atlant_9030546_dbfbb9d33414af59d222162b304114b2.jpg',
+      '/images/refrigerators/4611101_atlant_9030546_664af38db710b.jpg',
     price: 1111,
     oldPrice: 0,
     discountTypes: ['Sale'],
@@ -1026,7 +1012,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8646/988/preview/ef116_techno__655b3d0046fc6.jpeg',
+      '/images/refrigerators/ef116_techno__655b3d0046fc6.jpeg',
     price: 729,
     oldPrice: 0,
     discountTypes: ['Superprice'],
@@ -1040,7 +1026,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9260/129/preview/b1rcsk251g_beko_9260129_a012a57003e392b1a1298c664c6e7209.jpg',
+      '/images/refrigerators/b1rcsk251g_beko_9260129_a012a57003e392b1a1298c664c6e7209.jpg',
     price: 998.73,
     oldPrice: 0,
     discountTypes: [],
@@ -1054,7 +1040,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8512/684/preview/rf90w_nord_64ec45cc4d7b3.jpeg',
+      '/images/refrigerators/rf90w_nord_64ec45cc4d7b3.jpeg',
     price: 640,
     oldPrice: 0,
     discountTypes: ['Sale'],
@@ -1068,7 +1054,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/8305/902/preview/b1rcsk362s_beko_64aba5f0a3e63.jpeg',
+      '/images/refrigerators/b1rcsk362s_beko_64aba5f0a3e63.jpeg',
     price: 1299,
     oldPrice: 1519,
     discountTypes: ['Discount', 'Superprice'],
@@ -1082,7 +1068,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/9080/511/preview/b3r0cnk332hw_beko_9080511_6667e9d296ceb.jpeg',
+      '/images/refrigerators/b3r0cnk332hw_beko_9080511_6667e9d296ceb.jpeg',
     price: 1469,
     oldPrice: 1769,
     discountTypes: ['Discount', 'Superprice'],
@@ -1096,7 +1082,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/10/12/preview/atlant_6024080_e51494c88a0454217badfe226f84def6.png',
+      '/images/refrigerators/atlant_6024080_65c5d2dcd1e29.jpg',
     price: 1422,
     oldPrice: 0,
     discountTypes: ['Sale'],
@@ -1110,7 +1096,7 @@ export const products: Omit<Prisma.ProductCreateManyInput, 'producerId'>[] = [
     isInStock: true,
     link: '/refrigerators/',
     preview:
-      'https://cdn21vek.by/img/galleries/6062/709/preview/mff83w_maunfeld_5f156c1fcad5b.jpeg',
+      '/images/refrigerators/mff83w_maunfeld_5f156c1fcad5b.jpg',
     price: 749,
     oldPrice: 0,
     discountTypes: ['Superprice'],
