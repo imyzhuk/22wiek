@@ -19,10 +19,10 @@ export async function GET(request: NextRequest) {
 
   if (order?.price) {
     orderCondition.price = order.price;
-  } else if (order?.popularity) {
-    orderCondition.ordersCount = 'desc';
   } else if (order?.promoDiscount) {
     orderCondition.discountTypes = 'desc';
+  } else {
+    orderCondition.ordersCount = 'desc';
   }
 
   if (filters?.fromPrice || filters?.untilPrice) {
