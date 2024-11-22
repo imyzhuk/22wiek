@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description: '⭐️ Доставка и самовывоз по всей Беларуси',
     images: [
       {
-        url: 'TODO: add image',
+        url: '/favicons/open-graph-image.jpg',
       },
     ],
   },
