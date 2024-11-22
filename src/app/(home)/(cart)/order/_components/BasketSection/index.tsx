@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './BasketSection.module.css';
-import { FilterCheckbox } from '@/components';
+import { FilterCheckbox, Modal } from '@/components';
 import Image from 'next/image';
 import Link from 'next/link';
 import { formatPrice } from '@/utils';
@@ -16,7 +16,6 @@ import { TotalPrice } from './TotalPrice';
 import { ExpandedCartItemWithProduct } from '@/types/cart';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { useCartInfo, useMediaQuery } from '@/hooks';
-import { Modal } from '..';
 import { Counter } from './Counter';
 import DeleteButtonLoader from '@icons/deleteButtonLoader.svg';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
@@ -180,39 +179,35 @@ export const BasketSection: React.FC<BasketSectionProps> = () => {
 
   return (
     <div className={styles.section}>
-      {deletedItem && (
-        <Modal closeModal={() => setDeletedItem(null)}>
-          <div className={styles.modalWrapper}>
-            <h5 className={styles.modalTitle}>
-              {deletedItem.index === 'all'
-                ? 'Удаление товаров'
-                : 'Удалить товар'}{' '}
-              из корзины
-            </h5>
-            <div className={styles.modalDescription}>
-              Вы уверены, что хотите удалить
-              {deletedItem.index === 'all'
-                ? ' выбранные товары'
-                : ' этот товар'}
-              ?
-            </div>
-            <div className={styles.modalButtons}>
-              <button
-                className={`${styles.modalButton} ${styles.cancelModalButton}`}
-                onClick={() => setDeletedItem(null)}
-              >
-                Отмена
-              </button>
-              <button
-                className={`${styles.modalButton} ${styles.deleteModalButton}`}
-                onClick={onDelete}
-              >
-                {isDeleting ? <DeleteButtonLoader /> : 'Удалить'}
-              </button>
-            </div>
+      <Modal isVisible={!!deletedItem} closeModal={() => setDeletedItem(null)}>
+        <div className={styles.modalWrapper}>
+          <h5 className={styles.modalTitle}>
+            {deletedItem?.index === 'all'
+              ? 'Удаление товаров'
+              : 'Удалить товар'}{' '}
+            из корзины
+          </h5>
+          <div className={styles.modalDescription}>
+            Вы уверены, что хотите удалить
+            {deletedItem?.index === 'all' ? ' выбранные товары' : ' этот товар'}
+            ?
           </div>
-        </Modal>
-      )}
+          <div className={styles.modalButtons}>
+            <button
+              className={`${styles.modalButton} ${styles.cancelModalButton}`}
+              onClick={() => setDeletedItem(null)}
+            >
+              Отмена
+            </button>
+            <button
+              className={`${styles.modalButton} ${styles.deleteModalButton}`}
+              onClick={onDelete}
+            >
+              {isDeleting ? <DeleteButtonLoader /> : 'Удалить'}
+            </button>
+          </div>
+        </div>
+      </Modal>
       <div className={styles.productsContainer}>
         <div className={styles.firstRow}>
           <FilterCheckbox name="Выбрать все" value="all" register={register} />
