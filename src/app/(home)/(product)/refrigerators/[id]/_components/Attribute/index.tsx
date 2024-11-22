@@ -19,7 +19,9 @@ export const Attribute: React.FC<AttributeProps> = ({
   }
   return (
     <div className={styles.wrapper}>
-      {popover || <div className={styles.popoverThumb}></div>}
+      <div className={styles.thumb}>
+        {popover || <div className={styles.popoverThumb}></div>}
+      </div>
       <dl className={styles.attribute}>
         <dt className={styles.title}>
           <span className={styles.dotText}>{name}</span>
