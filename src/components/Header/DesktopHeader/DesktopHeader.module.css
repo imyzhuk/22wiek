@@ -291,3 +291,9 @@
 .telegramIcon {
   color: var(--icon-telegram-bg-color);
 }
+
+@media screen and (max-width: 992px) {
+  .header {
+    display: none;
+  }
+}
