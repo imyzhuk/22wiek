@@ -142,15 +142,19 @@
   display: flex;
 }
 
-.popupItemLink:hover {
-  background-color: #fdeef3;
-  color: #d62761;
+@media (hover: hover) and (pointer: fine) {
+  .popupItemLink:hover {
+    background-color: #fdeef3;
+    color: #d62761;
+  }
 }
 
 .popupItemImageWrapper {
   position: relative;
   width: 40px;
   height: 40px;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .popupItemInfo {
@@ -183,5 +187,33 @@
   }
   .popup {
     top: 74px;
+  }
+
+  .popupGroup {
+    flex-direction: column;
+  }
+
+  .popupGroup:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  .popupWrapper {
+    width: 100%;
+    padding: 0 28px;
+  }
+
+  .popupGroupTitle {
+    text-align: left;
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .popupItemLink {
+    margin-left: 0;
+    padding-left: 0;
+    border-bottom: 1px solid #e6e8eb;
+  }
+  .popupItemInfo {
+    width: calc(100% - 56px);
   }
 }
