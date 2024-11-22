@@ -1,7 +1,11 @@
 'use client';
 import React from 'react';
 import styles from './Listing.module.css';
-import { ProductCard, ProductsPagination } from '@/components';
+import {
+  ProductCard,
+  ProductCardSkeleton,
+  ProductsPagination,
+} from '@/components';
 import { useMediaQuery, useTypedSelector } from '@/hooks';
 import { getDiscountTypeName } from '@/utils';
 import CrossedLoopIcon from '@icons/crossedLoopIcon.svg';
@@ -24,7 +28,17 @@ export const Listing: React.FC<ListingProps> = () => {
 
   return (
     <div className={styles.main}>
-      {isProductsLoading && <p>...Loading</p>}
+      {isProductsLoading && (
+        <ul className={styles.products}>
+          {Array.from({ length: 8 }).map((_, idx) => (
+            <li key={idx} className={styles.productWrapper}>
+              <div className={styles.product}>
+                <ProductCardSkeleton />
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
       {Boolean(products.length) && (
         <ul className={styles.products}>
           {products.map(
@@ -41,7 +55,7 @@ export const Listing: React.FC<ListingProps> = () => {
               },
               idx,
             ) => (
-              <div
+              <li
                 key={id}
                 className={`${styles.productWrapper} ${idx === IndexOfElementWithoutBottomBorder ? styles.noBottomBorder : ''}`}
               >
@@ -60,7 +74,7 @@ export const Listing: React.FC<ListingProps> = () => {
                     hasLikeButton={false}
                   />
                 </div>
-              </div>
+              </li>
             ),
           )}
         </ul>

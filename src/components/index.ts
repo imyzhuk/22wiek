@@ -26,4 +26,5 @@ export { LoadingButton } from './LoadingButton';
 export { Loader } from './Loader';
 export { Listing } from './Listing';
 export { CartButton } from './CartButton';
+export { ProductCardSkeleton } from './ProductCardSkeleton';
 export * from './FilterParts';
