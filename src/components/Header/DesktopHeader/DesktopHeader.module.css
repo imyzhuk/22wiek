@@ -294,6 +294,23 @@
 
 @media screen and (max-width: 992px) {
   .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    height: 48px;
+    background: linear-gradient(
+      90deg,
+      #909 -4.29%,
+      #b08 26.34%,
+      #d9006d 54.6%,
+      #f20061 102.3%
+    );
+    overflow: hidden;
+  }
+
+  .header * {
     display: none;
   }
 }

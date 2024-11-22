@@ -15,7 +15,11 @@ export const ProductsPagination: React.FC<ProductsPaginationProps> = () => {
   const page = useTypedSelector((state) => state.product.page);
 
   useEffect(() => {
-    window.scrollTo(0, 178);
+    if (window.innerWidth > 992) {
+      window.scrollTo(0, 178);
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [page]);
   const onClickNextPage = () => {
     setPage(page + 1);
