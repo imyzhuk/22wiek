@@ -12,6 +12,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Скидки и акции интернет-магазина 22wiek, каталог с низкими ценами',
     description: 'Скидки, акции и суперцены онлайн-гипермаркета 22wiek',
+    siteName: 'Онлайн-гипермаркет 22wiek',
+    type: 'website',
+    url: `https://22wiek.vercel.app/special_offers/promo`,
+    images: [
+      {
+        url: '/favicons/open-graph-image.jpg',
+      },
+    ],
   },
 };
 

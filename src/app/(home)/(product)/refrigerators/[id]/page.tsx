@@ -37,6 +37,14 @@ export async function generateMetadata({
     openGraph: {
       title: `${product?.name || 'Холодильник'} купить в Беларуси`,
       description: `${product?.name || 'Холодильник'} по доступной цене в интернет-магазине 22wiek. ${product?.name || 'Холодильник'} купить в Беларуси`,
+      siteName: 'Онлайн-гипермаркет 22wiek',
+      type: 'website',
+      url: `https://22wiek.vercel.app/refrigerators/${id}`,
+      images: [
+        {
+          url: '/favicons/open-graph-image.jpg',
+        },
+      ],
     },
   };
 }

@@ -30,6 +30,14 @@ export async function generateMetadata({
     openGraph: {
       title: `Отзывы на ${toLowerCaseFirstLetter(product?.name || 'Холодильник')}`,
       description: `Отзывы на ${toLowerCaseFirstLetter(product?.name || 'Холодильник')} в интернет-магазине 22wiek.`,
+      siteName: 'Онлайн-гипермаркет 22wiek',
+      type: 'website',
+      url: `https://22wiek.vercel.app/refrigerators/${id}/reviews`,
+      images: [
+        {
+          url: '/favicons/open-graph-image.jpg',
+        },
+      ],
     },
   };
 }

@@ -12,6 +12,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Купить холодильник в рассрочку – интернет-магазин 22wiek',
     description: 'Холодильники для дома недорого в 22веке',
+    siteName: 'Онлайн-гипермаркет 22wiek',
+    type: 'website',
+    url: 'https://22wiek.vercel.app/refrigerators',
+    images: [
+      {
+        url: '/favicons/open-graph-image.jpg',
+      },
+    ],
   },
 };
 

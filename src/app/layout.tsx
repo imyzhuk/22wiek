@@ -34,11 +34,11 @@ export const metadata: Metadata = {
     },
   ],
   openGraph: {
+    title: 'Онлайн-гипермаркет 22wiek',
+    description: '⭐️ Доставка и самовывоз по всей Беларуси',
     siteName: 'Онлайн-гипермаркет 22wiek',
     type: 'website',
     url: 'https://22wiek.vercel.app/',
-    title: 'Онлайн-гипермаркет 22wiek',
-    description: '⭐️ Доставка и самовывоз по всей Беларуси',
     images: [
       {
         url: '/favicons/open-graph-image.jpg',
