@@ -10,6 +10,7 @@ import { useTypedSelector } from '@/hooks';
 import { ProfileModal } from '../ProfileModal';
 import { MobileCatalogModal } from '../MobileCatalogModal';
 import { SearchBar } from '../SearchBar';
+import Link from 'next/link';
 
 type MobileHeaderProps = {};
 
@@ -21,9 +22,13 @@ export const MobileHeader: React.FC<MobileHeaderProps> = () => {
     <>
       <header className={styles.firstLine}>
         <MobileHeaderBg style={{ position: 'absolute' }} />
-        <a href="/" aria-label="Главная страница" className={styles.linkLogo}>
+        <Link
+          href="/"
+          aria-label="Главная страница"
+          className={styles.linkLogo}
+        >
           <MobileLogo />
-        </a>
+        </Link>
         <div className={styles.firstLineContent}>
           <div className={styles.leftPlace}>
             <button
@@ -44,7 +49,7 @@ export const MobileHeader: React.FC<MobileHeaderProps> = () => {
             </button>
           </div>
           <div className={styles.rightPlace}>
-            <a
+            <Link
               href="/order"
               aria-label="Корзина"
               className={`${styles.link} ${styles.basket}`}
@@ -53,7 +58,7 @@ export const MobileHeader: React.FC<MobileHeaderProps> = () => {
                 <span className={styles.count}>{cartItemsCount}</span>
               </div>
               <BasketIcon />
-            </a>
+            </Link>
           </div>
         </div>
       </header>

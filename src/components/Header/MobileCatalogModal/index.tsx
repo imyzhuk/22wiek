@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ArrowUpIcon from '@icons/arrowUpIcon.svg';
 import { Loader } from '@/components/Loader';
+import BigProcentIcon from '@icons/bigProcentIcon.svg';
 
 const NOT_INDEX = -1;
 
@@ -50,6 +51,20 @@ export const MobileCatalogModal: React.FC<MobileCatalogModalProps> = ({
             <>
               <h6 className={styles.title}>Каталог товаров</h6>
               <ul className={styles.list}>
+                <li>
+                  <Link href="/special_offers/promo" onClick={onClose}>
+                    <span className={styles.imgWrapper}>
+                      <span className={styles.imgContainer}>
+                        <BigProcentIcon
+                          width={56}
+                          height={56}
+                          style={{ margin: '4px', color: '#e52e6b' }}
+                        />
+                      </span>
+                    </span>
+                    <span className={styles.categoryName}>Все акции</span>
+                  </Link>
+                </li>
                 {catalog.map((category, idx) => (
                   <li key={category.id}>
                     <button onClick={() => setActiveCategoryIndex(idx)}>
