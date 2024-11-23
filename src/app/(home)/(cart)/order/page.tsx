@@ -22,12 +22,11 @@ const OrderPage: React.FC<OrderPageProps> = () => {
   const cartItems = useTypedSelector((state) => state.cart.cartItems);
   const cartItemsCount = useTypedSelector((state) => state.cart.cartItemsCount);
   const { setCartItems, setCartInfo } = useActions();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getAllCartItems = async () => {
       try {
-        setIsLoading(true);
         const promises = Promise.all([cartAPI.getAll(), cartAPI.getInfo([])]);
         const [{ data: cartItems }, { data: cartInfo }] = await promises;
         setCartItems({ cartItems });
